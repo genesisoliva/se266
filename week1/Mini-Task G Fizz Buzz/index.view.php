@@ -7,12 +7,14 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Mini-Task D Associative Arrays</h1>
-<ul>
-    <?php
-        foreach($task as $key => $value)
-            echo '<li>' . $key . " \t - \t" . $value . "</li>";
-    ?> 
-</ul>
+<h1>Wk1: Mini-Task G: Fizz Buzz</h1>
+
+<?php
+
+for($i = 1; $i <= 100; $i++)
+    echo fizzbuzz($i) . "<br>";
+
+?>
+
 </body>
 </html>

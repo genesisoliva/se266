@@ -1,19 +1,11 @@
 <?php
-    //title, due, assignedTo, completed
-    $task = [
-        "title" => "Laundry",
-        "due" => "Tommorow",
-        "assignedTo" => "Joe",
-        "completed" => false
-    ];
 
-    //added so submission can have true and false case displayed
-    $task2 = [
-        "title" => "Homework",
-        "due" => "Today",
-        "assignedTo" => "Joe",
-        "completed" => true
-    ];
-
+$task = [
+    "title" => "Lab 5",
+    "due" => "Tommorow",
+    "assigned" => "Genesis",
+    "completed" => false,
+];
+    
     require 'index.view.php';
 ?>

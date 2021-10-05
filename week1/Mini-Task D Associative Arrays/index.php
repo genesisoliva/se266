@@ -1,8 +1,8 @@
 <?php
     $task = [
-        "title" => "Laundry",
+        "title" => "Lab 5",
         "due" => "Tommorow",
-        "assignedTo" => "Joe",
+        "assigned" => "Genesis",
         "completed" => "No",
     ];
 
