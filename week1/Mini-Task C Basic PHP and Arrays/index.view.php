@@ -8,12 +8,10 @@
 </head>
 <body>
     <ul>
-        <table>
         <?php
             foreach($animals as $animal)
             echo '<li>' . $animal . "</li>";
         ?> 
-        </table>
     </ul>
 </body>
 </html>
