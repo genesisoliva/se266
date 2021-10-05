@@ -7,6 +7,7 @@
     <title>Basic PHP and Arrays</title>
 </head>
 <body>
+    <h1>Basic PHP and Arrays</h1>
     <ul>
         <?php
             foreach($animals as $animal)
