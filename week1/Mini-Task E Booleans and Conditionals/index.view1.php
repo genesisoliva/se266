@@ -7,6 +7,13 @@
     <title>Mini-Task E Booleans and Conditionals</title>
 </head>
 <body>
-  
+    <h1>Task for the Day</h1>
+    <ul>
+        <?php foreach ($task as $heading => $value) : ?>
+        <li>
+            <strong><?= $heading; ?</strong>
+        </li>
+        <?php endforeach; ?>
+    </ul>
 </body>
 </html>
