@@ -7,10 +7,11 @@
     <title>Mini-Task D Associative Arrays</title>
 </head>
 <body>
+    <h1>Mini-Task D Associative Arrays</h1>
 <ul>
     <?php
         foreach($task as $key => $value)
-            echo '<li style="margin:20px;"><strong>' . $key . "</strong> \t || \t" . $value . "</li>";
+            echo '<li style="margin:20px;"><strong>' . $key . "</strong> \t - \t" . $value . "</li>";
     ?> 
 </ul>
 </body>
