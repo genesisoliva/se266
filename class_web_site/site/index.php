@@ -8,7 +8,7 @@ Genesis's PHP and MySQL page that will present to you my assignments through out
 
   <ul>
     <li><a href="../week1/index.php">Week 1</a></li>
-    <li><a href="../week2/">Week 2</a></li>
+    <li><a href="../week2/index.php">Week 2</a></li>
   </ul>
     
 
