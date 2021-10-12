@@ -1,4 +1,7 @@
 <?php
+
+    include __DIR__ . '/../include/header.php';
+
     $animals = [
     "Aardvark",
     "Albatross",
@@ -226,5 +229,6 @@
     "Zebra"
     ];
 
-    require 'index.view.php';
+    //require 'index.view.php';
+    include __DIR__ . '/../include/header.php';
 ?>
