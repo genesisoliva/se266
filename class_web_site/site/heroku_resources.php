@@ -10,3 +10,4 @@
        
         
 <?php include __DIR__ . '../include/footer.php'; ?>
+© 2020 GitHub, Inc.
