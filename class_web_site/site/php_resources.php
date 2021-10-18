@@ -7,7 +7,7 @@
 
         <li><a href= "https://phptherightway.com/">PHP The right way</a></li>
         
-        <li><a href= "https://phptherightway.com/">PHP The right way</a></li> 
+        <li><a href= "https://github.com/">GitHub</a></li> 
 
       </ul> 
 

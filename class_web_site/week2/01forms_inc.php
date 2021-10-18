@@ -1,9 +1,4 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>Playing with Forms</title>
-        <style type="text/css">
+<style type="text/css">
             .wrapper {
                 display: grid;
                 grid-template-columns: 180px 300px;
@@ -21,7 +16,7 @@
         </style>
     </head>
     <body>
-
+    <h2>Patient Intake Form</h2>
         <?php
             if ($error != ""):
         ?>
@@ -37,39 +32,122 @@
             endif;
         ?>
 
-        <form name="addNumbers" method="post">
+        <form name="addNumbers" method="post" action="">
         <div class="wrapper">
+        <div class="label">
+                <label>First Name:</label>
+            </div>
+            <div>
+                <input type="text" name="first_name" value="<?php echo $firstName; ?>">
+            </div>
             <div class="label">
-                <label>Number 1:</label>
+                <label>Last Name:</label>
             </div>
             <div>
-                <input type="text" name="number_1" value="<?php echo $number_1; ?>" />
+                <input type="text" name="last_name" value="<?php echo $lastName; ?>">
             </div>
             <div class="label">
-                <label>Number 2:</label>
+                <label>Married:</label>
             </div>
             <div>
-                <input type="text" name="number_2" value="<?= $number_2; ?>" />
+                <input type="radio" name="married" value="yes" <?=(isset($_POST['married']) && $_POST['married'] == "yes") ? "checked" : ""; ?>>Yes
+                <input type="radio" name="married" value="no" <?=(isset($_POST['married']) && $_POST['married'] == "no") ? "checked" : ""; ?>>No
+            </div>
+
+            <div class="label">
+                <label>Birth Date:</label>
             </div>
             <div>
-                &nbsp;
+                <input type="date" name="birth_date" value="<?= $_POST['birth_date'] ?>">
+                
+                
+            </div>
+            <div class="label">
+                <label>Height:</label>
             </div>
             <div>
-                <input type="submit" name="add_numbers" value="Add Numbers" />
-                <p>
+            Feet: <input type="text" name="ft" value="<?php echo $ft; ?>" style="width:40px;">
+            Inches: <input type="text" name="inches" value="<?php echo $inches; ?>" style="width:40px;">
+                
+                
+                
+            </div>
+            <div class="label">
+                <label>Weight (pounds):</label>
+            </div>
+            <div>
+                <input type="text" name="weight" value="<?php echo $weight; ?>" style="width:40px;">
+                
+                
+            </div>
+
+
+                <input type="submit" name="add_numbers" value="Store Patient Information" />
                     <?php
                         if ($error == "") {
-                            echo "<p>The sum of these two numbers is " . addNumbers($number_1, $number_2) . ". </p>";
+                            $tempBMI = round(bmi($ft, $inches, $weight), 2);
+                            echo " <br><br>
+                            <h2>Summary</h2>
+                         
+                            <table border='1'>
+
+                            <tr>
+                            <th>First Name</th>
+                            <td>" .$firstName ."</td>
+                            </tr>
+
+                            <tr>
+                            <th>Last Name</th>
+                            <td>" .$lastName ."</td>
+                            </tr>
+
+                            <tr>
+                            <th>Conditions</th>
+                            <td>" .$lastName ."</td>
+                            </tr>
+
+                            <tr>
+                            <th>Status </th>
+                            <td>" . ($married == "no" ? "Not " : "") . "Married</td>
+                            </tr>
+
+                            <tr>
+                            <th>Date of Birth </th>
+                            <td>" . $bDate . "</td>
+                            </tr>
+
+                            <tr>
+                            <th>Age </th>
+                            <td>" .age($bDate)." </td>
+                            </tr>
+
+                            <tr>
+                            <th>Height</th>
+                            <td>" .$ft. "ft " .$inches. " in</td>
+                            </tr>
+
+                            <tr>
+                            <th>Weight</th>
+                            <td>" .$weight." lbs </td>
+                            </tr>
+
+                            <tr>
+                            <th>BMI</th>
+                            <td>" . $tempBMI." </td>
+                            </tr>
+
+                            <tr>
+                            <th>Description</th>
+                            <td> " . bmiDescription($tempBMI)." </td>
+                            </tr
+                            
+                            </table>";
+
                         }
                     ?>
-                </p>
-            </div>
-           
+
+
         </div>
+    </form>
+                    
             
-            
-        </form>
-        
-        
-    </body>
-</html>
