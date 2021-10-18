@@ -1,7 +1,4 @@
 <?php
-
-    include __DIR__ . '/../include/header.php';
-
     $animals = [
     "Aardvark",
     "Albatross",
@@ -228,15 +225,6 @@
     "Yak",
     "Zebra"
     ];
-    ?>
-    <h1>Basic PHP and Arrays</h1>
-    <ul>
-        <?php
-            foreach($animals as $animal)
-            echo '<li>' . $animal . "</li>";
-        ?> 
-    </ul>
-    <?php
-    //require 'index.view.php';
-    include __DIR__ . '/../include/header.php';
+
+    require 'index.view.php';
 ?>

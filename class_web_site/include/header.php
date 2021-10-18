@@ -21,11 +21,11 @@ body {
 }
 .navbar a {
   float: left;
-  font-size: 20px;
-  color: white;
-  text-align: center;
-  padding: 20px 50px;
-  text-decoration: none;
+    font-size: 16px;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
 }
 .dropdown {
   float: left;
@@ -33,7 +33,7 @@ body {
 }
 .dropdown .dropbtn {
   cursor: pointer;
-  font-size: 23px;  
+  font-size: 16px;  
   border: none;
   outline: none;
   color: white;
@@ -74,22 +74,39 @@ li {
 </style>
 </head>
 <body>
-<div class="navbar">
+
+<header class="navbar">
   
+<a href="../site/index.php">Home</a>
+
   <div class="dropdown">
-    <button class="dropbtn" onclick="dropDown()">Weeks
+    <button class="dropbtn" onclick="dropDown()">Assigments
       <i class="fa fa-caret-down"></i>
     </button>
     <div class="dropdown-content" id="myDropdown">
       <a href="../week1/index.php">Week 1</a>
       <a href="../week2/index.php">Week 2</a>
+      <a href="../week3/index.php">Week 3</a>
+      <a href="../week4/index.php">Week 4</a>
+      <a href="../week5/index.php">Week 5</a>
+      <a href="../week6/index.php">Week 6</a>
+      <a href="../week7/index.php">Week 7</a>
+      <a href="../week8/index.php">Week 8</a>
+      <a href="../week9/index.php">Week 9</a>
+      <a href="../week10/index.php">Week 10</a>
     </div>
   </div> 
+
   <a href="../site/heroku_resources.php">Heroku Resources</a>
+
   <a href="../site/php_resources.php">PHP Resources</a>
+
   <a href="../site/git_resources.php">Git Resources</a>
+
   <a href="https://github.com/genesisoliva/se266">My GitHub Repo</a>
-</div>
+  
+</header>
+
 <script>
 /* When the user clicks on the button, 
 toggle between hiding and showing the dropdown content */

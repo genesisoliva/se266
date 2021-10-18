@@ -1,4 +1,4 @@
-<?php include __DIR__ . '/../include/header.php'; ?>
+<?php include __DIR__ . '\..\..\include\header.php'; ?>
 
 <table border="1">
         <tr>
@@ -12,4 +12,4 @@
         ?>
     </table>
     
-<?php include __DIR__ . '/../include/footer.php'; ?>
+    <?php include __DIR__ . '\..\..\include\footer.php'; ?>

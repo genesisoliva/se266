@@ -1,4 +1,4 @@
-<?php include __DIR__ . '/../header.php'; ?>
+<?php include __DIR__ . '\..\..\include\header.php'; ?>
 
     <h1>Basic PHP and Arrays</h1>
     <ul>
@@ -8,4 +8,4 @@
         ?> 
     </ul>
 
-<?php include __DIR__ . '/../footer.php'; ?>
+<?php include __DIR__ . '\..\..\include\footer.php'; ?>

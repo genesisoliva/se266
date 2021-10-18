@@ -1,4 +1,4 @@
-<?php include __DIR__ . '/../include/header.php'; ?>
+<?php include __DIR__ . '\..\..\include\header.php'; ?>
 
 <h1>Wk1: Mini-Task E: Booleans and Conditionals</h1>
 
@@ -31,4 +31,4 @@
 
 </table>
 
-<?php include __DIR__ . '/../include/footer.php'; ?>
+<?php include __DIR__ . '\..\..\include\footer.php'; ?>
