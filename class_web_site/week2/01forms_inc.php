@@ -30,7 +30,7 @@
             <p>
                 Please fix the following and resubmit
             </p>
-            <? $error; ?>
+            <?= $error; ?>
             
         </div>
         <?php

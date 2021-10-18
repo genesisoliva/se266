@@ -8,9 +8,7 @@
         $number_1 = 12;
         $number_2 = 25;
     }
-
     $error = "";
-    
     if (!is_numeric($number_1)) {
         $error .= "<li>Number 1 must be a valid number</li>";
     }
@@ -26,5 +24,5 @@
         return $num1 + $num2;
     }
 
-    include ('./form.php');
+    include ('./01forms_inc.php');
 ?>
