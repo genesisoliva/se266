@@ -1,5 +1,5 @@
 <?php
-    include __DIR__ . '\..\include\header.php';
+    include __DIR__ . '/../include/header.php';
     if (isset($_POST['add_numbers'])) {
         $firstName = filter_input(INPUT_POST, 'first_name');
         $lastName = filter_input(INPUT_POST, 'last_name');
@@ -100,6 +100,5 @@
 
         return $classification;
     }
-    include './01forms_inc.php';
-
+    require './01forms_inc.php';
 ?>

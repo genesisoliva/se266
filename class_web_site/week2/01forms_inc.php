@@ -16,7 +16,11 @@
         </style>
     </head>
     <body>
-    <h2>Patient Intake Form</h2>
+        
+
+        <form name="addNumbers" method="post" action="">
+        <h2>Patient Intake Form</h2>
+
         <?php
             if ($error != ""):
         ?>
@@ -32,9 +36,9 @@
             endif;
         ?>
 
-        <form name="addNumbers" method="post" action="">
         <div class="wrapper">
-        <div class="label">
+
+            <div class="label">
                 <label>First Name:</label>
             </div>
             <div>
@@ -59,34 +63,29 @@
             </div>
             <div>
                 <input type="date" name="birth_date" value="<?= $_POST['birth_date'] ?>">
-                
-                
             </div>
+
             <div class="label">
                 <label>Height:</label>
             </div>
             <div>
             Feet: <input type="text" name="ft" value="<?php echo $ft; ?>" style="width:40px;">
             Inches: <input type="text" name="inches" value="<?php echo $inches; ?>" style="width:40px;">
-                
-                
-                
             </div>
+
             <div class="label">
                 <label>Weight (pounds):</label>
             </div>
             <div>
                 <input type="text" name="weight" value="<?php echo $weight; ?>" style="width:40px;">
-                
-                
+            </div>
+            <input type="submit" name="add_numbers" value="Store Patient Information" />
             </div>
 
-
-                <input type="submit" name="add_numbers" value="Store Patient Information" />
-                    <?php
+            <?php
                         if ($error == "") {
                             $tempBMI = round(bmi($ft, $inches, $weight), 2);
-                            echo " <br><br>
+                            echo "
                             <h2>Summary</h2>
                          
                             <table border='1'>
@@ -142,12 +141,6 @@
                             </tr
                             
                             </table>";
-
                         }
                     ?>
-
-
-        </div>
-    </form>
-                    
-            
+        </form>
