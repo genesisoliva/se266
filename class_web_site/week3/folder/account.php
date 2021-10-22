@@ -101,10 +101,9 @@ error_reporting(E_ALL ^ E_WARNING);
     }
     
 
-    $checking = new CheckingAccount ('C123', 1000, '12-20-2019');
+    $checking = new CheckingAccount ('C123', 1300, '12-20-2019');
     $savings = new SavingsAccount('S123', 5000, '03-20-2020');
-    $checkingBalance = $savingBalance =
-    $checkingAccountID =  $checkingStartDate = $savingAccountID = $savingStartDate = "";
+    $checkingBalance = $savingBalance = $checkingAccountID =  $checkingStartDate = $savingAccountID = $savingStartDate = "";
 
     
 
