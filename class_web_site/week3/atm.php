@@ -2,7 +2,7 @@
     require 'account.php';
 
     //Copy-Pasted $checkingVal and $savingsVal definitions for second constructor argument
-    $checkingAcc = new CheckingAccount("C123", filter_input (INPUT_POST, 'checkingHidden') != NULL ? filter_input (INPUT_POST, 'checkingHidden') : 1000.00 , "12-20-2019");
+    $checkingAcc = new CheckingAccount("C123", filter_input (INPUT_POST, 'checkingHidden') != NULL ? filter_input (INPUT_POST, 'checkingHidden') : 1300.00 , "12-20-2019");
     $savingsAcc = new SavingsAccount("S123", filter_input (INPUT_POST, 'savingsHidden')  != NULL ? filter_input (INPUT_POST, 'savingsHidden') : 5000.00, "03-20-2020");
 
     if(count($_POST)!=0)
