@@ -1,6 +1,5 @@
-<?php //include __DIR__ . '/../Include/header.php'; ?>
 <?php 
-
+include __DIR__ . '/../include/header.php';
 require 'account.php';
 
    $newcheckingvar = 1000;
@@ -103,4 +102,4 @@ require 'account.php';
 
 </div>
 
-<?php //include __DIR__ . '/../include/footer.php'; ?>
+<?php include __DIR__ . '/../include/footer.php'; ?>
