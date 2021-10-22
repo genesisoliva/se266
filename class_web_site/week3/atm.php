@@ -1,20 +1,37 @@
-<?php
-    require 'account.php';
+<?php 
 
-    //Copy-Pasted $checkingVal and $savingsVal definitions for second constructor argument
-    $checkingAcc = new CheckingAccount("C123", filter_input (INPUT_POST, 'checkingHidden') != NULL ? filter_input (INPUT_POST, 'checkingHidden') : 1300.00 , "12-20-2019");
-    $savingsAcc = new SavingsAccount("S123", filter_input (INPUT_POST, 'savingsHidden')  != NULL ? filter_input (INPUT_POST, 'savingsHidden') : 5000.00, "03-20-2020");
+require 'account.php';
 
-    if(count($_POST)!=0)
-    {
-        if(isset($_POST["chckWithdrawTxt"]) && $_POST["chckWithdrawTxt"] != "")
-            $checkingAcc->withdraw($_POST["chckWithdrawTxt"]);
-        if(isset($_POST["chckDepositTxt"])  && $_POST["chckDepositTxt"] != "")
-            $checkingAcc->deposit($_POST["chckDepositTxt"]);
-        if(isset($_POST["savingWithdrawTxt"]) && $_POST["savingWithdrawTxt"] != "")
-            $savingsAcc->withdraw($_POST["savingWithdrawTxt"]);
-        if(isset($_POST["savingDepositTxt"]) && $_POST["savingDepositTxt"] != "")
-            $savingsAcc->deposit($_POST["savingDepositTxt"]);
+   $newcheckingvar = 1000;
+   $newsavingvar = 5000;
+
+    if(isset($_POST['checkingBalance'])){
+        $newcheckingvar = $_POST['checkingBalance'];
     }
-    require 'atm.view.php';
+
+    if(isset($_POST['savingsBalance'])){
+        $newsavingvar = $_POST['savingsBalance'];
+    }
+
+   $savings = new SavingsAccount('S123', $newsavingvar , '03-20-2020');
+   $checking = new CheckingAccount ('C123', $newcheckingvar, '12-20-2019');
+
+        if (isset ($_POST['withdrawChecking'])) {
+            $checking->withdrawal(filter_input(INPUT_POST, 'checkingWithdrawAmount'));
+            $newcheckingvar = $checking->getBalance();
+            
+        } else if (isset ($_POST['depositChecking'])) {
+            $checking->deposit(filter_input(INPUT_POST, 'checkingDepositAmount'));
+            $newcheckingvar = $checking->getBalance();
+
+        } else if (isset ($_POST['withdrawSavings'])) {
+            $savings->withdrawal(filter_input(INPUT_POST, 'savingsWithdrawAmount'));
+            $newsavingvar = $savings->getBalance();
+
+        } else if (isset ($_POST['depositSavings'])) {
+            $savings->deposit(filter_input(INPUT_POST, 'savingsDepositAmount'));
+            $newsavingvar = $savings->getBalance();
+        } 
+
+?>
     
