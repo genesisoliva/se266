@@ -1,5 +1,10 @@
 <?php
+
+error_reporting(E_ALL ^ E_WARNING); 
+
+//---------------------------------------------------------- Account -------------------------------------
     abstract class Account {
+        
         protected $accountId, $balance, $startDate;
         
         public function __construct ($id, $b, $sd) {
@@ -7,16 +12,19 @@
            $this->balance = $b;
            $this->startDate = $sd;
         }
+
         public function deposit ($amount) {
-            // write code here
-            $this->balance += $amount;
+
+            $this->balance = $this->balance + $amount;
+            
         }
 
         abstract public function withdrawal($amount);
-        // this is an abstract method. This method must be defined in all classes
-        // that inherit from this class
+        
+           
         public function getStartDate() {
             return $this->startDate;
+            
         }
 
         public function getBalance() {
@@ -28,34 +36,34 @@
         }
 
         protected function getAccountDetails() {
-            // populate $str with the account details
-            $str = "";
-            $str .= "Account ID:" . " "  . $this->accountId . "<br>";
-            $str .= "Balance:" . " "  . $this->balance . "<br>";
-            $str .= "Account Opened:" . " "  . $this->startDate . "<br>";
-            
+            $str = " ";
+            $str .= $this->getAccountId();
+            $str .= $this->getBalance();
+            $str .= $this->getStartDate();
+
             return $str;
         }
     }
 
+
+    
+//---------------------------------------------------------- Checking Account -------------------------------------
     class CheckingAccount extends Account {
         const OVERDRAW_LIMIT = -200;
 
         public function withdrawal($amount) {
-            // write code here. Return true if withdrawal goes through; false otherwise           
             
-            if($this->balance - $amount > self::OVERDRAW_LIMIT){
-                $withdraw = true;
-                $this->balance-=$amount; 
-            }
-            else{
-                $withdraw = false;                
-            }
-            
-            return $withdraw;
-        }
+            if (($this->balance - $amount) >= self::OVERDRAW_LIMIT){
+                
+                $this->balance = $this->balance - $amount;
 
-        //freebie. I am giving you this code.
+            }else{
+
+                echo "Error: Exceeded withdrawl amount limit.";
+             
+            }
+        }
+          
         public function getAccountDetails() {
             $str = "<h2>Checking Account</h2>";
             $str .= parent::getAccountDetails();
@@ -64,29 +72,33 @@
         }
     }
 
+    
+//---------------------------------------------------------- Savings Account -------------------------------------
     class SavingsAccount extends Account {
 
         public function withdrawal($amount) {
-            // write code here. Return true if withdrawal goes through; false otherwise
-            if($this->balance - $amount > 0){
-                $withdraw = true;
-                $this->balance-=$amount; 
-            }
-            else{
-                $withdraw = false;                
-            }
             
-            return $withdraw;
+            if (($this->balance - $amount) >= 0){
+                
+                $this->balance = $this->balance - $amount;
+
+            }else{
+
+                echo "Error: Exceeded withdrawl amount limit.";
+             
+            }
         }
 
         public function getAccountDetails() {
-            $str = "<h2>Savings Account</h2>";
-            $str .= parent::getAccountDetails();
+          
+           $str = "<h2>Savings Account</h2>";
+           $str .= parent::getAccountDetails();
+
+           
+           return $str;
             
-            return $str;
         }
     }
-    
     
 /*
     $checking = new CheckingAccount ('C123', 1000, '12-20-2019');
