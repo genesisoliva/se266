@@ -1,5 +1,5 @@
 <?php 
-
+include __DIR__ . '/../include/header.php';
 require 'account.php';
 
    $newcheckingvar = 1300;
@@ -95,3 +95,5 @@ require 'account.php';
            </div>
            
        </div>
+   
+   <?php include __DIR__ . '/../include/footer.php'; ?>
