@@ -2,40 +2,42 @@
 
 error_reporting(E_ALL ^ E_WARNING); 
 
-//---------------------------------------------------------- Account -------------------------------------
     abstract class Account {
         
         protected $accountId, $balance, $startDate;
         
         public function __construct ($id, $b, $sd) {
+            //write code here
            $this->accountId = $id;
            $this->balance = $b;
            $this->startDate = $sd;
         }
 
         public function deposit ($amount) {
-
+            //write code here
             $this->balance = $this->balance + $amount;
-            
         }
 
         abstract public function withdrawal($amount);
-        
+        //This is an abstract methoth
            
         public function getStartDate() {
+            //write code here
             return $this->startDate;
-            
         }
 
         public function getBalance() {
+             //write code here
             return $this->balance;
         }
 
         public function getAccountId() {
+             //write code here
             return $this->accountId;
         }
 
         protected function getAccountDetails() {
+            //populate
             $str = " ";
             $str .= $this->getAccountId();
             $str .= $this->getBalance();
@@ -45,16 +47,13 @@ error_reporting(E_ALL ^ E_WARNING);
         }
     }
 
-
-    
-//---------------------------------------------------------- Checking Account -------------------------------------
     class CheckingAccount extends Account {
         const OVERDRAW_LIMIT = -200;
 
         public function withdrawal($amount) {
-            
+             //write code here
             if (($this->balance - $amount) >= self::OVERDRAW_LIMIT){
-                
+
                 $this->balance = $this->balance - $amount;
 
             }else{
@@ -72,8 +71,6 @@ error_reporting(E_ALL ^ E_WARNING);
         }
     }
 
-    
-//---------------------------------------------------------- Savings Account -------------------------------------
     class SavingsAccount extends Account {
 
         public function withdrawal($amount) {
