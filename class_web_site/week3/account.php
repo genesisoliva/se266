@@ -1,68 +1,105 @@
 <?php
-    abstract class Account
-    {
-        protected $accountID;
-        protected $startDate;
-        protected $balance;
 
-        function __construct($accountID, $balance, $startDate)
-        {
-            $this->accountID = $accountID;
-            $this->balance = $balance;
-            $this->startDate = $startDate;
-        }
+error_reporting(E_ALL ^ E_WARNING); 
 
-        function deposit($amount)
-        {
-            $this->balance += $amount; 
-        }
+//---------------------------------------------------------- Account -------------------------------------
+    abstract class Account {
         
-        abstract function withdraw($amount);
-
-        function getID(){return $this->accountID;}
-        function getBal(){return $this->balance;}
-        function getStartDay(){return $this->startDate;}
-
-        function getAccDetails()
-        {
-            $returnStr = "";
-            $returnStr += "\n" + $accountID;
-            $returnStr += "\n" + $startDate;
-            $returnStr += "\n" + $balance;
+        protected $accountId, $balance, $startDate;
+        
+        public function __construct ($id, $b, $sd) {
+           $this->accountId = $id;
+           $this->balance = $b;
+           $this->startDate = $sd;
         }
 
+        public function deposit ($amount) {
+
+            $this->balance = $this->balance + $amount;
+            
+        }
+
+        abstract public function withdrawal($amount);
+        
+           
+        public function getStartDate() {
+            return $this->startDate;
+            
+        }
+
+        public function getBalance() {
+            return $this->balance;
+        }
+
+        public function getAccountId() {
+            return $this->accountId;
+        }
+
+        protected function getAccountDetails() {
+            $str = " ";
+            $str .= $this->getAccountId();
+            $str .= $this->getBalance();
+            $str .= $this->getStartDate();
+
+            return $str;
+        }
     }
+
+
     
-    class CheckingAccount extends Account
-    {
-        function __construct($accountID, $balance, $startDate)
-        {
-            parent::__construct($accountID, $balance, $startDate);
+//---------------------------------------------------------- Checking Account -------------------------------------
+    class CheckingAccount extends Account {
+        const OVERDRAW_LIMIT = -200;
+
+        public function withdrawal($amount) {
+            
+            if (($this->balance - $amount) >= self::OVERDRAW_LIMIT){
+                
+                $this->balance = $this->balance - $amount;
+
+            }else{
+
+                echo "Error: Exceeded withdrawl amount limit.";
+             
+            }
         }
-        function withdraw($amount)
-        {
-            if($this->balance >= $amount)
-            $this->balance -= $amount;
-        }
-        function getAccDetails()
-        {
-            return "Checking Account:" + parent::getAccDetails();
+          
+        public function getAccountDetails() {
+            $str = "<h2>Checking Account</h2>";
+            $str .= parent::getAccountDetails();
+            
+            return $str;
         }
     }
+
     
-    class SavingsAccount extends Account
-    {
-        function __construct($accountID, $balance, $startDate)
-        {
-            parent::__construct($accountID, $balance, $startDate);
+//---------------------------------------------------------- Savings Account -------------------------------------
+    class SavingsAccount extends Account {
+
+        public function withdrawal($amount) {
+            
+            if (($this->balance - $amount) >= 0){
+                
+                $this->balance = $this->balance - $amount;
+
+            }else{
+
+                echo "Error: Exceeded withdrawl amount limit.";
+             
+            }
         }
-        function withdraw($amount)
-        {
-            $this->balance -= $amount;
-        }
-        function getAccDetails()
-        {
-            return "Savings Account:" + parent::getAccDetails();
+
+        public function getAccountDetails() {
+          
+           $str = "<h2>Savings Account</h2>";
+           $str .= parent::getAccountDetails();
+
+           
+           return $str;
+            
         }
     }
+
+
+    
 ?>
