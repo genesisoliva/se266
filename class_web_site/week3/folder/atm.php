@@ -1,19 +1,88 @@
 <?php
-    require 'account.php';
 
-    //Copy-Pasted $checkingVal and $savingsVal definitions for second constructor argument
-    $checkingAcc = new CheckingAccount("C123", filter_input (INPUT_POST, 'checkingHidden') != NULL ? filter_input (INPUT_POST, 'checkingHidden') : 1000.00 , "12-20-2019");
-    $savingsAcc = new SavingsAccount("S123", filter_input (INPUT_POST, 'savingsHidden')  != NULL ? filter_input (INPUT_POST, 'savingsHidden') : 5000.00, "03-20-2020");
 
-    if(count($_POST)!=0)
-    {
-        if(isset($_POST["chckWithdrawTxt"]) && $_POST["chckWithdrawTxt"] != "")
-            $checkingAcc->withdraw($_POST["chckWithdrawTxt"]);
-        if(isset($_POST["chckDepositTxt"])  && $_POST["chckDepositTxt"] != "")
-            $checkingAcc->deposit($_POST["chckDepositTxt"]);
-        if(isset($_POST["savingWithdrawTxt"]) && $_POST["savingWithdrawTxt"] != "")
-            $savingsAcc->withdraw($_POST["savingWithdrawTxt"]);
-        if(isset($_POST["savingDepositTxt"]) && $_POST["savingDepositTxt"] != "")
-            $savingsAcc->deposit($_POST["savingDepositTxt"]);
+    $chWithdraw = "";
+    $chDeposit = "";
+    $saveWithdraw = "";
+    $saveDeposit = "";
+    $error = "";
+
+
+    require('account.php');
+    
+    $checking = new CheckingAccount ('C123', 1000, '12-20-2019');
+    $savings = new SavingsAccount('S123', 5000, '03-20-2020');
+    
+
+    if(isset($_POST["checkWithdraw"])){
+
+        $chWithdraw = filter_input(INPUT_POST, 'chWithdrawal', FILTER_VALIDATE_FLOAT);
+
+        if($chWithdraw == ""){
+
+            $error = "INVALID WITHDRAWAL AMOUNT ENTERED. TRY AGAIN. EX: 3.43";
+
+        } else{
+
+            if(!$checking->withdrawal($chWithdraw)){
+
+                $error = "INSUFFICIENT FUNDS. CHECK BALANCE AND TRY AGAIN.";
+
+            } else {
+                $checking->setBalance($checking->balance - $chWithdraw);
+            } 
+
+        }
+
+    } elseif(isset($_POST["checkDeposit"])){
+
+        $chDeposit = filter_input(INPUT_POST, 'chDepo', FILTER_VALIDATE_FLOAT);
+
+        if($chDeposit == ""){
+
+            $error = "INVALID DEPOSIT AMOUNT ENTERED. TRY AGAIN. EX:433.44";
+
+        } else {
+
+            $checking->deposit($chDeposit);
+
+        }
+
+    } elseif(isset($_POST["saveWithdraw"])){
+
+        $saveWithdraw = filter_input(INPUT_POST, 'saveWithdrawal', FILTER_VALIDATE_FLOAT);
+
+        if($saveWithdraw == ""){
+
+            $error = "INVALID WITHDRAWAL AMOUNT ENTERED. TRY AGAIN. EX:65.32";
+
+        } else{
+
+            if(!$savings->withdrawal($saveWithdraw)) {
+
+                $error = "INSUFFICIENT FUNDS. CHECK BALANCE AND TRY AGAIN.";
+            }
+            
+
+        }
+
+    } elseif(isset($_POST["saveDeposit"])){
+
+        $saveDeposit = filter_input(INPUT_POST, 'saveDepo', FILTER_VALIDATE_FLOAT);
+
+        if($saveDeposit == ""){
+
+            $error = "INVALID DEPOSIT AMOUNT ENTERED. TRY AGAIN. EX:98.34";
+
+        } else{
+
+            $savings->deposit($saveDeposit);
+
+        }
+
     }
-    require 'atm.view.php';
+
+
+    //require('header.php');
+    require('atm.view.php');
+   // require('footer.php');
