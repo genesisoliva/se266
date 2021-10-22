@@ -35,17 +35,15 @@ require 'account.php';
 
 ?>
 
-<div class="container">  
 
-<form method="post" style="text-align:center;">
+<form method="post">
 
 <h1>ATM</h1>
        
 
    <div class="wrapper">
            
-           <div class="atmAccount" style="border: 1px solid black;
-            padding: 10px; margin:10px;">
+           <div class="account">
           
 
            <h2>Checking Account</h2>
@@ -59,17 +57,16 @@ require 'account.php';
              
                    <div class="accountInner">
                        <input type="text" name="checkingWithdrawAmount" value="" />
-                       <input type="submit" class="accBtns" name="withdrawChecking" value="Withdraw" />
+                       <input type="submit" name="withdrawChecking" value="Withdraw" />
                    </div>
                    <div class="accountInner">
                        <input type="text" name="checkingDepositAmount" value="" />
-                       <input type="submit" class="accBtns" name="depositChecking" value="Deposit" /><br />
+                       <input type="submit" name="depositChecking" value="Deposit" />
                    </div>
            
            </div>
 
-           <div class="atmAccount" style="border: 1px solid black;
-            padding: 10px; margin:10px;">
+           <div class="account">
            
            
            <h2>Savings Account</h2>
@@ -83,13 +80,11 @@ require 'account.php';
               
                    <div class="accountInner">
                        <input type="text" name="savingsWithdrawAmount" value="" />
-                       <input type="submit" class="accBtns" name="withdrawSavings" value="Withdraw" /><br />
+                       <input type="submit"  name="withdrawSavings" value="Withdraw" />
                    </div>
                    <div class="accountInner">
                        <input type="text" name="savingsDepositAmount" value="" />
-                       <input type="submit" class="accBtns" name="depositSavings" value="Deposit" /><br />
-                           
-                   
+                       <input type="submit" name="depositSavings" value="Deposit" />
                    </div>
            
            </div>
@@ -100,6 +95,5 @@ require 'account.php';
 
    </form>
 
-</div>
 
 <?php include __DIR__ . '/../../include/footer.php'; ?>
