@@ -34,27 +34,7 @@ require 'account.php';
         } 
 
 ?>
-
-<div id="container">
-
-<!-- Header Div -->      
-<div class="header"> 
-<h2>W3</h2>
-</div><!-- End Header Div -->
-
-
-<!--Navigation Bar-->
-    <div class="nav">	  
-        <a class="btns" href="https://se266gam.herokuapp.com/">All Signments</a>        
-        <a class="btns" href="githubR.php">GitHub Resources</a>   
-        <a class="btns" href="phpR.php">PHP References</a>  
-        <a class="btns" href="gitRepo.php">My GitHub Repo</a>  
-        <a class="btns" href="otherThings.php">Other Things</a>  
-
-    </div><!-- end botton-container -->	   
-
-    
-       
+      
  <!-- Container Div -->
 <div class="container">  
 
