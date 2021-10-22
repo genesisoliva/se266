@@ -84,7 +84,7 @@ error_reporting(E_ALL ^ E_WARNING);
 
             }else{
 
-                echo "Error: Exceeded withdrawl amount limit.";
+                echo "<h1>Error: Exceeded withdrawl amount limit.</h1>";
              
             }
         }
