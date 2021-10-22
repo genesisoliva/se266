@@ -2,7 +2,7 @@
 include __DIR__ . '/../../include/header.php';
 require 'account.php';
 
-   $newcheckingvar = 1000;
+   $newcheckingvar = 1300;
    $newsavingvar = 5000;
 
     if(isset($_POST['checkingBalance'])){
