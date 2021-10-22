@@ -100,18 +100,11 @@ error_reporting(E_ALL ^ E_WARNING);
         }
     }
     
-
+/*
     $checking = new CheckingAccount ('C123', 1300, '12-20-2019');
     $savings = new SavingsAccount('S123', 5000, '03-20-2020');
     $checkingBalance = $savingBalance = $checkingAccountID =  $checkingStartDate = $savingAccountID = $savingStartDate = "";
 
-    
-
-
-
-
-
-    //Testing purpose ################
     $checking->withdrawal(200);
     $checking->deposit(500);
     
@@ -119,7 +112,7 @@ error_reporting(E_ALL ^ E_WARNING);
     $savings->withdrawal(2000);
     
     echo $checking->getAccountDetails();
-    echo $savings->getAccountDetails();
+    echo $savings->getAccountDetails();*/
     
     
 ?>
