@@ -1,43 +1,86 @@
- <h1>ATM</h1>
-    <form method="post">
-        <table id="accounts">
-            <tr>
-                <td>
-                    <h2>Checking Account</h2>
-                    <ul>
-                        <br />
-                        <li>Account ID: <?=$checkingAcc->getID();?></li>
-                        <br />
-                        <li>Balance: $<?=number_format($checkingAcc->getBal() , 2);?></li>
-                        <br />
-                        <li>Account Opened: <?=$checkingAcc->getStartDay();?></li>
-                    </ul>
-                        <input type="text" id="chckWithdrawTxt" name="chckWithdrawTxt">
-                        <input type="submit" value="Withdraw" id="chckWithdrawBtn">
-                        <br />
-                        <input type="text" id="chckDepositTxt" name="chckDepositTxt">
-                        <input type="submit" value="Deposit" id="chckDepositBtn">
-                </td>
-                <td>
-                    <h2>Savings Account</h2>
-                    <ul>
-                        <br />
-                        <li>Account ID: <?=$savingsAcc->getID();?></li>
-                        <br />
-                        <li>Balance: $<?=number_format($savingsAcc->getBal() , 2);?></li>
-                        <br />
-                        <li>Account Opened: <?=$savingsAcc->getStartDay();?></li>
-                    </ul>
-                        <input type="text" id="savingWithdrawTxt" name="savingWithdrawTxt">
-                        <input type="submit" value="Withdraw" id="savingWithdrawBtn">
-                        <br />
-                        <input type="text" id="savingDepositTxt" name="savingDepositTxt">
-                        <input type="submit" value="Deposit" id="savingDepositBtn">
-                </td>
-            </tr>
-        </table>
-        <!--Put these in their own from because other options are put a copy in every form or pick one at random to put them in-->
-            <!--Will hide these once everything is working-->
-            <input type="text" id="checkingHidden" name="checkingHidden" value = "<?=$checkingAcc->getBal();?>" style = "display:none" />
-            <input type="text" id="savingsHidden" name="savingsHidden" value ="<?=$savingsAcc->getBal();?>" style = "display:none" />
-    </form>
+ <h3 class="title">ATM</h3>
+
+            <hr>
+            
+            
+            <div id="form_container">
+
+                <div id="checking">
+
+                    <h2>Checking Account:</h2>
+                    <br>
+
+                    <?php
+
+                        if($error == ""){
+
+                            echo $checking->getAccountDetails();
+
+                        }
+                    ?>
+                    
+
+                    <div id="checking_form">
+                        <form action="atm.php" method="post">
+
+                            <input type="text" name="chWithdrawal" value="<?=$chWithdraw?>"/>
+                            <input type="submit" name="checkWithdraw" value="Withdraw"/>
+
+                            <br>
+                            <input type="text" name="chDepo" value="<?=$chDeposit?>"/>
+                            <input type="submit" name="checkDeposit" value="Deposit"/>
+
+                            <br>
+                            <br>
+                            <input type="submit" name="checkBalance" value="Check Balance"/>
+                        
+                        </form>
+                    </div><!--/#checking_form-->
+
+                </div><!--/#checking-->
+
+                <div id=savings>
+
+                    <h2>Savings Account:</h2>
+                    <br>
+
+                    <?php
+                        if($error == ""){
+
+                            echo $savings -> getAccountDetails();
+
+                        }
+
+                    ?>
+
+                    <div id=savings_form>
+                        <form method="post">
+
+                            <input type="text" name="saveWithdrawal" value="<?=$saveWithdraw?>"/>
+                            <input type="submit" name="saveWithdraw" value="Withdraw"/>
+
+                            <br>
+                            <input type="text" name="saveDepo" value="<?=$saveDeposit?>"/>
+                            <input type="submit" name="saveDeposit" value="Deposit"/>
+
+                            <br>
+                            <br>
+                            <input type="submit" name="saveBalance" value="Check Balance"/>
+
+                        </form>
+                    </div><!--/#savings_form-->
+
+                </div><!--/#savings-->
+
+                <hr>
+
+                <php
+                    
+                    if($error != ""):
+                ?>
+
+                <h4 style="color:white;"><b><?=$error?></b></h4>
+
+
+            </div><!--/#form_container-->
+        </div>
