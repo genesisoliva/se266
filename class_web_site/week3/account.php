@@ -71,7 +71,7 @@
             }
             else{
 
-                echo "<h3>Error: Exceeded withdrawl amount limit.</h3>";
+                echo "<p>Error: Exceeded withdrawl amount limit.</p>";
              
             }
         }
