@@ -1,86 +1,68 @@
-<?php
-    $chWithdraw = "";
-    $chDeposit = "";
-    $saveWithdraw = "";
-    $saveDeposit = "";
-    $error = "";
+<?php 
+include __DIR__ . '/../include/header.php';
+?>
 
 
-    require('account.php');
-    
-    $checking = new CheckingAccount ('C123', 1000, '12-20-2019');
-    $savings = new SavingsAccount('S123', 5000, '03-20-2020');
-    
+<form method="post">
+<h1>ATM</h1>
+<?php 
+require 'account.php';
+require 'functions.php';
+?>
 
-    if(isset($_POST["checkWithdraw"])){
+   <div class="wrapper">
+           
+           <div class="account">
+          
 
-        $chWithdraw = filter_input(INPUT_POST, 'chWithdrawal', FILTER_VALIDATE_FLOAT);
+           <h2>Checking Account</h2>
+           <li>Account ID: C123</li>
+           <li>Balance: $<?= $newcheckingvar ?></li>
+           <li>Account Opened: 12-20-2019</li> 
 
-        if($chWithdraw == ""){
+                  <input type="hidden" id="test" name="checkingAccountId" value="C123" />
+                  <input type="hidden" name="checkingDate" value="12-20-2019" />
+                  <input type="hidden" name="checkingBalance" value="<?=$newcheckingvar?>" />
+             
+                   <div class="accountInner">
+                       <input type="text" name="checkingWithdrawAmount" value="" />
+                       <input type="submit" name="withdrawChecking" value="Withdraw" />
+                   </div>
+                   <div class="accountInner">
+                       <input type="text" name="checkingDepositAmount" value="" />
+                       <input type="submit" name="depositChecking" value="Deposit" />
+                   </div>
+           
+           </div>
 
-            $error = "INVALID WITHDRAWAL AMOUNT ENTERED. TRY AGAIN. EX: 3.43";
+           <div class="account">
+           
+           
+           <h2>Savings Account</h2>
+           <li>Account ID: S123</li>
+           <li>Balance: $<?= $newsavingvar ?></li>
+           <li>Account Opened: 03-20-2020</li>  
 
-        } else{
-
-            if(!$checking->withdrawal($chWithdraw)){
-
-                $error = "INSUFFICIENT FUNDS. CHECK BALANCE AND TRY AGAIN.";
-
-            } else {
-                $checking->setBalance($checking->balance - $chWithdraw);
-            } 
-
-        }
-
-    } elseif(isset($_POST["checkDeposit"])){
-
-        $chDeposit = filter_input(INPUT_POST, 'chDepo', FILTER_VALIDATE_FLOAT);
-
-        if($chDeposit == ""){
-
-            $error = "INVALID DEPOSIT AMOUNT ENTERED. TRY AGAIN. EX:433.44";
-
-        } else {
-
-            $checking->deposit($chDeposit);
-
-        }
-
-    } elseif(isset($_POST["saveWithdraw"])){
-
-        $saveWithdraw = filter_input(INPUT_POST, 'saveWithdrawal', FILTER_VALIDATE_FLOAT);
-
-        if($saveWithdraw == ""){
-
-            $error = "INVALID WITHDRAWAL AMOUNT ENTERED. TRY AGAIN. EX:65.32";
-
-        } else{
-
-            if(!$savings->withdrawal($saveWithdraw)) {
-
-                $error = "INSUFFICIENT FUNDS. CHECK BALANCE AND TRY AGAIN.";
-            }
-            
-
-        }
-
-    } elseif(isset($_POST["saveDeposit"])){
-
-        $saveDeposit = filter_input(INPUT_POST, 'saveDepo', FILTER_VALIDATE_FLOAT);
-
-        if($saveDeposit == ""){
-
-            $error = "INVALID DEPOSIT AMOUNT ENTERED. TRY AGAIN. EX:98.34";
-
-        } else{
-
-            $savings->deposit($saveDeposit);
-
-        }
-
-    }
+                <input type="hidden" name="savingsAccountId" value="S123" />
+                <input type="hidden" name="savingsDate" value="03-20-2020" />
+                <input type="hidden" name="savingsBalance" value="<?=$newsavingvar?>" />
+              
+                   <div class="accountInner">
+                       <input type="text" name="savingsWithdrawAmount" value="" />
+                       <input type="submit"  name="withdrawSavings" value="Withdraw" />
+                   </div>
+                   <div class="accountInner">
+                       <input type="text" name="savingsDepositAmount" value="" />
+                       <input type="submit" name="depositSavings" value="Deposit" />
+                   </div>
+           
+           </div>
+           
+       </div>
 
 
-    include __DIR__ . '/../include/header.php';
-    require 'atm.view.php';
-    include __DIR__ . '/../include/footer.php';
+
+   </form>
+
+
+<?php include __DIR__ . '/../include/footer.php'; ?>
