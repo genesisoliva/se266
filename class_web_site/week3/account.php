@@ -71,7 +71,8 @@
             }
             else{
 
-                echo "<p>Error: Exceeded withdrawl amount limit.</p>";
+                echo "<p style='color:red;'>[CHECKING ACCOUNT]</p>
+                <p style='color:red;'>Error: Exceeded withdrawl amount limit.</p>";
              
             }
         }
@@ -87,18 +88,26 @@
     
 //---------------------------------------------------------- Savings Account -------------------------------------
     class SavingsAccount extends Account {
+        public function deposit ($amount) {
+            // write code here
+            if($amount == '')
+            {
+                echo "<p>Cant deposite an empty value in your savings account.</p>";
+            }
+        }
 
         public function withdrawal($amount) {
         // write code here. Return true if withdrawal goes through; false otherwise
         if($amount == '')
         {
-            echo "<p>Cant withdrawal an empty value in your checking account.</p>";
+            echo "<p>Cant withdrawal an empty value in your savings account.</p>";
         }
-            if (($this->balance - $amount) >= 0){
+            else if (($this->balance - $amount) >= 0){
                 
                 $this->balance = $this->balance - $amount;
 
-            }else{
+            }
+        else{
 
                 echo "<h1>Error: Exceeded withdrawl amount limit.</h1>";
              
@@ -120,7 +129,6 @@
     $checking = new CheckingAccount ('C123', 1000, '12-20-2019');
     $checking->withdrawal(200);
     $checking->deposit(500);
-
     $savings = new SavingsAccount('S123', 5000, '03-20-2020');
     
     echo $checking->getAccountDetails();
