@@ -7,7 +7,6 @@ include __DIR__ . '/../include/header.php';
 <h1>ATM</h1>
 <?php 
 require 'account.php';
-require 'functions.php';
 ?>
 
    <div class="wrapper">
