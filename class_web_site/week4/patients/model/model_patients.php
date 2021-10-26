@@ -1,11 +1,9 @@
 <?php
 
     include (__DIR__ . '/db.php');
-    
-    
-    function getTeams () {
+
+    function getPatients () {
         global $db;
-        
         
         $results = [];
 
@@ -20,7 +18,7 @@
     }
 
     
-    function addTeam ($t, $d) {
+    function addPatient ($t, $d) {
         global $db;
         $results = "Not added";
 

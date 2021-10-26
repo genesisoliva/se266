@@ -1,7 +1,7 @@
 <?php
         
-        include __DIR__ . '/model/model_teams.php';
-        $teams = getTeams ();
+        include __DIR__ . '/model/model_patients.php';
+        $patients = getPatients ();
     ?>
     
 <html lang="en">
@@ -32,7 +32,7 @@
             <tbody>
            
             
-            <?php foreach ($teams as $row): ?>
+            <?php foreach ($patients as $row): ?>
                 <tr>
                     <td><?php echo $row['id']; ?></td>
                     <td><?php echo $row['teamName']; ?></td>
