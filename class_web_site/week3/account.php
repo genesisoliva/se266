@@ -37,12 +37,9 @@
 
         protected function getAccountDetails() {
         // write code here
-            $str = "";
-            $str .= $this->getAccountId();
-            $str .= $this->getBalance();
-            $str .= $this->getStartDate();
-
-            return $str;
+        return "<li>Account ID:" .$this->accountId . "</li>
+        <li>Balance: $" . $this->balance . "</li>
+        <li>Account Opened: " . $this->startDate . "</li>";
         }
     }
     
@@ -109,7 +106,8 @@
             }
         else{
 
-                echo "<h1>Error: Exceeded withdrawl amount limit.</h1>";
+            echo "<p style='color:red;'>[SAVINGS ACCOUNT]</p>
+            <p style='color:red;'>Error: Exceeded withdrawl amount limit.</p>";
              
             }
         }
@@ -125,14 +123,5 @@
             
         }
     }
-    /*TESTING
-    $checking = new CheckingAccount ('C123', 1000, '12-20-2019');
-    $checking->withdrawal(200);
-    $checking->deposit(500);
-    $savings = new SavingsAccount('S123', 5000, '03-20-2020');
-    
-    echo $checking->getAccountDetails();
-    echo $savings->getAccountDetails();
-    echo $checking->getStartDate();*/
     
 ?>
