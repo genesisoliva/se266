@@ -1,4 +1,4 @@
-<br>
+<footer style="margin-top:20px;">
 <hr />          
     <?php       
         $file = basename($_SERVER['PHP_SELF']);
@@ -6,7 +6,7 @@
         echo "<p style='margin-top:0px;'>File last updated $mod_date </p>";
         //date.timezone = "Europe/Athens"
     ?>
- 
+ <footer>
 </body>
 
 </html>
