@@ -17,7 +17,7 @@
             <a href="patients/view.php">View</a>
     </li>
     <li>
-            <a href="patients/addTeam.php">Add</a>
+            <a href="patients/add.php">Add</a>
     </li>
 
 <?php include __DIR__ . '/../include/footer.php'; ?>

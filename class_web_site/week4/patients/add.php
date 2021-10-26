@@ -4,11 +4,15 @@
         include __DIR__ . '/functions.php';
 
        if (isPostRequest()) {
-           $team = filter_input(INPUT_POST, 'team'); //id
+           $firstname = filter_input(INPUT_POST, 'firstname'); //id
            
-           $division = filter_input(INPUT_POST, 'division'); //id
-           
-           $result = addPatient ($team, $division);
+           $lastname = filter_input(INPUT_POST, 'lastname'); //id
+
+           $mStatus = filter_input(INPUT_POST, 'mStatus');
+
+           $birthdate = filter_input(INPUT_POST, 'birthdate'); //id
+
+           $result = addPatient ($firstname, $lastname, $mStatus, $birthdate);
            
        }
     ?>
@@ -52,7 +56,7 @@
     <div class="form-group">
       <label class="control-label col-sm-2" for="team name">First Name:</label>
       <div class="col-sm-10">
-        <input type="text" class="form-control" id="team" placeholder="Enter team name" name="team">
+        <input type="text" class="form-control" id="firstname" name="team">
       </div>
     </div>
 
@@ -60,7 +64,7 @@
       <label class="control-label col-sm-2" for="team name">Last Name:</label>
 
       <div class="col-sm-10">
-        <input type="text" class="form-control" id="team" placeholder="Enter team name" name="team">
+        <input type="text" class="form-control" id="lastname" name="team">
       </div>
     </div>
 
@@ -85,7 +89,7 @@
     <div class="form-group">
       <label class="control-label col-sm-2" for="team name">Birth Date:</label>
       <div class="col-sm-10">
-        <input type="date" class="form-control" id="team" placeholder="Enter team name" name="team">
+        <input type="date" class="form-control" id="birthdate" placeholder="Enter team name" name="team">
       </div>
     </div>
     
@@ -99,7 +103,7 @@
         <?php
             if (isPostRequest()) 
             {
-                echo "Team added";
+                echo "Patient added";
             }
         ?>
       </div>

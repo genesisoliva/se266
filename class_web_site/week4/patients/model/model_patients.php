@@ -7,7 +7,7 @@
         
         $results = [];
 
-        $stmt = $db->prepare("SELECT id, teamName, division FROM teams ORDER BY teamname"); 
+        $stmt = $db->prepare("SELECT id, patientFirstName, patientLastName, patientMarried, patientBirthDate FROM patients ORDER BY patientFirstName"); 
         
         if ( $stmt->execute() && $stmt->rowCount() > 0 ) {
              $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -18,15 +18,17 @@
     }
 
     
-    function addPatient ($t, $d) {
+    function addPatient ($f, $l, $m, $b) {
         global $db;
         $results = "Not added";
 
-        $stmt = $db->prepare("INSERT INTO teams SET teamName = :team, division = :division");
+        $stmt = $db->prepare("INSERT INTO patients SET patientFirstName = :firstname, patientLastName = :lastname, patientMarried = :idk, patientBirthDate = :birthdate");
 
         $binds = array(
-            ":team" => $t,
-            ":division" => $d
+            ":firstname" => $f,
+            ":lastname" => $l,
+            ":idk" => $m,
+            ":birthdate" => $b,
         );
         
         
@@ -37,26 +39,6 @@
         return ($results);
     }
    
-
-    function addTeam2 ($t, $d) {
-        global $db;
-        $results = "Not added";
-
-        $stmt = $db->prepare("INSERT INTO teams SET teamName = :team, division = :division");
-       
-        $stmt->bindValue(':team', $t);
-        $stmt->bindValue(':division', $d);
-       
-        
-        
-        if ($stmt->execute() && $stmt->rowCount() > 0) {
-            $results = 'Data Added';
-        }
-       
-        $stmt->closeCursor();
-       
-        return ($results);
-    }
    
     
     //   $result = addTeam2 ('Ajax', 'Eredivisie');
