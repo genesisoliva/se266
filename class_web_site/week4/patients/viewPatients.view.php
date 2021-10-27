@@ -5,30 +5,35 @@
         include __DIR__ . '/model/model_patients.php';
         include __DIR__ . '/functions.php';
         $patients = getPatients();
+        //include __DIR__ . '/../include/header.php';
 ?>
 <html lang="en">
     <head>
+        <title>Patients</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-        <link rel="stylesheet" href="../style.css">
     </head>
-    <body id = "viewPatients">
-        <ul>
-            <li><a href="http://se266-sherry-j-2020.herokuapp.com/">Home</a></li>
-            <li><a href="http://se266-sherry-j-2020.herokuapp.com/otherWork.html">Other Work</a></li>
-        </ul>
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Birthdate</th>
-                    <th>Age</th>
-                    <th>Married</th>
-                </tr>
+    <body>
+        <div class="container">
+            <div class="col-sm-offset-2 col-sm-10">
+                <h1>Patients</h1>
+                <a href="addPatient.php">Add Patient</a>
+
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Birthdate</th>
+                        <th>Age</th>
+                        <th>Married</th>
+                    </tr>
             </thead>
+
             <tbody>
                 <?php foreach ($patients as $row): ?>
                     <tr>
@@ -41,8 +46,14 @@
                     </tr>
                 <?php endforeach; ?>
             </tbody>
-        </table>
-        <br />
-            <a href="addPatient.php" id="addBtn">Add Patient</a>
+
+            </table>
+
+            <br />
+            <a href="addPatient.php">Add Patient</a>
+            
+                </div>
+            </div>
+
     </body>
 </html>

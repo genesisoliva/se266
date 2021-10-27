@@ -1,5 +1,5 @@
  <?php
-
+include __DIR__ . '/../include/header.php';
 include __DIR__ . '/model/model_patients.php';
 include __DIR__ . '/functions.php';
 if (isPostRequest()) {
@@ -9,13 +9,9 @@ if (isPostRequest()) {
     $bDay = filter_input(INPUT_POST, 'birthDate');
 
     $result = addPatient($first, $last, $married, $bDay);
-
-    include __DIR__ . '/../include/header.php';
 }
 
 ?>
-<html lang="en">
-
 <head>
     <title>Add Patient</title>
     <meta charset="utf-8">
@@ -25,7 +21,6 @@ if (isPostRequest()) {
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 </head>
 
-<body id="addPatient">
     <div class="container">
         <h2>Patient Intake Form</h2>
         <form class="form-horizontal" action="addPatient.php" method="post">
@@ -78,6 +73,7 @@ if (isPostRequest()) {
 
     </div>
 
-</body>
+    <?php
+    include __DIR__ . '/../include/footer.php';
+    ?>
 
-</html>

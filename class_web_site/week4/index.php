@@ -14,10 +14,10 @@
 
     <h2>Patients</h2>
     <li>
-            <a href="patients/viewPatients.php">View</a>
+            <a href="viewPatients.php">View</a>
     </li>
     <li>
-            <a href="patients/addPatient.php">Add</a>
+            <a href="addPatient.php">Add</a>
     </li>
 
 <?php include __DIR__ . '/../include/footer.php'; ?>
