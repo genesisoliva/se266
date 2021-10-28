@@ -14,6 +14,7 @@
 </style>
 <?php 
 include __DIR__ . '/../include/header.php';
+require 'functions.php';
 ?>
 
 <form method="post">
