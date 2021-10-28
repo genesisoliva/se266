@@ -2,7 +2,7 @@
 
     <h1>Week 4</h1>
 
-    <h2>Sample</h2>
+    <h2>Teams</h2>
     <li>
             <a href="teams/view.php">View</a>
     </li>
