@@ -1,6 +1,8 @@
  <?php
-include __DIR__ . '/model/model_patients.php';
-include __DIR__ . '/functions.php';
+    include __DIR__ . '/../include/header.php';
+    include __DIR__ . '/model/model_patients.php';
+    include __DIR__ . '/functions.php';
+    
 if (isPostRequest()) {
     $first = filter_input(INPUT_POST, 'firstName');
     $last = filter_input(INPUT_POST, 'lastName');
@@ -11,15 +13,6 @@ if (isPostRequest()) {
 }
 
 ?>
-<head>
-    <title>Add Patient</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-</head>
-
     <div class="container">
         <h2>Patient Intake Form</h2>
         <form class="form-horizontal" action="addPatient.php" method="post">
@@ -69,5 +62,9 @@ if (isPostRequest()) {
         <div class="col-sm-offset-2 col-sm-10">
             <a href="./viewPatients.php" id="viewPatientsBtn">View Patients</a>
         </div>
-
     </div>
+
+<?php
+    include __DIR__ . '/../include/footer.php';;
+?>
+
