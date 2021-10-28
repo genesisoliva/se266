@@ -10,8 +10,6 @@
             <a href="teams/addTeam.php">Add</a>
     </li>
 
-    <hr>
-
     <h2>Patients</h2>
     <li>
             <a href="viewPatients.php">View</a>
