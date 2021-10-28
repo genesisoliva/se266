@@ -1,5 +1,4 @@
  <?php
-include __DIR__ . '/../include/header.php';
 include __DIR__ . '/model/model_patients.php';
 include __DIR__ . '/functions.php';
 if (isPostRequest()) {
@@ -72,8 +71,3 @@ if (isPostRequest()) {
         </div>
 
     </div>
-
-    <?php
-    include __DIR__ . '/../include/footer.php';
-    ?>
-
