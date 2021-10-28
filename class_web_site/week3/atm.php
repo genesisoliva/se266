@@ -21,7 +21,7 @@ include __DIR__ . '/../include/header.php';
 
 <?php 
 require 'account.php';
-require 'functions.pho';
+require 'functions.php';
 
 ?>
 
