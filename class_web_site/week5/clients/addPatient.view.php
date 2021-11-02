@@ -49,7 +49,7 @@ if(isset($_POST['action'])){
         }
         else if($action == "delete")
         {
-            $id = filter_input(INPUT_POST, 'id');
+            //$id = filter_input(INPUT_POST, 'id');
             $results = deletePatient($id);
         }
     }
