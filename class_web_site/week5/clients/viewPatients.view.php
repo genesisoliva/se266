@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <?php
-        include 'se266/class_web_site/include/header.php';
+        include __DIR__ . 'se266/class_web_site/include/header.php';
         include __DIR__ . '/model/model_patients.php';
         include __DIR__ . '/functions.php';
         $patients = getPatients();
