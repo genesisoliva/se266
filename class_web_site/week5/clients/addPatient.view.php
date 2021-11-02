@@ -91,7 +91,11 @@ if(isset($results))
     </ul>
 
     <div class="container">
-        <h2><?=ucWords($action);?> Patient</h2>
+        <h2>
+            <?=ucWords($action);?> Patient
+            <?=$action=="add"?"":"hidden";?> Patient
+        </h2>
+        
         <form class="form-horizontal" action="addPatient.php?type=patient" method="post">
             <input type="text" name="action" value="<?=$action;?>" hidden>
             <input type="text" name="id" value="<?=$id;?>" hidden> 
