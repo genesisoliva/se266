@@ -35,6 +35,7 @@ if(isset($_POST['action'])){
         if($action == "add")
         {
             $results = addPatient($fName, $lName, $married, $bDay);
+
         }
         else if($action == "edit")
         {
@@ -49,7 +50,7 @@ if(isset($_POST['action'])){
         }
         else if($action == "delete")
         {
-            //$id = filter_input(INPUT_POST, 'id');
+            $id = filter_input(INPUT_POST, 'id');
             $results = deletePatient($id);
         }
     }

@@ -22,20 +22,18 @@
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th>Trash</th>
                     <th>ID</th>
                     <th>First Name</th>
                     <th>Last Name</th>
                     <th>Birthdate</th>
                     <th>Age</th>
                     <th>Married</th>
-                    <th>Edit</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
                 <?php foreach ($patients as $row): ?>
                     <tr>
-                        <td><a class="deleteLink" href="addPatient.php?id=<?=$row['id']?>&action=delete">Delete</a></td>
                         <td><?= $row['id'];?></td>
                         <td><?= $row['patientFirstName'];?></td>
                         <td><?= $row['patientLastName'];?></td>
