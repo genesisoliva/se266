@@ -325,13 +325,13 @@ window.onclick = function(e) {
 
     <div class="nav-elements">
         <ul class="nav-content">
-            <li> <a href="../site/index.php" title="Home" class="active"> <i class="fas fa-home"></i>Home</a> </li>
+            <li> <a href="../site/index.php" title="Home" class="active"> <!--<i class="fas fa-home"></i>-->Home</a> </li>
             <!--<li> <a href="#" title="About"> <i class="fas fa-address-card"></i> About </a> </li>-->
 
             <li>
                 <div class="dropdown">
                     <a href="#" class="dropdown-link" title="Gallery">
-                    <i class="fas fa-camera"></i> Assigments <i class="fas fa-caret-down"> </i>  
+                    <!--<i class="fas fa-camera"></i> -->Assigments <!--<i class="fas fa-caret-down"> </i>-->  
                     </a>
                 <div class="dropdown-menu">       
                     <a href="../week1/index.php" title="Week 1"> Week 1</a>
@@ -354,15 +354,15 @@ window.onclick = function(e) {
             </li>-->
 
             <li> 
-                <a href="#" title="Contact"> <i class="fas fa-phone"></i> PHP Resources </a> 
+                <a href="#" title="Contact"> <!--<i class="fas fa-phone"></i>--> PHP Resources </a> 
             </li>
 
             <li> 
-                <a href="#" title="Contact"> <i class="fas fa-phone"></i> Git Resources </a> 
+                <a href="#" title="Contact"> <<!--<i class="fas fa-phone"></i>--> Git Resources </a> 
             </li>
 
             <li> 
-                <a href="#" title="Contact"> <i class="fas fa-phone"></i> My GitHub Repo</a> 
+                <a href="#" title="Contact"> <!--<i class="fas fa-phone"></i>--> My GitHub Repo</a> 
             </li>
        
         </ul>
