@@ -81,16 +81,16 @@ if(isset($results))
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 </head>
 
 <body id="addPatient">
+
     <ul>
-        <li><a href="http://se266-sherry-j-2020.herokuapp.com/">Home</a></li>
-        <li><a href="http://se266-sherry-j-2020.herokuapp.com/otherWork.html">Other Work</a></li>
+        <li><a href="https://se266-oliva.herokuapp.com/">Home</a></li>
     </ul>
+
     <div class="container">
         <h2><?=ucWords($action);?> Patient</h2>
         <form class="form-horizontal" action="addPatient.php?type=patient" method="post">
