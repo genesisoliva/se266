@@ -215,7 +215,8 @@ svg:not(:root).svg-inline--fa {
 /* CSS for sky theme start*/
 .nav-sky {
  color:#fff;
- background-image: linear-gradient(#44adff, #8acbfd);
+ background-color: #333;
+ /*background-image: linear-gradient(#44adff, #8acbfd);*/
 }
  
  .nav-sky .nav-content li a {
@@ -259,8 +260,13 @@ svg:not(:root).svg-inline--fa {
  }
  
  .nav-sky .active {
-  background-image: linear-gradient(#1096ff, #5fb8ff);
+  /*background-image: linear-gradient(#1096ff, #5fb8ff);*/
+  background-color: red;
+
  }
+ a.dropdown-link {
+    padding: 0px !important;
+}
 </style>
 </head>
 <body>
