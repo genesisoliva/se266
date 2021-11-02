@@ -254,6 +254,9 @@ svg:not(:root).svg-inline--fa {
      <li> <a href="../site/git_resources.php" title="Contact"> <i class="fas fa-phone"></i> Git Resources</a> </li>
 
      <li> <a href="https://github.com/genesisoliva/se266" title="Contact"> <i class="fas fa-phone"></i> My GitHub Repo</a> </li>
+
+     <li> <a href="https://www.codingtuting.com/2019/05/create-responsive-navbar-using-html-css.html" title="Contact"> <i class="fas fa-phone"></i> Nav Website Resocure</a> </li>
+
       
     </ul>
     
