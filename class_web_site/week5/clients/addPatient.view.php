@@ -98,7 +98,7 @@ if(isset($results))
             <?=ucWords($action);?> Patient
         </h2>
         
-        <form class="form-horizontal" action="addPatient.php?type=patient" method="post">
+        <form class="form-horizontal" action="addPatient.view.php?type=patient" method="post">
             <input type="text" name="action" value="<?=$action;?>" hidden>
             <input type="text" name="id" value="<?=$id;?>" hidden> 
             <input type="text" name="type" value="patient" hidden> 
