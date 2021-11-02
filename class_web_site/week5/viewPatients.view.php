@@ -1,18 +1,17 @@
-<!DOCTYPE html>
-<?php include __DIR__ . '/../include/header.php'; ?>
 <?php
-        include __DIR__ . 'se266/class_web_site/include/header.php';
+        include __DIR__ . '/../include/header.php';
         include __DIR__ . '/model/model_patients.php';
         include __DIR__ . '/functions.php';
         $patients = getPatients();
 ?>
+<!DOCTYPE html>
 <html lang="en">
     <head>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     </head>
-    <body id="viewPatients">
+<body id="viewPatients">
 
         <ul>
             <li><a href="https://se266-oliva.herokuapp.com/">Home</a></li>
