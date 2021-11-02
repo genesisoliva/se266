@@ -78,7 +78,8 @@ if(isset($_POST['action'])){
 
 }
 if(isset($results))
-    header("Location: ../week5/viewPatients.php");
+    //header("Location: ../week5/viewPatients.php");
+    header("Location: viewPatients.php");
 
 ?>
 <html lang="en">
@@ -119,13 +120,29 @@ if(isset($results))
                     <input type="text" class="form-control" id="lastName" placeholder="Enter patient last name" name="lastName" value="<?=$lName;?>">
                 </div>
             </div>
+
             <div class="form-group">
                 <label class="control-label col-sm-2" for="last name">Married:</label>
                 <div class="col-sm-10">
                     <input type="radio" name="married" value="1" <?=$married==1?"checked":"";?>>Yes
                     <input type="radio" name="married" value="0" <?=$married==0?"checked":"";?>>No
+
+                    <br>
+
+                    <input type="radio" class="form-control" id="married"  name="married" value="1">
+                    <?php
+                        $married==1?"checked":"";
+                    ?>
+                    <label for="1">Yes</label>
+
+                    <input type="radio" class="form-control" id="married"  name="married" value="0">
+                    <?php
+                        $married==2?"checked":"";
+                    ?>
+                    <label for="0">No</label>
                 </div>
             </div>
+
             <div class="form-group">
                 <label class="control-label col-sm-2" for="dob">Birth Date:</label>
                 <div class="col-sm-10">

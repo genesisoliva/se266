@@ -39,7 +39,25 @@
                         <td><?= $row['patientLastName'];?></td>
                         <td><?= $row['patientBirthDate'];?></td>
                         <td><?= calcAge($row['patientBirthDate'])->format("%y Years");?></td>
-                        <td><?= $row['patientMarried']==1?"Yes":"No";?></td>
+
+                        <td>
+                            <!--<?= $row['patientMarried']==1?"Yes":"No";?>-->
+
+                            <?php 
+                            if($row['patientMarried'] == 1)
+                            {
+                                $status = "YES";
+                                echo $status;
+                            }
+                            else
+                            {
+                                $status = "NO";
+                                echo $status; 
+                            } 
+                            ?>
+                            
+                        </td>
+
                         <td><a class="editLink" href="addPatient.php?id=<?=$row['id']?>&action=edit">Edit</a></td>
                     </tr>
                 <?php endforeach; ?>
