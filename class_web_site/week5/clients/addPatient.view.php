@@ -35,7 +35,6 @@ if(isset($_POST['action'])){
         if($action == "add")
         {
             $results = addPatient($fName, $lName, $married, $bDay);
-            header("Location: ../week5/viewPatients.php");
         }
         else if($action == "edit")
         {
@@ -73,8 +72,8 @@ if(isset($_POST['action'])){
 
 }
 if(isset($results)){
-    header("Location: ../week5/viewPatients.view.php");
-    //header("Location: ../week5/viewPatients.php");
+    //header("Location: ../week5/viewPatients.view.php");
+    header("Location: ../week5/viewPatients.php");
     //header("Location: viewPatients.php");
 }
 
