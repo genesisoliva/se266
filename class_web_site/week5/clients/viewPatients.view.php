@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <?php
-        include __DIR__ . '/../include/header.php';
+        include 'se266/class_web_site/include/header.php';
         include __DIR__ . '/model/model_patients.php';
         include __DIR__ . '/functions.php';
         $patients = getPatients();
@@ -16,7 +16,7 @@
         <ul>
             <li><a href="https://se266-oliva.herokuapp.com/">Home</a></li>
         </ul>
-        
+
         <table class="table table-striped">
             <thead>
                 <tr>
