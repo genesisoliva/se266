@@ -275,7 +275,7 @@ svg:not(:root).svg-inline--fa {
 </head>
 <body>
 
-<header class="navbar">
+<!--<header class="navbar">
   
 <a href="../site/index.php">Home</a>
 
@@ -305,7 +305,7 @@ svg:not(:root).svg-inline--fa {
 
   <a href="https://github.com/genesisoliva/se266">My GitHub Repo</a>
   
-</header>
+</header>-->
 
 <script>
 /* When the user clicks on the button, 
