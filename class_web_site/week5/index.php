@@ -5,4 +5,14 @@
             <a href="view.php">View</a>
     </li>
 
+    <br>
+    <br>
+
+    <li>
+            <a href="clients/addPatient.php">Add Client</a>
+    </li>
+    <li>
+            <a href="clients/viewPatients.php">View</a>
+    </li>
+
 <?php include __DIR__ . '/../include/footer.php'; ?>
