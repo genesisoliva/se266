@@ -3,8 +3,7 @@
 include __DIR__ . '/model/model_patients.php';
 include __DIR__ . '/functions.php';
 
-if(isset($_GET['id']))
-{
+if(isset($_GET['id'])) {
     $id = filter_input(INPUT_GET, 'id');
     $action = filter_input(INPUT_GET, 'action');
     $row = getPatient($id);
@@ -71,7 +70,7 @@ if(isset($_POST['action'])){
 
 }
 if(isset($results))
-    header("Location: ../Week5/viewPatients.php");
+    header("Location: ../week5/viewPatients.php");
 
 ?>
 <html lang="en">
