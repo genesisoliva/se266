@@ -4,11 +4,6 @@
         include __DIR__ . '/functions.php';
         $patients = getPatients();
 ?>
-
-        <ul>
-            <li><a href="https://se266-oliva.herokuapp.com/">Home</a></li>
-        </ul>
-
         <table class="table table-striped">
             <thead>
                 <tr>
