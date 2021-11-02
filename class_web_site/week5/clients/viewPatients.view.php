@@ -232,6 +232,9 @@ svg:not(:root).svg-inline--fa {
       <li> <a href="#" title="Contact"> <i class="fas fa-phone"></i> Contact </a> </li>
        
      </ul>
+</div>
+</div>
+
 
         <table class="table table-striped">
             <thead>
