@@ -197,42 +197,53 @@ svg:not(:root).svg-inline--fa {
             <li><a href="https://se266-oliva.herokuapp.com/">Home</a></li>
         </ul>
 
-        <div class="nav nav-sky">
-    
+<div class="nav nav-sky">
     <div class="menu-btn"> <i class="fas fa-bars"></i> </div>
-     
+
     <div class="nav-elements">
-     
-     <ul class="nav-content">
+        <ul class="nav-content">
+            <li> <a href="#" title="Home" class="active"> <i class="fas fa-home"></i>Home</a> </li>
+            <!--<li> <a href="#" title="About"> <i class="fas fa-address-card"></i> About </a> </li>-->
+
+            <li>
+                <div class="dropdown">
+                    <a href="#" class="dropdown-link" title="Gallery">
+                    <i class="fas fa-camera"></i> Assigments <i class="fas fa-caret-down"> </i>  
+                    </a>
+                <div class="dropdown-menu">       
+                    <a href="#" title="Week 1"> Week 1</a>
+                    <a href="#" title="Week 2"> Week 2 </a>
+                    <a href="#" title="Week 3"> Week 3 </a>
+                    <a href="#" title="week 4"> Week 4</a>
+                    <a href="#" title="Week 5"> Week 5</a>
+                    <a href="#" title="Week 6"> Week 6 </a>
+                    <a href="#" title="Week 7"> Week 7</a>
+                    <a href="#" title="Week 8"> Week 8</a>
+                    <a href="#" title="Week 9"> Week 9</a>
+                    <a href="#" title="Week 10"> Week 10</a>
+                </div>
+
+                </div>
+            </li>
+            
+            <!--<li> 
+                <a href="#" title="Contact"> <i class="fas fa-phone"></i> Contact </a> 
+            </li>-->
+
+            <li> 
+                <a href="#" title="Contact"> <i class="fas fa-phone"></i> PHP Resources </a> 
+            </li>
+
+            <li> 
+                <a href="#" title="Contact"> <i class="fas fa-phone"></i> Git Resources </a> 
+            </li>
+
+            <li> 
+                <a href="#" title="Contact"> <i class="fas fa-phone"></i> My GitHub Repo</a> 
+            </li>
        
-      <li> <a href="#" title="Home" class="active"> <i class="fas fa-home"></i> Home </a> </li>
-       
-      <li> <a href="#" title="About"> <i class="fas fa-address-card"></i> About </a> </li>
-       
-      <li>
-        
-       <div class="dropdown">
-         
-        <a href="#" class="dropdown-link" title="Gallery">
-         <i class="fas fa-camera"></i> Gallery <i class="fas fa-caret-down"> </i>  
-        </a>
-         
-        <div class="dropdown-menu">       
-          
-         <a href="#" title="Option 1"> Opton 1 </a>
-         <a href="#" title="Option 2"> Opton 2 </a>
-         <a href="#" title="Option 3"> Opton 3 </a>
-          
-        </div>
-         
-       </div>
-        
-      </li>
-       
-      <li> <a href="#" title="Contact"> <i class="fas fa-phone"></i> Contact </a> </li>
-       
-     </ul>
-</div>
+        </ul>
+    </div>
 </div>
 
 
@@ -291,7 +302,7 @@ svg:not(:root).svg-inline--fa {
         });
     });
 </script>
-            <script data-src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script data-src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
     <script defer data-src="https://use.fontawesome.com/releases/v5.8.2/js/all.js" integrity="sha384-DJ25uNYET2XCl5ZF++U8eNxPWqcKohUUBUpKGlNLMchM7q4Wjg2CUpjHLaL8yYPH" crossorigin="anonymous"></script>
     </body>
 </html>
