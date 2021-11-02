@@ -87,7 +87,7 @@ if(isset($results))
 <body id="addPatient">
 
     <ul>
-        <li><a href="https://se266-oliva.herokuapp.com/">Home</a></li>
+        <li><a href="https://se266-oliva.herokuapp.com/class_web_site/week5/index.php">Home</a></li>
     </ul>
 
     <div class="container">
