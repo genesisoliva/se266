@@ -78,8 +78,8 @@ if(isset($_POST['action'])){
 
 }
 if(isset($results))
-    //header("Location: ../week5/viewPatients.php");
-    header("Location: viewPatients.php");
+    header("Location: ../week5/viewPatients.php");
+    //header("Location: viewPatients.php");
 
 ?>
 <html lang="en">
