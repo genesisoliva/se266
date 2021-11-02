@@ -9,7 +9,7 @@
     <br>
 
     <li>
-            <a href="clients/addPatient.php">Add Client</a>
+            <a href="clients/addPatient.php">Add Patient</a>
     </li>
     <li>
             <a href="clients/viewPatients.php">View</a>
