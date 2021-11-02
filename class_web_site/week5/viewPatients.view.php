@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<?php include __DIR__ . '/../include/header.php'; ?>
 <?php
         include __DIR__ . 'se266/class_web_site/include/header.php';
         include __DIR__ . '/model/model_patients.php';
@@ -63,5 +64,5 @@
         </table>
         
             <a href="addPatient.php?action=add" id="addBtn">Add Patient</a>
-    </body>
-</html>
+
+            <?php include __DIR__ . '/../include/footer.php'; ?>

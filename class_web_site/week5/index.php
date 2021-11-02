@@ -9,10 +9,10 @@
     <br>
 
     <li>
-            <a href="clients/addPatient.php">Add Patient</a>
+            <a href="addPatient.php">Add Patient</a>
     </li>
     <li>
-            <a href="clients/viewPatients.php">View</a>
+            <a href="viewPatients.php">View</a>
     </li>
 
 <?php include __DIR__ . '/../include/footer.php'; ?>

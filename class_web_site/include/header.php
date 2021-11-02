@@ -355,15 +355,19 @@ window.onclick = function(e) {
             </li>-->
 
             <li> 
-                <a href="#" title="Contact"> <!--<i class="fas fa-phone"></i>--> PHP Resources </a> 
+                <a href="../site/heroku_resources.php" title="Contact"> <!--<i class="fas fa-phone"></i>--> Heroku Resources </a> 
             </li>
 
             <li> 
-                <a href="#" title="Contact"> <!--<i class="fas fa-phone"></i>--> Git Resources </a> 
+                <a href="../site/php_resources.php" title="Contact"> <!--<i class="fas fa-phone"></i>--> PHP Resources </a> 
             </li>
 
             <li> 
-                <a href="#" title="Contact"> <!--<i class="fas fa-phone"></i>--> My GitHub Repo</a> 
+                <a href="../site/git_resources.php" title="Contact"> <!--<i class="fas fa-phone"></i>--> Git Resources </a> 
+            </li>
+
+            <li> 
+                <a href="https://github.com/genesisoliva/se266" title="Contact"> <!--<i class="fas fa-phone"></i>--> My GitHub Repo</a> 
             </li>
        
         </ul>
