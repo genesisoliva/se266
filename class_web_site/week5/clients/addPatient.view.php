@@ -47,6 +47,11 @@ if(isset($_POST['action'])){
                 $results = updatePatient($id, $fName, $lName, $married, $bDay);
             }
         }
+        else if($action == "delete")
+        {
+            $id = filter_input(INPUT_POST, 'id');
+            $results = deletePatient($id);
+        }
     }
     else if(isPostRequest() && $type == "measurement")
     {
