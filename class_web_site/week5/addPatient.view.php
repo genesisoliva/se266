@@ -1,5 +1,5 @@
 <?php
-
+include __DIR__ . '/../include/header.php';
 include __DIR__ . '/model/model_patients.php';
 include __DIR__ . '/functions.php';
 
@@ -84,23 +84,6 @@ if(isset($results)){
 }
 
 ?>
-<html lang="en">
-
-<head>
-    <title><?=ucWords($action);?> Patient</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-</head>
-
-<body id="addPatient">
-
-    <ul>
-        <li><a href="https://se266-oliva.herokuapp.com/class_web_site/week5/index.php">Home</a></li>
-    </ul>
-
     <div class="container">
         <h2>
             <?=ucWords($action);?> Patient
@@ -246,6 +229,4 @@ if(isset($results)){
         </table>
     </div>
 
-</body>
-
-</html>
+    <?php include __DIR__ . '/../include/footer.php'; ?>
