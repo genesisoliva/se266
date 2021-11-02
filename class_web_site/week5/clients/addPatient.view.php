@@ -98,7 +98,7 @@ if(isset($results))
             <?=ucWords($action);?> Patient
         </h2>
         
-        <form class="form-horizontal" action="addPatient.view.php?type=patient" method="post">
+        <form class="form-horizontal" action="addPatient.php?type=patient" method="post">
             <input type="text" name="action" value="<?=$action;?>" hidden>
             <input type="text" name="id" value="<?=$id;?>" hidden> 
             <input type="text" name="type" value="patient" hidden> 
@@ -123,13 +123,13 @@ if(isset($results))
 
                     <br>
 
-                    <input type="radio" class="form-control" id="married"  name="married" value="1">
+                    <input type="radio" class="form-control1" id="married"  name="married" value="1">
                     <?php
                         $married==1?"checked":"";
                     ?>
                     <label for="1">Yes</label>
 
-                    <input type="radio" class="form-control" id="married"  name="married" value="0">
+                    <input type="radio" class="form-control1" id="married"  name="married" value="0">
                     <?php
                         $married==2?"checked":"";
                     ?>
