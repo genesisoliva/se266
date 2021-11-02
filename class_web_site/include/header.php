@@ -225,7 +225,7 @@ svg:not(:root).svg-inline--fa {
       <div class="dropdown">
         
        <a href="#" class="dropdown-link" title="Assigments">
-        <i class="fas fa-camera"></i> Assigments <i class="fas fa-caret-down"> </i>  
+        <i class="fas fa-camera"></i> Assigments <i class="fas fa-caret-down"></i>  
        </a>
         
        <div class="dropdown-menu">       
