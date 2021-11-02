@@ -150,8 +150,7 @@ if(isset($results)){
                 </div>
             </div>
         </form>
-        <br />
-        <br />
+
         <form class="form-horizontal" action="addPatient.php?type=measurements" method="post" <?=$action=="edit"?"":"hidden";?>>
             <h2>Patient Measurements</h2>
             <input type="text" name="action" value="<?=$action;?>" hidden>
