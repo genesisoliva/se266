@@ -35,6 +35,7 @@ if(isset($_POST['action'])){
         if($action == "add")
         {
             $results = addPatient($fName, $lName, $married, $bDay);
+            header("Location: ../week5/viewPatients.php");
         }
         else if($action == "edit")
         {
@@ -120,20 +121,6 @@ if(isset($results))
                 <div class="col-sm-10">
                     <input type="radio" name="married" value="1" <?=$married==1?"checked":"";?>>Yes
                     <input type="radio" name="married" value="0" <?=$married==0?"checked":"";?>>No
-
-                    <br>
-
-                    <input type="radio" class="form-control1" id="married"  name="married" value="1">
-                    <?php
-                        $married==1?"checked":"";
-                    ?>
-                    <label for="1">Yes</label>
-
-                    <input type="radio" class="form-control1" id="married"  name="married" value="0">
-                    <?php
-                        $married==2?"checked":"";
-                    ?>
-                    <label for="0">No</label>
                 </div>
             </div>
 

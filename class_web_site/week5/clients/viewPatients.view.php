@@ -46,16 +46,16 @@
                             <?php 
                             if($row['patientMarried'] == 1)
                             {
-                                $status = "YES";
+                                $status = "Yes";
                                 echo $status;
                             }
                             else
                             {
-                                $status = "NO";
+                                $status = "No";
                                 echo $status; 
                             } 
                             ?>
-                            
+
                         </td>
 
                         <td><a class="editLink" href="addPatient.php?id=<?=$row['id']?>&action=edit">Edit</a></td>
