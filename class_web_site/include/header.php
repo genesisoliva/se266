@@ -224,7 +224,8 @@ svg:not(:root).svg-inline--fa {
  }
   
  .nav-sky .nav-content li a:hover, .nav-sky .dropdown:hover .dropdown-link {
-  background-image: linear-gradient(#1096ff, #5fb8ff);
+  /*background-image: linear-gradient(#1096ff, #5fb8ff);*/
+  background-color: red;
  }
    
  .nav-sky .dropdown-menu {
@@ -358,7 +359,7 @@ window.onclick = function(e) {
             </li>
 
             <li> 
-                <a href="#" title="Contact"> <<!--<i class="fas fa-phone"></i>--> Git Resources </a> 
+                <a href="#" title="Contact"> <!--<i class="fas fa-phone"></i>--> Git Resources </a> 
             </li>
 
             <li> 
