@@ -34,16 +34,24 @@ if(isset($_POST['action'])){
 
         if($action == "add")
         {
-            $results = addPatient($fName, $lName, $married, $bDay);
+            //$results = addPatient($fName, $lName, $married, $bDay);
+            if(isset($_POST['btnDelete'])) {
+                $results = deletePatient($id);
+            }
+            else if(isset($_POST['btnSubmit'])) {
+                $results = addPatient($id, $fName, $lName, $married, $bDay);
+            }
         }
         else if($action == "edit")
         {
             $id = filter_input(INPUT_POST, 'id');
 
-            if(isset($_POST['btnDelete']))
+            if(isset($_POST['btnDelete'])) {
                 $results = deletePatient($id);
-            else if(isset($_POST['btnSubmit']))
+            }
+            else if(isset($_POST['btnSubmit'])) {
                 $results = updatePatient($id, $fName, $lName, $married, $bDay);
+            }
         }
     }
     else if(isPostRequest() && $type == "measurement")
@@ -126,8 +134,15 @@ if(isset($results))
             </div>
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
-                    <button type="submit" name="btnSubmit" class="btn btn-default"><?=ucWords($action);?> Patient</button>
-                    <button type="submit" name="btnDelete" class="btn btn-default" <?=$action=="edit"?"":"hidden";?>>Delete Patient</button>
+
+                    <button type="submit" name="btnSubmit" class="btn btn-default">
+                        <?=ucWords($action);?> Patient
+                    </button>
+
+                    <button type="submit" name="btnDelete" class="btn btn-default" <?=$action=="edit"?"":"hidden";?>>
+                        Delete Patient
+                    </button>
+
                     <?php
                     if (isPostRequest()) {
                         echo $results;
