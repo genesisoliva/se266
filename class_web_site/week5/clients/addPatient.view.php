@@ -34,13 +34,7 @@ if(isset($_POST['action'])){
 
         if($action == "add")
         {
-            //$results = addPatient($fName, $lName, $married, $bDay);
-            if(isset($_POST['btnDelete'])) {
-                $results = deletePatient($id);
-            }
-            else if(isset($_POST['btnSubmit'])) {
-                $results = addPatient($id, $fName, $lName, $married, $bDay);
-            }
+            $results = addPatient($fName, $lName, $married, $bDay);
         }
         else if($action == "edit")
         {
