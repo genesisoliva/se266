@@ -1,17 +1,9 @@
 
 <?php
-        
+        include __DIR__ . '/../include/header.php';
         include __DIR__ . '/model/model_patients.php';
         include __DIR__ . '/functions.php';
-        
-       
-   
-    $feet = "";
-    $inches = "";
-    $weight = "";
-    $temp = "";
-    $sysBP = "";
-    $diaBP = "";
+    
     if (isset($_POST['btnSubmit'])) {
         
       
@@ -64,51 +56,7 @@
            
        }
     ?>
-    
 
-<html lang="en">
-<head>
-  <title>Add Patient</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-  <style type = "text/css">
-  .wrapper {
-            display: grid;
-            grid-template-columns: 180px 400px;
-        }
-
-        .measurementWrapper {
-            width: 600px;
-            display: flex;
-            flex-wrap: wrap;
-            margin-left: 40px;
-        }
-        .measurementWrapper > div {
-            flex: 1 1 100px;
-        }
-        .label {
-            text-align: right;
-            padding-right: 10px;
-            margin-bottom: 5px;
-            background-color: white;
-            color: black;
-        }
-        label {
-           font-weight: bold;
-        }
-        input[type=text] {
-            width: ;
-        }
-        .error {color: red;}
-    </style>
-</head>
-<body>
-   
-
-    
 <div class="container">
 <h2><?=ucWords($action);?> Patient</h2>
   <form class="form-horizontal" action="editPatients.php" method="post">
@@ -132,10 +80,20 @@
     <div class="form-group">
     <div style="margin-left:50px;">
     </div>
-      <label class="control-label col-sm-2" for="Patient Name">Married:</label>
+      <label class="control-label col-sm-2">Married:</label>
       <div class="col-sm-10">
-      <input type="radio" name="married" value="1">Yes
-      <input type="radio" name="married" value="0">No
+        <?php
+          if($married == 1)
+          {
+            echo "<input type='radio' name='arried' value='1'checked>Yes
+            <input type='radio' name='married' value='0'>";
+          }
+          else
+          {
+            echo "<input type='radio' name='arried' value='1'>Yes
+            <input type='radio' name='married' value='0' checked>No";
+          }
+      ?>
       </div>
     </div>
 
@@ -166,5 +124,4 @@
 
 <div class="col-sm-offset-2 col-sm-10"><a href="./view.php">View patients</a></div>
 
-</body>
-</html>
+<?php include __DIR__ . '/../include/footer.php'; ?>
