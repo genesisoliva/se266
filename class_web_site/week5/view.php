@@ -17,13 +17,13 @@
     <table class="table table-striped">
             <thead>
                 <tr>
-                    <th>Double Click to Delete</th>
                     <th>ID</th>
                     <th>FirstName</th>
                     <th>Last Name</th>
                     <th>Birthdate</db>
                     <th>Age</db>
                     <th>Married</th>
+                    <th></th>
                     <th></th>
                 </tr>
             </thead>
@@ -33,12 +33,6 @@
             <?php foreach ($patient as $row): ?>
          
                 <tr>
-                    <td>
-                        <form action="view.php" method="post">
-                        <input type="hidden" name="patientID" value="<?php echo $row['id'];?>">
-                        <button class="btn glyphicon glyphicon-trash" type="submit"></button>
-                        </form>
-                    </td>
                     <td><?= $row['id'];?></td>
                     <td><?php echo $row['patientFirstName']; ?></td>
                     <td><?php echo $row['patientLastName']; ?></td>
@@ -64,6 +58,13 @@
                         <a href="editPatients.php?action=update&id=<?php echo $row['id']; ?>">
                         <i class="icon-pencil"></i>
                         </a>
+                    </td>
+
+                    <td>
+                        <form action="view.php" method="post">
+                        <input type="hidden" name="patientID" value="<?php echo $row['id'];?>">
+                        <button class="btn glyphicon glyphicon-trash" type="submit"></button>
+                        </form>
                     </td>
 
                 </tr>
