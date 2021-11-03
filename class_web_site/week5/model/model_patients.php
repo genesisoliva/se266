@@ -1,157 +1,110 @@
 <?php
+include (__DIR__ . '/db.php');
 
-    include (__DIR__ . '/db.php');
-    
-    
-    function getPatients () {
-        global $db;
-        
-        $results = [];
+function getPatients() {
+    global $db;
+    $results = [];
 
-        $stmt = $db->prepare("SELECT id, patientFirstName, patientLastName, patientMarried, patientBirthDate FROM patients ORDER BY id"); 
-        
-        if ( $stmt->execute() && $stmt->rowCount() > 0 ) {
-             $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-                 
-         }
-         
-         return ($results);
+    $stmt = $db->prepare("SELECT id ,patientFirstName , patientLastName , patientMarried ,patientBirthDate FROM patients ORDER BY patientLastName");
+
+    if($stmt->execute() && $stmt->rowCount() > 0){
+        $results= $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+    return $results;
+}
+//F = first name l = last name m = married b = birthdate
+function addPatient($f, $l, $m, $b){
+    global $db;
+    $results = "Not added";
+
+
+    $stmt = $db->prepare("INSERT INTO patients SET patientFirstName = :firstname, patientLastName = :lastname, patientMarried = :married ,patientBirthDate = :birthdate");
+
+    $binds = array(
+        ":firstname" => $f,
+        ":lastname" => $l,
+        ":married" => $m,
+        ":birthdate" => $b
+    );
    
-    function addPatient($first, $last, $married, $birthDate) {
-        global $db;
-        $results = "Not added";
 
-        $stmt = $db->prepare("INSERT INTO patients SET patientFirstName = :patientFirstName,
-         patientLastName = :patientLastName, patientMarried = :patientMarried, patientBirthDate = :patientBirthDate");
-       
-        $stmt->bindValue(':patientFirstName', $first);
-        $stmt->bindValue(':patientLastName', $last);
-        $stmt->bindValue(':patientMarried', $married);
-        $stmt->bindValue(':patientBirthDate', $birthDate);
-        
-        if ($stmt->execute() && $stmt->rowCount() > 0) {
-            $results = 'Data Added';
-        }
-       
-        $stmt->closeCursor();
-       
-        return ($results);
+    if($stmt->execute($binds) && $stmt->rowCount() > 0){
+        $results = "Data Added";
+    }
+}
+function updatePatient($f, $l, $m, $b, $id)
+{
+    global $db;
+    $results = "No rows edited";
+
+
+    $stmt = $db->prepare("UPDATE patients SET patientFirstName = :firstname, patientLastName = :lastname, patientMarried = :married ,patientBirthDate = :birthdate WHERE id=:id" );
+    $binds = array(
+        ":id" => $id,
+        ":firstname" => $f,
+        ":lastname" => $l,
+        ":married" => $m,
+        ":birthdate" => $b
+    );
+    if($stmt->execute($binds) && $stmt->rowCount() > 0){
+        $results = "Rows edited";
     }
 
-    function getPatient($id){
-            global $db;
-            
-            $results = [];
+    return $results;
+}
+function deletePatient($id){
+    global $db;
+    $results = "data was not deleted";
+    $stmt = $db->prepare("DELETE FROM patients WHERE id=:id");
+    $binds =  array(
+        ":id"=> $id
+    );
+
+    if($stmt->execute($binds) && $stmt->rowCount() > 0){
+        $results = "Rows deleted";
+    }
+
+    return $results;
+
+}
+function getPatient ($id) {
+    global $db;
+   
+   $result = [];
+   $stmt = $db->prepare("SELECT id ,patientFirstName , patientLastName , patientMarried ,patientBirthDate FROM patients WHERE id=:id");
+   $stmt->bindValue(':id', $id);
+  
+   if ( $stmt->execute() && $stmt->rowCount() > 0 ) {
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+                   
+    }
     
-            $stmt = $db->prepare("SELECT id, patientFirstName, patientLastName, patientMarried, patientBirthDate 
-            FROM patients WHERE id=:id"); 
+    return ($result);
+}
+//updatePatient('TTTT', 'hh', 1,'2020-5-29', 13 );
+//deletePatient(13);
 
-            $stmt->bindValue(':id', $id);
-            
-            if ( $stmt->execute() && $stmt->rowCount() > 0 ) {
-                 $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-             }
-             
-             return ($results);
+function addPatientInfo($mID,$id, $md, $pw, $ph, $bps, $bpd)
+{
+    global $db;
+    $results = "Not added";
+
+
+    $stmt = $db->prepare("INSERT INTO patientMeasurements SET patientMeasurementId = :measurementsID, patientId = :patID, patientMeasurementDate = :measurementDate ,patientWeight = :patientweight, patientHeight = :patientheight, patientBPSystolic = :patientBPS, patientBPDialstolic = :patientBPD");
+
+    $binds = array(
+        ":measurementsID" => $mID,
+        ":patID" => $id,
+        ":measurementDate" => $md,
+        ":patientweight" => $pw,
+        ":patientheight" => $ph,
+        ":patientBPS" => $bps,
+        ":patientBPD" => $bpd
+    );
+   
+
+    if($stmt->execute($binds) && $stmt->rowCount() > 0){
+        $results = "Data Added";
     }
-    
-    function getPatientMeasurements($id){
-        global $db;
-        
-        $results = [];
-
-        $stmt = $db->prepare("SELECT patientMeasurementId, patientId, patientMeasurementDate, patientWeight, patientHeight,
-         patientBPSystolic,patientBPDiastolic, patientTemperature
-         FROM patientMeasurements WHERE patientId=:id ORDER BY patientMeasurementDate"); 
-
-        $stmt->bindValue(':id', $id);
-        
-        if ( $stmt->execute() && $stmt->rowCount() > 0 ) {
-             $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-         }
-         
-         return ($results);
-    }
-
-    function addResults ($id, $weight, $height, $systolicBP, $diastolicBP, $temp) {
-        global $db;
-        $results = 'Data NOT Added';
-        $stmt = $db->prepare("INSERT INTO patientMeasurements SET patientID = :id, patientMeasurementDate = :today, patientWeight = :patientWeight, patientHeight = :patientHeight,".
-         " patientBPSystolic = :patientBPSystolic, patientBPDiastolic = :patientBPDiastolic, patientTemperature = :patientTemperature");
-
-        $today = date('Y-m-d');
-
-        $stmt->bindValue(':id', $id);
-        $stmt->bindValue(':today', $today);
-        $stmt->bindValue(':patientWeight', $weight);
-        $stmt->bindValue(':patientHeight', $height);
-        $stmt->bindValue(':patientBPSystolic', $systolicBP);
-        $stmt->bindValue(':patientBPDiastolic', $diastolicBP);
-        $stmt->bindValue(':patientTemperature', $temp);
-
-        if ($stmt->execute() && $stmt->rowCount() > 0) {
-            $results = 'Data Added';
-        }
-        
-        return ($results);
-    }
-    function updatePatient($id, $first, $last, $married, $birthDate) {
-        global $db;
-
-        $results = "Data NOT Updated";
-        
-        $stmt = $db->prepare("UPDATE patients SET patientFirstName = :patientFirstName,
-        patientLastName = :patientLastName, patientMarried = :patientMarried, patientBirthDate = :patientBirthDate WHERE id=:id");
-        
-        $stmt->bindValue(':id', $id);
-        $stmt->bindValue(':patientFirstName', $first);
-        $stmt->bindValue(':patientLastName', $last);
-        $stmt->bindValue(':patientMarried', $married);
-        $stmt->bindValue(':patientBirthDate', $birthDate);
-
-      
-        if ($stmt->execute() && $stmt->rowCount() > 0) {
-            $results = 'Data Updated';
-        }
-        
-        return ($results);
-    }
-    function deletePatient ($id) {
-        global $db;
-        
-        $results = "Data was not deleted";
-    
-        $stmt = $db->prepare("DELETE FROM patients WHERE id=:id");
-        
-        $stmt->bindValue(':id', $id);
-            
-        if ($stmt->execute() && $stmt->rowCount() > 0) {
-            $results = 'Data Deleted';
-        }
-
-        $stmt = $db->prepare("DELETE FROM patientMeasurements WHERE patientId=:id");
-        
-        $stmt->bindValue(':id', $id);
-            
-        if ($stmt->execute() && $stmt->rowCount() > 0) {
-            $results = '<br />Data Deleted';
-        }
-        
-        return ($results);
-    }
-    function deleteMeasurement ($measureId) {
-        global $db;
-        
-        $results = "Data was not deleted";
-
-        $stmt = $db->prepare("DELETE FROM patientMeasurements WHERE patientMeasurementId=:id");
-        
-        $stmt->bindValue(':id', $measureId);
-            
-        if ($stmt->execute() && $stmt->rowCount() > 0) {
-            $results = 'Data Deleted';
-        }
-        
-        return ($results);
-    }
+}
+?>

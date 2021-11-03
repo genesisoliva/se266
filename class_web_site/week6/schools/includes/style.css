@@ -1,0 +1,79 @@
+/* HEADER */
+.header{
+    text-align: center;
+}
+
+hr {
+    color:black;
+}
+
+/* NAV */
+.nav {
+    background: grey;
+    border: 1px solid black;
+    padding:10px;
+    margin:20px;
+    text-align: center;
+ 
+}
+
+
+/* LINKS */
+a{
+    color:black;
+    text-decoration: none;
+}
+
+a:visited{
+    color:darkgray;
+}
+
+a:hover{
+    color:black;
+}
+
+/* BUTTONS */
+.btns{
+    border: .5px solid black;
+    text-align: center;
+    display:inline-block;
+    font-size: 14px;
+    padding: 10px;
+    margin-left: 5px;
+    margin-right: 5px;
+    
+}
+
+/* CONTAINER */
+.container{
+    border: 1px solid black;
+    padding:10px;
+    margin:20px;
+}
+
+thead,th,tr{
+    text-align: center;
+    padding:5px;
+    margin-left:200px;
+}
+
+thead{
+    margin-left:200px;
+    position: relative;
+}
+
+table.center {
+    margin-left:auto; 
+    margin-right:auto;
+  }
+
+
+
+/* FOOTER */
+.footer{
+    text-align: center;
+}
+
+.crName{
+    font-size: 12px;
+}

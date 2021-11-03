@@ -1,8 +1,11 @@
 
 <?php
-        include __DIR__ . '/../include/header.php';
+        
         include __DIR__ . '/model/model_patients.php';
         include __DIR__ . '/functions.php';
+        
+       
+   
     $feet = "";
     $inches = "";
     $weight = "";
@@ -10,6 +13,8 @@
     $sysBP = "";
     $diaBP = "";
     if (isset($_POST['btnSubmit'])) {
+        
+      
         $temp = filter_input(INPUT_POST, 'temp');;
         $sysBP = filter_input(INPUT_POST, 'systolicBP');;
         $diaBP = filter_input(INPUT_POST, 'diastolicBP');;
@@ -52,30 +57,64 @@
            header('Location: view.php');
            
        } elseif (isPostRequest() && $action == "update") {
+            
+         
            $result = updatePatient($firstName, $lastName,$married, $birthDate,$id);
            header('Location: view.php');
+           
        }
-       elseif (isPostRequest() && $action == "delete") {
-        $id = filter_input(INPUT_POST, 'patientID');
-        deletePatient ($id);
-
-    }
-
-    $patient = getPatients();
-        
-        if (isPostRequest()) {
-            $id = filter_input(INPUT_POST, 'patientID');
-            deletePatient ($id);
-
-        }
     ?>
-
-<div class="container">
     
-  <h2><?php echo $action; ?> Patient</h2>
+
+<html lang="en">
+<head>
+  <title>Add Patient</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <style type = "text/css">
+  .wrapper {
+            display: grid;
+            grid-template-columns: 180px 400px;
+        }
+
+        .measurementWrapper {
+            width: 600px;
+            display: flex;
+            flex-wrap: wrap;
+            margin-left: 40px;
+        }
+        .measurementWrapper > div {
+            flex: 1 1 100px;
+        }
+        .label {
+            text-align: right;
+            padding-right: 10px;
+            margin-bottom: 5px;
+            background-color: white;
+            color: black;
+        }
+        label {
+           font-weight: bold;
+        }
+        input[type=text] {
+            width: ;
+        }
+        .error {color: red;}
+    </style>
+</head>
+<body>
+   
+
+    
+<div class="container">
+<h2><?=ucWords($action);?> Patient</h2>
   <form class="form-horizontal" action="editPatients.php" method="post">
-      <input type="hidden" name="action" value="<?php echo $action; ?>">
-      <input type="hidden" name="patientId" value="<?php echo $id; ?>">
+      <input type="text" name="action" value="<?php echo $action; ?>" hidden>
+      <input type="text" name="patientId" value="<?php echo $id; ?>" hidden>
+      
     <div class="form-group">
       <label class="control-label col-sm-2" for="first name">First Name:</label>
       <div class="col-sm-10">
@@ -91,12 +130,12 @@
     </div>
 
     <div class="form-group">
+    <div style="margin-left:50px;">
+    </div>
       <label class="control-label col-sm-2" for="Patient Name">Married:</label>
       <div class="col-sm-10">
-        <input type="radio" class="form-control" id="married"  name="married" value="1">
-        <label for="1">Yes</label>
-        <input type="radio" class="form-control" id="married"  name="married" value="0">
-        <label for="0">No</label>
+      <input type="radio" name="married" value="1">Yes
+      <input type="radio" name="married" value="0">No
       </div>
     </div>
 
@@ -107,39 +146,25 @@
       </div>
     </div>
     
-    <div class="form-group">        
-      <div class="col-sm-offset-2 col-sm-10">
-        <button type="submit" class="btn btn-default"><?php echo $action; ?> Patient</button>
-        <button class="btn glyphicon glyphicon-trash" type="submit">Delete</button>
-       
-      </div>
-    </div>
+    <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+
+                    <button type="submit" name="btnSubmit" class="btn btn-default">
+                        <?=ucWords($action);?> Patient
+                    </button>
+
+                    <?php
+                    if (isPostRequest()) {
+                        echo $results;
+                    }
+                    ?>
+                </div>
+            </div>
   </form>
   
-  <div class="col-sm-offset-2 col-sm-10">
-    <a href="./view.php">View Patients</a>
-  </div>
 </div>
 
-<div>
+<div class="col-sm-offset-2 col-sm-10"><a href="./view.php">View patients</a></div>
 
-<!--<h2>Patient Measurments</h2>
-<form action="form.php" method="post">
-        Feet: <input type="number" name="feet" value="<?php echo  $feet; ?>" />
-        <br>
-        Inches: <input type="number" name="inches" value="<?php echo  $inches; ?>" />
-        <br>
-        Weight: <input type="number" name="weight" value="<?php echo  $weight; ?>" />
-        <br>
-        Temperature: <input type="number" name="temp" value="<?php echo  $temp; ?>"/>
-        <br>
-        Bloodpressure systolic: <input type="number" name="systolicBP" value="<?php echo  $sysBP; ?>"/>
-        <br>
-        Bloodpressure diastolic: <input type="number" name="diastolicBP" value="<?php echo  $diaBP; ?>"/>
-        <input type="submit" name="btnSubmit" />-->
-    <?php  ?>
-    </form>
-
-    <?php
-        include __DIR__ . '/../include/footer.php';
-?>
+</body>
+</html>

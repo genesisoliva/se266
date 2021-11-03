@@ -18,10 +18,16 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
-  
+  <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
   <title>SE 266 - Genesis J Oliva</title>
 
 <style>
+body {
+  font-family: "Times New Roman", Times, serif;
+  font-size: "16px;";
+  margin-left: 20px;
+  margin-right: 10px;
+}
 /* CSS for style layout start*/
 .nav {
  padding: 0px 50px;
@@ -156,19 +162,26 @@ svg:not(:root).svg-inline--fa {
 /* CSS for sky theme start*/
 .nav-sky {
  color:#fff;
- background-image: linear-gradient(#44adff, #8acbfd);
+ /*background-image: linear-gradient(#44adff, #8acbfd);*/
+ background-color: #333;
 }
  
  .nav-sky .nav-content li a {
   color:#fff;
  }
+
+ .dropdown-menu a {
+    color: black !important;
+}
   
  .nav-sky .nav-content li a:hover, .nav-sky .dropdown:hover .dropdown-link {
-  background-image: linear-gradient(#1096ff, #5fb8ff);
+  /*background-image: linear-gradient(#1096ff, #5fb8ff);*/
+  background-color: red;
  }
    
  .nav-sky .dropdown-menu {
-  background-color: #a2d5fd;
+  /*background-color: #a2d5fd;*/
+  background-color: #f9f9f9;
   box-shadow: 0px 5px 10px #abdaff;
  }
   
@@ -205,8 +218,36 @@ svg:not(:root).svg-inline--fa {
 /* CSS for sky theme end*/
 </style>
 
-</head>
+<style>
 
+.dropdown {
+  /*float: left;
+  overflow: hidden;*/
+}
+.dropdown .dropbtn {
+
+}
+.navbar a:hover, .dropdown:hover .dropbtn, .dropbtn:focus {
+
+}
+.dropdown-content {
+
+}
+.dropdown-content a {
+
+}
+.dropdown-content a:hover {
+}
+.show {
+
+}
+li {
+  font-family: "Times New Roman", Times, serif;
+  font-size: "16px;";
+}
+</style>
+
+</head>
 <body>
 <div class="nav nav-sky">
     
@@ -215,55 +256,51 @@ svg:not(:root).svg-inline--fa {
    <div class="nav-elements">
     
     <ul class="nav-content">
-      
-     <li> <a href="../site/index.php" title="Home" class="active"> <i class="fas fa-home"></i> Home </a> </li>
-      
-     <!--<li> <a href="#" title="About"> <i class="fas fa-address-card"></i> About </a> </li>-->
-      
-     <li>
-       
-      <div class="dropdown">
+        <li>
+         <a href="../site/index.php" title="Home" class="active"> <!--<i class="fas fa-home"></i>--> Home </a>
+        </li>
+
+        <!--<li> <a href="#" title="About"> <i class="fas fa-address-card"></i> About </a> </li>-->
+
+        <li>
+         <div class="dropdown">
+            <a href="#" class="dropdown-link" title="Assigments">
+                <!--<i class="fas fa-camera"></i>--> Assigments <!--<i class="fas fa-caret-down"></i>-->
+            </a>
         
-       <a href="#" class="dropdown-link" title="Assigments">
-        <i class="fas fa-camera"></i> Assigments <i class="fas fa-caret-down"></i>  
-       </a>
-        
-       <div class="dropdown-menu">       
-         
-        <a href="../week1/index.php" title="Option 1"> Week 1 </a>
-        <a href="../week2/index.php" title="Option 2"> Week 2 </a>
-        <a href="../week3/index.php" title="Option 3"> Week 3 </a>
-        <a href="../week4/index.php" title="Option 1"> Week 4 </a>
-        <a href="../week5/index.php" title="Option 2"> Week 5 </a>
-        <a href="../week6/index.php" title="Option 3"> Week 6 </a>
-        <a href="../week7/index.php" title="Option 1"> Week 7 </a>
-        <a href="../week8/index.php" title="Option 2"> Week 8 </a>
-        <a href="../week9/index.php" title="Option 3"> Week 9 </a>
-        <a href="../week10/index.php" title="Option 3"> Week 10 </a>
-         
+       <div class="dropdown-menu">
+           <a href="../week1/index.php" title="Week 1"> Week 1 </a>
+           <a href="../week2/index.php" title="Week 2"> Week 2 </a>
+           <a href="../week3/index.php" title="Week 3"> Week 3 </a>
+           <a href="../week4/index.php" title="Week 4"> Week 4 </a>
+        <a href="../week5/index.php" title="Option 5"> Week 5 </a>
+        <a href="../week6/index.php" title="Option 6"> Week 6 </a>
+        <a href="../week7/index.php" title="Option 7"> Week 7 </a>
+        <a href="../week8/index.php" title="Option 8"> Week 8 </a>
+        <a href="../week9/index.php" title="Option 9"> Week 9 </a>
+        <a href="../week10/index.php" title="Option 10"> Week 10 </a>
        </div>
-        
       </div>
        
      </li>
       
-     <li> <a href="../site/heroku_resources.php" title="Contact"> <i class="fas fa-phone"></i> Heroku Resources </a> </li>
+     <li> <a href="../site/heroku_resources.php" title="Heroku Resources"> <!--<i class="fas fa-phone"></i>--> Heroku Resources </a> </li>
 
-     <li> <a href="../site/php_resources.php" title="Contact"> <i class="fas fa-phone"></i> PHP Resources </a> </li>
+     <li> <a href="../site/php_resources.php" title="PHP Resources"> <!--<i class="fas fa-phone"></i>--> PHP Resources </a> </li>
 
-     <li> <a href="../site/git_resources.php" title="Contact"> <i class="fas fa-phone"></i> Git Resources</a> </li>
+     <li> <a href="../site/git_resources.php" title="Git Resources"> <!--<i class="fas fa-phone"></i>--> Git Resources</a> </li>
 
-     <li> <a href="https://github.com/genesisoliva/se266" title="Contact"> <i class="fas fa-phone"></i> My GitHub Repo</a> </li>
+     <li> <a href="https://github.com/genesisoliva/se266" title="My GitHub Repo"> <!--<i class="fas fa-phone"></i>--> My GitHub Repo</a> </li>
 
-     <li> <a href="https://www.codingtuting.com/2019/05/create-responsive-navbar-using-html-css.html" title="Contact"> <i class="fas fa-phone"></i> Nav Website Resocure</a> </li>
+     <!--<li> <a href="https://www.codingtuting.com/2019/05/create-responsive-navbar-using-html-css.html" title="Contact"> Nav Website Resocure</a> </li>-->
 
       
     </ul>
     
-    <form class="search-area">
+    <!--<form class="search-area">
      <input type="text" name="search" placeholder="Search Item" title="Search Item">
      <button class="btn-search" name="search-button" title="Search">Search</button>
-    </form>
+    </form>-->
      
    </div>
    
@@ -277,5 +314,6 @@ svg:not(:root).svg-inline--fa {
         });
     });
 </script>
+
 
 
