@@ -74,28 +74,16 @@
       <label class="control-label col-sm-2">Married:</label>
       <div class="col-sm-10">
         <?php
-
-          if($married == '')
-          {
-            echo "<input type='radio' name='arried' value='1'>Yes
-            <input type='radio' name='married' value='0'>No";
-          }
-          
           if($married == 1)
           {
             echo "<input type='radio' name='arried' value='1' checked>Yes
             <input type='radio' name='married' value='0'>";
           }
-          if($married == 2)
-          {
-            echo "<input type='radio' name='arried' value='1'>Yes
-            <input type='radio' name='married' value='0' checked>";
-          }
-          /*else
+          else
           {
             echo "<input type='radio' name='arried' value='1'>Yes
             <input type='radio' name='married' value='0' checked>No";
-          }*/
+          }
       ?>
       </div>
     </div>
