@@ -81,16 +81,21 @@
             <input type='radio' name='married' value='0'>No";
           }
           
-          elseif($married == 1)
+          if($married == 1)
           {
-            echo "<input type='radio' name='arried' value='1'checked>Yes
+            echo "<input type='radio' name='arried' value='1' checked>Yes
             <input type='radio' name='married' value='0'>";
           }
-          else
+          if($married == 2)
+          {
+            echo "<input type='radio' name='arried' value='1'>Yes
+            <input type='radio' name='married' value='0' checked>";
+          }
+          /*else
           {
             echo "<input type='radio' name='arried' value='1'>Yes
             <input type='radio' name='married' value='0' checked>No";
-          }
+          }*/
       ?>
       </div>
     </div>
