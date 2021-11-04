@@ -80,7 +80,7 @@
           if($married == '')
           {
             echo "<input type='radio' name='arried' value='1'>Yes
-            <input type='radio' name='married' value='0'>";
+            <input type='radio' name='married' value='0'>No";
           }
           
           elseif($married == 1)
