@@ -5,14 +5,7 @@
         include __DIR__ . '/functions.php';
     
     if (isset($_POST['btnSubmit'])) {
-        
-      
-        $temp = filter_input(INPUT_POST, 'temp');;
-        $sysBP = filter_input(INPUT_POST, 'systolicBP');;
-        $diaBP = filter_input(INPUT_POST, 'diastolicBP');;
-        $feet = filter_input(INPUT_POST, 'feet');
-        $inches = filter_input(INPUT_POST, 'inches');
-        $weight = filter_input(INPUT_POST, 'weight');
+   
     }
    
         if (isset($_GET['action'])) {
