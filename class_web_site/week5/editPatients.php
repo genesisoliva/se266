@@ -71,8 +71,6 @@
     </div>
 
     <div class="form-group">
-    <div style="margin-left:50px;">
-    </div>
       <label class="control-label col-sm-2">Married:</label>
       <div class="col-sm-10">
         <?php
