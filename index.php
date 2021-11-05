@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<--<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -23,4 +23,4 @@
 <a href="class_web_site/site/index.php">Heroku Site</a>
 
 </body>
-</html>
+</html>-->
