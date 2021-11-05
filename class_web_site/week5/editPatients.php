@@ -91,6 +91,10 @@ if($action == 'update'){
 <?php
 }
 ?>
+
+<input type="radio" name="married" value="1" <?=$married==1?"":"";?>>Yes
+                    <input type="radio" name="married" value="0" <?=$married==0?"":"";?>>No
+
       </div>
     </div>
 
