@@ -115,7 +115,7 @@ else{
                         <?=ucWords($action);?> Patient
                     </button>
 <?php
-if($action == 'update'
+if($action == 'update')
 { ?>
 
 <button type="submit" name="btnDelete" class="btn btn-default" <?=$action=="update"?"":"hidden";?>>Delete Patient</button>
