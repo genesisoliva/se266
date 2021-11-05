@@ -90,10 +90,13 @@ if($action == 'update'){
                     <input type="radio" name="married" value="0" <?=$married==0?"checked":"";?>>No
 <?php
 }
+else{
 ?>
 
 <input type="radio" name="married" value="1" <?=$married==1?"":"";?>>Yes
                     <input type="radio" name="married" value="0" <?=$married==0?"":"";?>>No
+<?php
+}?>
 
       </div>
     </div>
