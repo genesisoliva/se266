@@ -114,8 +114,14 @@ else{
                     <button type="submit" name="btnSubmit" class="btn btn-default">
                         <?=ucWords($action);?> Patient
                     </button>
+<?php
+if($action == 'update'
+{ ?>
+
+<button type="submit" name="btnDelete" class="btn btn-default" <?=$action=="update"?"":"hidden";?>>Delete Patient</button>
 
                     <?php
+}
                     if (isPostRequest()) {
                         echo $results;
                     }
