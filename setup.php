@@ -19,7 +19,7 @@ echo $server. "<br>";
     
     $split_url = explode('/', $path_parts['dirname']);		//split dirname part of the array at each / character (creates array)
 
-    //print_r($split_url);        //print contets of the array. This shows you the folders in the URL
+    print_r($split_url);        //print contets of the array. This shows you the folders in the URL
 
     echo "<br>". $split_url[count($split_url) -1]." &nbsp;&nbsp;&nbsp;&nbsp;" .' :is the last folder in this array. It tells you what the value of $ROOT_DIRECTORY needs to be';
     echo "<table border=1 >
