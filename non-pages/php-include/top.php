@@ -9,7 +9,7 @@
     
     <?php   //454521 URL SET_UP, the important stuff for linking
 //=============IMPORTANT variable $ROOT_DIRECTORY must be where the project is housed (where the homepage is). ==========================
-        $ROOT_DIRECTORY = "php-magic-linking";        //MUST CHANGE THIS OR THE ENTIRE PROJECT WON'T WORK! Default is "php-magic-linking" because that's the name of the git repo, but you can rename the root folder and everything else will work as long as this variable matches the new name
+        $ROOT_DIRECTORY = "se266";        //MUST CHANGE THIS OR THE ENTIRE PROJECT WON'T WORK! Default is "php-magic-linking" because that's the name of the git repo, but you can rename the root folder and everything else will work as long as this variable matches the new name
         
         //======Magical code to display PHP errors instead of simply a blank page========\\
         //error_reporting(E_ALL);           //longer version = 2 lines
