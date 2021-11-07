@@ -12,6 +12,7 @@
 echo $server. "<br>";
 
     $domain .= $server;     //concatenate server to domain yielding "http://[your_domain_here]" or "https://[your_domain_here]"
+echo $domain "<br>";
     
     $phpSelf = htmlentities($_SERVER['PHP_SELF'], ENT_QUOTES, "UTF-8");     // Yields string of the url AFTER the domain (so just the folders & exact file). Use htmlentites to remove any suspicous vales that someone may try to pass in. htmlentites helps avoid security issues. //## $_SERVER['PHP_SELF'] returns full url path and file extension, htmlentities() just converts special characters
     $path_parts = pathinfo($phpSelf);       //get an associative array of the url with dirname, basename, extension & filename
