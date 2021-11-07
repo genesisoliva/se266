@@ -25,7 +25,7 @@ echo $server. "<br>";
 ." &nbsp;&nbsp;&nbsp;&nbsp;" 
 .' ] :is the last folder in this array. 
 It tells you what the value 
-of $ROOT_DIRECTORY needs to be'</p>;
+of $ROOT_DIRECTORY needs to be</p>';
 
     echo "<table border=1 >
 <tbody>
