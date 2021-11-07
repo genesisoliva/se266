@@ -12,7 +12,7 @@
         $domain = "https://se266-oliva.herokuapp.com/";
         if (isset($_SERVER['HTTPS'])) {   //OLD WAY, DIDN'T USE
             if ($_SERVER['HTTPS']) {
-                $domain = "https://";
+                $domain = "https://se266-oliva.herokuapp.com/";
             }
         }
         
