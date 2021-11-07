@@ -2,9 +2,6 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <!--[if lt IE 9]>
-        <script src="//html5shim.googlecode.com/sin/trunk/html5.js"></script>
-    <![endif]-->
     <meta name="robots" content="index, follow">
     
     <?php   //454521 URL SET_UP, the important stuff for linking
