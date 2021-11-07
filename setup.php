@@ -9,6 +9,7 @@
     }
     
     $server = htmlentities($_SERVER['SERVER_NAME'], ENT_QUOTES, "UTF-8");
+echo $server. "<br>";
 
     $domain .= $server;     //concatenate server to domain yielding "http://[your_domain_here]" or "https://[your_domain_here]"
     
