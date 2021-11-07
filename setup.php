@@ -29,3 +29,7 @@
     </td>
     </tr>
 </table>';
+
+foreach($split_url as $value){
+    echo $value . "<br>";
+}
