@@ -1,9 +1,6 @@
 <?php 
-    //Place this file in the root directory of your site to identify what your server thinks is the "root directory"
-
 	ini_set('error_reporting', E_ALL);  //short version to show errors
 
-    
     // PATH SETUP, (making sure it uses https)
     $domain = "http://";     //commenting out next 5 lines didn't work
     if (isset($_SERVER['HTTPS'])) {   //OLD WAY, DIDN'T USE
