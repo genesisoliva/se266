@@ -21,7 +21,6 @@
     print_r($split_url);        //print contets of the array. This shows you the folders in the URL
 
     echo "<p>[".$split_url[count($split_url) -1]
-." &nbsp;&nbsp;&nbsp;&nbsp;" 
 .'] :is the last folder in this array. 
 It tells you what the value 
 of $ROOT_DIRECTORY needs to be</p>';
