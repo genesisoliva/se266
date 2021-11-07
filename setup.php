@@ -22,7 +22,7 @@
 
     echo "<p>[". $split_url[count($split_url) -1]
 ." &nbsp;&nbsp;&nbsp;&nbsp;" 
-.' ] :is the last folder in this array. 
+.'] :is the last folder in this array. 
 It tells you what the value 
 of $ROOT_DIRECTORY needs to be</p>';
 
