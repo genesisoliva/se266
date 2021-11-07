@@ -2,56 +2,53 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <!--[if lt IE 9]>
+        <script src="//html5shim.googlecode.com/sin/trunk/html5.js"></script>
+    <![endif]-->
     <meta name="robots" content="index, follow">
     
-    <?php
-        $ROOT_DIRECTORY = "magic";
+    <?php   //454521 URL SET_UP, the important stuff for linking
+//=============IMPORTANT variable $ROOT_DIRECTORY must be where the project is housed (where the homepage is). ==========================
+        $ROOT_DIRECTORY = "magic";        //MUST CHANGE THIS OR THE ENTIRE PROJECT WON'T WORK! Default is "php-magic-linking" because that's the name of the git repo, but you can rename the root folder and everything else will work as long as this variable matches the new name
         
-        ini_set('error_reporting', E_ALL);
-
-        $domain = "http://"; 
-        if (isset($_SERVER['HTTPS'])) { 
+        //======Magical code to display PHP errors instead of simply a blank page========\\
+        //error_reporting(E_ALL);           //longer version = 2 lines
+        //ini_set('display_errors', '1');
+        ini_set('error_reporting', E_ALL);  //short version
+        
+        
+        // %^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%
+        // PATH SETUP, (making sure it uses https)
+        $domain = "http://";     //commenting out next 5 lines didn't work
+        if (isset($_SERVER['HTTPS'])) {   //OLD WAY, DIDN'T USE
             if ($_SERVER['HTTPS']) {
                 $domain = "https://";
             }
         }
         
         $server = htmlentities($_SERVER['SERVER_NAME'], ENT_QUOTES, "UTF-8");
-        echo "<p>server: ".$server."</p>";
-        $domain .= $server;
-        echo "<p>domain: ".$domain."</p>";
-        echo "<p>server: ".$server."</p>";
+        $domain .= $server;     //concatenate server to domain yielding "http://[your_domain_here]" or "https://[your_domain_here]"
         
-        $phpSelf = htmlentities($_SERVER['PHP_SELF'], ENT_QUOTES, "UTF-8");     
-        echo "<p>phpSelf: ".$phpSelf."</p>";
-
-        $path_parts = pathinfo($phpSelf);
-        echo "<p>path_parts: ".$path_parts."</p>";
-    
-        $split_url = explode('/', $path_parts['dirname']); 
-        echo "<p>split_url: ".$split_url."</p>";
-
-        foreach($split_url as $value){
-            echo $value . "<br>";
-        }
+        $phpSelf = htmlentities($_SERVER['PHP_SELF'], ENT_QUOTES, "UTF-8");     // Yields string of the url AFTER the domain (so just the folders & exact file). Use htmlentites to remove any suspicous vales that someone may try to pass in. htmlentites helps avoid security issues. //## $_SERVER['PHP_SELF'] returns full url path and file extension, htmlentities() just converts special characters
+        $path_parts = pathinfo($phpSelf);       //get an associative array of the url with dirname, basename, extension & filename
+        
+        
+        $split_url = explode('/', $path_parts['dirname']);  //split string of directories at each / character
         
         $baseLevelIndex = 0;        //used to find the "base directory" in the url. If the site's home is in "topLevel/level1/level2/ROOT_SITE_FOLDER_HERE" then it's 3 folders down, so everything should relate the the url array from index 3. We iterate through the URL array to find the $ROOT_FOLDER, then adjust and make a new array
-        for ($i = 0; $i < count($split_url); $i++)
-        {     
-            if ($split_url[$i] == $ROOT_DIRECTORY)
-            {  
+        for ($i = 0; $i < count($split_url); $i++){     //loop through the URL
+            if ($split_url[$i] == $ROOT_DIRECTORY){     //SUPER IMPORTANT ($ROOT_DIRECTORY must match the BASE folder that the site lives inside)
                 $baseLevelIndex = $i;
-                 break;    
+                 break;    //This stops when the 1st occurence of $ROOT_DIRECTORY is found. COMMENT OUT OR REMOVE THIS  break;  if your actual root directory has a parent folder with the exat same name ()
             }
         }
         $folderCountRaw = count($split_url); //this gives an int of how many folders are in the URL
-        $folderCount = $folderCountRaw - $baseLevelIndex - 1;
+    	$folderCount = $folderCountRaw - $baseLevelIndex - 1; //subtract $baseLevelIndex to get the base directory (no matter how deep the file structure, this resets it to a base folder. Then subtract 1 to make the "home" directory be 0 folders up from anything
         //0 means the homepage, 1 means top level pages (file is located in 1 folder below $ROOT_DIRECTORY), 2 means 2 levels down, etc.
 	
         $split_url_adjusted = $split_url;       //array to hold the URL parts AFTER the $ROOT_DIRECTORY (remove any directories ABOVE $ROOT_DIRECTORY)
-        for($i = 0; $i< ($folderCountRaw - $folderCount -1); $i++)
-        {   
-            unset($split_url_adjusted[$i]);
+        for($i = 0; $i< ($folderCountRaw - $folderCount -1); $i++){   //remove the beginning indices of the array (anything before $ROOT_DIRETORY)
+            unset($split_url_adjusted[$i]);     //actually remove the element, but the indices will be messed up
         }
         $split_url_adjusted= array_values($split_url_adjusted);     //array_values re-indexes the array. Now this contains a list folderis in the the URL including & AFTER the $ROOT_DIRECTORY
         
@@ -67,6 +64,12 @@
         for($i=0; $i<$folderCount; $i++){
             $upFolderPlaceholder.='../';      //append ../ for how many levels the currrent folder is below the root
         }
+
+        //end path setup
+        // %^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%
+        
+        
+        //454521 Debugging section, ignore if not needed
         $debug = false;  //Localhost says error if not define here, hope it doesn't hurt
         if ($debug) {
             print "<p>Domain" . $domain;
@@ -92,8 +95,7 @@
         $tagLine = " - Your Tagline";  //Change this to match the tagline/slogan of your site. This will appear @ the end of every title page. Like the " - Wikipedia, the free encyclopedia" at the end of every Wikipedia Page
     ?>
     
-    <title><?php echo $pageTitle.$tagLine ; ?></title>
-
+    <title><?php echo $pageTitle.$tagLine ; ?></title><!-- print the title by concatenating the current page title, & global site tagline/slogan -->
     <?php       //454521 ACTIVE PAGE / CURRENT PAGE setion
         //-----MUST EDIT THIS (ctrl+F & search for  36714768356 ---------------------------------
         //YOU MUST LIST ALL THE PAGES ON THE SITE! But $pageArrayDropDown1 means anything that's in a 1st level dropdown. You DON'T have to organize them into sepatate arrays for each individual dropdown, just put pages that are the same distance down from the $ROOT_DIRECTORY in appropriate arrays.
@@ -156,23 +158,22 @@
         fclose($descFile);
     ?>
 
-    <meta name="author" content="Your Name">
-    <meta name="description" content="<?php echo $pageMeteDescriptions[$containing_folder] ?>">     
+    <meta name="author" content="Your Name"><!-- Add your name/company -->
+    <meta name="description" content="<?php echo $pageMeteDescriptions[$containing_folder] ?>">     <!-- description from text file (lines above) -->
 
     <link rel="icon" type="image/png" href="<?php echo $upFolderPlaceholder ?>images/0_components/favicon.png">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href='<?php echo $upFolderPlaceholder ?>non-pages/css/menu.css' rel='stylesheet' type='text/css' media='screen' />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"><!-- for mobile friendly -->
+    <link href='<?php echo $upFolderPlaceholder ?>non-pages/css/menu.css' rel='stylesheet' type='text/css' media='screen' /><!-- nav menu -->
     <link href='<?php echo $upFolderPlaceholder ?>non-pages/css/style.css' rel='stylesheet' type='text/css' media='screen' />
 
 </head>
-
+    <!-- ################ begin body section ######################### -->
 <?php
     echo '<body id="'.$containing_folder.'">';      //prints a unique id for each page
 ?>
 
-    <a class="skipToContent" href="#actualMainContent">Skip to Main Content</a>
-    
+    <a class="skipToContent" href="#actualMainContent">Skip to Main Content</a><!-- accessibility skip button, positioned off screen -->
 
     <?php
         include ($upFolderPlaceholder."non-pages/php-include/nav.php");
