@@ -2,23 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <!--[if lt IE 9]>
-        <script src="//html5shim.googlecode.com/sin/trunk/html5.js"></script>
-    <![endif]-->
     <meta name="robots" content="index, follow">
     
     <?php   //454521 URL SET_UP, the important stuff for linking
-//=============IMPORTANT variable $ROOT_DIRECTORY must be where the project is housed (where the homepage is). ==========================
-        $ROOT_DIRECTORY = "se266";        //MUST CHANGE THIS OR THE ENTIRE PROJECT WON'T WORK! Default is "php-magic-linking" because that's the name of the git repo, but you can rename the root folder and everything else will work as long as this variable matches the new name
+        $ROOT_DIRECTORY = "se266"; 
         
-        //======Magical code to display PHP errors instead of simply a blank page========\\
-        //error_reporting(E_ALL);           //longer version = 2 lines
-        //ini_set('display_errors', '1');
         ini_set('error_reporting', E_ALL);  //short version
         
-        
-        // %^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%
-        // PATH SETUP, (making sure it uses https)
         $domain = "http://";     //commenting out next 5 lines didn't work
         if (isset($_SERVER['HTTPS'])) {   //OLD WAY, DIDN'T USE
             if ($_SERVER['HTTPS']) {
