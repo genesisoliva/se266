@@ -10,7 +10,7 @@
     
     $server = htmlentities($_SERVER['SERVER_NAME'], ENT_QUOTES, "UTF-8");
 echo $server. "<br>";
-echo $_SERVER['SERVER_NAME'];
+
     $domain .= $server;     //concatenate server to domain yielding "http://[your_domain_here]" or "https://[your_domain_here]"
     
     $phpSelf = htmlentities($_SERVER['PHP_SELF'], ENT_QUOTES, "UTF-8");     // Yields string of the url AFTER the domain (so just the folders & exact file). Use htmlentites to remove any suspicous vales that someone may try to pass in. htmlentites helps avoid security issues. //## $_SERVER['PHP_SELF'] returns full url path and file extension, htmlentities() just converts special characters
@@ -19,7 +19,7 @@ echo $_SERVER['SERVER_NAME'];
     
     $split_url = explode('/', $path_parts['dirname']);		//split dirname part of the array at each / character (creates array)
 
-    print_r($split_url);        //print contets of the array. This shows you the folders in the URL
+    //print_r($split_url);        //print contets of the array. This shows you the folders in the URL
 
     echo "<br>". $split_url[count($split_url) -1]." &nbsp;&nbsp;&nbsp;&nbsp;" .' :is the last folder in this array. It tells you what the value of $ROOT_DIRECTORY needs to be';
     echo "<table border=1 >
