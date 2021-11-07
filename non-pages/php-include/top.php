@@ -9,8 +9,7 @@
         
         ini_set('error_reporting', E_ALL);
         
-        //$domain = "http://";
-$domain = "https://se266-oliva.herokuapp.com/";
+        $domain = "http://";
         if (isset($_SERVER['HTTPS'])) {   //OLD WAY, DIDN'T USE
             if ($_SERVER['HTTPS']) {
                 $domain = "https://";
