@@ -9,7 +9,7 @@
         
         ini_set('error_reporting', E_ALL);
         
-        $domain = "http://";
+        $domain = "https://se266-oliva.herokuapp.com/";
         if (isset($_SERVER['HTTPS'])) {   //OLD WAY, DIDN'T USE
             if ($_SERVER['HTTPS']) {
                 $domain = "https://";
@@ -24,7 +24,7 @@
         
         
         //$split_url = explode('/', $path_parts['dirname']);  //split string of directories at each / character
-        $split_url = explode('https://se266-oliva.herokuapp.com/', $path_parts['dirname']);
+        $split_url = explode('/', $path_parts['dirname']);
 
         $baseLevelIndex = 0;        //used to find the "base directory" in the url. If the site's home is in "topLevel/level1/level2/ROOT_SITE_FOLDER_HERE" then it's 3 folders down, so everything should relate the the url array from index 3. We iterate through the URL array to find the $ROOT_FOLDER, then adjust and make a new array
         for ($i = 0; $i < count($split_url); $i++){     //loop through the URL
