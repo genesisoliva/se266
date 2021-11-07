@@ -5,7 +5,7 @@
     <meta name="robots" content="index, follow">
     
     <?php   //454521 URL SET_UP, the important stuff for linking
-        $ROOT_DIRECTORY = "se266"; 
+        $ROOT_DIRECTORY = ""; 
         
         ini_set('error_reporting', E_ALL);  //short version
         
