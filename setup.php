@@ -24,19 +24,8 @@
     <tr>
     <th>[".$split_url[count($split_url) -1].']</th>
     
-    <td:is the last folder in this array. 
+    <td>:is the last folder in this array. 
 It tells you what the value 
 of $ROOT_DIRECTORY needs to be</td>
 </tr>
 </table>';
-
-
-    echo "<table border=1 >
-<tbody>
-<tr>
-<th>server</th>
-<td>".$server."</td>
-</tr>
-</tbody>
-</table>"
-?>
