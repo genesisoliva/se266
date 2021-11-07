@@ -2,17 +2,27 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <!--[if lt IE 9]>
+        <script src="//html5shim.googlecode.com/sin/trunk/html5.js"></script>
+    <![endif]-->
     <meta name="robots" content="index, follow">
     
-    <?php  
-        $ROOT_DIRECTORY = "se266";
+    <?php   //454521 URL SET_UP, the important stuff for linking
+//=============IMPORTANT variable $ROOT_DIRECTORY must be where the project is housed (where the homepage is). ==========================
+        $ROOT_DIRECTORY = "php-magic-linking";        //MUST CHANGE THIS OR THE ENTIRE PROJECT WON'T WORK! Default is "php-magic-linking" because that's the name of the git repo, but you can rename the root folder and everything else will work as long as this variable matches the new name
         
-        ini_set('error_reporting', E_ALL);
+        //======Magical code to display PHP errors instead of simply a blank page========\\
+        //error_reporting(E_ALL);           //longer version = 2 lines
+        //ini_set('display_errors', '1');
+        ini_set('error_reporting', E_ALL);  //short version
         
-        $domain = "https://se266-oliva.herokuapp.com/";
+        
+        // %^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%
+        // PATH SETUP, (making sure it uses https)
+        $domain = "http://";     //commenting out next 5 lines didn't work
         if (isset($_SERVER['HTTPS'])) {   //OLD WAY, DIDN'T USE
             if ($_SERVER['HTTPS']) {
-                $domain = "https://se266-oliva.herokuapp.com/";
+                $domain = "https://";
             }
         }
         
@@ -23,9 +33,8 @@
         $path_parts = pathinfo($phpSelf);       //get an associative array of the url with dirname, basename, extension & filename
         
         
-        //$split_url = explode('/', $path_parts['dirname']);  //split string of directories at each / character
-        $split_url = explode('/', $path_parts['dirname']);
-
+        $split_url = explode('/', $path_parts['dirname']);  //split string of directories at each / character
+        
         $baseLevelIndex = 0;        //used to find the "base directory" in the url. If the site's home is in "topLevel/level1/level2/ROOT_SITE_FOLDER_HERE" then it's 3 folders down, so everything should relate the the url array from index 3. We iterate through the URL array to find the $ROOT_FOLDER, then adjust and make a new array
         for ($i = 0; $i < count($split_url); $i++){     //loop through the URL
             if ($split_url[$i] == $ROOT_DIRECTORY){     //SUPER IMPORTANT ($ROOT_DIRECTORY must match the BASE folder that the site lives inside)
