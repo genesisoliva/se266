@@ -24,7 +24,8 @@
     echo "<table>
 <tbody border=1>
 <tr>
-<th>".$server."</th>
+<th>server</th>
+<td>".$server."</td>
 </tr>
 </tbody>
 </table>"
