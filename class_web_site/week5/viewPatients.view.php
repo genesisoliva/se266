@@ -50,7 +50,7 @@
                             ?>
                         </td>-->
                         <td>
-                            <a class="editLink" href="addPatient.php?id=<?=$row['id']?>&action=update">
+                            <a href="addPatient.php?id=<?=$row['id']?>&action=update">
                                 <i class="icon-pencil"></i>
                             </a>
                         </td>

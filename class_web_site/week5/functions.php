@@ -19,7 +19,6 @@
         $lName = $row[0]['patientLastName'];
         $married = $row[0]['patientMarried'];
         $bDay = $row[0]['patientBirthDate'];
-        //$measurements = getPatientMeasurements($id);
     }
     else 
     {
@@ -37,9 +36,8 @@
     if(isset($_POST['action'])) 
     {
         $action = filter_input(INPUT_POST, 'action');
-        $type = filter_input(INPUT_POST, 'type');
 
-        if(isPostRequest() && $type == "patient")
+        if(isPostRequest())
         {
             $fName = filter_input(INPUT_POST, 'firstName');
             $mName = filter_input(INPUT_POST, 'middleName');
@@ -70,32 +68,6 @@
 
         }
 
-      /*  else if(isPostRequest() && $type == "measurement")
-    {
-        if($action == "update")
-        {
-            if(isset($_POST['btnAddMeasure']))
-            {
-                $id = filter_input(INPUT_POST, 'id');
-                $weight = filter_input(INPUT_POST, 'weight');
-                $height = filter_input(INPUT_POST, 'height');
-                $systolicBP = filter_input(INPUT_POST, 'systolicBP');
-                $diastolicBP = filter_input(INPUT_POST, 'diastolicBP');
-                $temp = filter_input(INPUT_POST, 'temp');
-
-                $results = addResults($id, $weight, $height, $systolicBP, $diastolicBP, $temp);
-            }
-            else if(isset($_POST['deleteMeasurement']))
-            {
-                $measureId = filter_input(INPUT_POST, 'patientMeasurementId');
-                $results = deleteMeasurement($measureId);
-            }
-        }
-    }*/
-
 }
 
-    if(isset($results))
-    {
-        //header("Location: ../Week5/viewPatients.php");
-    }
+

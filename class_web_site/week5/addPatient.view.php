@@ -12,11 +12,10 @@
 
 <div class="container">
     
-        <form class="form-horizontal" action="addPatient.php?type=patient" method="post">
+        <form class="form-horizontal" action="addPatient.php" method="post">
             <h2><?=ucWords($action);?> Patient</h2>
             <input type="text" name="action" value="<?=$action;?>" hidden>
             <input type="text" name="id" value="<?=$id;?>" hidden> 
-            <input type="text" name="type" value="patient" hidden>
 
             <div class="form-group">
                 <label class="control-label col-sm-2" for="firstName">First Name:</label>
