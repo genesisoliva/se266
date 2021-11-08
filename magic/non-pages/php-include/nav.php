@@ -25,6 +25,25 @@
                     </ul>
                 </li>
 
+                  <li>
+                    <label for="drop-2" class="toggle">Portfolio +</label>
+                    <a href="#" <?php echo 'class="'.$activePageArrayTop['portfolio'].'"'; ?>>Assignments</a>
+
+                    <input type="checkbox" id="drop-2"/>
+                    <ul>
+                        <li><a <?php echo 'href="'.$upFolderPlaceholder.'portfolio/portfolio_1/index.php"' . ' class="'.$activePageArrayDropDown1['portfolio_1'].'"'; ?>>Portfolio 1</a></li>
+                        <li><a <?php echo 'href="'.$upFolderPlaceholder.'portfolio/portfolio_2/index.php"' . ' class="'.$activePageArrayDropDown1['portfolio_2'].'"'; ?>>Portfolio 2</a></li>
+                        <li>
+                            <label for="drop-3" class="toggle">Examples +</label>
+                            <a href="#" <?php echo 'class="'.$activePageArrayDropDown1['examples'].'"'; ?>>Examples</a>
+                            <input type="checkbox" id="drop-3"/>
+                            <ul>
+                                <li><a <?php echo 'href="'.$upFolderPlaceholder.'portfolio/examples/example_1/index.php"' . ' class="'.$activePageArrayDropDown2['example_1'].'"'; ?>>Example 1</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+
                 
                 <li>
                     <label for="drop-4" class="toggle">Tests +</label>
