@@ -1,7 +1,7 @@
 
 <?php
       //include __DIR__ . '/../include/header.php';
-      include __DIR__ . '/model/model_patient.php';
+      include __DIR__ . '/model/model_patients.php';
       include __DIR__ . '/functions.php';
       $patients = getPatients();
       
@@ -29,8 +29,7 @@
                 <?php foreach ($patients as $row): ?>
                     <tr>
                         <td><?= $row['id'];?></td>
-                        <td><?= $row['patientFirstName']?> <?= $row['patientMiddleName'];?></td>
-
+                        <td><?= $row['patientFirstName']?></td>
                         <td><?= $row['patientLastName'];?></td>
                         <td><?= $row['patientBirthDate'];?></td>
                         <td><?= calcAge($row['patientBirthDate'])->format("%y Years");?></td>

@@ -7,8 +7,7 @@
 </head>
 
 <?php
-      //include __DIR__ . '/../include/header.php';
-      include __DIR__ . '/model/model_patient.php';
+      include __DIR__ . '/model/model_patients.php';
       include __DIR__ . '/functions.php'; ?>
 
 <div class="container">
@@ -23,12 +22,6 @@
                 <label class="control-label col-sm-2" for="firstName">First Name:</label>
                 <div class="col-sm-5">
                     <input type="text" class="form-control" id="firstName" placeholder="" name="firstName" value="<?=$fName;?>">
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="control-label col-sm-2" for="middleName">Middle Name:</label>
-                <div class="col-sm-5">
-                    <input type="text" class="form-control" id="middleName" placeholder="" name="middleName" value="<?=$mName;?>">
                 </div>
             </div>
             <div class="form-group">
@@ -178,7 +171,3 @@
             </tbody>
         </table>
     </div>
-
-<?php 
-      //include __DIR__ . '/../include/footer.php'; 
-?>
