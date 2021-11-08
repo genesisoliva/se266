@@ -13,3 +13,5 @@ git Git description
 heroku Heroku description
 php PHP description
 repo Repo description
+week1 Week 1 page description
+
