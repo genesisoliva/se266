@@ -5,6 +5,7 @@
             <ul class="menu">
                 
                 <li><a <?php echo 'href="'.$upFolderPlaceholder.'index.php"' . ' class="'.$activePageArrayTop[$ROOT_DIRECTORY].'"'; ?>>Home</a></li>
+
                 <li>
                     <label for="drop-2" class="toggle">Portfolio +</label>
                     <a href="#" <?php echo 'class="'.$activePageArrayTop['portfolio'].'"'; ?>>Portfolio</a>
@@ -36,9 +37,13 @@
                 </li>
 
                 <li><a <?php echo 'href="'.$upFolderPlaceholder.'about/index.php"' . ' class="'.$activePageArrayTop['about'].'"'; ?>>About</a></li>
+
                 <li><a <?php echo 'href="'.$upFolderPlaceholder.'resources/heroku/index.php"' . ' class="'.$activePageArrayTop['heroku'].'"'; ?>>Heroku</a></li>
+
                 <li><a <?php echo 'href="'.$upFolderPlaceholder.'resources/php/index.php"' . ' class="'.$activePageArrayTop['php'].'"'; ?>>PHP</a></li>
+
                 <li><a <?php echo 'href="'.$upFolderPlaceholder.'resources/git/index.php"' . ' class="'.$activePageArrayTop['git'].'"'; ?>>Git</a></li>
+
                 <li><a <?php echo 'href="'.$upFolderPlaceholder.'about/index.php"' . ' class="'.$activePageArrayTop['about'].'"'; ?>>Repo</a></li>
             </ul>
     </nav>
