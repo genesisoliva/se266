@@ -25,8 +25,8 @@
                 </li>
 
 <li>
-                    <label for="drop-2" class="toggle">Portfolio +</label>
-                    <a href="#" <?php echo 'class="'.$activePageArrayTop['portfolio'].'"'; ?>>Portfolio</a>
+                    <label for="drop-2" class="toggle">Assignmets +</label>
+                    <a href="#" <?php echo 'class="'.$activePageArrayTop['portfolio'].'"'; ?>>Assignments</a>
 
                     <input type="checkbox" id="drop-2"/>
                     <ul>
