@@ -1,20 +1,34 @@
 <?php
 
-    error_reporting(E_ALL ^ E_WARNING);
+error_reporting(E_ALL ^ E_WARNING);
+
+    session_start();
+    
     include_once __DIR__ . "/models/model_schools.php";
     include_once __DIR__ . "/includes/functions.php";
     
-
+    
     if (isPostRequest()) {
         $username = filter_input(INPUT_POST, 'userName');
         $password = filter_input(INPUT_POST, 'password');
-       
-       // your logic here
-        
-    
-    }
-?>
 
+        if(checkLogin($username, $password)){
+
+            header('Location: upload.php');
+            $_SESSION['LoggedIn'] = "true";
+
+        }else{
+
+            //header('Location: login.php');
+            $_SESSION['LoggedIn'] = "false"; 
+            echo "Please enter in a valid username and password.";
+
+        }
+    } 
+
+    
+     
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,6 +44,8 @@
 <title>Schools Upload</title>
 </head>
 <body>
+<?php if(basename($_SERVER['PHP_SELF']) == 'upload.php'): ?><?php endif; ?><a class="btns"  href="upload.php">Upload</a>
+    <?php if(basename($_SERVER['PHP_SELF']) == 'search.php'): ?><?php endif; ?>
 
     <div id="mainDiv">
         <form method="post" action="login.php">
@@ -53,7 +69,3 @@
         </form>
         
     </div>
-
-
-</body>
-</html>
