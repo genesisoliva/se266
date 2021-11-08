@@ -1,0 +1,17 @@
+index Main site description for homepage
+assignments Assignments page description
+resources resources page description
+week1 Week 1 page description
+week2 Week 2 page description
+week3 Week 3 page description
+week4 Week 4 page description
+week5 Week 5 page description
+week6 Week 6 page description
+week7 Week 7 page description
+week8 Week 8 page description
+week9 Week 9 page description
+week10 Week 10 page description
+example_1 Example 1 description
+git Git page description
+heroku page Heroku description
+php Php page description
