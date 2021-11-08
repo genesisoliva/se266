@@ -19,7 +19,7 @@
         $lName = $row[0]['patientLastName'];
         $married = $row[0]['patientMarried'];
         $bDay = $row[0]['patientBirthDate'];
-        $measurements = getPatientMeasurements($id);
+        //$measurements = getPatientMeasurements($id);
     }
     else 
     {
@@ -70,7 +70,7 @@
 
         }
 
-        else if(isPostRequest() && $type == "measurement")
+      /*  else if(isPostRequest() && $type == "measurement")
     {
         if($action == "update")
         {
@@ -91,7 +91,7 @@
                 $results = deleteMeasurement($measureId);
             }
         }
-    }
+    }*/
 
 }
 

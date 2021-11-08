@@ -11,8 +11,9 @@
         deletePatient ($id);
     }
 ?>
-
-<table class="table table-striped" border=1>
+<h1>Patients</h1>
+<a href="addPatient.php?action=add" id="addBtn">Add Patient</a>
+<table class="table table-striped">
             <thead>
                 <tr>
                     <th>ID</th>

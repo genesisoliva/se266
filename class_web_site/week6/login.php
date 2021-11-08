@@ -1,39 +1,30 @@
 <?php
-
-error_reporting(E_ALL ^ E_WARNING);
-
+    error_reporting(E_ALL ^ E_WARNING);
     session_start();
-    
     include_once __DIR__ . "/models/model_schools.php";
     include_once __DIR__ . "/includes/functions.php";
     
-    
     if (isPostRequest()) {
         $username = filter_input(INPUT_POST, 'userName');
-        $password = filter_input(INPUT_POST, 'password');
-
-        if(checkLogin($username, $password)){
-
-            header('Location: upload.php');
-            $_SESSION['LoggedIn'] = "true";
-
-        }else{
-
-            //header('Location: login.php');
-            $_SESSION['LoggedIn'] = "false"; 
-            echo "Please enter in a valid username and password.";
-
-        }
-    } 
-
+        $PW = filter_input(INPUT_POST, 'password');
+       
+       // your logic here
+       if(checkLogin($username, $PW))
+    {
+           header('Location: upload.php');
+          $_SESSION['LogggedIn'] = "true";
+      }else{
+          $_SESSION['LoggedIn'] = "false";
+          echo "<h1>Please enter correct login.</h1>";
+       }
     
-     
+    }
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" 
-          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <style type="text/css">
         #mainDiv {margin-left: 100px; margin-top: 100px;}
         .col1 {width: 100px; float: left;}
@@ -44,8 +35,6 @@ error_reporting(E_ALL ^ E_WARNING);
 <title>Schools Upload</title>
 </head>
 <body>
-<?php if(basename($_SERVER['PHP_SELF']) == 'upload.php'): ?><?php endif; ?><a class="btns"  href="upload.php">Upload</a>
-    <?php if(basename($_SERVER['PHP_SELF']) == 'search.php'): ?><?php endif; ?>
 
     <div id="mainDiv">
         <form method="post" action="login.php">
@@ -55,11 +44,11 @@ error_reporting(E_ALL ^ E_WARNING);
             </div>
             <div class="rowContainer">
                 <div class="col1">User Name:</div>
-                <div class="col2"><input type="text" name="userName" value="donald"></div> 
+                <div class="col2"><input type="text" name="userName" value="<?=$username="donald";?>"></div> 
             </div>
             <div class="rowContainer">
                 <div class="col1">Password:</div>
-                <div class="col2"><input type="password" name="password" value="duck"></div> 
+                <div class="col2"><input type="password" name="password" value="<?=$PW="duck";?>"></div> 
             </div>
               <div class="rowContainer">
                 <div class="col1">&nbsp;</div>
@@ -69,3 +58,7 @@ error_reporting(E_ALL ^ E_WARNING);
         </form>
         
     </div>
+
+
+</body>
+</html>
