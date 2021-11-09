@@ -28,25 +28,6 @@
         </form>
 
 
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Username</th>
-                    <th>Password</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach ($users as $row): ?>
-                    <tr>
-                        <td><?= $row['userId'];?></td>
-                        <td><?= $row['userName']?></td>
-                        <td><?= $row['userPassword'];?></td>
-                    </tr>
-                <?php endforeach; ?>
-            </tbody>
-        </table>
-
 	</main>
 
 <?php include($upFolderPlaceholder . "non-pages/php-include/footer.php"); ?>
