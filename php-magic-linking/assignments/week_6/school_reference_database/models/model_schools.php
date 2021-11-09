@@ -82,7 +82,7 @@
    function checkLogin ($userName, $password) {
     global $db;
     $results = [];
-    $stmt = $db->prepare("SELECT userId 
+    $stmt = $db->prepare("SELECT * 
 FROM users WHERE username =:userName 
 AND userPassword = sha1(:password)");
 $binds = array(
