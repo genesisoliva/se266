@@ -17,6 +17,38 @@
 
 
     }
+
+//page load process
+        if(isset($_SESSION['use']))
+        {
+             header('Location: search.php');
+        }
+        
+        if(isset($_POST['login']))
+        {
+            
+            $username = $_POST["userName"];
+            
+            $PW = $_POST["password"];
+            
+            
+            $result = checkLogin($userName, $password);
+            if($results = true){
+                
+                $_SESSION['use'] = $username;
+                $deleteAllSchools = deleteAllSchools();
+                
+                header('Location: search.php');
+                
+            }
+            
+            else
+            {
+                echo "Wrong Username or Password";
+            }
+            
+        }
+
 ?>
 <form method="post" action="index.php">
     <h3>Please Login</h3>
