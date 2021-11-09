@@ -14,9 +14,10 @@
       //  $password = filter_input(INPUT_POST, 'password');
        
        // your logic here
-if(isset($_POST['uname']) && isset($_POST['pword']) && $_POST['uname'] != "" && $_POST['pword'] != ""){
+if(isset($_POST['uname']) && isset($_POST['pword']) && $_POST['uname'] != "" && $_POST['pword'] != "")
+{
 $result = "";
-$user = checkLogin(filter_input(INPUT_POST, 'uname', sha1(filter_input(INPUT_POST, 'pword')));
+$user = checkLogin(filter_input(INPUT_POST, 'uname'), sha1(filter_input(INPUT_POST, 'pword')));
 if($user == true){
 $_SESSION['User'] = filter_input(INPUT_POST, 'uname');
 header('Location: upload.php');
@@ -25,8 +26,7 @@ else{
 $result ="invalid";
 }
 
-}else
-{
+}else{
 $result ="please enter inputs";
 }
    
