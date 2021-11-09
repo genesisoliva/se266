@@ -35,7 +35,7 @@
             $result = checkLogin($userName, $password);
             if($results = true){
                 
-                $_SESSION['use'] = $username;
+                $_SESSION['use'] = $userName;
                 $deleteAllSchools = deleteAllSchools();
                 
                 header('Location: upload.php');
@@ -44,7 +44,7 @@
             
             else
             {
-                echo "Wrong Username or Password";
+                echo "<h1>Wrong Username or Password</h1>";
             }
             
         }
