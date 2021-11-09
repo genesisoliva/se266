@@ -79,23 +79,23 @@
         return ($results);
    }
    
-   function checkLogin ($userName, $password) {
+   function checkLogin ($uname, $pword) {
     global $db;
     $results = [];
     $stmt = $db->prepare("SELECT * 
-FROM users WHERE username =:userName 
-AND userPassword = sha1(:password)");
+FROM users WHERE userName =:userName 
+AND userPassword = :password");
 $binds = array(
-":userName" => $userName,
-":userPassword" => $password
+":userName" => $uname,
+":userPassword" => $pword
 );
-   
+   $results = false;
     if($stmt->execute($binds) && $stmt->rowCount() > 0){
-$results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$results = true;
 }else{
-return(false);
+$results = false;
 }
-return ($results);
+return $results;
     
 }
 
