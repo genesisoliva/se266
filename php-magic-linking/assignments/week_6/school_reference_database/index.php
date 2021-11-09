@@ -18,7 +18,7 @@
 
     }
 ?>
-<form method="post" action="upload.php">
+<form method="post" action="index.php">
     <h3>Please Login</h3>
             <div class="rowContainer">
             User Name:<input type="text" name="userName" value="<?=$username="hi";?>">
