@@ -34,6 +34,28 @@
             </form>
             
             <p>This is where your search results go</p>
+
+<table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>School</th>
+                    <th>City</th>
+                    <th>State</th>
+                </tr>
+            </thead>
+            <tbody>
+            
+            <?php foreach ($getSchools as $row): ?>
+                <tr>
+                    <td><?php echo $row['schoolName']; ?></td>
+                    <td><?php echo $row['schoolCity']; ?></td>
+                    <td><?php echo $row['schoolState']; ?></td>
+                </tr>
+            <?php endforeach; ?>
+              
+            </tbody>
+        </table>
+
             <?php
             
                 include_once __DIR__ . "/includes/footer.php";
