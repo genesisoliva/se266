@@ -21,7 +21,7 @@
 //page load process
         if(isset($_SESSION['use']))
         {
-             header('Location: search.php');
+             header('Location: upload.php');
         }
         
         if(isset($_POST['login']))
@@ -38,7 +38,7 @@
                 $_SESSION['use'] = $username;
                 $deleteAllSchools = deleteAllSchools();
                 
-                header('Location: search.php');
+                header('Location: upload.php');
                 
             }
             
