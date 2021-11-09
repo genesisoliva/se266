@@ -79,26 +79,7 @@
         return ($results);
    }
    
-   function checkLogin ($uname, $pword) {
-    global $db;
-    $results = [];
-    $stmt = $db->prepare("SELECT * 
-FROM users WHERE userName =:userName 
-AND userPassword = :password");
-$binds = array(
-":userName" => $uname,
-":userPassword" => $pword
-);
-   $results = false;
-    if($stmt->execute($binds) && $stmt->rowCount() > 0){
-$results = true;
-}else{
-$results = false;
-}
-return $results;
-    
-}
-
+   
 function getUsers () {
     global $db;
     
