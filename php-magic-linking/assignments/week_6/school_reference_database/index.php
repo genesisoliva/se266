@@ -10,7 +10,7 @@
     $users = getUsers();
 
     if (isPostRequest()) {
-        $username = filter_input(INPUT_POST, 'userName');
+        $userName = filter_input(INPUT_POST, 'userName');
         $password = filter_input(INPUT_POST, 'password');
        
        // your logic here
