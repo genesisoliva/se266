@@ -1,26 +1,6 @@
 <?php
 
     include (__DIR__ . '/db.php');
-
-function IsValidUser($uname, $pword) {
-    global $db;
-    $stmt = $db->prepare("SELECT * FROM users WHERE uname = :userName AND pword = :password");
-
-    $binds = array(
-        ":userName" => $uname,
-        ":password" => $pword
-    );
-    
-    $results = false;
-    if ($stmt->execute($binds) && $stmt->rowCount() > 0) {
-        $results = true;
-    } else {
-        $results = false;
-    }
-    
-    return $results;
-}
-
     
     function insertSchoolsFromFile ($fname) {
         global $db;
@@ -88,8 +68,6 @@ function IsValidUser($uname, $pword) {
            $binds['state'] = '%'.$state.'%';
        }
        
-       $sql .= " ORDER BY schoolName ASC";
-
        $stmt = $db->prepare($sql);
       
         $results = array();
@@ -99,21 +77,37 @@ function IsValidUser($uname, $pword) {
         return ($results);
    }
    
-   
-function getUsers () {
+   function checkLogin ($id, $userName, $password) {
     global $db;
-    
-    $results = [];
+   $stmt = $db->prepare("SELECT * FROM users WHERE userName =:userName AND userPassword = :password");
 
-    $stmt = $db->prepare("SELECT userId, userName, userPassword FROM users ORDER BY userid"); 
+    $stmt->bindValue(':userName', $userName);
+    $stmt->bindValue(':password', sha1("school-salt".$password));
     
-    if ( $stmt->execute() && $stmt->rowCount() > 0 ) {
-         $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-             
-     }
-     
-     return ($results);
+    $stmt->execute ();
+   
+    return( $stmt->rowCount() > 0);
+    
 }
-function isPostRequest() {
-        return ( filter_input(INPUT_SERVER, 'REQUEST_METHOD') === 'POST' );
-    }
+ 
+
+   // make sure these functions work
+    //$schools = getSchools ('New England', '', 'RI');
+   
+    //var_dump ($schools);
+
+    $users = checkLogin('donald', 'duck');
+    var_dump($users);
+    
+    //$b = checkLogin('donald', 'duck');
+    //if ($b) echo "Logged in"; else echo "Not logged in";
+
+    //insertSchoolsFromFile('../uploads/schools.csv');
+    //$count= getSchoolCount();
+    //echo $count;
+   
+    
+    
+    
+    //if ($result) echo "Logged in"; else echo "Not logged in";
+    

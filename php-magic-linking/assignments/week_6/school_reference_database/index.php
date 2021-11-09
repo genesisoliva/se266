@@ -1,44 +1,66 @@
 <?php include("../../../non-pages/php-include/top.php"); ?>
 	    <h1 class="cent"><?php echo $pageTitle ?></h1>
 		
-		<?php
+    <?php
     error_reporting(E_ALL ^ E_WARNING);
+
     session_start();
     include_once __DIR__ . "/models/model_schools.php";
+    include_once __DIR__ . "/includes/functions.php";
+    
 
-    if (isPostRequest())
-            {
-                if (isset($_POST['uname']) && isset($_POST['pword']) && $_POST['uname'] != "" && $_POST['pword'] != "") {
-                    $result = "";
-                    $user = IsValidUser(filter_input(INPUT_POST, 'uname'), sha1(filter_input(INPUT_POST, 'pword')));
-                    if ($user == true) {
-                        $_SESSION["User"] = filter_input(INPUT_POST, 'uname');
-                        header('Location: upload.php');
-                    } else {
-                        $result = "Invalid username or password";
-                    }
-                } else {
-                    $result = "Please enter a username and password";
-                }
-            }
+    if (isPostRequest()) {
+        $username = filter_input(INPUT_POST, 'userName');
+        $password = filter_input(INPUT_POST, 'password');
+       
+       // your logic here
+       if(checkLogin($username, $password)){
+
+        header('Location: upload.php');
+        $_SESSION['LoggedIn'] = "true";
+
+    }else{
+
+        //header('Location: login.php');
+        $_SESSION['LoggedIn'] = "false"; 
+        echo "Please enter in a valid username and password.";
+
+    }
         
-     
-?>
-<form method="post" action="index.php">
-    <h3>Please Login</h3>
+    
+    }
+    ?>
+<head>
+    <style type="text/css">
+        #mainDiv {margin-left: 100px; margin-top: 100px;}
+        .col1 {width: 100px; float: left;}
+        .col2 {float: left;}
+        .rowContainer {clear: left; height: 40px;}
+        .error {margin-left: 100px; clear: left; height: 40px; color: red;}
+    </style>
+</head>
+<div id="mainDiv">
+        <form method="post" action="index.php">
+           
             <div class="rowContainer">
-            User Name:<input type="text" name="userName" value="donald">
+                <h3>Please Login</h3>
             </div>
             <div class="rowContainer">
-                Password:<input type="password" name="password" value="duck">
+                <div class="col1">User Name:</div>
+                <div class="col2"><input type="text" name="userName" value="donald"></div> 
+            </div>
+            <div class="rowContainer">
+                <div class="col1">Password:</div>
+                <div class="col2"><input type="password" name="password" value="duck"></div> 
             </div>
               <div class="rowContainer">
-                  <input type="submit" name="login" value="Login" class="btn btn-warning">
+                <div class="col1">&nbsp;</div>
+                <div class="col2"><input type="submit" name="login" value="Login" class="btn btn-warning"></div> 
             </div>
             
         </form>
-
-<br /><center><h3><?php if (isPostRequest()) {echo $result;} ?></h3></center>
+        
+    </div>
 
 
 	</main>
