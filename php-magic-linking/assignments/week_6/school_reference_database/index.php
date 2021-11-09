@@ -10,47 +10,30 @@
     $users = getUsers();
 
     if (isPostRequest()) {
-        $userName = filter_input(INPUT_POST, 'userName');
-        $password = filter_input(INPUT_POST, 'password');
+       // $userName = filter_input(INPUT_POST, 'userName');
+      //  $password = filter_input(INPUT_POST, 'password');
        
        // your logic here
+if(isset($_POST['uname]) && isset($_POST['pword] && $_POST['uname'] != "" && $_POST['pword'] != ""){
+$result = "";
+$user = checkLogin(filter_input(INPUT_POST, 'uname', sha1(filter_input(INPUT_POST, 'pword')));
+if($user == true){
+$_SESSION['User'] = filter_input(INPUT_POST, 'uname');
+header('Location: upload.php');
+}
+else{
+$result ="invalid";
+}
 
-
+}else
+{
+$result ="please enter inputs";
+}
     }
-
-//page load process
-        if(isset($_SESSION['use']))
-        {
-             header('Location: upload.php');
-        }
-        
-        if(isset($_POST['login']))
-        {
-            
-            $userName = $_POST["userName"];
-            
-            $password = $_POST["password"];
-            
-            
-            $result = checkLogin($userName, $password);
-            if($results = true){
-                
-                $_SESSION['use'] = $userName;
-                $deleteAllSchools = deleteAllSchools();
-                
-                header('Location: upload.php');
-                
-            }
-            
-            else
-            {
-                echo "<h1>Wrong Username or Password</h1>";
-            }
-            
-        }
+}
 
 ?>
-<form method="post" action="index.php">
+<form method="post" action="#">
     <h3>Please Login</h3>
             <div class="rowContainer">
             User Name:<input type="text" name="uname" value="<?=$username="donald";?>">
