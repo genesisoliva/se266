@@ -29,7 +29,7 @@ $result ="invalid";
 {
 $result ="please enter inputs";
 }
-    }
+   
 }
 
 ?>
