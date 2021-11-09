@@ -1,6 +1,26 @@
 <?php
 
     include (__DIR__ . '/db.php');
+
+function IsValidUser($uname, $pword) {
+    $db = getDatabase(); 
+    $stmt = $db->prepare("SELECT * FROM users WHERE uname = :uname AND pword = :pword");
+
+    $binds = array(
+        ":uname" => $uname,
+        ":pword" => $pword
+    );
+    
+    $results = false;
+    if ($stmt->execute($binds) && $stmt->rowCount() > 0) {
+        $results = true;
+    } else {
+        $results = false;
+    }
+    
+    return $results;
+}
+
     
     function insertSchoolsFromFile ($fname) {
         global $db;
