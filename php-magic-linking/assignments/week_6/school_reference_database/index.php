@@ -14,10 +14,10 @@
 <form method="post" action="index.php">
     <h3>Please Login</h3>
             <div class="rowContainer">
-            User Name:<input type="text" name="uname" value="donald">
+            User Name:<input type="text" name="userName" value="donald">
             </div>
             <div class="rowContainer">
-                Password:<input type="password" name="pword" value="duck">
+                Password:<input type="password" name="password" value="duck">
             </div>
               <div class="rowContainer">
                   <input type="submit" name="login" value="Login" class="btn btn-warning">
