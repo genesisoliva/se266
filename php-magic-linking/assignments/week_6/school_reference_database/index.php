@@ -7,8 +7,6 @@
     include_once __DIR__ . "/models/model_schools.php";
     include_once __DIR__ . "/includes/functions.php";
 
-    $users = getUsers();
-
     if (isPostRequest()) {
        
 }
