@@ -3,12 +3,12 @@
     include (__DIR__ . '/db.php');
 
 function IsValidUser($uname, $pword) {
-    $db = getDatabase(); 
-    $stmt = $db->prepare("SELECT * FROM users WHERE uname = :uname AND pword = :pword");
+    global $db;
+    $stmt = $db->prepare("SELECT * FROM users WHERE uname = :userName AND pword = :password");
 
     $binds = array(
-        ":uname" => $uname,
-        ":pword" => $pword
+        ":userName" => $uname,
+        ":password" => $pword
     );
     
     $results = false;
