@@ -14,7 +14,7 @@
       //  $password = filter_input(INPUT_POST, 'password');
        
        // your logic here
-if(isset($_POST['uname]) && isset($_POST['pword] && $_POST['uname'] != "" && $_POST['pword'] != ""){
+if(isset($_POST['uname']) && isset($_POST['pword']) && $_POST['uname'] != "" && $_POST['pword'] != ""){
 $result = "";
 $user = checkLogin(filter_input(INPUT_POST, 'uname', sha1(filter_input(INPUT_POST, 'pword')));
 if($user == true){
