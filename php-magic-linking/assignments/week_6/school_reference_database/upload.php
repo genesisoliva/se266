@@ -12,7 +12,7 @@
     header('Location: search.php');
 }
 
-    include_once __DIR__ . "/includes/header.php";
+    include_once __DIR__ . "/header.php";
 
 ?>  
     <h2>Upload File</h2>
@@ -27,6 +27,6 @@
     </form>    
 
 <?php
-    include_once __DIR__ . "/includes/footer.php";
+    include_once __DIR__ . "/footer.php";
 ?>
 <?php include($upFolderPlaceholder . "non-pages/php-include/footer.php"); ?>

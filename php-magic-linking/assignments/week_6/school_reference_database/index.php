@@ -4,31 +4,42 @@
     <?php
     error_reporting(E_ALL ^ E_WARNING);
 
-    session_start();
     include_once __DIR__ . "/models/model_schools.php";
     include_once __DIR__ . "/includes/functions.php";
-    
+    session_start();
+    $error = "false";
 
-    if (isPostRequest()) {
-        $username = filter_input(INPUT_POST, 'userName');
-        $password = filter_input(INPUT_POST, 'password');
-       
-       // your logic here
-       if(checkLogin($username, $password)){
-
-        header('Location: upload.php');
-        $_SESSION['LoggedIn'] = "true";
-
-    }else{
-
-        //header('Location: login.php');
-        $_SESSION['LoggedIn'] = "false"; 
-        echo "Please enter in a valid username and password.";
-
-    }
+    if(isset($_SESSION['use']))
+        {
+             header('Location: search.php');
+        }
+        
+        if(isset($_POST['login']))
+        {
+            
+            $user = $_POST["userName"];
+            
+            $pass = $_POST["pwd"];
+            
+            
+            $result = checkLogin($user, $pass);
+            if($results = true){
+                
+                $_SESSION['use'] = $user;
+                $deleteAllSchools = deleteAllSchools();
+                
+                header('Location: search.php');
+                
+            }
+            
+            else
+            {
+                echo "Wrong Username or Password";
+            }
+            
+        }
         
     
-    }
     ?>
 <head>
     <style type="text/css">
@@ -47,11 +58,11 @@
             </div>
             <div class="rowContainer">
                 <div class="col1">User Name:</div>
-                <div class="col2"><input type="text" name="userName" value="donald"></div> 
+                <div class="col2"><input type="text" name="user" value="donald"></div> 
             </div>
             <div class="rowContainer">
                 <div class="col1">Password:</div>
-                <div class="col2"><input type="password" name="password" value="duck"></div> 
+                <div class="col2"><input type="password" name="pass" value="duck"></div> 
             </div>
               <div class="rowContainer">
                 <div class="col1">&nbsp;</div>

@@ -77,12 +77,12 @@
         return ($results);
    }
    
-   function checkLogin ($id, $userName, $password) {
+   function checkLogin ($userName, $password) {
     global $db;
-   $stmt = $db->prepare("SELECT * FROM users WHERE userName =:userName AND userPassword = :password");
+   $stmt = $db->prepare("SELECT * FROM users WHERE userName =:user AND pwd = :pass");
 
-    $stmt->bindValue(':userName', $userName);
-    $stmt->bindValue(':password', sha1("school-salt".$password));
+    $stmt->bindValue(':user', $userName);
+    $stmt->bindValue(':pwd', $password);
     
     $stmt->execute ();
    
@@ -95,9 +95,6 @@
     //$schools = getSchools ('New England', '', 'RI');
    
     //var_dump ($schools);
-
-    $users = checkLogin('donald', 'duck');
-    var_dump($users);
     
     //$b = checkLogin('donald', 'duck');
     //if ($b) echo "Logged in"; else echo "Not logged in";
