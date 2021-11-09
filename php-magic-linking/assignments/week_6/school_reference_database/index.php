@@ -5,7 +5,6 @@
     error_reporting(E_ALL ^ E_WARNING);
     session_start();
     include_once __DIR__ . "/models/model_schools.php";
-    include_once __DIR__ . "/includes/functions.php";
 
     if (isPostRequest()) {
        
