@@ -31,7 +31,7 @@ $result ="please enter inputs";
 }
    
 }
-
+}
 ?>
 <form method="post" action="index.php">
     <h3>Please Login</h3>
