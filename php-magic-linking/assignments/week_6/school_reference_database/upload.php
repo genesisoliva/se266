@@ -10,7 +10,6 @@
     header('Location: search.php');
 }
 
-    }
     include_once __DIR__ . "/includes/header.php";
 
 ?>  
