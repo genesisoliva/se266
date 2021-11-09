@@ -9,6 +9,7 @@ booleans_and_conditionals Booleans and Conditionals description
 functions Functions description
 fizz_buzz Fizz Buzz description
 week_2 Week 2 page description
+patient_intake_form Patient Intake Form description
 week_3 Week 3 page description
 week_4 Week 4 page description
 week_5 Week 5 page description

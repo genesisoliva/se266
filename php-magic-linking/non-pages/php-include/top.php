@@ -62,11 +62,6 @@
             $upFolderPlaceholder.='../';      //append ../ for how many levels the currrent folder is below the root
         }
 
-        //end path setup
-        // %^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%
-        
-        
-        //454521 Debugging section, ignore if not needed
         $debug = false;  //Localhost says error if not define here, hope it doesn't hurt
         if ($debug) {
             print "<p>Domain" . $domain;
@@ -92,15 +87,11 @@
         $tagLine = " - Your Tagline";  //Change this to match the tagline/slogan of your site. This will appear @ the end of every title page. Like the " - Wikipedia, the free encyclopedia" at the end of every Wikipedia Page
     ?>
     
-    <title><?php echo $pageTitle.$tagLine ; ?></title><!-- print the title by concatenating the current page title, & global site tagline/slogan -->
-    <?php       //454521 ACTIVE PAGE / CURRENT PAGE setion
-        //-----MUST EDIT THIS (ctrl+F & search for  36714768356 ---------------------------------
-        //YOU MUST LIST ALL THE PAGES ON THE SITE! But $pageArrayDropDown1 means anything that's in a 1st level dropdown. You DON'T have to organize them into sepatate arrays for each individual dropdown, just put pages that are the same distance down from the $ROOT_DIRECTORY in appropriate arrays.
-        //THIS ALSO MEANS PUT $ROOT_DIRECTORY IN $pageArrayTop EVEN THOUGH IT'S NOT 1-LEVEL DOWN FROM ITSELF, IT'S ON THE SAME LEVEL OF THE NAV
-        //unused keys are OK, but pages that AREN'T in these arrays aren't so good
+    <title><?php echo $pageTitle.$tagLine ; ?></title>
+    <?php       
         $pageArrayTop = array($ROOT_DIRECTORY, 'assignments', 'php-resources', 'heroku-resources', 'git-resources', 'resources');   //make a list of the ALL pages
         $pageArrayDropDown1 = array ('week1', 'week2', 'week3', 'week4', 'week5', 'week6', 'week7', 'week8', 'week9', 'week10', 'tasks');     //1st level of dropdown
-        $pageArrayDropDown2 = array ('example_1', 'simulate_an_atm', 'patient_ehr_vew_add', 'patient_ehr_crud');
+        $pageArrayDropDown2 = array ('task_c', 'task_d', 'task_e', 'task_f', 'task_g', 'patient_intake_form', 'simulate_an_atm', 'patient_ehr_vew_add', 'patient_ehr_crud', 'School_Reference_Database', 'Patient_Search', 'example_8', 'example_9', 'example_10');
         $activePageArrayTop = array_fill_keys($pageArrayTop, '');       //initialize associative array to hold the page name & the text "activePage" when that page is folder in the URL. ("activePage" is a css class ). Initialize it to have keys matching $pageArrayTop, but empty
         $activePageArrayDropDown1 = array_fill_keys($pageArrayDropDown1, '');
         $activePageArrayDropDown2 = array_fill_keys($pageArrayDropDown2, '');
@@ -139,13 +130,7 @@
         // All other pages are set in the text file "meta_descriptions.txt". ORDER DOESN'T MATTER
         
         $descFile = fopen($upFolderPlaceholder."non-pages/descriptions/meta_descriptions.txt", "r");    //open the description file
-        //FILE CONTENTS MUST MATCH THIS FORMAT:     the first word is the containing-folder, then a space, THEN your description.
-        //1 PAGE PER LINE! So 'Portfolio 1' description is stored: "portfolio_1 This is the Portfolio 1 description". (The "portfolio_1" and the space will be removed, leaving you with whatever comes next as the actual description
-        //If the page isn't in $pageMeteDescriptions but IS IN THE TEXT FILE, it will be added
-        //If a page is in $pageMeteDescriptions but not in the text file, description will be blank
-        //IF IT ISN'T IN EITHER, THERE WILL BE AN ERROR
-        //MAKE SURE TO LIST ALL PAGES
-            //preferably, you add them to $pageArrayTop, $pageArrayDropDown1 etc.
+
         while( ($line = fgets($descFile)) !== false){  //read through file until reaches end, & copy each line to $line variable
             $line = explode(' ', $line, 2);     //Split @ 1st space. Now $line is an array until the end of the loop
             $arrayKey = $line[0];       //this is the 1st word, the folder name (or page name)
@@ -155,15 +140,31 @@
         fclose($descFile);
     ?>
 
-    <meta name="author" content="Your Name"><!-- Add your name/company -->
+    <meta name="author" content="Genesis J Oliva">
     <meta name="description" content="<?php echo $pageMeteDescriptions[$containing_folder] ?>">
 
     <link rel="icon" type="image/png" href="<?php echo $upFolderPlaceholder ?>images/0_components/favicon.png">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href='<?php echo $upFolderPlaceholder ?>non-pages/css/menu.css' rel='stylesheet' type='text/css' media='screen' />
+    <!--<link href='<?php echo $upFolderPlaceholder ?>non-pages/css/menu.css' rel='stylesheet' type='text/css' media='screen' />-->
     <link href='<?php echo $upFolderPlaceholder ?>non-pages/css/style.css' rel='stylesheet' type='text/css' media='screen' />
 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href='<?php echo $upFolderPlaceholder ?>non-pages/css/mega-menu.css' rel='stylesheet' type='text/css' media='screen' />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <script type="text/javascript">
+$(document).ready(function() {
+jQuery(document).ready(function(){
+    $(".dropdown").hover(
+        function() { $('.dropdown-menu', this).stop().fadeIn("fast");
+        },
+        function() { $('.dropdown-menu', this).stop().fadeOut("fast");
+    });
+});
+}
+</script>
     </body>
 </html>
 

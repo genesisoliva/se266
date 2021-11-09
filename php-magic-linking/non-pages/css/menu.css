@@ -103,7 +103,7 @@ nav ul ul ul li {
   padding: 0;
 }
 li > a:after {
-  content: ' +';
+  /*content: ' +';*/
 }
 li > a:only-child:after {
   content: '';

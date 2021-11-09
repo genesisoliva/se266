@@ -1,8 +1,4 @@
 
-    <header>
-        <p></p>
-    </header>
-
     <section class="breadcrumbs">
         <?php
             if($folderCount != 0){      //don't bother with breadcrumbs on the homepage
@@ -21,7 +17,7 @@
     //                }
                 }
 
-                echo '<strong>' . $pageTitle . '</strong>';     //After all the links are printed, just print the current page name (bold is optional)
+                echo '<strong>' . $pageTitle . '</strong>';
             }
         ?>
     </section>
