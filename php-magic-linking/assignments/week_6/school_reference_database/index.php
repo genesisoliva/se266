@@ -10,27 +10,7 @@
     $users = getUsers();
 
     if (isPostRequest()) {
-       // $userName = filter_input(INPUT_POST, 'userName');
-      //  $password = filter_input(INPUT_POST, 'password');
        
-       // your logic here
-if(isset($_POST['uname']) && isset($_POST['pword']) && $_POST['uname'] != "" && $_POST['pword'] != "")
-{
-$result = "";
-$user = checkLogin(filter_input(INPUT_POST, 'uname'), sha1(filter_input(INPUT_POST, 'pword')));
-if($user == true){
-$_SESSION['User'] = filter_input(INPUT_POST, 'uname');
-header('Location: upload.php');
-}
-else{
-$result ="invalid";
-}
-
-}else{
-$result ="please enter inputs";
-}
-   
-}
 }
 ?>
 <form method="post" action="index.php">
