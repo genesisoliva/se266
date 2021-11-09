@@ -40,16 +40,15 @@
        $stmt = $db->query("DELETE FROM schools;");
        return 0;
    }
-
-    function getSchoolCount() {
+   
+  
+   function getSchoolCount() {
        global $db;
 
        $stmt = $db->query("SELECT COUNT(*) AS schoolCount FROM schools");
        $results = $stmt->fetch(PDO::FETCH_ASSOC);   
        return($results['schoolCount']);
    }
-   
-
    function getSchools ($name, $city, $state) {
        global $db;
        
@@ -69,6 +68,8 @@
            $binds['state'] = '%'.$state.'%';
        }
        
+       $sql .= " ORDER BY schoolName ASC";
+
        $stmt = $db->prepare($sql);
       
         $results = array();
@@ -80,8 +81,7 @@
    
    function checkLogin ($userName, $password) {
     global $db;
-    $results = [];
-    $stmt = $db->prepare('SELECT userId FROM users WHERE userName =:userName AND userPassword = :password');
+    $stmt = $db->prepare("SELECT userId FROM users WHERE username =:userName AND userPassword = :password");
 
     $stmt->bindValue(':userName', $userName);
     $stmt->bindValue(':password', sha1($password));
@@ -89,22 +89,20 @@
     $stmt->execute ();
    
     return( $stmt->rowCount() > 0);
+    
 }
 
+function getUsers () {
+    global $db;
+    
+    $results = [];
 
-   // make sure these functions work
-   /*$schools = getSchools ('New England', '', 'RI');
-   
-    var_dump ($schools);
+    $stmt = $db->prepare("SELECT userId, userName, userPassword FROM users ORDER BY userid"); 
     
-    $b = checkLogin('donald', 'duck');
-    if ($b) echo "Logged in"; else echo "Not logged in";
-
-    insertSchoolsFromFile('../uploads/schools.csv');
-    $count= getSchoolCount();
-    echo $count;
-   
-    
-    
-    
-    if ($result) echo "Logged in"; else echo "Not logged in";*/
+    if ( $stmt->execute() && $stmt->rowCount() > 0 ) {
+         $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+             
+     }
+     
+     return ($results);
+}
