@@ -99,8 +99,8 @@
         //THIS ALSO MEANS PUT $ROOT_DIRECTORY IN $pageArrayTop EVEN THOUGH IT'S NOT 1-LEVEL DOWN FROM ITSELF, IT'S ON THE SAME LEVEL OF THE NAV
         //unused keys are OK, but pages that AREN'T in these arrays aren't so good
         $pageArrayTop = array($ROOT_DIRECTORY, 'assignments', 'php-resources', 'heroku-resources', 'git-resources', 'resources');   //make a list of the ALL pages
-        $pageArrayDropDown1 = array ('week1', 'week2', 'week3', 'week4', 'week5', 'week6', 'week7', 'week8', 'week9', 'week10');     //1st level of dropdown
-        $pageArrayDropDown2 = array ('example_1');
+        $pageArrayDropDown1 = array ('week1', 'week2', 'week3', 'week4', 'week5', 'week6', 'week7', 'week8', 'week9', 'week10', 'tasks');     //1st level of dropdown
+        $pageArrayDropDown2 = array ('example_1', 'simulate_an_atm', 'patient_ehr_vew_add', 'patient_ehr_crud');
         $activePageArrayTop = array_fill_keys($pageArrayTop, '');       //initialize associative array to hold the page name & the text "activePage" when that page is folder in the URL. ("activePage" is a css class ). Initialize it to have keys matching $pageArrayTop, but empty
         $activePageArrayDropDown1 = array_fill_keys($pageArrayDropDown1, '');
         $activePageArrayDropDown2 = array_fill_keys($pageArrayDropDown2, '');

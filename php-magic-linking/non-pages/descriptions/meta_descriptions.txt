@@ -1,17 +1,28 @@
 index Main site description for homepage
 assignments Assignments page description
 resources resources page description
-week1 Week 1 page description
-week2 Week 2 page description
-week3 Week 3 page description
-week4 Week 4 page description
-week5 Week 5 page description
-week6 Week 6 page description
-week7 Week 7 page description
-week8 Week 8 page description
-week9 Week 9 page description
-week10 Week 10 page description
-example_1 Example 1 description
-git Git page description
+week_1 Week 1 page description
+tasks Tasks page description
+basic_PHP_and_arrays Basic PHP and Arrays description
+associative_arrays associative_arrays description
+booleans_and_conditionals Booleans and Conditionals description
+functions Functions description
+fizz_buzz Fizz Buzz description
+week_2 Week 2 page description
+week_3 Week 3 page description
+week_4 Week 4 page description
+week_5 Week 5 page description
+week_6 Week 6 page description
+week_7 Week 7 page description
+week_8 Week 8 page description
+week_9 Week 9 page description
+week_10 Week 10 page description
+simulate_an_atm Simulate an ATM description
+patient_ehr_vew_add patient EHR View And description
+patient_ehr_crud Patient EHR CRUD description
+school_reference_database School Reference Database description
+patient_search Patient Search description
+git Git description
 heroku page Heroku description
 php Php page description
+resources Resources page description
