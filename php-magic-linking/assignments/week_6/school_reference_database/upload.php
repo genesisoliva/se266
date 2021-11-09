@@ -6,6 +6,12 @@
         // upload the file to uploads folder and then call insertSchoolsFromFile 
         
         //redirect to search.php
+
+if (isset ($_FILES['file1'])) {
+    echo "File uploaded";
+    header('Location: search.php');
+}
+
     }
     include_once __DIR__ . "/includes/header.php";
 
