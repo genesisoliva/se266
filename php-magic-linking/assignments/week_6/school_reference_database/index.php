@@ -11,7 +11,7 @@
 
     if (isPostRequest()) {
         $username = filter_input(INPUT_POST, 'userName');
-        $PW = filter_input(INPUT_POST, 'password');
+        $password = filter_input(INPUT_POST, 'password');
        
        // your logic here
 
@@ -27,9 +27,9 @@
         if(isset($_POST['login']))
         {
             
-            $username = $_POST["userName"];
+            $userName = $_POST["userName"];
             
-            $PW = $_POST["password"];
+            $password = $_POST["password"];
             
             
             $result = checkLogin($userName, $password);
@@ -56,7 +56,7 @@
             User Name:<input type="text" name="userName" value="<?=$username="donald";?>">
             </div>
             <div class="rowContainer">
-                Password:<input type="password" name="password" value="<?=$PW="duck";?>">
+                Password:<input type="password" name="password" value="<?=$password="duck";?>">
             </div>
               <div class="rowContainer">
                   <input type="submit" name="login" value="Login" class="btn btn-warning">
