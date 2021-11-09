@@ -33,7 +33,7 @@ $result ="please enter inputs";
 }
 
 ?>
-<form method="post" action="#">
+<form method="post" action="index.php">
     <h3>Please Login</h3>
             <div class="rowContainer">
             User Name:<input type="text" name="uname" value="<?=$username="donald";?>">
