@@ -15,7 +15,7 @@ session_start();
     
     if(!isset($_SESSION['use'])) 
        {
-           header('Location: login.php');  
+           header('Location: index.php');  
        }
           echo "Welcome ";
           echo $_SESSION['use'];
