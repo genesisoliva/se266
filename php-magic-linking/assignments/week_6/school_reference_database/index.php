@@ -53,10 +53,10 @@
 <form method="post" action="index.php">
     <h3>Please Login</h3>
             <div class="rowContainer">
-            User Name:<input type="text" name="userName" value="<?=$username="donald";?>">
+            User Name:<input type="text" name="uname" value="<?=$username="donald";?>">
             </div>
             <div class="rowContainer">
-                Password:<input type="password" name="password" value="<?=$password="duck";?>">
+                Password:<input type="password" name="pword" value="<?=$password="duck";?>">
             </div>
               <div class="rowContainer">
                   <input type="submit" name="login" value="Login" class="btn btn-warning">
