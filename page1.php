@@ -1,10 +1,7 @@
-<?php
-  session_start();
-  $_SESSION['loggedin'] = true;
-  $_SESSION['username'] = $username;
-  $_SESSION['start'] = time();
-  $_SESSION['expire'] = $_SESSION['start'] + (5 * 60);
-  echo "Bienvenido! " . $_SESSION['username'];
-
-  header('location:page2.php');
-  exit();
+<form action="page1.php" method="post"> 
+    User Name:<br> 
+    <input type="text" name="username"><br><br> 
+    Password:<br> 
+    <input type="password" name="password"><br><br> 
+    <input type="submit" name="submit" value="Login"> 
+</form>
