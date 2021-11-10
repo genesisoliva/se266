@@ -1,8 +1,6 @@
-<?php 
-session_start(); 
-if(!$_SESSION['logged']){ 
-    header("Location: page1.php"); 
-    exit; 
-} 
-echo 'Welcome, '.$_SESSION['username']; 
-?>
+<?php
+  session_start(); /* Starts the session */
+  session_destroy(); /* Destroy started session */
+
+  header("location:page1.php");  /* Redirect to login page */
+  exit;
