@@ -7,38 +7,6 @@
     include_once __DIR__ . "/models/model_schools.php";
     include_once __DIR__ . "/includes/functions.php";
     session_start();
-    $error = "false";
-
-    if(isset($_SESSION['use']))
-        {
-             header('Location: search.php');
-        }
-        
-        if(isset($_POST['login']))
-        {
-            
-            $user = $_POST["userName"];
-            
-            $pass = $_POST["pwd"];
-            
-            
-            $result = checkLogin($user, $pass);
-            if($results = true){
-                
-                $_SESSION['use'] = $user;
-                $deleteAllSchools = deleteAllSchools();
-                
-                header('Location: search.php');
-                
-            }
-            
-            else
-            {
-                echo "Wrong Username or Password";
-            }
-            
-        }
-        
     
     ?>
 <head>
