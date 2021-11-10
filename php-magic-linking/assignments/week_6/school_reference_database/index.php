@@ -4,22 +4,23 @@
     <?php
 
     include_once __DIR__ . "/models/model_schools.php";
-    include_once __DIR__ . "/includes/functions.php";
+    //include_once __DIR__ . "/includes/functions.php";
     session_start();
-$error = false;
-if (isPostRequest()) {
-        $username = filter_input(INPUT_POST, 'username');
-        $password = filter_input(INPUT_POST, 'password');
+//$error = false;
+//if (isPostRequest()) {
+        //$username = filter_input(INPUT_POST, 'username');
+       // $password = filter_input(INPUT_POST, 'password');
+
+if(isset($_POST['Submit'])){
 
         if(checkLogin($username, $password)){
             header('Location: upload.php');
-            $_SESSION['Login'] = "true";
-
+            $_SESSION['Login'] = true;
+exit;
         }else{
 
-            $_SESSION['Login'] = "false"; 
+            $_SESSION['Login'] = false; 
             echo "Please enter in a valid username and password.";
-
         }
     }
 
