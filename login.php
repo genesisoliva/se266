@@ -41,7 +41,7 @@ session_start();
             $result = password_verify($_POST['Password'], $Password);
 
             /* Check if form's username and password matches */
-            if( ($_POST['Username'] == $Username) && (result == $true) ) {
+            if( ($_POST['Username'] == $Username) && ($result == $true) ) {
 
                 /* Success: Set session variables and redirect to protected page */
                 $_SESSION['Username'] = $Username;
