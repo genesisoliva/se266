@@ -4,17 +4,10 @@
    
     session_start();
     
-   // if (isPostRequest()) {
-    // your search logic goes here. Call getSchools with the appropriate arguments
-      
-    //}
-
-    
     $schoolName = "";
     $city = "";
     $state = "";
     $results = [];
-    $show = false;
 
 
     if (isPostRequest()) {
@@ -23,12 +16,15 @@
         $city = filter_input(INPUT_POST, 'city');
         $state = filter_input(INPUT_POST, 'state');
     
-        $show = true;
         $results = getSchools($schoolName, $city, $state);
-
          
     }  
 ?>
+
+<?php
+            
+                include_once __DIR__ . "/header.php";
+            ?>
 
             <h2>Search Schools</h2>
             <form method="post" action="search.php">
@@ -62,7 +58,7 @@
             </thead>
             <tbody>
             
-            <?php foreach ($getSchools as $row): ?>
+            <?php foreach ($results as $row): ?>
                 <tr>
                     <td><?php echo $row['schoolName']; ?></td>
                     <td><?php echo $row['schoolCity']; ?></td>
@@ -75,6 +71,6 @@
 
             <?php
             
-                include_once __DIR__ . "/includes/footer.php";
+                include_once __DIR__ . "/footer.php";
             ?>
         

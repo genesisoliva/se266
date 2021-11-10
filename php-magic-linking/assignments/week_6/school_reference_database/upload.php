@@ -1,10 +1,12 @@
-<?php include("../../../non-pages/php-include/top.php"); ?>
-	    <h1 class="cent"><?php echo $pageTitle ?></h1>
+<?php 
+    session_start();
+    //include("../../../non-pages/php-include/top.php"); ?>
+	    <!--<h1 class="cent"><?php echo $pageTitle ?></h1>-->
 <?php
     include_once __DIR__ . "/models/model_schools.php";
     include_once __DIR__ . "/includes/functions.php";
 
-    session_start();
+    
     if($_SESSION['Login'] == false){ /* Redirects user to Login.php if not logged in */
     header("location:index.php");
 	  exit;
@@ -21,9 +23,8 @@
 //redirect to search.php
 
             header('Location: search.php');
-            //exit; 
+            exit; 
         } 
-}
 
     include_once __DIR__ . "/header.php";
 
@@ -39,7 +40,7 @@
 
 <?php
                     if(isset($_FILES['file1']))
-                        echo "<div id = 'font-family:itimFont;'>File Uploaded!</div>";
+                        echo "File Uploaded!";
                 ?>
 
     </form>    
@@ -47,4 +48,4 @@
 <?php
     include_once __DIR__ . "/footer.php";
 ?>
-<?php include($upFolderPlaceholder . "non-pages/php-include/footer.php"); ?>
+<?php //include($upFolderPlaceholder . "non-pages/php-include/footer.php"); ?>

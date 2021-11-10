@@ -1,13 +1,5 @@
 <?php
     // put your session logic here
-$session_start();
-if($_SESSION['Login'] == "true"{
-header('Location: index.php');
-}
-else{
-
-header('Location: logout.php');
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
