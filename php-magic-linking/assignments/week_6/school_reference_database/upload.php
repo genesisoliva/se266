@@ -4,7 +4,7 @@
     include_once __DIR__ . "/models/model_schools.php";
     //include_once __DIR__ . "/includes/functions.php";
 
-    //session_start();
+    session_start();
     
     if (isset ($_FILES['file1'])) {
         // upload the file to uploads folder and then call insertSchoolsFromFile 
