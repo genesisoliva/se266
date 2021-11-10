@@ -4,10 +4,10 @@
     <?php
 
     include_once __DIR__ . "/models/model_schools.php";
-    //include_once __DIR__ . "/includes/functions.php";
+    /*include_once __DIR__ . "/includes/functions.php";
     session_start();
 
-/*if (isPostRequest()) {
+if (isPostRequest()) {
         $username = filter_input(INPUT_POST, 'username');
         $password = filter_input(INPUT_POST, 'password');
 
