@@ -49,7 +49,7 @@ session_start();
 $_SESSION['Password'] = $Password;
 
                 $_SESSION['Active'] = true;
-                header("location:upload.php");
+                header("location:login.php");
                 exit;
 
             } else {
