@@ -4,10 +4,10 @@
     <?php
 
     include_once __DIR__ . "/models/model_schools.php";
-    include_once __DIR__ . "/includes/functions.php";
+    //include_once __DIR__ . "/includes/functions.php";
     session_start();
 
-if (isPostRequest()) {
+/*if (isPostRequest()) {
         $username = filter_input(INPUT_POST, 'username');
         $password = filter_input(INPUT_POST, 'password');
 
@@ -21,6 +21,15 @@ if (isPostRequest()) {
             echo "Please enter in a valid username and password.";
 
         }
+    }*/
+
+session_start();
+    if (filter_input(INPUT_SERVER, 'REQUEST_METHOD') === 'POST')
+        if (checkLogin($_POST['username'],$_POST['password']))
+            $_SESSION['loggedIn'] = "yes";
+    if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == "yes") {
+        deleteAllSchools();
+        header("Location: upload.php");
     }
 
     
