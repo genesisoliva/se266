@@ -28,7 +28,8 @@ session_start();
         if (checkLogin($_POST['username'],$_POST['password'])){
             $_SESSION['loggedIn'] = "yes";}
 else{
-$_SESSION['loggedIn'] = "no";}
+$_SESSION['loggedIn'] = "no";
+echo "sucks";}
 }
     if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == "yes") {
         deleteAllSchools();
