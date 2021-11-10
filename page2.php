@@ -29,10 +29,10 @@ if(isset($_POST['submit'])){
         $_SESSION['fname'] = $row['first_name']; 
         $_SESSION['lname'] = $row['last_name']; 
         $_SESSION['logged'] = TRUE; 
-        header("Location: users_page.php"); // Modify to go to the page you would like 
+        header("Location: page3.php"); // Modify to go to the page you would like 
         exit; 
     }else{ 
-        header("Location: login_page.php"); 
+        header("Location: page1.php"); 
         exit; 
     } 
 }else{    //If the form button wasn't submitted go to the index page, or login page 
