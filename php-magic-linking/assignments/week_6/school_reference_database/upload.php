@@ -2,12 +2,12 @@
 	    <h1 class="cent"><?php echo $pageTitle ?></h1>
 <?php
     include_once __DIR__ . "/models/model_schools.php";
-    //include_once __DIR__ . "/includes/functions.php";
+    include_once __DIR__ . "/includes/functions.php";
 
     session_start();
     
     if (isset ($_FILES['file1'])) {
-        // upload the file to uploads folder and then call insertSchoolsFromFile 
+        //upload the file to uploads folder and then call insertSchoolsFromFile 
 
             $tmp_name = $_FILES['file1']['tmp_name'];
             $path = getcwd() .DIRECTORY_SEPARATOR . 'uploads';
