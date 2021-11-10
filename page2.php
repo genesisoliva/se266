@@ -1,3 +1,4 @@
+<?php
 if(isset($_POST['submit'])){ 
     $dbHost = "localhost";        //Location Of Database usually its localhost 
     $dbUser = "xxxx";            //Database User Name 
