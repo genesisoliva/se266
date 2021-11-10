@@ -7,6 +7,25 @@
     include_once __DIR__ . "/models/model_schools.php";
     include_once __DIR__ . "/includes/functions.php";
     session_start();
+
+if (isPostRequest()) {
+        $username = filter_input(INPUT_POST, 'userName');
+        $password = filter_input(INPUT_POST, 'password');
+
+        if(checkLogin($username, $password)){
+
+            header('Location: upload.php');
+            $_SESSION['LoggedIn'] = "true";
+
+        }else{
+
+            //header('Location: login.php');
+            $_SESSION['LoggedIn'] = "false"; 
+            echo "Please enter in a valid username and password.";
+
+        }
+    }
+
     
     ?>
 <head>
