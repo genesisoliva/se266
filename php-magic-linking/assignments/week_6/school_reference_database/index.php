@@ -12,10 +12,13 @@ if (isPostRequest()) {
         $username = filter_input(INPUT_POST, 'username');
        $password = filter_input(INPUT_POST, 'password');
 
-        if(checkLogin($username, $password)){
+       $new = sha1("school-salt".$password);
+       $password = "";
+
+        if(checkLogin($username, $new)){
             header('Location: upload.php');
             $_SESSION['Login'] = true;
-exit;
+           // deleteAllSchools ();
         }else{
 
             $_SESSION['Login'] = false; 
