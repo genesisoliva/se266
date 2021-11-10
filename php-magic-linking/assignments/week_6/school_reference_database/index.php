@@ -35,7 +35,7 @@ $_SESSION['loggedIn'] = "no";}
         header("Location: upload.php");
     }
 else{
-echo "bye";
+echo "bye";}
     
     ?>
 <head>
