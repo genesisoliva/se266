@@ -1,5 +1,9 @@
 <?php
     // put your session logic here
+$session_start();
+if($_SESSION['LoggedIn']== "false"{
+header('Location: index.php');
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
