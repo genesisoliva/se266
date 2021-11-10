@@ -49,7 +49,7 @@ session_start();
 $_SESSION['Password'] = $Password;
 
                 $_SESSION['Active'] = true;
-                header("location:login.php");
+                header("location:index.php");
                 exit;
 
             } else {
