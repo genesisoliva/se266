@@ -4,27 +4,20 @@
     <meta charset="UTF-8">
     <meta name="robots" content="index, follow">
     
-    <?php   //454521 URL SET_UP, the important stuff for linking
-//=============IMPORTANT variable $ROOT_DIRECTORY must be where the project is housed (where the homepage is). ==========================
-        $ROOT_DIRECTORY = "php-magic-linking";        //MUST CHANGE THIS OR THE ENTIRE PROJECT WON'T WORK! Default is "php-magic-linking" because that's the name of the git repo, but you can rename the root folder and everything else will work as long as this variable matches the new name
-        
-        //======Magical code to display PHP errors instead of simply a blank page========\\
-        //error_reporting(E_ALL);           //longer version = 2 lines
-        //ini_set('display_errors', '1');
-        ini_set('error_reporting', E_ALL);  //short version
-        
-        
-        // %^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%
-        // PATH SETUP, (making sure it uses https)
-        $domain = "http://";     //commenting out next 5 lines didn't work
-        if (isset($_SERVER['HTTPS'])) {   //OLD WAY, DIDN'T USE
+    <?php
+        $ROOT_DIRECTORY = "php-magic-linking";      
+
+        ini_set('error_reporting', E_ALL); 
+
+        $domain = "http://";
+        if (isset($_SERVER['HTTPS'])) {
             if ($_SERVER['HTTPS']) {
                 $domain = "https://";
             }
         }
         
         $server = htmlentities($_SERVER['SERVER_NAME'], ENT_QUOTES, "UTF-8");
-        $domain .= $server;     //concatenate server to domain yielding "http://[your_domain_here]" or "https://[your_domain_here]"
+        $domain .= $server;     
         
         $phpSelf = htmlentities($_SERVER['PHP_SELF'], ENT_QUOTES, "UTF-8");     // Yields string of the url AFTER the domain (so just the folders & exact file). Use htmlentites to remove any suspicous vales that someone may try to pass in. htmlentites helps avoid security issues. //## $_SERVER['PHP_SELF'] returns full url path and file extension, htmlentities() just converts special characters
         $path_parts = pathinfo($phpSelf);       //get an associative array of the url with dirname, basename, extension & filename
@@ -70,10 +63,7 @@
             print_r($path_parts);
             print "</pre>";
         }
-        //end debugging
-        
-        
-        //454521 CONVERTING CONTAIING FOLDERS TO PAGE NAMES section
+   
         function convFolder2PgTitle($folder2Convert){       //function takes in a string (folder name) & makes it more readable. 
             $pgTitleOutput = str_replace("-" , " / ", $folder2Convert);     //replace dashes with slashes and spaces
             $pgTitleOutput = str_replace("_" , " ", $pgTitleOutput);        //replace underscores with spaces (multi-word title)
@@ -84,7 +74,7 @@
             $pageTitle = "Home";
         }
         
-        $tagLine = " - Your Tagline";  //Change this to match the tagline/slogan of your site. This will appear @ the end of every title page. Like the " - Wikipedia, the free encyclopedia" at the end of every Wikipedia Page
+        $tagLine = " - Genesis J. Oliva";
     ?>
     
     <title><?php echo $pageTitle.$tagLine ; ?></title>
@@ -92,12 +82,10 @@
         $pageArrayTop = array($ROOT_DIRECTORY, 'assignments', 'php-resources', 'heroku-resources', 'git-resources', 'resources');   //make a list of the ALL pages
         $pageArrayDropDown1 = array ('week1', 'week2', 'week3', 'week4', 'week5', 'week6', 'week7', 'week8', 'week9', 'week10', 'tasks');     //1st level of dropdown
         $pageArrayDropDown2 = array ('task_c', 'task_d', 'task_e', 'task_f', 'task_g', 'patient_intake_form', 'simulate_an_atm', 'patient_ehr_vew_add', 'patient_ehr_crud', 'School_Reference_Database', 'Patient_Search', 'example_8', 'example_9', 'example_10');
-        $activePageArrayTop = array_fill_keys($pageArrayTop, '');       //initialize associative array to hold the page name & the text "activePage" when that page is folder in the URL. ("activePage" is a css class ). Initialize it to have keys matching $pageArrayTop, but empty
+        $activePageArrayTop = array_fill_keys($pageArrayTop, '');
         $activePageArrayDropDown1 = array_fill_keys($pageArrayDropDown1, '');
         $activePageArrayDropDown2 = array_fill_keys($pageArrayDropDown2, '');
 
-        //This function analyzes a level of the folder tree (whether its top level nav, or a dropdown) to find any current active folders in the URL. We want we want an indicator to the user that knows where they are. This is done by printing the class="activePage" on active links in the nav menu, then styling the class "activePage" with css to have a highlight background color. So if it's the homepage, the "Home" link will be highlighted. If it's a dropdown, all levels of nav required to get to that page ar highlighted. Like the "Example 1" page is in "/portfolio/examples/example_1/index.php", so the top-level link to "Portfolio", the 1st-level dropdown to "Examples" and the 2nd-level dropdown to "Example 1" are all highlighted.
-        //$folderLevelToCheck is important & must match the level of the arrays that are being passed in. For instance, to analyze $pageArrayTop (the links on the top-level nav), you must pass in 0 as the 4th argument when calling the function
         function fillActivePageArrays(&$arrayOfPages, &$activeArrayToFill, $split_url_adjusted2, $folderLevelToCheck){  //use & to pass arrays BY REFERENCE
             for($i = 0; $i < count($arrayOfPages); $i++){      //loop through the page array that was passed in
                 if($split_url_adjusted2[$folderLevelToCheck] == $arrayOfPages[$i]){   //if a folder of the URL matches the key stored in the page Array
@@ -107,9 +95,8 @@
             }   //at this point, $activeArrayToFill should have '' stored in all indecies & 'activePage' in 1 place
         }
         
-        //call function to fill arrays with "activePage" in correct place. But only bother analyzing multiple folder levels if the current page is a dropdown. Homepage is a special case, but for all deeper folder levels, they check >=. For instance, the "About Page" is a top-level page, so dropdowns shouldn't even be analyzed. But "Portfolio 1" is a Level 1 Dropdown so 2 levels of folders should be searched to find 'activePage'
         if($folderCount == 0){      //special case for the homepage. Since it's in $ROOT_DIRETORY, it's essentialy 0 folders down from itself
-            $activePageArrayTop[$ROOT_DIRECTORY] = 'activePage';    //must hardcode activePage
+            $activePageArrayTop[$ROOT_DIRECTORY] = 'activePage';
         }
         if($folderCount >= 1){
             fillActivePageArrays($pageArrayTop, $activePageArrayTop, $split_url_adjusted, 1);
@@ -119,15 +106,14 @@
         }
         if($folderCount >= 3){
             fillActivePageArrays($pageArrayDropDown2, $activePageArrayDropDown2, $split_url_adjusted, 3);
-        }   //add more if statements for deeper level dropdowns (if needed)
+        } 
     ?>
         
-    <?php   //454521 META DESCRIPTIONS section
+    <?php   
         $pagesArrayAll = array_merge($pageArrayTop, $pageArrayDropDown1, $pageArrayDropDown2);      //list of all pages (folders on the entire site)
         $pageMeteDescriptions = array_fill_keys($pagesArrayAll, '');    //fill the array with empty descriptions in case the text file doesn't have them
         unset($pageMeteDescriptions[$ROOT_DIRECTORY]);      //the line abovve copied the value of $ROOT_DIRECTORY as the homepage description key, but we want to refer to it as "index" instead. So, remove this key & add a new blank one
         $pageMeteDescriptions['index'] = '';
-        // All other pages are set in the text file "meta_descriptions.txt". ORDER DOESN'T MATTER
         
         $descFile = fopen($upFolderPlaceholder."non-pages/descriptions/meta_descriptions.txt", "r");    //open the description file
 
@@ -156,18 +142,8 @@
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 
-    <script type="text/javascript">
-/*$(document).ready(function() {
-jQuery(document).ready(function(){
-    $(".dropdown").hover(
-        function() { $('.dropdown-menu', this).stop().fadeIn("fast");
-        },
-        function() { $('.dropdown-menu', this).stop().fadeOut("fast");
-    });
-});
-}*/
-
-$(function(){
+    <script href='<?php echo $upFolderPlaceholder ?>non-pages/javascript/script.js' type="text/javascript" >
+    $(function(){
 	$(".dropdown-menu > li > a.trigger").on("click",function(e){
 		var current=$(this).next();
 		var grandparent=$(this).parent().parent();
@@ -184,16 +160,16 @@ $(function(){
 		root.find('.sub-menu:visible').hide();
 	});
 });
-</script>
+    </script>
     </body>
 </html>
 
 </head>
 <?php
-    echo '<body id="'.$containing_folder.'">';      //prints a unique id for each page
+    echo '<body id="'.$containing_folder.'">';
 ?>
 
     <?php
-        include ($upFolderPlaceholder."non-pages/php-include/nav.php");
         include ($upFolderPlaceholder."non-pages/php-include/header.php");
+        include ($upFolderPlaceholder."non-pages/php-include/breadcrumbs.php");
     ?>

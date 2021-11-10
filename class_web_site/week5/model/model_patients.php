@@ -26,7 +26,7 @@
          patientLastName = :patientLastName, patientMarried = :patientMarried, patientBirthDate = :patientBirthDate");
        
         $stmt->bindValue(':patientFirstName', $first);
-        $stmt->bindValue(':patientMiddlleName', $middle);
+        $stmt->bindValue(':patientMiddleName', $middle);
         $stmt->bindValue(':patientLastName', $last);
         $stmt->bindValue(':patientMarried', $married);
         $stmt->bindValue(':patientBirthDate', $birthDate);

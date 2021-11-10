@@ -18,8 +18,8 @@
       color:#fff;
   }
   .navbar-default .navbar-nav > .dropdown > a .caret{
-      border-top-color: #fff;
-      border-bottom-color: #fff;
+     /* border-top-color: #fff;
+      border-bottom-color: #fff;*/
   }
   .navbar-default .navbar-brand{
       color:#fff;

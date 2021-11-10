@@ -1,10 +1,6 @@
-
-/*outline a few sections of the page to show differentiations */
-nav, header, #actualMainContent, footer{
-    border: 0px solid black;
+body{
+    margin: 8px !important;
 }
-
-
 .skipToContent {        /*hides something from sighted users. Position absolute removes from flow, negative left sends way off screen, top:auto=just in case left is ignored, sometimes need both */
   position: absolute;
   left: -10000px;
@@ -50,5 +46,13 @@ nav, header, #actualMainContent, footer{
 {	border-left: 5px solid #ffaf46;
 }
 .left-caret:after
-{	border-right: 5px solid #ffaf46;
+{	border-right: 5px solid black;
 }
+nav a:hover,
+nav ul ul ul a {
+  background-color: #1ebb31;
+}
+.activePage {
+    background: #178f26;
+    color: white !important;
+  }

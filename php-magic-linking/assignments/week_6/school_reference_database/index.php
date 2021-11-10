@@ -2,7 +2,6 @@
 	    <h1 class="cent"><?php echo $pageTitle ?></h1>
 		
     <?php
-    error_reporting(E_ALL ^ E_WARNING);
 
     include_once __DIR__ . "/models/model_schools.php";
     include_once __DIR__ . "/includes/functions.php";
@@ -13,13 +12,11 @@ if (isPostRequest()) {
         $password = filter_input(INPUT_POST, 'password');
 
         if(checkLogin($username, $password)){
-
             header('Location: upload.php');
             $_SESSION['LoggedIn'] = "true";
 
         }else{
 
-            //header('Location: login.php');
             $_SESSION['LoggedIn'] = "false"; 
             echo "Please enter in a valid username and password.";
 

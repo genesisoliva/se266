@@ -2,40 +2,32 @@
     include_once __DIR__ . "/models/model_schools.php";
     include_once __DIR__ . "/includes/functions.php";
    
+    session_start();
     
-     $schoolName = "";
-    $city = "";
-    $state = "";
-    if (isPostRequest()) {
+   // if (isPostRequest()) {
     // your search logic goes here. Call getSchools with the appropriate arguments
       
-    }
+    //}
 
-session_start();
     
-    if(!isset($_SESSION['use'])) 
-       {
-           header('Location: index.php');  
-       }
-          echo "Welcome ";
-          echo $_SESSION['use'];
+    $schoolName = "";
+    $city = "";
+    $state = "";
+    $results = [];
+    $show = false;
 
-          echo "<a href='logout.php'> Logout</a> ";
-          
-          include __DIR__ . '/models/model_schools.php';
-          include __DIR__ . '/includes/functions.php';
-          
-          $school = filter_input(INPUT_POST, 'schoolName');
-          $city = filter_input(INPUT_POST, 'schoolCity');
-          $state = filter_input(INPUT_POST, 'schoolState');
-          
-          $getSchools = getSchools($school, $city, $state);
-          
-          
-          
-          
 
-    include_once __DIR__ . "/includes/header.php";
+    if (isPostRequest()) {
+
+        $schoolName = filter_input(INPUT_POST, 'schoolName');
+        $city = filter_input(INPUT_POST, 'city');
+        $state = filter_input(INPUT_POST, 'state');
+    
+        $show = true;
+        $results = getSchools($schoolName, $city, $state);
+
+         
+    }  
 ?>
 
             <h2>Search Schools</h2>
