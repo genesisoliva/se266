@@ -9,7 +9,7 @@
     session_start();
 
 if (isPostRequest()) {
-        $username = filter_input(INPUT_POST, 'userName');
+        $username = filter_input(INPUT_POST, 'username');
         $password = filter_input(INPUT_POST, 'password');
 
         if(checkLogin($username, $password)){
@@ -45,11 +45,11 @@ if (isPostRequest()) {
             </div>
             <div class="rowContainer">
                 <div class="col1">User Name:</div>
-                <div class="col2"><input type="text" name="user" value="donald"></div> 
+                <div class="col2"><input type="text" name="username" value="donald"></div> 
             </div>
             <div class="rowContainer">
                 <div class="col1">Password:</div>
-                <div class="col2"><input type="password" name="pass" value="duck"></div> 
+                <div class="col2"><input type="password" name="password" value="duck"></div> 
             </div>
               <div class="rowContainer">
                 <div class="col1">&nbsp;</div>
