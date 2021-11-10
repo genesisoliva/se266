@@ -24,7 +24,7 @@ session_start();
         <label for="inputUsername" class="sr-only">Username</label>
         <input name="Username" type="username" id="inputUsername" class="form-control" placeholder="Username" required autofocus>
         <label for="inputPassword" class="sr-only">Password</label>
-        <input name="Password" type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+        <input name="Password" type="text" id="inputPassword" class="form-control" placeholder="Password" required>
         <div class="checkbox">
             <label>
                 <input type="checkbox" value="remember-me"> Remember me
