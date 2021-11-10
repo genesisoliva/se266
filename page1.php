@@ -45,6 +45,7 @@ session_start();
 
                 /* Success: Set session variables and redirect to protected page */
                 $_SESSION['Username'] = $Username;
+$_SESSION['Password'] = $Password;
 
                 $_SESSION['Active'] = true;
                 header("location:page2.php");
