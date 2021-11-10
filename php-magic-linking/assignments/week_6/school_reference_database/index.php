@@ -13,11 +13,11 @@ if (isPostRequest()) {
 
         if(checkLogin($username, $password)){
             header('Location: upload.php');
-            $_SESSION['LoggedIn'] = "true";
+            $_SESSION['Login'] = "true";
 
         }else{
 
-            $_SESSION['LoggedIn'] = "false"; 
+            $_SESSION['Login'] = "false"; 
             echo "Please enter in a valid username and password.";
 
         }
@@ -38,6 +38,7 @@ if (isPostRequest()) {
         <form method="post" action="index.php">
            
             <div class="rowContainer">
+
                 <h3>Please Login</h3>
             </div>
             <div class="rowContainer">
