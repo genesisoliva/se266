@@ -5,7 +5,10 @@
     include_once __DIR__ . "/includes/functions.php";
 
     session_start();
-    
+    if($_SESSION['Login'] == false){ /* Redirects user to Login.php if not logged in */
+    header("location:index.php");
+	  exit;
+  }
     if (isset ($_FILES['file1'])) {
         //upload the file to uploads folder and then call insertSchoolsFromFile 
 
