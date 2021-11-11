@@ -8,23 +8,6 @@
     include_once __DIR__ . "/models/model_schools.php";
     include_once __DIR__ . "/includes/functions.php";
     
-if (isPostRequest()) {
-        $username = filter_input(INPUT_POST, 'username');
-       $password = filter_input(INPUT_POST, 'password');
-
-       $new = sha1("school-salt".$password);
-       $password = "";
-
-        if(checkLogin($username, $new)){
-            header('Location: upload.php');
-            $_SESSION['Login'] = true;
-           // deleteAllSchools ();
-        }else{
-
-            $_SESSION['Login'] = false; 
-            //echo "Please enter in a valid username and password.";
-        }
-    }
 
     
     ?>
@@ -57,8 +40,22 @@ if (isPostRequest()) {
                 <div class="col2"><input type="submit" name="login" value="Login" class="btn btn-warning"></div> 
             </div>
             <?php
-            if($_SESSION['Login'] == false){
-                echo "<div class='error'>Please enter in a valid username and password.</div>";
+            if (isPostRequest()) {
+                $username = filter_input(INPUT_POST, 'username');
+               $password = filter_input(INPUT_POST, 'password');
+        
+               $new = sha1("school-salt".$password);
+               $password = "";
+        
+                if(checkLogin($username, $new)){
+                    header('Location: upload.php');
+                    $_SESSION['Login'] = true;
+                   // deleteAllSchools ();
+                }else{
+        
+                    $_SESSION['Login'] = false; 
+                    echo "<div class='error'>Please enter in a valid username and password.</div>";
+                }
             }
             ?>
             
