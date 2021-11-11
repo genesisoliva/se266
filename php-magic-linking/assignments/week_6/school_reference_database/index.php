@@ -7,7 +7,7 @@
 
     include_once __DIR__ . "/models/model_schools.php";
     include_once __DIR__ . "/includes/functions.php";
-//$error = false;
+    
 if (isPostRequest()) {
         $username = filter_input(INPUT_POST, 'username');
        $password = filter_input(INPUT_POST, 'password');
@@ -22,7 +22,7 @@ if (isPostRequest()) {
         }else{
 
             $_SESSION['Login'] = false; 
-            echo "Please enter in a valid username and password.";
+            //echo "Please enter in a valid username and password.";
         }
     }
 
@@ -56,6 +56,11 @@ if (isPostRequest()) {
                 <div class="col1">&nbsp;</div>
                 <div class="col2"><input type="submit" name="login" value="Login" class="btn btn-warning"></div> 
             </div>
+            <?php
+            if($_SESSION['Login'] == false){
+                echo "<div class='error'>Please enter in a valid username and password.</div>";
+            }
+            ?>
             
         </form>
         

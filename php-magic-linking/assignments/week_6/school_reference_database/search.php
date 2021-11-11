@@ -4,8 +4,6 @@
    
     session_start();
 
-
-    
     $schoolName = "";
     $city = "";
     $state = "";
@@ -25,7 +23,7 @@
 
 <?php
             
-                include_once __DIR__ . "/header.php";
+                include_once __DIR__ . "/includes/header.php";
             ?>
 
             <h2>Search Schools</h2>
@@ -73,6 +71,6 @@
 
             <?php
             
-                include_once __DIR__ . "/footer.php";
+                include_once __DIR__ . "/includes/footer.php";
             ?>
         

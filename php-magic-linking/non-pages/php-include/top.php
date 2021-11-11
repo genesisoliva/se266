@@ -19,8 +19,9 @@
         $server = htmlentities($_SERVER['SERVER_NAME'], ENT_QUOTES, "UTF-8");
         $domain .= $server;     
         
-        $phpSelf = htmlentities($_SERVER['PHP_SELF'], ENT_QUOTES, "UTF-8");     // Yields string of the url AFTER the domain (so just the folders & exact file). Use htmlentites to remove any suspicous vales that someone may try to pass in. htmlentites helps avoid security issues. //## $_SERVER['PHP_SELF'] returns full url path and file extension, htmlentities() just converts special characters
-        $path_parts = pathinfo($phpSelf);       //get an associative array of the url with dirname, basename, extension & filename
+        $phpSelf = htmlentities($_SERVER['PHP_SELF'], ENT_QUOTES, "UTF-8");     
+
+        $path_parts = pathinfo($phpSelf);
         
         
         $split_url = explode('/', $path_parts['dirname']);  //split string of directories at each / character
