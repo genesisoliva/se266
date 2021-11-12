@@ -2,6 +2,7 @@
     include_once __DIR__ . "/models/model_schools.php";
     include_once __DIR__ . "/includes/functions.php";
    
+    session_start();
     if($_SESSION['Login'] == false)
     {
         header("location:loginpage.php");

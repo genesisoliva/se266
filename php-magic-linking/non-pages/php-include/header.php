@@ -109,7 +109,7 @@
                           <a class="trigger right-caret">GRADED ASSIGNMENTS</a>
                           <ul class="dropdown-menu sub-menu">
                             <li><a href="#">🧰 Final Project: Proposal</a></li>
-                            <li><a href="#">🛠 Wk7: Task: Patient Search</a></li>
+                            <li><a <?php echo 'href="'.$upFolderPlaceholder.'assignments/week_7/patient_search/index.php"' . ' class="'.$activePageArrayDropDown2['School_Reference_Database'].'"'; ?>>🛠 Wk7: Task: Patient Search</a></li>
                           </ul>
                         </li>
                       </ul>
