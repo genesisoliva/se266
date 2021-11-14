@@ -202,3 +202,25 @@ ALTER TABLE `user`
 
 ALTER TABLE `user`
   MODIFY `userid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  --Create table and add table and auto_increment=0
+  CREATE TABLE `databaseName`.`tablename` 
+  ( 
+    `one` INT(11) NOT NULL AUTO_INCREMENT , 
+    `two` INT(11) NOT NULL , 
+    `three` INT(11) NOT NULL , 
+    `four` DOUBLE NOT NULL , 
+    PRIMARY KEY (`one`)
+  ) ENGINE = InnoDB;
+  --ENGINE=InnoDB DEFAULT CHARSET=latin1;
