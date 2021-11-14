@@ -33,7 +33,11 @@ CREATE TABLE `cart` (
   `qty` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- --------------------------------------------------------
+ALTER TABLE `cart`
+  MODIFY `cartid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+ALTER TABLE `cart`
+  ADD PRIMARY KEY (`cartid`);
 
 --
 -- Table structure for table `category`
@@ -260,12 +264,6 @@ INSERT INTO `user` (`userid`, `username`, `password`, `access`) VALUES
 --
 
 --
--- Indexes for table `cart`
---
-ALTER TABLE `cart`
-  ADD PRIMARY KEY (`cartid`);
-
---
 -- Indexes for table `category`
 --
 ALTER TABLE `category`
@@ -317,12 +315,6 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for dumped tables
 --
 
---
--- AUTO_INCREMENT for table `cart`
---
-ALTER TABLE `cart`
-  MODIFY `cartid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
---
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
