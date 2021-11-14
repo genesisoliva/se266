@@ -1,7 +1,3 @@
---
--- Table structure for table `cart`
---
-
 CREATE TABLE `cart` (
   `cartid` int(11) NOT NULL,
   `userid` int(11) NOT NULL,
@@ -15,18 +11,12 @@ ALTER TABLE `cart`
 ALTER TABLE `cart`
   ADD PRIMARY KEY (`cartid`);
 
---
--- Table structure for table `category`
---
+
 
 CREATE TABLE `category` (
   `categoryid` int(11) NOT NULL,
   `category_name` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `category`
---
 
 INSERT INTO `category` (`categoryid`, `category_name`) VALUES
 (1, 'Laptops'),
