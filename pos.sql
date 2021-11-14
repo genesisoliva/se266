@@ -23,6 +23,12 @@ INSERT INTO `category` (`categoryid`, `category_name`) VALUES
 (2, 'Desktop PC''s'),
 (3, 'Tablets');
 
+ALTER TABLE `category`
+  ADD PRIMARY KEY (`categoryid`);
+
+ALTER TABLE `category`
+  MODIFY `categoryid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
 -- --------------------------------------------------------
 
 --
@@ -230,12 +236,6 @@ INSERT INTO `user` (`userid`, `username`, `password`, `access`) VALUES
 --
 
 --
--- Indexes for table `category`
---
-ALTER TABLE `category`
-  ADD PRIMARY KEY (`categoryid`);
-
---
 -- Indexes for table `customer`
 --
 ALTER TABLE `customer`
@@ -281,11 +281,6 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for dumped tables
 --
 
--- AUTO_INCREMENT for table `category`
---
-ALTER TABLE `category`
-  MODIFY `categoryid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
---
 -- AUTO_INCREMENT for table `inventory`
 --
 ALTER TABLE `inventory`
