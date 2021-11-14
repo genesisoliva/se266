@@ -1,5 +1,6 @@
 <?php include('session.php'); ?>
 <?php include('header.php'); ?>
+<?php $cat=$_GET['cat']; ?>
 <body>
 <?php include('navbar.php'); ?>
 <div class="container">
@@ -8,12 +9,12 @@
 	<div>
 	<?php
 		$inc=4;
-		$query=mysqli_query($conn,"select * from product");
+		$query=mysqli_query($conn,"select * from product where categoryid='$cat'");
 		while($row=mysqli_fetch_array($query)){
-
-			$inc = ($inc == 4) ? 1 : $inc+1;
-			if($inc == 1) echo "<div class='row'>";
-
+			
+			$inc = ($inc == 4) ? 1 : $inc+1; 
+			if($inc == 1) echo "<div class='row'>";  
+			
 			?>
 				<div class="col-lg-3">
 				<div>
@@ -23,16 +24,16 @@
 					<div style="height: 10px;"></div>
 					<div style="display:none; position:absolute; top:210px; left:10px;" class="well" id="cart<?php echo $row['productid']; ?>">Qty: <input type="text" style="width:40px;" id="qty<?php echo $row['productid']; ?>"> <button type="button" class="btn btn-primary btn-sm concart" value="<?php echo $row['productid']; ?>"><i class="fa fa-shopping-cart fa-fw"></i></button></div>
 					<div style="margin-left:17px; margin-right:17px;">
-						<button type="button" class="btn btn-primary btn-sm addcart" value="<?php echo $row['productid']; ?>"><i class="fa fa-shopping-cart fa-fw"></i> Add to Cart</button> <span class="pull-right"><strong><?php echo number_format($row['product_price'],2); ?></strong></span>
+						<button type="button" class="btn btn-primary btn-sm addcart" value="<?php echo $row['productid']; ?>"><i class="fa fa-shopping-cart fa-fw"></i> Add to Cart</button> <span class="pull-right"><strong><?php echo number_format($row['product_price'],2); ?></strong></span> 
 					</div>
 				</div>
 				</div>
 			<?php
 		if($inc == 4) echo "</div><div style='height: 30px;'></div>";
 		}
-		if($inc == 1) echo "<div class='col-lg-3></div><div class='col-lg-3'></div><div class='col-lg-3'></div></div>";
-		if($inc == 2) echo "<div class='col-lg-3'></div><div class='col-lg-3'></div></div>";
-		if($inc == 3) echo "<div class='col-lg-3'></div></div>";
+		if($inc == 1) echo "<div class='col-lg-3></div><div class='col-lg-3'></div><div class='col-lg-3'></div></div>"; 
+		if($inc == 2) echo "<div class='col-lg-3'></div><div class='col-lg-3'></div></div>"; 
+		if($inc == 3) echo "<div class='col-lg-3'></div></div>"; 
 	?>
 	</div>
 </div>
@@ -40,11 +41,4 @@
 <?php include('modal.php'); ?>
 <script src="custom.js"></script>
 </body>
-
-<div class="foot">
-<footer>
-<p> THIS PROJECT IS BROUGHT TO YOU BY <a href="https://code-projects.org/">CODE-PROJECTS</a> || www.code-projects.org ||</p>
-</footer>
-</div>
-<style> .foot{text-align: center; border: 2px solid black;}</style>
 </html>
