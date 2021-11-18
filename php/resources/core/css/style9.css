@@ -1,0 +1,626 @@
+.nav-md {
+    background-color: #0a5054 !important; 
+}
+.left_col {
+    background: #0a5054; 
+	font-color: red; /* left coloum background change*/
+}
+.nav li.current-page {
+    /* color of the dropdown menu  */
+	opacity: 0.6;
+}
+.nav.side-menu>li.active>a {
+    background: #106469; /* left coloum menu color change  */
+}
+.nav_menu {
+    float: left;
+    background: #e8f5f5;
+    border-bottom: 1px solid #D9DEE4;
+}
+.x_title h2 {
+ 
+    color: #0a5054; /* left menu title color change*/
+}
+.x_title {
+    border-bottom: 2px solid #0a5054; /* title border line color change */ 
+}
+.nav_menu {
+  
+    background: #e8f5f5;
+    border-bottom: 1px solid #D9DEE4;
+}
+.nav-md ul.nav.child_menu li:before {
+    background: cadetblue!important;
+	
+} /* left coloum bullet menu color change  */
+
+.nav.side-menu>li.active, .nav.side-menu>li.current-page {
+    border-right: 5px solid #1ABB9C;
+}
+table.jambo_table thead {
+    background: #0a5054;
+    color: #ECF0F1;
+}
+.right_col {
+    background: #b30047;
+}
+.page-title .title_left h3 {
+    color: #0a5054;
+}
+.x_panel {
+ /*    background: #e8f5f5; background color of the panel */
+    
+}
+.PCSTR {
+    background-color: #0a5054!important;
+    color: #ffffff; /* color of menu header */
+}
+
+.tab-content
+{
+	color: #0a5054; /* color of manage menu text */
+}
+footer
+{
+    background: #e8f5f5; /* color of the footer*/
+    color: #0a5054;
+	padding: 20px;
+}
+.btn-success {
+    background: green;
+	border: 1px solid springgreen; /* color of the convert to customer menu */
+     
+}
+.btn-primary {
+    color: #fff;
+    background-color: #0a5054!important; /* Color of the view details and edit menu*/
+    border-color: red;
+}
+.btn-info {
+    color: #fff;
+    background-color: green!important; /* Color of the convert to customer menu*/
+    
+}
+.btn-danger {
+    color: #fff;
+    background-color: darkred!important; /* Color of the delete menu*/
+    border-color: transparent;
+}
+.profile_info h2 {
+    font-size: 14px;
+    color: #e8f5f5;
+    margin: 0;
+    font-weight: 900;/*color of the welcome admin*/
+}
+.profile_info span {
+     font-size: 14px;
+    color: #e8f5f5;
+    margin: 0;
+    font-weight: 900;/*color of the welcome admin*/
+}
+.nav-sm ul.nav.child_menu {
+    background: #0a5054!important; /* color of the resize page of the menu*/
+    color: #FFFFFF;
+}
+
+:visited, a, a:active, a:focus, a:visited {
+    outline: 0;
+	color: #0a5054;/*color of the pdf and excel text*/
+}
+
+.form-control {
+    color: #0a5054;;
+    border: 1px solid #0a5054;
+	background: #e8f5f5; /* color of the form text and set border*/
+	}
+.form-horizontal .control-label {
+    color:#0a5054;
+}
+.form-control-feedback.left {
+    border-right: 1px solid #0a5054;
+    left: 13px;
+}
+.form-control-feedback {
+    color: #0a5054;
+}
+
+.nav_menu {
+    background: #e8f5f5;
+    border-bottom: 1px solid #D9DEE4;
+    color: #fff;   /* color of the header*/
+}
+
+.nav.navbar-nav>li>a {
+    color: #0a5054!important; /*text color of the admin*/
+	font-family: initial;
+	font-size: larger;
+}
+.top_nav .nav .open>a, .top_nav .nav .open>a:focus, .top_nav .nav .open>a:hover, .top_nav .nav>li>a:focus, .top_nav .nav>li>a:hover {
+    background: #0a5054!important; 
+	color: white!important; /* color of the admin menu */
+	    font-family: initial;
+    font-size: larger;
+}
+.navbar-nav .open .dropdown-menu{
+    position: absolute;
+    background: whitesmoke!important;
+    margin-top: 0;
+    border: 1px solid #D9DEE4;
+    -webkit-box-shadow: none;
+    right: 0;
+    left: auto;
+	font-color: white;
+    width: 220px; /* color of the admin dropdown menu  */
+}
+.dropdown-menu>li>a:focus, .dropdown-menu>li>a:hover {
+    /* color: #FFFFFF; * /
+    text-decoration: none;
+   /* background-color: #0a5054; */
+	opacity: 0.6; /* color of the admin dropdown menu  */
+}
+.dropdown-menu>li>a {
+    color: #0a5054;
+	border: whitesmoke!important;/* color of the admin text dropdown menu  */
+	    font-family: initial;
+    font-size: larger;
+}
+
+.table-bordered>tbody>tr>td, .table-bordered>tbody>tr>th, .table-bordered>tfoot>tr>td, .table-bordered>tfoot>tr>th, .table-bordered>thead>tr>td, .table-bordered>thead>tr>th {
+    border: 1px solid #0a5054!important;
+	vertical-align: inherit!important;
+	/* color: #0a5054; border color of the manage table */
+	font-family: sans-serif;
+}
+
+.manage-list
+{
+   color: #0a5054; /* color of the save details in the manage table */
+}
+.pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover {
+    
+    background-color: #0a5054;
+    border: #0a5054;
+	 /* color of the prev next page button */
+}
+
+.leftboxprofile
+{
+	color: #0a5054; /* color of the profile detail in views details */
+
+}
+
+.nav-md ul.nav.child_menu li:after {
+    border-left: 1px solid yellow;
+}
+.tabs-left>li>a, .tabs-right>li>a {
+    background: #e8f5f5;
+	color: #0a5054;/*color of the profile, calls etc. in view details*/
+}
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {
+    color: #fff!IMPORTANT;
+    background-color: #0a5054;
+    border: 1px solid #ddd; /*color of the profile, calls etc. in view details*/
+	font-family: sans-serif;
+}
+
+.table-striped>tbody>tr:nth-of-type(even) {
+    background-color: #e8f5f5;
+	/*color: #0a5054;/*
+	/* border: 1px solid #0a5054!important;  color of the even table column */
+}
+
+.table-striped>tbody>tr:nth-of-type(odd) {
+    background-color: darkwhite;
+	/*color: #0a5054;*/
+	/* border: 1px solid #0a5054!important;  color of the odd manage table column */
+}
+
+.byline {
+	color: #0a5054;/*color of the manage calls in view details*/
+}
+.timeline .block {
+    margin: 0 0 0 105px;
+    border-left: 3px solid #0a5054;
+     /*color of the manage calls in view details*/
+}
+.timeline h2.title:before {
+    border: 3px solid #106469;
+    background: #106469; /*color of the manage calls in view details*/
+}
+.fa-navicon:before, .fa-reorder:before, .fa-bars:before {
+    color: #0a5054;
+}/* color of header icon */
+
+.fa-file-excel-o:before {
+    content: "\f1c3";
+	color: green; /* color of the excel file*/
+}
+.fa-file-pdf-o:before {
+    content: "\f1c1";
+	color: red; /* color of the pdf file*/
+}
+.timeline .tag {
+  
+	background: #0a5054; /*color of the arrow in manage calls*/
+}
+.tag:after {
+   
+    border-left: 11px solid #0a5054; /*color of the arrow in manage calls*/
+
+}
+.input-group.date .input-group-addon {
+    border:  1px solid #0a5054 !important;
+    background-color: #0a5054!important; /*COLOR OF THE CALENDER*/
+}
+
+
+.input-group .form-control, .input-group-addon, .input-group-btn {
+    display: table-cell;
+    border: px solid #0a5054; /* BORDER COLOR OF THE CALENDER*/
+}
+
+.pcs_tbl, tbody, tr, td
+{
+	color: !important; /* color of the profile detail table */
+}
+
+.PCSTR td
+{
+	Color: #ffffff; /* color of the table column*/
+}
+.glyphicon-calendar:before {
+    content: "\e109";
+	color: #ffffff
+}
+
+.pagination>li>a, .pagination>li>span {
+   
+    color: #0a5054;
+    text-decoration: none;
+    background-color: #fff;
+    border: 1px solid #ddd; /* text color of the prev next button */
+}
+.block_content {
+   
+	color: #0a5054; /* color of the content of the view calls */
+}
+
+.modal-header .close {
+    margin-top: -2px;
+	color: #0a5054; / * color close button */
+}
+
+.modal-title, h4 {
+    margin: 0;
+    line-height: 1.42857143;
+	color: #0a5054; / * color of the add form header */
+}
+.col-md-6
+{
+	color: #0a5054; /* color of the select the in add form*/
+}
+.fa-phone:before {
+    content: "\f095";
+	color: darkgreen; /* color of the phone icon */
+}
+.fa-envelope:before {
+    content: "\f0e0";
+	color: dodgerblue; /* color of the mail icon */
+}
+.fa-user:before {
+    content: "\f007";
+	color: blue; /* color of the user icon */
+}
+.fa-fax:before {
+    content: "\f1ac";
+	color: deepskyblue; /* color of the contacts icon */
+}
+.fa-sticky-note:before {
+    content: "\f249";
+	color: brown; /* color of the notes icon */
+}
+.fa-file-powerpoint-o:before {
+    content: "\f1c4";
+    color: deeppink; /* color of the proposals icon */
+}
+.glyphicon-pencil:before {
+    content: "\270f";
+    color: lightgreen; /* color of the pencil icon */
+}
+.nav>li>a>img {
+    max-width: none;
+    background: #106469; /* background color of the admin icon */
+}
+.fa-automobile:before, .fa-car:before {
+    content: "\f1b9";
+    color: royalblue;  /* color of the appointments icon */
+}
+.glyphicon-eye-open:before {
+    content: "\e105";
+    color: skyblue;  /* color of the eyes icon */
+}
+.fa-pie-chart:before {
+    content: "\f200";
+	color: limegreen; /* color of the projects icon */
+}
+.fa-ticket:before {
+    content: "\f145";
+    color: fuchsia; /* color of the tickets icon */
+}
+.fa-file-text:before {
+    content: "\f15c";
+    color: yellowgreen;  /* color of the estimates icon */
+}
+.x_title span {
+    color: #0a5054; /* color of the validation* in form */
+}
+.tile-stats .count, .tile-stats h3, .tile-stats p {
+    color: #0a5054; /* color of the text in dashboard heading*/
+}
+.fa-credit-card:before {
+    content: "\f09d";
+	color: yellowgreen; /* color of the total estimates in dashboard */
+}
+.fa-quote-left:before {
+    content: "\f10d";
+	color: deeppink; /* color of the total proposals in dasboard*/
+}
+.fa-cubes:before {
+    content: "\f1b3";
+	color: limegreen; /* color of the total projects in dasboard*/
+}
+.active a i.fa-phone:before {
+    color: white; /* active color of the phone icon */
+}
+.active a i.fa-user:before {
+    color: white; /* active color of the user icon */
+}
+.active a i.fa-fax:before {
+    color: white; /* active color of the contacts icon */
+}
+.active a i.fa-sticky-note:before {
+    color: white; /* active color of the notes icon */
+}
+.active a i.fa-file-powerpoint-o:before {
+    color: white; /* active color of the proposals icon */
+}
+.active a i.fa-pie-chart:before {
+    color: white; /* active color of the projects icon */
+}
+.active > a > i.fa-automobile:before   {
+    color: white; /* active color of the appointments icon */
+}
+.active > a > i.fa-ticket:before    {
+    color: white; /* active color of the ticket icon */
+}
+.active > a > i.fa-file-text:before    {
+    color: white; /* active color of the estimates icon */
+}
+
+.active > a > i.fa-file-pdf-o:before     {
+    color: white; /* active color of the invoices icon */
+}
+.media .date {
+    background: #0a5054; /* background color of the media date in dashboard */
+}
+.event .media-body p {
+   color: #0a5054;  /*  color of the media paragraph in dashboard */
+}
+.x_title h2 small {
+    color: #0a5054;  /*  color of the latest heading in dashboard */
+}
+
+.panel_toolbox>li>a {
+    
+    color: #0a5054;  /* color of the media panel tool box in dashboard */
+    
+}
+.fa-tachometer:before {
+	color: deepskyblue;  /* color of the dashboard icon */
+    }
+.fa-tty:before {
+    color: darkblue; /* color of the leads icon */
+}
+.fa-users:before {
+     color: fuchsia; /* color of the customers icon */
+}
+.fa-shopping-cart:before {
+    color: #00FFCC; /* color of the sales icon */
+}
+.fa-print:before {
+    color: #e8f5f5; /* color of the expenses icon */
+}
+.fa-comments:before {
+   color: royalblue; /* color of the support icon */
+}
+.fa-line-chart:before {
+    color: #e8f5f5; /* color of the report icon */
+}
+.fa-bicycle:before {
+    color: #00FFCC; /* color of the activity icon */
+}
+.fa-gears:before, .fa-cogs:before {
+    color: red; /* color of the setting icon */
+}
+.fa-play:before {
+    color: darkblue; /* color of the setup icon */
+}
+.fa-sign-out:before {
+    color: limegreen; /* color of the logout icon */
+}
+.media .date .day {
+    /*color: #0a5054; color of the media date in dashboard */
+}
+.media .date .month {
+    /* color: #0a5054; color of the media month in dashboard */
+}
+.x_content {
+   color: #0a5054;  /* color of the no record found */
+}
+.btn-default {
+    color: #0a5054;
+    background-color: #e8f5f5;
+	border-color: #0a5054;; /* background color of the in view proposal like print, pdf etc.*/
+}
+.fa-print::before {
+    color: blue; /* color of the printer */
+}
+.nav > li > a > img {
+    max-width: none;
+    background: currentColor; /*image color of the admin */
+}
+ul.msg_list li a .message {
+    
+    color: #0a5054; /* color of the mail in text in dash*/
+	font-size: small;
+}
+.dropdown-menu.msg_list span {
+    white-space: normal;
+    color: #0a5054!important; /* color of the mail in text in dash */
+}
+
+
+.open > .dropdown-menu {
+    background: Whitesmoke!important; /* color of the more text in view proposal */
+}
+.text-center {
+	border: #0a5054;
+}
+.btn
+{
+	border: 1px; /*border of the view edit delete button*/
+}
+.x_panel
+{
+	color: #0a5054;
+	border: 1px solid #d1f8fa!important; /*text color of the no record found in customer*/
+}
+.table-bordered>tbody .PCSTR  td {
+	border: 1px solid white!important; /*table colum border color*/
+	border-top: 1px solid #0a5054!important;
+    border-bottom: 1px solid #0a5054!important;
+    border-left: 1px solid #0a5054!important;
+    /* border-right: 1px solid #0a5054!important;*/
+}
+.ln_solid {
+    border-top: 1px solid #0a5054; /* border color of the line in report*/
+}
+.tile-stats
+{
+	border: 1px solid #0a5054; /*border color of total in dashboard*/
+}
+.modal-header {
+    border-bottom: 1px solid #0a5054; /*  header border color of the add new in all */
+}
+.modal-footer {
+    border-top: 1px solid #0a5054; /*  footer border color of the add new in all */
+}
+ul.timeline li {
+    position: relative;
+    border-bottom: 1px solid #0a5054; /*  border color of the view call */
+}
+.active > a > i.fa-tty:before {
+    color: white; /* active color of the lead icon in manage staff */
+}
+.active > a > i.fa-users:before {
+    color: white; /* active color of the customer icon */
+}
+.active > a > i.fa-print:before {
+    color: white; /* active color of the expenses icon */
+}
+.active > a > i.fa-shopping-cart:before {
+    color: white; /* active color of the sales icon in settings */
+}
+.active > a > i.fa-comments:before {
+    color: white; /* active color of the support icon in settings */
+}
+.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
+   
+    border-top: 1px solid #0a5054;
+}
+.pcs_tbl, tbody, tr, td {
+    
+    border: 1px solid #0a5054!important;
+    /* border-top: 1px solid black; */
+}
+input[type=file] {
+    /* display: block; */
+    border: 1px solid #0a5054; /*border color of site logo*/
+}
+.active > a > i.fa-cubes:before {
+    color: white; /* active color of the catlog icon in */
+}
+.active > a > i.fa-tachometer:before {
+    color: white; /* active color of the expenses icon in */
+}
+.active > a > i.fa-line-chart:before {
+    color: white; /* active color of the report icon in */
+}
+.active > a > i.fa-bicycle:before {
+    color: white; /* active color of the activities icon in */
+}
+.active > a > i.fa-gears:before{
+    color: white; /* active color of the settings icon in */
+}
+.active > a > i.fa-play:before{
+    color: white; /* active color of the setup icon in */
+}
+.table>caption+thead>tr:first-child>td, .table>caption+thead>tr:first-child>th, .table>colgroup+thead>tr:first-child>td, .table>colgroup+thead>tr:first-child>th, .table>thead:first-child>tr:first-child>td, .table>thead:first-child>tr:first-child>th {
+   /* border: 1px solid white!important; */
+    text-align: inherit; /* border color of the view table in sales */
+	border-bottom: 1px solid #0a5054!important;
+}
+.text-left {
+    border: 1px solid white!important; /* border color of the view table in sales */
+	border-left: 1px solid #0a5054!important;
+    border-top: 1px solid #0a5054!important;
+    border-bottom: 1px solid #0a5054!important;
+}
+.input-group-btn:last-child>.btn, .input-group-btn:last-child>.btn-group {
+    border: 1px solid #0a5054; /* border color of the add in sales tik mark */
+}
+hr {
+    border-top: 1px solid #0a5054; /*border color of horizontal line in sales on views add edit*/
+}
+.btn-group .btn, .btn-group-vertical .btn {
+    border: 1px solid darkgray;/*border color of in sales on edit pdf print*/
+}
+.label-default {
+    background-color: #0a5054;/*background color of the draft in sales*/
+}
+.text-success {
+	color: #0a5054;/* color of the date in sales*/
+}
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+    font-family: initial; /*font-family of the heading*/
+    font-weight: 500;
+    line-height: 1.1;
+    color: #0a5054;
+}
+a:focus, a:hover {
+    color: #0a5054; /* focus on the link link like export import*/
+}
+.tile-stats .icon i {
+    margin: 0;
+    font-size: 50px!important; /* font-size of the icons in dashboard */
+    line-height: 0;
+    vertical-align: bottom;
+    padding: 0;
+    /* text-align: center; */
+}
+.PCSTR .row .col-md-10 {
+     padding-top: 13px!important;/*padding top of the text in manage table on prosposal, estimate, invoice*/
+}
+.active > a > i.fa-envelope:before {
+    color: white; /* active color of the message icon in */
+}
+
+
+table.jambo_table tbody tr:hover td {
+    background: none; /*hover background-color of the table in sales*/
+    border-top: 1px solid rgba(38,185,154,.11);
+    border-bottom: 1px solid rgba(38,185,154,.11);
+}
+.table-bordered>tbody .PCSTR {
+    border-right: 2PX solid #0a5054!important; /*RIGHT SIDE BORDER COLOR OF THE TABLE IN MANAGE*/
+}
