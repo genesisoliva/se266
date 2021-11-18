@@ -6,9 +6,9 @@
   <title>Document</title>
 
 <?php
-	//session_start();
-  //if(!isset($_SESSION['login_id']))
-    //header('location:login.php');
+	session_start();
+  if(!isset($_SESSION['login_id']))
+    header('location:login.php');
  include('header.php'); 
  ?>
 
