@@ -6,6 +6,6 @@ include_once __DIR__ . "/models/model_schools.php";
     session_unset();
     session_destroy();
 
-    header('Location: index.php');
+    header('Location: loginpage.php');
 
 ?>
