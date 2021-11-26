@@ -5,6 +5,6 @@
             <a href="login.php">Patient Search</a>
     </li>
     <li>
-            <a href="/../proposal">🧰 Final Project: Proposal</a>
+            <a href="/../Proposal/">🧰 Final Project: Proposal</a>
     </li>
 <?php include __DIR__ . '/../include/footer.php'; ?>
