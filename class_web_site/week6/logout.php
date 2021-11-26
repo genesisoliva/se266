@@ -1,4 +1,4 @@
-<?php //include("../../../non-pages/php-include/top.php"); 
+<?php 
 include_once __DIR__ . "/models/model_schools.php";
 ?>
 	    <h1 class="cent"><?php echo $pageTitle ?></h1>
@@ -13,5 +13,3 @@ include_once __DIR__ . "/models/model_schools.php";
     header('Location: index.php');
 
 ?>
-
-<?php //include($upFolderPlaceholder . "non-pages/php-include/footer.php"); ?>
