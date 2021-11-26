@@ -1,8 +1,5 @@
 <?php 
     session_start();
-    //include("../../../non-pages/php-include/top.php"); ?>
-	    <!--<h1 class="cent"><?php echo $pageTitle ?></h1>-->
-<?php
     include_once __DIR__ . "/models/model_schools.php";
     include_once __DIR__ . "/includes/functions.php";
 
@@ -42,4 +39,3 @@
 <?php
     include_once __DIR__ . "/includes/footer.php";
 ?>
-<?php //include($upFolderPlaceholder . "non-pages/php-include/footer.php"); ?>
