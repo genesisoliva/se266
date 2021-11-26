@@ -27,6 +27,12 @@ class Connection {
 			$conn->exec('set names utf8');
 $conn->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
 $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+foreach($conn->query('SELECT * from users') as $row) {
+        print_r($row);
+    }
+    $conn = null;
+
 			return $conn;
 		} catch (PDOException $e) {
 			die($e->getMessage());
