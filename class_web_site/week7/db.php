@@ -31,9 +31,9 @@ $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 foreach($conn->query('SELECT * from users') as $row) {
         print_r($row);
     }
-    $conn = null;
+    //$conn = null;
 
-			return $conn;
+			//return $conn;
 		} catch (PDOException $e) {
 			die($e->getMessage());
 		}
