@@ -18,6 +18,8 @@
     <li><a href="week7/index.php">Week 7</a></li>
     <li><a href="week8/index.php">Week 8</a></li>
     <li><a href="week9/index.php">Week 9</a></li>
+<li><a href="hospital/">Propsal</a></li>
+
 </ul>
 
 <a href="class_web_site/site/index.php">Heroku Site</a>
