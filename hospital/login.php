@@ -230,7 +230,7 @@
       </form>
     <div class="text-right">
             <div class="credits">
-                <a href="<?php echo $_SERVER['PHP_SELF']; ?>?lang=ar">Español</a>
+                <a href="<?php echo $_SERVER['PHP_SELF']; ?>?lang=es">Español</a>
                 <a href="<?php echo $_SERVER['PHP_SELF']; ?>?lang=en">english</a>
             </div>
         </div>
