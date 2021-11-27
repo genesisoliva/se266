@@ -3,8 +3,8 @@
 	function language($word, $lang) {
 		$dictionary = [
 			// Index
-			"username" => ["username", "اسم المستخدم"],
-			"password" => ["password", "كلمة المرور"],
+			"username" => ["username", "Usuario"],
+			"password" => ["password", "Contraseña"],
 			"login" => ["login", "تسجيل الدخول"],
 			"forgot_password" => ["forgot password?", "نسيت الباسورد؟"],
 			"remember_me" => ["remember me", ".......تذكرنى"],
