@@ -5,7 +5,7 @@
 			// Index
 			"username" => ["username", "Usuario"],
 			"password" => ["password", "Contraseña"],
-			"login" => ["login", "تسجيل الدخول"],
+			"login" => ["login", "Iniciar"],
 			"forgot_password" => ["forgot password?", "نسيت الباسورد؟"],
 			"remember_me" => ["remember me", ".......تذكرنى"],
 			"admin_login" => ["admin login", "دخول المدير"],
