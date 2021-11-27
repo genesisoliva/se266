@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <?php if ($_SESSION['lang']) { ?>
-<html lang="ar" dir="rtl">
+<html lang="es" dir="rtl">
 <?php } else { ?>
 <html lang="en" dir="ltr">
 <?php } ?>
