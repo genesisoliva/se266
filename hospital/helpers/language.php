@@ -7,7 +7,7 @@
 			"password" => ["password", "Contraseña"],
 			"login" => ["login", "Iniciar"],
 			"forgot_password" => ["forgot password?", "forgot password?"],
-			"remember_me" => ["remember me", ".......remember me"],
+			"remember_me" => ["remember me", "remember me"],
 			"admin_login" => ["admin login", "دخول المدير"],
 			"login_field_required" => ["Username and Password are required fields", "يرجى إدخال اسم المستخدم وكلمة المرور"],
 			"login_error" => ["username or password is incorrect", "اسم المستخدم او كلمة المرور غير صحيحة"],
