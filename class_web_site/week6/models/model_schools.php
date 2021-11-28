@@ -79,7 +79,7 @@
    
    function checkLogin ($userName, $password) {
     global $db;
-    $stmt = $db->prepare('SELECT userId FROM users WHERE userName =:userName AND userPassword = :password');
+    $stmt = $db->prepare('SELECT userId FROM tb_users WHERE userName =:userName AND userPassword = :password');
 
     $stmt->bindValue(':userName', $userName);
     $stmt->bindValue(':password', $password);
