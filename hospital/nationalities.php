@@ -56,7 +56,8 @@ if (isset($_GET['manage']) && $_GET['manage'] == 'view') {
                                 <?php echo language('nationalities-edit', $_SESSION['lang']); ?>
                             </a>
                             <form action="nationalities.php?lang=<?php echo $selectedLang; ?>&manage=delete" method="POST">
-                                <input type="hidden" name="id" value="<?php echo $id; ?>">
+                                <!--<input type="text" name="id" value="<?php //echo $id; ?>">-->
+                                <input type="text" placeholder="<?php echo $id; ?>" value="<?php echo $id; ?>" class="form-control" name="id" data-parsley-required="true" data-parsley-length="[1, 30]"/>
                                 <button type="submit" class="btn btn-danger btn-sm">
                                     <span class="glyphicon glyphicon-trash"></span> <?php echo language('delete', $_SESSION['lang']);?>
                                 </button>

@@ -165,7 +165,7 @@
 
 <!DOCTYPE html>
 <?php if ($_SESSION['lang']) { ?>
-<html lang="es" dir="ltr">
+<html lang="ar" dir="rtl">
 <?php } else { ?>
 <html lang="en" dir="ltr">
 <?php } ?>
@@ -204,7 +204,7 @@
         <?php } ?>
       <form class="login-form" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">        
         <div class="login-wrap">
-            <p class="login-img"><i class="icon_lock_alt"></i></p>
+            <p class="login-img"><i class="icon_lock_alt"><!--elegant-icons-style.css(31)--></i></p>
             <div class="input-group">
               <span class="input-group-addon"><i class="icon_profile"></i></span>
               <input type="text" class="form-control" placeholder="<?php echo language("username", $_SESSION['lang']); ?>" autofocus name="username" autocomplete="off" required="required" value="<?php echo isset($_SESSION['username']) ? $_SESSION['username'] : '' ?>">
@@ -217,12 +217,12 @@
                 <?php if (isset($_SESSION['id'])) { ?>
                     <input type="checkbox" value="1" name="remember-me" checked> <?php echo language("remember_me", $_SESSION['lang']); ?>
                 <?php } else { ?>
-                    <input type="checkbox" value="1" name="remember-me"> <?php echo language("remember_me", $_SESSION['lang']); ?>
+                    <input type="checkbox" value="1" name="remember-me"> <span><?php echo language("remember_me", $_SESSION['lang']); ?></span>
                 <?php } ?>
                 <?php if ($_SESSION['lang']) { ?>
-                    <span class="pull-right"> <a href="contact.php"> <?php echo language("forgot_password", $_SESSION['lang']); ?></a></span>
+                    <span class="pull-right"> <a href=""> <?php echo language("forgot_password", $_SESSION['lang']); ?></a></span>
                 <?php } else { ?>
-                    <span class="pull-right"> <a href="contact.php"> <?php echo language("forgot_password", $_SESSION['lang']); ?></a></span>
+                    <span class="pull-right"> <a href=""> <?php echo language("forgot_password", $_SESSION['lang']); ?></a></span>
                 <?php } ?>
             </label>
             <button class="btn btn-primary btn-lg btn-block" type="submit"><?php echo language("login", $_SESSION['lang']); ?></button>
@@ -230,8 +230,8 @@
       </form>
     <div class="text-right">
             <div class="credits">
-                <a href="<?php echo $_SERVER['PHP_SELF']; ?>?lang=es">Español</a>
-                <a href="<?php echo $_SERVER['PHP_SELF']; ?>?lang=en">english</a>
+                <a href="<?php echo $_SERVER['PHP_SELF']; ?>?lang=ar">العربية</a>
+                <a href="<?php echo $_SERVER['PHP_SELF']; ?>?lang=en">English</a>
             </div>
         </div>
     </div>

@@ -25,11 +25,13 @@ if (isset($_GET['manage']) && $_GET['manage'] == 'view') {
 ***************************************************************/
 
 ?>
-
+<!-- Genders.php-->
 <div class="panel panel-default">
+
     <div class="panel-heading">
         <?php echo language("genders-heading", $_SESSION['lang']); ?>
     </div>
+
     <div class="panel-body">
         <table class="table table-striped table-responsive table-hover text-center">
             <thead>
@@ -56,7 +58,9 @@ if (isset($_GET['manage']) && $_GET['manage'] == 'view') {
                                 <?php echo language('genders-edit', $_SESSION['lang']); ?>
                             </a>
                             <form action="genders.php?lang=<?php echo $selectedLang; ?>&manage=delete" method="POST">
-                                <input type="hidden" name="id" value="<?php echo $id; ?>">
+                                <!--<input type="text" name="id" value="<?php //echo $id; ?>">-->
+                                <input type="text" placeholder="<?php echo $id; ?>" value="<?php echo $id; ?>" class="form-control" name="id" data-parsley-required="true" data-parsley-length="[1, 30]"/>
+                                
                                 <button type="submit" class="btn btn-danger btn-sm">
                                     <span class="glyphicon glyphicon-trash"></span> <?php echo language("delete", $_SESSION['lang']); ?>
                                 </button>

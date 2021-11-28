@@ -16,6 +16,7 @@
 			// Navbar
 			"brand" => ["hospital", "المستشفى"],
 			"dashboard" => ["dashboard", "لوحة التحكم"],
+			"dashboardTitle" => ["DASHBOARD", "لوحة التحكم"],
 			"dropdown" => ["manage", "الادارة"],
 			"logout" => ["logout", "تسجيل الخروج"],
 			"genders" => ["manage genders", "إدارة النوع"],
@@ -56,7 +57,7 @@
 			"nationalities-heading" => ["manage nationalities", "إدارة الجنسيات"],
 			"nationalities-nat" => ["nationality", "الجنسية"],
 			"nationalities-manage" => ["manage mationality", "إدارة الجنسية"],
-			"nationalities-edit" => ["edit Nationality", "تعديل الجنسية"],
+			"nationalities-edit" => ["edit nationality", "تعديل الجنسية"],
 			"nationalities-add" => ["add new nationality", "إضافة جنسية جديدة"],
 			"nationalities-add-success" => ["NATIONALITY HAS BEEN ADDED SUCCESSFULLY", "تم إضافة الجنسية بنجاح"],
 			"nationalities-update-success" => ["NATIONALITY HAS BEEN UPDATED SUCCESSFULLY", "تم تعديل الجنسية بنجاح"],
@@ -65,11 +66,11 @@
 			"nat-check-error" => ["ERROR: NATIONALITY MUST BE FROM 1 TO 50 CHARACTERS LONG", "خطأ: الجنسية يجب ان تكون من 1 ل 50 حرف"],
 			
 			// Nationality Types
-			"nationalityTypes-heading" => ["Manage Nationality Types", "إدارة انواع الجنسيات"],
-			"natType-type" => ["Nationality Type", "نوع الجنسية"],
-			"natType-manage" => ["Manage Nationality Type", "إدارة نوع الجنسية"],
-			"natType-edit" => ["Edit Nationality Types", "تعديل نوع الجنسية"],
-			"natType-add" => ["Add New Nationality Type", "إضافة نوع جنسية جديد"],
+			"nationalityTypes-heading" => ["manage nationality types", "إدارة انواع الجنسيات"],
+			"natType-type" => ["nationality type", "نوع الجنسية"],
+			"natType-manage" => ["manage nationality type", "إدارة نوع الجنسية"],
+			"natType-edit" => ["edit nationality types", "تعديل نوع الجنسية"],
+			"natType-add" => ["add new nationality type", "إضافة نوع جنسية جديد"],
 			"natType-add-success" => ["NATIONALITY TYPE HAS BEEN ADDED SUCCESSFULLY", "تم إضافة نوع الجنسية بنجاح"],
 			"nationalityTypes-check-error" => ["ERROR: NATIONALITY TYPE MUST BE kuwaiti or Not kuwaiti", "خطأ: نوع الجنسية يجب ان يكون كويتى او غير كويتى"],
 			"nationalityTypes-required" => ["ERROR: NATIONALITY TYPE IS REQUIRED", "خطأ: يجب إدخال نوع الجنسية"],
@@ -78,7 +79,7 @@
 			"nationalityTypes-delete-success" => ["NATIONALITY TYPE HAS BEEN DELETED SUCCESSFULLY", "تم حذف نوع الجنسية بنجاح"],
 
 			// Departments
-			"departments-heading" => ["Manage Departments", "إدارة الاقسام"],
+			"departments-heading" => ["manage departments", "إدارة الاقسام"],
 			"departments-dept" => ["Department", "القسم"],
 			"departments-manage" => ["Manage Department", "إدارة القسم"],
 			"departments-edit" => ["Edit Department", "تعديل القسم"],

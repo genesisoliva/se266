@@ -6,7 +6,7 @@
             <div class="div-square">
                 <a href="genders.php?lang=<?php echo $selectedLang; ?>&manage=view" >
                     <i class="fa fa-mars fa-5x"></i>
-                      <h4><?php echo language('genders', $_SESSION['lang']); ?></h4>
+                      <h4><?php echo language('genders',  $_SESSION['lang']); ?></h4>
                 </a>
             </div>
         </div>       

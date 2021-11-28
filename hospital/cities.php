@@ -28,6 +28,7 @@ if (isset($_GET['manage']) && $_GET['manage'] == 'view') {
 
 <div class="panel panel-default">
     <div class="panel-heading">
+    <i class="fa fa-building fa-2x" aria-hidden="true"></i>
         <?php echo language("cities-heading", $_SESSION['lang']); ?>
     </div>
     <div class="panel-body">
@@ -56,7 +57,7 @@ if (isset($_GET['manage']) && $_GET['manage'] == 'view') {
                                 <?php echo language('cities-edit', $_SESSION['lang']); ?>
                             </a>
                             <form action="cities.php?lang=<?php echo $selectedLang; ?>&manage=delete" method="POST">
-                                <input type="hidden" name="id" value="<?php echo $id; ?>">
+                                <input type="text" name="id" value="<?php echo $id; ?>">
                                 <button type="submit" class="btn btn-danger btn-sm">
                                     <span class="glyphicon glyphicon-trash"></span> <?php echo language("delete", $_SESSION['lang']); ?>
                                 </button>

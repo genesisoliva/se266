@@ -56,7 +56,7 @@ if (isset($_GET['manage']) && $_GET['manage'] == 'view') {
                                 <?php echo language('natType-edit', $_SESSION['lang']); ?>
                             </a>
                             <form action="nationality-types.php?lang=<?php echo $selectedLang; ?>&manage=delete" method="POST">
-                                <input type="hidden" name="id" value="<?php echo $id; ?>">
+                                <input type="text" name="id" value="<?php echo $id; ?>">
                                 <button type="submit" class="btn btn-danger btn-sm">
                                     <span class="glyphicon glyphicon-trash"></span> <?php echo language("delete", $_SESSION['lang']); ?>
                                 </button>
