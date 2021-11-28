@@ -8,7 +8,7 @@
         
         $results = [];
 
-        $stmt = $db->prepare("SELECT id, patientFirstName, patientMiddleName, patientLastName, patientMarried, patientBirthDate FROM patients ORDER BY id"); 
+        $stmt = $db->prepare("SELECT id, patientFirstName, patientMiddleName, patientLastName, patientMarried, patientBirthDate FROM tb_patients ORDER BY id"); 
         
         if ( $stmt->execute() && $stmt->rowCount() > 0 ) {
              $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -22,7 +22,7 @@
         global $db;
         $results = "Not added";
 
-        $stmt = $db->prepare("INSERT INTO patients SET patientFirstName = :patientFirstName, patientMiddleName = :patientMiddleName,
+        $stmt = $db->prepare("INSERT INTO tb_patients SET patientFirstName = :patientFirstName, patientMiddleName = :patientMiddleName,
          patientLastName = :patientLastName, patientMarried = :patientMarried, patientBirthDate = :patientBirthDate");
        
         $stmt->bindValue(':patientFirstName', $first);
@@ -46,7 +46,7 @@
             $results = [];
     
             $stmt = $db->prepare("SELECT id, patientFirstName, patientMiddleName, patientLastName, patientMarried, patientBirthDate 
-            FROM patients WHERE id=:id"); 
+            FROM tb_patients WHERE id=:id"); 
 
             $stmt->bindValue(':id', $id);
             
@@ -62,7 +62,7 @@
 
         $results = "Data NOT Updated";
         
-        $stmt = $db->prepare("UPDATE patients SET patientFirstName = :patientFirstName, patientMiddleName = :patientMiddleName,
+        $stmt = $db->prepare("UPDATE tb_patients SET patientFirstName = :patientFirstName, patientMiddleName = :patientMiddleName,
         patientLastName = :patientLastName, patientMarried = :patientMarried, patientBirthDate = :patientBirthDate WHERE id=:id");
         
         $stmt->bindValue(':id', $id);
@@ -85,7 +85,7 @@
         
         $results = "Data was not deleted";
     
-        $stmt = $db->prepare("DELETE FROM patients WHERE id=:id");
+        $stmt = $db->prepare("DELETE FROM tb_patients WHERE id=:id");
         
         $stmt->bindValue(':id', $id);
             
