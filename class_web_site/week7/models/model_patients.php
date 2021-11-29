@@ -6,7 +6,7 @@
     global $db;
     
     $binds = array();
-    $sql = "SELECT id, patientFirstName, patientLastName, patientMarried FROM patients WHERE 0=0 ";
+    $sql = "SELECT id, patientFirstName, patientLastName, patientMarried FROM tb_patients WHERE 0=0 ";
     if ($first != "") {
          $sql .= " AND patientFirstName LIKE :firstName";
          $binds['firstName'] = '%'.$first.'%';
@@ -53,7 +53,7 @@ function getPatients () {
     
     $results = [];
 
-    $stmt = $db->prepare("SELECT id, patientFirstName, patientMiddleName, patientLastName, patientMarried, patientBirthDate FROM patients ORDER BY id"); 
+    $stmt = $db->prepare("SELECT id, patientFirstName, patientMiddleName, patientLastName, patientMarried, patientBirthDate FROM tb_patients ORDER BY id"); 
     
     if ( $stmt->execute() && $stmt->rowCount() > 0 ) {
          $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -67,7 +67,7 @@ function addPatient($first, $middle, $last, $married, $birthDate) {
     global $db;
     $results = "Not added";
 
-    $stmt = $db->prepare("INSERT INTO patients SET patientFirstName = :patientFirstName, patientMiddleName = :patientMiddleName,
+    $stmt = $db->prepare("INSERT INTO tb_patients SET patientFirstName = :patientFirstName, patientMiddleName = :patientMiddleName,
      patientLastName = :patientLastName, patientMarried = :patientMarried, patientBirthDate = :patientBirthDate");
    
     $stmt->bindValue(':patientFirstName', $first);
@@ -91,7 +91,7 @@ function getPatient($id){
         $results = [];
 
         $stmt = $db->prepare("SELECT id, patientFirstName, patientMiddleName, patientLastName, patientMarried, patientBirthDate 
-        FROM patients WHERE id=:id"); 
+        FROM tb_patients WHERE id=:id"); 
 
         $stmt->bindValue(':id', $id);
         
@@ -107,7 +107,7 @@ function updatePatient($id, $first, $middle, $last, $married, $birthDate) {
 
     $results = "Data NOT Updated";
     
-    $stmt = $db->prepare("UPDATE patients SET patientFirstName = :patientFirstName, patientMiddleName = :patientMiddleName,
+    $stmt = $db->prepare("UPDATE tb_patients SET patientFirstName = :patientFirstName, patientMiddleName = :patientMiddleName,
     patientLastName = :patientLastName, patientMarried = :patientMarried, patientBirthDate = :patientBirthDate WHERE id=:id");
     
     $stmt->bindValue(':id', $id);
@@ -130,7 +130,7 @@ function deletePatient ($id) {
     
     $results = "Data was not deleted";
 
-    $stmt = $db->prepare("DELETE FROM patients WHERE id=:id");
+    $stmt = $db->prepare("DELETE FROM tb_patients WHERE id=:id");
     
     $stmt->bindValue(':id', $id);
         

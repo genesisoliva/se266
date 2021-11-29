@@ -4,8 +4,6 @@
         return ( filter_input(INPUT_SERVER, 'REQUEST_METHOD') === 'POST' );
     }
 
-/////EDIT FILE
-
   if(isset($_GET['id']))
 {
     $id = filter_input(INPUT_GET, 'id');
@@ -44,20 +42,24 @@ else
         if($action == "add")
         {
             $results = addPatient($fName, $mName, $lName, $married, $bDay);
+            header('Location: search.php');
         }
 
         else if($action == "update")
         {
             $id = filter_input(INPUT_POST, 'id');
+            header('Location: search.php');
 
             if(isset($_POST['btnDelete']))
             {
                 $results = deletePatient($id);
+                header('Location: search.php');
             }
             
             else if(isset($_POST['btnSubmit']))
             {
                 $results = updatePatient($id, $fName, $mName, $lName, $married, $bDay);
+                header('Location: search.php');
             }
             
         }

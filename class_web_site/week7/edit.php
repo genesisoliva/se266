@@ -83,7 +83,7 @@
                     }
 
                 if (isPostRequest()) 
-               {
+                {
                    echo "<h1>".$results."</h1>";
                 }
                 ?>

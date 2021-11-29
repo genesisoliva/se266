@@ -65,8 +65,6 @@
                </div>
             </form>
             
-            <p>This is where your search results go</p>
-
             <table class="table table-striped">
             <thead>
                 <tr>
@@ -86,17 +84,12 @@
                     <td><?php echo $row['patientFirstName']; ?></td>
                     <td><?php echo $row['patientLastName']; ?></td>
                     <td><?= $row['patientMarried']==1?"Yes":"No";?></td>
+                    <td><a href="edit.php?id=<?=$row['id']?>&action=update" style="display:contents;">Edit</a></td>
 
-                    <td>
-                        <a href="edit.php?id=<?=$row['id']?>&action=update">
-                            <i class="icon-pencil">Button</i>
-                        </a>
-                    </td>
-                    
                     <td>
                         <form action="search.php" method="post">
                             <input type="hidden" name="patientID" value="<?php echo $row['id'];?>">
-                            <button class="btn glyphicon glyphicon-trash" type="submit"></button>
+                            <button class="btn glyphicon glyphicon-trash" type="submit" style="display:contents;"></button>
                         </form>
                     </td>
                 </tr>
