@@ -1,54 +1,8 @@
 <?php
 
     include (__DIR__ . '/db.php');
-
-   function getPatientsSearch ($first, $city, $state) {
-    global $db;
     
-    $binds = array();
-    $sql = "SELECT id, patientFirstName, patientLastName, patientMarried FROM tb_patients WHERE 0=0 ";
-    if ($first != "") {
-         $sql .= " AND patientFirstName LIKE :firstName";
-         $binds['firstName'] = '%'.$first.'%';
-    }
-   
-    if ($city != "") {
-        $sql .= " AND patientLastName LIKE :lastName";
-        $binds['lastName'] = '%'.$city.'%';
-    }
-    if ($state != "") {
-        $sql .= " AND patientMarried LIKE :married";
-        $binds['married'] = '%'.$state.'%';
-    }
-    
-    $stmt = $db->prepare($sql);
-   
-     $results = array();
-     if ($stmt->execute($binds) && $stmt->rowCount() > 0) {
-         $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-     }
-     return ($results);
-}
-   
-   function checkLogin ($userName, $password) {
-    global $db;
-    $stmt = $db->prepare('SELECT userId FROM tb_users WHERE userName =:userName AND userPassword = :password');
-
-    $stmt->bindValue(':userName', $userName);
-    $stmt->bindValue(':password', $password);
-    
-    $stmt->execute ();
-   
-    return( $stmt->rowCount() > 0);
-    
-}
-
-
-
-
-///////////////////////////////
-
-function getPatients () {
+    function getPatients () {
     global $db;
     
     $results = [];
@@ -62,8 +16,9 @@ function getPatients () {
      
      return ($results);
 }
-
-function addPatient($first, $middle, $last, $married, $birthDate) {
+    
+    
+    function addPatient($first, $middle, $last, $married, $birthDate) {
     global $db;
     $results = "Not added";
 
@@ -84,23 +39,8 @@ function addPatient($first, $middle, $last, $married, $birthDate) {
    
     return ($results);
 }
+    
 
-function getPatient($id){
-        global $db;
-        
-        $results = [];
-
-        $stmt = $db->prepare("SELECT id, patientFirstName, patientMiddleName, patientLastName, patientMarried, patientBirthDate 
-        FROM tb_patients WHERE id=:id"); 
-
-        $stmt->bindValue(':id', $id);
-        
-        if ( $stmt->execute() && $stmt->rowCount() > 0 ) {
-             $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-         }
-         
-         return ($results);
-}
 
 function updatePatient($id, $first, $middle, $last, $married, $birthDate) {
     global $db;
@@ -124,8 +64,10 @@ function updatePatient($id, $first, $middle, $last, $married, $birthDate) {
     
     return ($results);
 }
-
-function deletePatient ($id) {
+    
+    
+    
+    function deletePatient ($id) {
     global $db;
     
     $results = "Data was not deleted";
@@ -140,3 +82,82 @@ function deletePatient ($id) {
     
     return ($results);
 }
+  
+
+    function getPatient($id){
+        global $db;
+        
+        $results = [];
+
+        $stmt = $db->prepare("SELECT id, patientFirstName, patientMiddleName, patientLastName, patientMarried, patientBirthDate 
+        FROM tb_patients WHERE id=:id"); 
+
+        $stmt->bindValue(':id', $id);
+        
+        if ( $stmt->execute() && $stmt->rowCount() > 0 ) {
+             $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+         }
+         
+         return ($results);
+}
+
+  function searchPatients ($column, $searchValue) {
+      global $db;
+        
+       $results = [];
+        $stmt = $db->prepare("SELECT id, patientFirstName, patientMiddleName, patientLastName, patientMarried, patientBirthDate FROM tb_patients WHERE $column LIKE :search");
+        $search = '%'.$searchValue.'%';
+        // SELECT id, teamName, division FROM teams WHERE teamName LIKE '%Pat%'
+        $stmt->bindValue(':search', $search);
+       
+        
+        if ( $stmt->execute() && $stmt->rowCount() > 0 ) {
+             $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+         }
+
+         return ($results);
+  }
+  
+    
+  
+  function sortPatients ($column, $order) {
+      
+       global $db;
+        
+        $results = [];
+       
+        $stmt = $db->prepare("SELECT id, patientFirstName, patientMiddleName, patientLastName, patientMarried, patientBirthDate FROM tb_patients ORDER BY $column $order");
+        
+        
+        if ( $stmt->execute() && $stmt->rowCount() > 0 ) {
+             $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                        
+         }
+         
+         return ($results);
+  }
+
+
+  
+  function getFieldNames () {
+      $fieldNames = ['id', 'patientFirstName', 'patientMiddleName', 'patientLastName', 'patientMarried', 'patientBirthDate'];
+      
+      return ($fieldNames);
+      
+  }
+  
+  
+  function checkLogin ($userName, $password)
+  {
+    global $db;
+
+    $stmt = $db->prepare("SELECT userId FROM tb_users WHERE userName =:userName AND userPassword = :password");
+    $stmt->bindValue(':userName', $userName);
+    $stmt->bindValue(':password', $password);
+
+    $stmt->execute ();
+
+    return( $stmt->rowCount() > 0);
+
+  }
