@@ -8,11 +8,7 @@
               <option value="teamName">Team Name</option>
               <option value="division">Division</option>
           </select>
-
-<br>
-
        <input type="text" name="fieldValue" value= "<?= $fieldValue ?>">
-      <br>
 <button type="submit">Search</button>
 
       
