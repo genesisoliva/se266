@@ -46,7 +46,6 @@
                 if(checkLogin($username, $new)){
                     header('Location: search.php');
                     $_SESSION['Login'] = true;
-                   // deleteAllSchools ();
                 }else{
         
                     $_SESSION['Login'] = false; 
