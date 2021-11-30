@@ -1,4 +1,3 @@
-
 <?php
     session_start();
     if($_SESSION['Login'] == false)
@@ -6,7 +5,7 @@
         header("location: login.php");
 	    exit;
     }
-      include __DIR__ . '/models/model_patients.php';
+         include __DIR__ . '/models/model_patients.php';
       include __DIR__ . '/includes/functions.php'; 
 ?>
 
@@ -19,7 +18,7 @@
 </head>
 <div class="container">
     
-    <form class="form-horizontal" action="edit.php" method="post">
+    <form class="form-horizontal" action="patient.php" method="post">
         <h2><?=ucWords($action);?> Patient</h2>
         <input type="text" name="action" value="<?=$action;?>" hidden>
         <input type="text" name="id" value="<?=$id;?>" hidden> 
