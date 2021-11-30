@@ -105,17 +105,13 @@ function updatePatient($id, $first, $middle, $last, $married, $birthDate) {
       global $db;
         
        $results = [];
-        $stmt = $db->prepare("SELECT id, patientFirstName, patientMiddleName, patientLastName, patientMarried, patientBirthDate FROM tb_patients WHERE $column LIKE :search");
-        $search = '%'.$searchValue.'%';
-        // SELECT id, teamName, division FROM teams WHERE teamName LIKE '%Pat%'
-        $stmt->bindValue(':search', $search);
+       $stmt = $db->prepare("SELECT id, patientFirstName, patientMiddleName, patientLastName, patientMarried, patientBirthDate FROM tb_patients WHERE $column LIKE :search");
+       $search = '%'.$searchValue.'%';
+       $stmt->bindValue(':search', $search);
        
-        
         if ( $stmt->execute() && $stmt->rowCount() > 0 ) {
              $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
          }
-
          return ($results);
   }
   
@@ -124,17 +120,12 @@ function updatePatient($id, $first, $middle, $last, $married, $birthDate) {
   function sortPatients ($column, $order) {
       
        global $db;
-        
-        $results = [];
-       
-        $stmt = $db->prepare("SELECT id, patientFirstName, patientMiddleName, patientLastName, patientMarried, patientBirthDate FROM tb_patients ORDER BY $column $order");
-        
+       $results = [];
+       $stmt = $db->prepare("SELECT id, patientFirstName, patientMiddleName, patientLastName, patientMarried, patientBirthDate FROM tb_patients ORDER BY $column $order");
         
         if ( $stmt->execute() && $stmt->rowCount() > 0 ) {
-             $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-                        
+             $results = $stmt->fetchAll(PDO::FETCH_ASSOC);             
          }
-         
          return ($results);
   }
 

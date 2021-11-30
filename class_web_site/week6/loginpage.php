@@ -46,7 +46,6 @@
                     $_SESSION['Login'] = true;
                    // deleteAllSchools ();
                 }else{
-        
                     $_SESSION['Login'] = false; 
                     echo "<div class='error'>Please enter in a valid username and password.</div>";
                 }

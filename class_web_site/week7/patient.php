@@ -16,6 +16,10 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 </head>
+
+<?php
+		include_once __DIR__ . "/includes/header.php";
+?>
 <div class="container">
     
     <form class="form-horizontal" action="patient.php" method="post">
@@ -91,7 +95,10 @@
 
     </form>
 
-    <div class="col-sm-offset-2 col-sm-10"><a href="./search.php">View Patients</a></div>
+    <div class="col-sm-offset-2 col-sm-10"><a href="search.php">View Patients</a></div>
 
 
 </div>
+<?php
+		include_once __DIR__ . "/includes/footer.php";
+?>

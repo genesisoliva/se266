@@ -1,6 +1,5 @@
-<br>
 <form  method="post">
-    <input type="hidden" name="action" value="sort"> <br>
+    <input type="hidden" name="action" value="sort">
        <label>Sort By Field:</label>
        <select name="fieldName">
             <option value=""></option>
@@ -15,7 +14,4 @@
        <input type="radio" name="fieldValue" value="DESC" />Descending
        
       <button type="submit"  name="sortTeam">Sort</button>
-   
-      
   </form>
-<br>

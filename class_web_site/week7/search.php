@@ -50,7 +50,7 @@ session_start();
 			?>
 
 
-            <a href="patient.php?action=add" id="addBtn">Add Patient</a>
+            <a href="patient.php?action=add">Add Patient</a>
 
 		<?php
         include_once __DIR__ . "/includes/footer.php";

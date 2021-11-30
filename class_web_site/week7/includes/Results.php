@@ -1,4 +1,4 @@
-<table class="table table-striped" style="width:50%">
+<table class="table table-striped">
     <thead>
         <tr>
             <th>Patient #</th>
@@ -40,9 +40,7 @@
                             <button class="btn glyphicon glyphicon-trash" type="submit"></button>
                             </form></td>	
 
-            </tr>
-	
+                            </tr>
         <?php endforeach; ?>
     </tbody>
     </table>
-	<br />

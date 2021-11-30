@@ -1,5 +1,6 @@
 <?php
     // put your session logic here
+    //include __DIR__ . '/functions.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -34,9 +35,7 @@
     <div class="navbar-header">
       <span class="navbar-brand">Patients</span>
     </div>
-    <ul class="nav navbar-nav">
-        <li <?php if(basename($_SERVER['PHP_SELF']) == 'search.php'): ?>class="active"<?php endif; ?>><a href="search.php">Search</a></li>
-    </ul>
+
     <ul class="nav navbar-nav navbar-right">
       <li><a href="logout.php"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
     </ul>

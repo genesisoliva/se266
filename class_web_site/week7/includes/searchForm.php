@@ -1,6 +1,6 @@
 <h2>Search Patient</h2>
   <form method="post">
- <input type="hidden" name="action" value="search" /><br>
+ <input type="hidden" name="action" value="search" />
       <label>Search by Field:</label>
        <select name="fieldName">
             <option value=""></option>
