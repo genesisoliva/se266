@@ -3,6 +3,11 @@
         <tr>
             <th>Team Name</th>
             <th>Division</th>
+
+<th>Edit</th>
+
+<th>Delete</th>
+
         </tr>
     </thead>
     <tbody>
@@ -10,6 +15,11 @@
             <tr>
                 <td><?php echo $row['teamName']; ?></td>
                 <td><?php echo $row['division']; ?></td> 
+
+<td><?php echo $row['division']; ?></td> 
+
+<td><?php echo $row['division']; ?></td> 
+
             </tr>
         <?php endforeach; ?>
     </tbody>
