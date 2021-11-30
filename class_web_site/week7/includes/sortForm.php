@@ -1,5 +1,6 @@
+<br>
 <form  method="post">
-    <input type="" name="action" value="sort">
+    <input type="" name="action" value="sort"> <br>
        <label>Sort By Field:</label>
        <select name="fieldName">
               <option value="">Select One</option>
