@@ -235,6 +235,10 @@
             </div>
         </div>
     </div>
+
+echo "\$_GET['lang']: {$_GET['lang']}<br>";
+//echo "\$_SESSION['lang']: {$_SESSION['lang']}<br>";
+
   </body>
 </html>
 <?php ob_end_flush(); ?>
