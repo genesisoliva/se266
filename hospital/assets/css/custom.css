@@ -35,3 +35,15 @@
 			
 			color:#fff;
 		}
+
+
+
+
+		body {
+			padding: 70px;
+		}
+		
+		.flag {
+			padding: 80px 15px;
+			text-align: center;
+		}

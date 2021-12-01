@@ -196,7 +196,7 @@
 
 </head>
 
-  <body class="login-img3-body">
+  <body class="login-img3-body1">
     <div class="container">
         <?php if (isset($_SESSION['error'])) { ?>
             <div class="alert alert-danger" id="index-error">
