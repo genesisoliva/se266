@@ -168,6 +168,7 @@
 <html lang="ar" dir="rtl">
 <?php } else { ?>
 <html lang="en" dir="ltr">
+<html lang="es" dir="ltr">
 <?php } ?>
 <head>
     <meta charset="utf-8">
