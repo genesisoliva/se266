@@ -234,8 +234,8 @@
     <div class="text-right">
             <div class="credits">
                 <a href="<?php echo $_SERVER['PHP_SELF']; ?>?lang=ar">العربية</a>
-                <a href="<?php echo $_SERVER['PHP_SELF']; ?>?lang=en">English</a>
-                <a href="<?php echo $_SERVER['PHP_SELF']; ?>?lang=es">Spanish</a>
+                <a href="<?php echo $_SERVER['PHP_SELF']; ?>?lang=es">English</a>
+                <a href="<?php echo $_SERVER['PHP_SELF']; ?>?lang=en">Spanish</a>
             </div>
         </div>
     </div>
