@@ -164,11 +164,14 @@
 ?>
 
 <!DOCTYPE html>
-<?php if ($_SESSION['lang']) = 2 { ?>
-<html lang="es" dir="ltr">
-<?php } else { ?>
+<?php if ($_SESSION['lang']) { ?>
 <html lang="ar" dir="rtl">
+<?php } elseif ($_SESSION['lang']) { ?>
+<html lang="es" dir="ltr">
+<?php } else {?>
+<html lang="en" dir="ltr">
 <?php } ?>
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
