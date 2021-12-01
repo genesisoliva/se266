@@ -4,8 +4,8 @@
 		$dictionary = [
 			// Index
 			"username" => ["username", "اسم المستخدم", "usuario"],
-			"password" => ["password", "كلمة المرور"],
-			"login" => ["login", "تسجيل الدخول"],
+			"password" => ["password", "كلمة المرور", "constraseña"],
+			"login" => ["login", "تسجيل الدخول", "iniciar"],
 			"forgot_password" => ["forgot password?", "نسيت الباسورد؟"],
 			"remember_me" => ["remember me", ".......تذكرنى"],
 			"admin_login" => ["admin login", "دخول المدير"],
