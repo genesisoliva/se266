@@ -165,6 +165,12 @@
 
 <!DOCTYPE html>
 <?php if ($_SESSION['lang']) { ?>
+
+<?php
+echo "\$_GET['lang']: {$_GET['lang']}<br>";
+echo "\$_SESSION['lang']: {$_SESSION['lang']}<br>";
+?>
+
 <html lang="ar" dir="rtl">
 <?php } else { ?>
 <html lang="en" dir="ltr">
