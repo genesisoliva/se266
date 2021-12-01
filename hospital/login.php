@@ -222,7 +222,7 @@
                 <?php } else { ?>
                     <input type="checkbox" value="1" name="remember-me"> <span><?php echo language("remember_me", $_SESSION['lang']); ?></span>
                 <?php } ?>
-                <?php if ($_SESSION['lang']) { ?>
+                <?php if ($_SESSION['lang'] == 1) { ?>
                     <span class="pull-left"> <a href=""> <?php echo language("forgot_password", $_SESSION['lang']); ?></a></span>
                 <?php } else { ?>
                     <span class="pull-right"> <a href=""> <?php echo language("forgot_password", $_SESSION['lang']); ?></a></span>
