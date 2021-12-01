@@ -6,7 +6,7 @@
 			"username" => ["username", "اسم المستخدم", "usuario"],
 			"password" => ["password", "كلمة المرور", "constraseña"],
 			"login" => ["login", "تسجيل الدخول", "iniciar"],
-			"forgot_password" => ["forgot password?", "نسيت الباسورد؟", resetear contraseña],
+			"forgot_password" => ["forgot password?", "نسيت الباسورد؟", "resetear contraseña"],
 			"remember_me" => ["remember me", ".......تذكرنى", recordar],
 			"admin_login" => ["admin login", "دخول المدير"],
 			"login_field_required" => ["username and password are required fields", "يرجى إدخال اسم المستخدم وكلمة المرور"],
