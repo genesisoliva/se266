@@ -70,6 +70,7 @@
     &copy;  2021 Genesis J Oliva
       <span class="text-muted">
         <a href="<?php echo $_SERVER['PHP_SELF']; ?>?lang=ar">العربية</a>
+        <a href="<?php echo $_SERVER['PHP_SELF']; ?>?lang=es">Español</a>
         <a href="<?php echo $_SERVER['PHP_SELF']; ?>?lang=en">English</a>
       </span>
     </div>
