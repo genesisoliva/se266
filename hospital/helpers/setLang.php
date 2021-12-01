@@ -6,6 +6,11 @@
 			$_SESSION['lang'] = 0;
 			$selectedLang = "en";
 		}
+                if else($_GET['lang'] == 'es') 
+		{
+			$_SESSION['lang'] = 2;
+			$selectedLang = "es";
+		}
 		else 
 		{
 			$_SESSION['lang'] = 1;
