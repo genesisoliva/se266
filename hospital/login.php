@@ -12,7 +12,7 @@
         die();
      } // End Session is Set
 
-echo "\$_SESSION['user_id']: {$_SESSION['user_id']}<br>";
+echo "\$_SESSION['user_id']: {$id}<br>";
 
     /***************************************************************
     * COOKIE IS SET
