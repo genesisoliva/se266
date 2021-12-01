@@ -1,6 +1,11 @@
 <?php $dashboard = true; ?>
 <?php require_once "layouts/header.php"; ?>
 
+<?php
+echo "\$_GET['lang']: {$_GET['lang']}<br>";
+echo "\$_SESSION['lang']: {$_SESSION['lang']}<br>";
+?>
+
 <div id="page-inner">
     <!-- Row 1 -->
     <div class="row text-center pad-top">
