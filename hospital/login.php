@@ -164,9 +164,9 @@
 ?>
 
 <!DOCTYPE html>
-<?php if ($_SESSION['lang']) == 1{ ?>
+<?php if ($_SESSION['lang'] == 1) { ?>
 <html lang="ar" dir="rtl">
-<?php } elseif ($_SESSION['lang']) == 2{ ?>
+<?php } if ($_SESSION['lang'] == 2) { ?>
 <html lang="es" dir="ltr">
 <?php } else {?>
 <html lang="en" dir="ltr">
