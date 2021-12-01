@@ -2,11 +2,8 @@
 <?php require_once "layouts/header.php"; ?>
 
 <?php
-echo "\$_GET['lang']: {$_GET['lang']}<br>";
-echo "\$_SESSION['lang']: {$_SESSION['lang']}<br>";
-
-echo "\$_SESSION['user_id']: {$_SESSION['user_id']}<br>";
-
+//echo "\$_GET['lang']: {$_GET['lang']}<br>";
+//echo "\$_SESSION['lang']: {$_SESSION['lang']}<br>";
 ?>
 
 <div id="page-inner">
@@ -132,7 +129,7 @@ echo "\$_SESSION['user_id']: {$_SESSION['user_id']}<br>";
             <div class="div-square">
                 <a href="phoneNumbers.php?lang=<?php echo $selectedLang; ?>&manage=view" >
                     <i class="fa fa-address-book-o fa-5x"></i>
-                    <h4><?php echo language('phoneNumbers', $_SESSION['lang']); ?></h4>
+                    <h4><?php echo language('phoneNumb', $_SESSION['lang']); ?></h4>
                 </a>
             </div>         
         </div>

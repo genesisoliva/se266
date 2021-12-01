@@ -11,7 +11,7 @@ body {
     margin:10px 20px 10px 0px;
     background-color:#fff!important;
     padding:10px;
-    min-height:1050px;
+    /*min-height:1050px;*/
 }
 .pad-top {
     padding-top:15px;
