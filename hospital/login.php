@@ -165,12 +165,6 @@
 
 <!DOCTYPE html>
 <?php if ($_SESSION['lang']) { ?>
-
-<?php
-echo "\$_GET['lang']: {$_GET['lang']}<br>";
-echo "\$_SESSION['lang']: {$_SESSION['lang']}<br>";
-?>
-
 <html lang="ar" dir="rtl">
 <?php } else { ?>
 <html lang="en" dir="ltr">
@@ -238,6 +232,7 @@ echo "\$_SESSION['lang']: {$_SESSION['lang']}<br>";
             <div class="credits">
                 <a href="<?php echo $_SERVER['PHP_SELF']; ?>?lang=ar">العربية</a>
                 <a href="<?php echo $_SERVER['PHP_SELF']; ?>?lang=en">English</a>
+                <a href="<?php echo $_SERVER['PHP_SELF']; ?>?lang=es">Spanish</a>
             </div>
         </div>
     </div>
