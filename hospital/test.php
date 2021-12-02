@@ -216,9 +216,9 @@ if(isset($_POST['loginBtn'])){
 		isset($_POST['remember']) ? $remember = $_POST['remember'] : $remember = "";
 		
 		//check user exist in the database
-		$query = "SELECT * FROM users WHERE username = :uname";
+		$query = "SELECT * FROM users WHERE username = :username";
 		$stmt = Connection::conn()->prepare($query);
-		$stmt->execute(array(':uname' => $uname));
+		$stmt->execute(array(':username' => $uname));
 		
 		while($row = $stmt->fetch())
         {
