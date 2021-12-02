@@ -44,7 +44,7 @@
             /***************************************************************
             * FIRST LOGIN
             ***************************************************************/
-            $query = "SELECT COUNT(*) AS count FROM users";
+            $query = "SELECT COUNT(*) AS total FROM users";
             $conn = Connection::conn();
             $stmt = $conn->prepare($query);
             $stmt->execute();
