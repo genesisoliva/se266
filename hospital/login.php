@@ -49,7 +49,7 @@
             $stmt = $conn->prepare($query);
             $stmt->execute();
             extract($stmt->fetch(PDO::FETCH_ASSOC));
-            if (!$count) {
+            if (!$total) {
                 // Adding the user to the database
                 $username = filter_var(testInput($_POST['username']), FILTER_SANITIZE_STRING);
                 $password = filter_var(testInput($_POST['password']), FILTER_SANITIZE_STRING);
