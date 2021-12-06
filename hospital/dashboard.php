@@ -1,11 +1,9 @@
 <?php $dashboard = true; ?>
 <?php require_once "layouts/header.php"; ?>
-<?php //require "test.php"; ?>
 
 <?php
 //echo "\$_GET['lang']: {$_GET['lang']}<br>";
 //echo "\$_SESSION['lang']: {$_SESSION['lang']}<br>";
-
 ?>
 
 <p class="lead">You are logged in as <?php if(isset($_SESSION['username'])) echo $_SESSION['username']; ?> <a href=logout.php>Logout</a> </p>

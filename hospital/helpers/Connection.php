@@ -15,9 +15,11 @@ class Connection {
 			$conn = new PDO($dsn, $username, $password);
 			$conn->exec('set names utf8');
 			$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-			return $conn;
+			//return $conn;
 		} catch (PDOException $e) {
 			die($e->getMessage());
 		}
+		return $conn;
+
 	}
 }

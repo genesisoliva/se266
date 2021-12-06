@@ -6,17 +6,18 @@
     /***************************************************************
      * SESSION IS SET
      ***************************************************************/
-
-     if (isset($_SESSION['user_id'])) { // Start Session is Set
+     if (isset($_SESSION['user_id'])) // Start Session is Set
+     {
         header('Location: dashboard.php');
         die();
      } // End Session is Set
 
+
     /***************************************************************
     * COOKIE IS SET
     ***************************************************************/
-
-    if (isset($_COOKIE['remember'])) { // Start Cookie is Set
+    if (isset($_COOKIE['remember'])) // Start Cookie is Set
+    {
         // Re-Authenticating The User
         $user_id = Cookie::re_authenticate();
         // Creating username and password sessions
@@ -30,17 +31,17 @@
         $_SESSION['id'] = $id;
     } // End Cookie is Set
 
+
     /***************************************************************
     * POST REQUEST
     ***************************************************************/
-
-    if ($_SERVER['REQUEST_METHOD'] == 'POST') { // Start POST Request
-
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') // Start POST Request
+    {
         // unsetting errors
         unset($_SESSION['error']);
 
-        if (isset($_POST['username']) && isset($_POST['password'])) { // Start username and password set
-
+        if (isset($_POST['username']) && isset($_POST['password'])) // Start username and password set
+        {
             /***************************************************************
             * FIRST LOGIN
             ***************************************************************/
@@ -49,7 +50,8 @@
             $stmt = $conn->prepare($query);
             $stmt->execute();
             extract($stmt->fetch(PDO::FETCH_ASSOC));
-            if (!$total) {
+            if (!$total) 
+            {
                 // Adding the user to the database
                 $username = filter_var(testInput($_POST['username']), FILTER_SANITIZE_STRING);
                 $password = filter_var(testInput($_POST['password']), FILTER_SANITIZE_STRING);
@@ -67,19 +69,23 @@
                 die();
             }
 
+            
             /***************************************************************
             * AUTHENTICATED USER LOGIN
             ***************************************************************/
-
-            if (isset($_SESSION['id']) && $_SESSION['username'] == $_POST['username'] && $_POST['password'] == 'Give it another try -:)') {
+            if (isset($_SESSION['id']) && $_SESSION['username'] == $_POST['username'] && $_POST['password'] == 'Give it another try -:)') 
+            {
                 // Setting the session
                 $_SESSION['user_id'] = $_SESSION['id'];
+
                 // Unsetting username, password and id
                 unset($_SESSION['username']);
                 unset($_SESSION['password']);
                 unset($_SESSION['id']);
+
                 // setting the cookie if remember-me is selected
-                if (isset($_POST['remember-me']) && $_POST['remember-me'] == '1') {
+                if (isset($_POST['remember-me']) && $_POST['remember-me'] == '1') 
+                {
                     Cookie::set_cookie($id);
                 }
                 // unsetting the cookie if remember-me is not selected
@@ -93,7 +99,6 @@
             /***************************************************************
             * NEW LOGIN
             ***************************************************************/
-
             else {
                 // unsetting the previous cookie if exists
                 if (isset($_SESSION['id'])) {
@@ -222,6 +227,7 @@
                 <?php } else { ?>
                     <input type="checkbox" value="1" name="remember-me"> <span><?php echo language("remember_me", $_SESSION['lang']); ?></span>
                 <?php } ?>
+                
                 <?php if ($_SESSION['lang'] == 1) { ?>
                     <span class="pull-left"> <a href=""> <?php echo language("forgot_password", $_SESSION['lang']); ?></a></span>
                 <?php } else { ?>
@@ -237,12 +243,12 @@
                 <a href="<?php echo $_SERVER['PHP_SELF']; ?>?lang=es">Español</a>
                 <a href="<?php echo $_SERVER['PHP_SELF']; ?>?lang=en">English</a>
             </div>
-        </div>
-    </div>
-<?php
+            <?php
 echo "\$_GET['lang']: {$_GET['lang']}<br>";
 echo "\$_SESSION['lang']: {$_SESSION['lang']}<br>";
 ?>
+        </div>
+    </div>
 
   </body>
 </html>
