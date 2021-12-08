@@ -172,6 +172,8 @@
 <html lang="ar" dir="rtl">
 <?php } if ($_SESSION['lang'] == 2) { ?>
 <html lang="es" dir="ltr">
+<?php } if ($_SESSION['lang'] == 3) { ?>
+<html lang="pt" dir="ltr">
 <?php } else {?>
 <html lang="en" dir="ltr">
 <?php } ?>
@@ -242,13 +244,14 @@
     <div class="text-right">
             <div class="credits">
                 <a href="<?php echo $_SERVER['PHP_SELF']; ?>?lang=ar">العربية</a>
-                <a href="<?php echo $_SERVER['PHP_SELF']; ?>?lang=es">Español</a>
                 <a href="<?php echo $_SERVER['PHP_SELF']; ?>?lang=en">English</a>
+                <a href="<?php echo $_SERVER['PHP_SELF']; ?>?lang=es">Español</a>
+                <a href="<?php echo $_SERVER['PHP_SELF']; ?>?lang=pt">Portuguese</a>
             </div>
             <?php
-echo "\$_GET['lang']: {$_GET['lang']}<br>";
-echo "\$_SESSION['lang']: {$_SESSION['lang']}<br>";
-?>
+                echo "\$_GET['lang']: {$_GET['lang']}<br>";
+                echo "\$_SESSION['lang']: {$_SESSION['lang']}<br>";
+            ?>
         </div>
     </div>
 
