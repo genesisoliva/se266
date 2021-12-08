@@ -27,8 +27,8 @@ if (isset($_GET['manage']) && $_GET['manage'] == 'view') {
 ?>
 <!-- Genders.php-->
 <div class="panel panel-default">
-
     <div class="panel-heading">
+        <i class="fa fa-mars fa-2x" aria-hidden="true"></i>
         <?php echo language("genders-heading", $_SESSION['lang']); ?>
     </div>
 

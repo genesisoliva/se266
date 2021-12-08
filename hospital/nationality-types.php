@@ -28,6 +28,7 @@ if (isset($_GET['manage']) && $_GET['manage'] == 'view') {
 
 <div class="panel panel-default">
     <div class="panel-heading">
+    <i class="fa fa-home fa-2x" aria-hidden="true"></i>
         <?php echo language("nationalityTypes-heading", $_SESSION['lang']); ?>
     </div>
     <div class="panel-body">

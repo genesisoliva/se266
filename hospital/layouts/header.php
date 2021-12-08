@@ -3,9 +3,8 @@
   require_once 'inc/header.php';
   if (!isset($_SESSION['user_id'])) {
     header('Location: login.php');
+    //header('Location: test.php');
   }
-
-  
 
 ?>
 

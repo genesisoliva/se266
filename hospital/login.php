@@ -165,7 +165,6 @@
             $_SESSION['error'] = language("required_field", $_SESSION['lang']);
         } // End username and password not set
     } // End POST Request
-
 ?>
 
 <!DOCTYPE html>
@@ -180,11 +179,11 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="<?php echo language("admin_login", $_SESSION['lang']); ?>">
+    <meta name="description" content="<?php echo language("login-content", $_SESSION['lang']); ?>">
     <meta name="author" content="Genesis J Oliva">
     <link rel="shortcut icon" href="<?php echo $ico; ?>settings.png">
 
-    <title><?php echo language("admin_login", $_SESSION['lang']); ?></title>
+    <title><?php echo language("login-title", $_SESSION['lang']); ?></title>
 
     <!-- Bootstrap CSS -->    
     <link href="<?php echo $css; ?>bootstrap.min.css" rel="stylesheet">
@@ -210,16 +209,18 @@
                 ?>
             </div>
         <?php } ?>
+
+       <!-- Form --> 
       <form class="login-form" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">        
         <div class="login-wrap">
             <p class="login-img"><i class="icon_lock_alt"><!--elegant-icons-style.css(31)--></i></p>
             <div class="input-group">
               <span class="input-group-addon"><i class="icon_profile"></i></span>
-              <input type="text" class="form-control" placeholder="<?php echo language("username", $_SESSION['lang']); ?>" autofocus name="username" autocomplete="off" required="required" value="<?php echo isset($_SESSION['username']) ? $_SESSION['username'] : '' ?>">
+              <input type="text" class="form-control" placeholder="<?php echo language("username", $_SESSION['lang']); ?>" autofocus name="username" autocomplete="off" value="<?php echo isset($_SESSION['username']) ? $_SESSION['username'] : '' ?>">
             </div>
             <div class="input-group">
                 <span class="input-group-addon"><i class="icon_key_alt"></i></span>
-                <input id="password" type="password" class="form-control" placeholder="<?php echo language("password", $_SESSION['lang']); ?>" name="password" autocomplete="new-password" required="required" value="<?php echo isset($_SESSION['password']) ? $_SESSION['password'] : '' ?>">
+                <input id="password" type="password" class="form-control" placeholder="<?php echo language("password", $_SESSION['lang']); ?>" name="password" autocomplete="new-password" value="<?php echo isset($_SESSION['password']) ? $_SESSION['password'] : '' ?>">
             </div>
             <label class="checkbox">
                 <?php if (isset($_SESSION['id'])) { ?>
@@ -234,9 +235,10 @@
                     <span class="pull-right"> <a href=""> <?php echo language("forgot_password", $_SESSION['lang']); ?></a></span>
                 <?php } ?>
             </label>
-            <button class="btn btn-primary btn-lg btn-block" type="submit"><?php echo language("login", $_SESSION['lang']); ?></button>
+            <button class="btn btn-primary btn-lg btn-block" type="submit"><?php echo language("login-button", $_SESSION['lang']); ?></button>
         </div>
       </form>
+
     <div class="text-right">
             <div class="credits">
                 <a href="<?php echo $_SERVER['PHP_SELF']; ?>?lang=ar">العربية</a>

@@ -30,6 +30,7 @@ if (isset($_GET['manage']) && $_GET['manage'] == 'view') {
 
 <div class="panel panel-default employee-panel">
     <div class="panel-heading">
+    <i class="fa fa-user-md fa-2x" aria-hidden="true"></i>
         <?php echo language("employes-heading", $_SESSION['lang']); ?>
     </div>
     <div class="panel-body">
