@@ -176,7 +176,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="<?php echo language("admin-login", $_SESSION['lang']); ?>">
+    <meta name="description" content="<?php echo language("admin_login", $_SESSION['lang']); ?>">
     <meta name="author" content="Genesis J Oliva">
     <link rel="shortcut icon" href="<?php echo $ico; ?>settings.png">
 
