@@ -20,7 +20,7 @@
 			"logout" => ["Logout", "تسجيل الخروج"],
 			"genders" => ["Manage Genders", "إدارة النوع"],
 			"nationalities" => ["Manage Nationalities", "إدارة الجنسيات"],
-			"natTypes" => ["Manage Nationality Typse", "إدارة انواع الجنسيات"],
+			"natTypes" => ["Manage Nationality Types", "إدارة انواع الجنسيات"],
 			"departments" => ["Manage Departments", "إدارة الاقسام"],
 			"users" => ["Manage Users", "إدارة المستخدمين"],
 			"cities" => ["Manage Cities", "إدارة المدن"],
