@@ -16,7 +16,8 @@ class Cookie {
     * This eliminates the potential impact of timing leaks on searches without causing a drastic performance hit.
     *********************************************************************************************************************************/
     
-    public static function set_cookie($user_id) {
+    public static function set_cookie($user_id) 
+    {
         $selector = base64_encode(random_bytes(9));
         $authenticator = random_bytes(33);
 
@@ -42,7 +43,8 @@ class Cookie {
     }
 
 
-    public static function unset_cookie($user_id = 0) {
+    public static function unset_cookie($user_id = 0) 
+    {
         setcookie(
             'remember',
             $_COOKIE['remember'],
