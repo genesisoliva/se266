@@ -6,21 +6,16 @@
 //echo "\$_SESSION['lang']: {$_SESSION['lang']}<br>";
 ?>
 
-<p class="lead">You are logged in as <?php if(isset($_SESSION['username'])) echo $_SESSION['username']; ?> <a href=logout.php>Logout</a> </p>
-
 <div id="page-inner">
-    <!-- Row 1 -->
     <div class="row text-center pad-top">
-        <!-- Gender -->
         <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
             <div class="div-square">
                 <a href="genders.php?lang=<?php echo $selectedLang; ?>&manage=view" >
                     <i class="fa fa-mars fa-5x"></i>
-                      <h4><?php echo language('genders',  $_SESSION['lang']); ?></h4>
+                      <h4><?php echo language('genders', $_SESSION['lang']); ?></h4>
                 </a>
             </div>
-        </div>
-        <!-- Nationlity -->       
+        </div>       
         <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
             <div class="div-square">
                 <a href="nationalities.php?lang=<?php echo $selectedLang; ?>&manage=view" >
@@ -29,7 +24,6 @@
                 </a>
             </div>         
         </div>
-        <!-- Nationlity Type --> 
         <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
             <div class="div-square">
                 <a href="nationality-types.php?lang=<?php echo $selectedLang; ?>&manage=view" >
@@ -38,7 +32,6 @@
                 </a>
             </div>         
         </div>
-        <!-- Departments --> 
         <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
             <div class="div-square">
                 <a href="departments.php?lang=<?php echo $selectedLang; ?>&manage=view" >
@@ -47,7 +40,6 @@
                 </a>
             </div>         
         </div>
-        <!-- Cities --> 
         <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
             <div class="div-square">
                 <a href="cities.php?lang=<?php echo $selectedLang; ?>&manage=view" >
@@ -56,7 +48,6 @@
                 </a>
             </div>         
         </div>
-        <!-- Areas--> 
         <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
             <div class="div-square">
                 <a href="areas.php?lang=<?php echo $selectedLang; ?>&manage=view" >
@@ -66,7 +57,7 @@
             </div>        
         </div>
     </div>
-    <!-- ROW 2 --> 
+    <!-- /. ROW  --> 
     <div class="row text-center pad-top">
         <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
             <div class="div-square">
@@ -117,7 +108,7 @@
             </div>        
         </div>
     </div>
-    <!-- ROW 3  --> 
+    <!-- /. ROW  --> 
     <div class="row text-center pad-top">
         <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
             <div class="div-square">
@@ -131,7 +122,7 @@
             <div class="div-square">
                 <a href="phoneNumbers.php?lang=<?php echo $selectedLang; ?>&manage=view" >
                     <i class="fa fa-address-book-o fa-5x"></i>
-                    <h4><?php echo language('phoneNumb', $_SESSION['lang']); ?></h4>
+                    <h4><?php echo language('phoneNumbers', $_SESSION['lang']); ?></h4>
                 </a>
             </div>         
         </div>
@@ -168,5 +159,6 @@
             </div>        
         </div>
     </div>
+    <!-- /. ROW  --> 
 </div>
 <?php require_once "layouts/footer.php"; ?>
