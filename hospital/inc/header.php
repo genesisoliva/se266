@@ -8,7 +8,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="<?php echo language("dashboard", $_SESSION['lang']); ?>">
-    <meta name="author" content="Mohamed Alansary">
+    <meta name="author" content="Genesis Oliva">
     <link rel="shortcut icon" href="<?php echo $ico; ?>settings.png">
 
     <title><?php echo language("dashboard", $_SESSION['lang']); ?></title>
