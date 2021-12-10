@@ -238,7 +238,9 @@
                 <a href="<?php echo $_SERVER['PHP_SELF']; ?>?lang=en">English</a>
             </div>
             <?php
+if (isset($_GET['lang'])) {
                 echo "\$_GET['lang']: {$_GET['lang']}<br>";
+}
                 echo "\$_SESSION['lang']: {$_SESSION['lang']}<br>";
             ?>
         </div>
