@@ -38,10 +38,11 @@ if (isset($_GET['manage']) && $_GET['manage'] == 'view') {
             <thead>
                 <tr>
                     <th><?php echo language('id', $_SESSION['lang']); ?></th>
-                    <th><?php echo language('patients-firstName', $_SESSION['lang']); ?></th>
+                    <!--<th><?php echo language('patients-firstName', $_SESSION['lang']); ?></th>
                     <th><?php echo language('patients-middleName', $_SESSION['lang']); ?></th>
-                    <th><?php echo language('patients-lastName', $_SESSION['lang']); ?></th>
-                    <th><?php echo language('patients-civil_id', $_SESSION['lang']); ?></th>
+                    <th><?php echo language('patients-lastName', $_SESSION['lang']); ?></th>-->
+                    <th><?php echo language('patients-name', $_SESSION['lang']); ?></th>
+                    <th><?php echo language('patients-id-#', $_SESSION['lang']); ?></th>
                     <th><?php echo language('patients-dob', $_SESSION['lang']); ?></th>
                     <th><?php echo language('patients-creationTime', $_SESSION['lang']); ?></th>
                     <th><?php echo language('patients-gender', $_SESSION['lang']); ?></th>
@@ -59,9 +60,10 @@ if (isset($_GET['manage']) && $_GET['manage'] == 'view') {
                     ?>
                     <tr>
                         <td><a href="<?php echo $_SERVER['PHP_SELF']; ?>?manage=show&lang=<?php echo $selectedLang; ?>&id=<?php echo $id; ?>"><?php echo $id; ?></a></td>
-                        <td><?php echo $firstName; ?></td>
+                        <!--<td><?php echo $firstName; ?></td>
                         <td><?php echo $middleName; ?></td>
-                        <td><?php echo $lastName; ?></td>
+                        <td><?php echo $lastName; ?></td>-->
+                        <td><?php echo "{$firstName} {$middleName} {$lastName}";?></td>
                         <td><?php echo $civil_id; ?></td>
                         <td><?php echo $dob; ?></td>
                         <td><?php echo $creationTime; ?></td>
@@ -157,31 +159,31 @@ if (isset($_GET['manage']) && $_GET['manage'] == 'view') {
                     />
                 </div>
                 <div class="form-group">
-                    <label for="civil_id"><?php echo language("patients-civil_id", $_SESSION['lang']); ?></label>
-                    <input type="text" placeholder="<?php echo language('patients-civil_id', $_SESSION['lang']); ?>"
+                    <label for="civil_id"><?php echo language("patients-id-#", $_SESSION['lang']); ?></label>
+                    <input type="text" placeholder="<?php echo language('patients-id-#', $_SESSION['lang']); ?>"
                         value="<?php echo isset($_SESSION['civil_id']) ? $_SESSION['civil_id'] : ''; ?>" required=""
                         class="form-control" name="civil_id" data-parsley-required="true" data-parsley-type="digits"
                         data-parsley-minlength="12" data-pasley-maxlength="12"
                     />
                 </div>
                 <div class="form-group">
-                    <label for="passport_number"><?php echo language("patients-passport_number", $_SESSION['lang']); ?></label>
-                    <input type="text" placeholder="<?php echo language('patients-passport_number', $_SESSION['lang']); ?>"
+                    <label for="passport_number"><?php echo language("patients-passport_#", $_SESSION['lang']); ?></label>
+                    <input type="text" placeholder="<?php echo language('patients-passport_#', $_SESSION['lang']); ?>"
                         value="<?php echo isset($_SESSION['passport_number']) ? $_SESSION['passport_number'] : ''; ?>" required=""
                         class="form-control" name="passport_number" data-parsley-type="digits"
                         data-parsley-minlength="8" data-pasley-maxlength="9"
                     />
                 </div>
-                <div class="bootstrap-iso">
-                    <div class="form-group">
+                <div class="bootstrap-iso form-group">
+                    <!--<div class="form-group">-->
                         <label for="dob"><?php echo language("patients-dob", $_SESSION['lang']); ?></label>
                         <div class='input-group date' id='datetimepickerpatdob'>
-                            <input type='text' required="" data-parsley-required="true" name="dob"/>
-                            <span class="input-group-addon pull-left">
+                            <input type='text' required="" data-parsley-required="true" name="dob" class="form-control"/>
+                            <span class="input-group-addon pull-left1">
                                 <span class="glyphicon glyphicon-calendar"></span>
                             </span>
                         </div>
-                    </div>
+                    <!--</div>-->
                 </div>
                 <div class="form-group">
                     <label for="image"><?php echo language("patients-image", $_SESSION['lang']); ?></label>
@@ -203,6 +205,7 @@ if (isset($_GET['manage']) && $_GET['manage'] == 'view') {
                 <div class="form-group">
                     <label for="gender_id"><?php echo language("patients-gender", $_SESSION['lang']); ?></label>
                     <select name="gender_id" class="form-control" required="" data-parsley-required="true">
+                    <option value=""></option>
                         <?php
                         $query = "SELECT * FROM genders ORDER BY id ASC";
                         $stmt = Connection::conn()->prepare($query);
@@ -217,6 +220,7 @@ if (isset($_GET['manage']) && $_GET['manage'] == 'view') {
                 <div class="form-group">
                     <label for="nationality_id"><?php echo language("patients-nationality", $_SESSION['lang']); ?></label>
                     <select name="nationality_id" class="form-control" required="" data-parsley-required="true">
+                        <option value=""></option>
                         <?php
                         $query = "SELECT * FROM nationalities ORDER BY id ASC";
                         $stmt = Connection::conn()->prepare($query);
@@ -231,6 +235,7 @@ if (isset($_GET['manage']) && $_GET['manage'] == 'view') {
                 <div class="form-group">
                     <label for="nationalityType_id"><?php echo language("patients-nationalityType", $_SESSION['lang']); ?></label>
                     <select name="nationalityType_id" class="form-control" required="" data-parsley-required="true">
+                        <option value=""></option>
                         <?php
                         $query = "SELECT * FROM nationalityTypes ORDER BY id ASC";
                         $stmt = Connection::conn()->prepare($query);
@@ -407,28 +412,28 @@ if (isset($_GET['manage']) && $_GET['manage'] == 'view') {
                         <input type="hidden" name="patient_id" value="<?php echo $_GET['id']; ?>"/>
                         <input type="hidden" name="oldimage" value="<?php echo $image; ?>"/>
                         <div class="form-group">
-                            <label for="firstName"><?php echo language('patients-firstName', $_SESSION['lang']); ?></label><br/>
+                            <label for="firstName"><?php echo language('patients-firstName', $_SESSION['lang']); ?></label>
                             <input type="text" placeholder="<?php echo language('patients-firstName', $_SESSION['lang']); ?>"
-                                value="<?php echo $firstName; ?>" required=""
+                                value="<?php echo $firstName; ?>" required="" class="form-control"
                                 name="firstName" data-parsley-required="true" data-parsley-length="[1, 30]"
                             />
                         </div>
                         <div class="form-group">
-                            <label for="middleName"><?php echo language("patients-middleName", $_SESSION['lang']); ?></lable>
+                            <label for="middleName"><?php echo language("patients-middleName", $_SESSION['lang']); ?></label>
                             <input type="text" placeholder="<?php echo language('patients-middleName', $_SESSION['lang']); ?>"
                                 value="<?php echo $middleName; ?>" required=""
                                 class="form-control" name="middleName" data-parsley-required="true" data-parsley-length="[1, 30]"
                             />
                         </div>
                         <div class="form-group">
-                            <label for="lastName"><?php echo language("patients-lastName", $_SESSION['lang']); ?></lable>
+                            <label for="lastName"><?php echo language("patients-lastName", $_SESSION['lang']); ?></label>
                             <input type="text" placeholder="<?php echo language('patients-lastName', $_SESSION['lang']); ?>"
                                 value="<?php echo $lastName; ?>" required=""
                                 class="form-control" name="lastName" data-parsley-required="true" data-parsley-length="[1, 30]"
                             />
                         </div>
                         <div class="form-group">
-                            <label for="civil_id"><?php echo language("patients-civil_id", $_SESSION['lang']); ?></lable>
+                            <label for="civil_id"><?php echo language("patients-civil_id", $_SESSION['lang']); ?></label>
                             <input type="text" placeholder="<?php echo language('patients-civil_id', $_SESSION['lang']); ?>"
                                 value="<?php echo $civil_id ?>" required=""
                                 class="form-control" name="civil_id" data-parsley-required="true" data-parsley-type="digits"
@@ -436,7 +441,7 @@ if (isset($_GET['manage']) && $_GET['manage'] == 'view') {
                             />
                         </div>
                         <div class="form-group">
-                            <label for="passport_number"><?php echo language("patients-passport_number", $_SESSION['lang']); ?></lable>
+                            <label for="passport_number"><?php echo language("patients-passport_number", $_SESSION['lang']); ?></label>
                             <input type="text" placeholder="<?php echo language('patients-passport_number', $_SESSION['lang']); ?>"
                                 value="<?php echo $passport_number; ?>" required=""
                                 class="form-control" name="passport_number" data-parsley-type="digits"
@@ -459,7 +464,7 @@ if (isset($_GET['manage']) && $_GET['manage'] == 'view') {
                             <input type="file" name="image"/>
                         </div>
                         <div class="form-group">
-                            <label for="notes"><?php echo language("patients-notes", $_SESSION['lang']); ?></lable>
+                            <label for="notes"><?php echo language("patients-notes", $_SESSION['lang']); ?></label>
                             <input type="text" placeholder="<?php echo language('patients-notes', $_SESSION['lang']); ?>"
                                 value="<?php echo $notes; ?>"
                                 class="form-control" name="notes"
@@ -468,6 +473,7 @@ if (isset($_GET['manage']) && $_GET['manage'] == 'view') {
                         <div class="form-group">
                             <label for="gender_id"><?php echo language("patients-gender", $_SESSION['lang']); ?></label>
                             <select name="gender_id" class="form-control" required="" data-parsley-required="true">
+                            <option value=""></option>
                                 <?php
                                 $subQuery = "SELECT * FROM genders WHERE id = :id";
                                 $subStmt = Connection::conn()->prepare($subQuery);
@@ -487,11 +493,13 @@ if (isset($_GET['manage']) && $_GET['manage'] == 'view') {
                                     ?>
                                     <option value="<?php echo $id; ?>"><?php echo $gender; ?></option>
                                 <?php } ?>
+
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="nationality_id"><?php echo language("patients-nationality", $_SESSION['lang']); ?></label>
                             <select name="nationality_id" class="form-control" required="" data-parsley-required="true">
+                            <option value=""></option>
                                 <?php
                                 $query = "SELECT * FROM nationalities ORDER BY id ASC";
                                 $stmt = Connection::conn()->prepare($query);
@@ -506,22 +514,32 @@ if (isset($_GET['manage']) && $_GET['manage'] == 'view') {
                         <div class="form-group">
                             <label for="nationalityType_id"><?php echo language("patients-nationalityType", $_SESSION['lang']); ?></label>
                             <select name="nationalityType_id" class="form-control" required="" data-parsley-required="true">
+                            <option value=""></option>
                                 <?php
-                                $subQuery = "SELECT * FROM nationalityTypes WHERE id = :id";
+                                /*$subQuery = "SELECT * FROM nationalityTypes WHERE id = :id";
                                 $subStmt = Connection::conn()->prepare($subQuery);
                                 $subStmt->bindParam(':id', $nationality_id, PDO::PARAM_INT);
                                 $subStmt->execute();
                                 $subRow = $subStmt->fetch(PDO::FETCH_ASSOC);
-                                extract($subRow);
+                                extract($subRow);*/
                                 ?>
-                                <option value="<?php echo $id; ?>"><?php echo $type; ?></option>
+                                <!--<option value="<?php //echo $id; ?>"><?php //echo $type; ?></option>-->
                                 <?php
-                                $subQuery = "SELECT * FROM nationalityTypes WHERE id != :id";
+                                /*$subQuery = "SELECT * FROM nationalityTypes WHERE id != :id";
                                 $subStmt = Connection::conn()->prepare($subQuery);
                                 $subStmt->bindParam(':id', $nationalityType_id, PDO::PARAM_INT);
                                 $subStmt->execute();
                                 while ($subRow = $subStmt->fetch(PDO::FETCH_ASSOC)) {
                                     extract($subRow);
+                                    ?>
+                                    <option value="<?php echo $id; ?>"><?php echo $type; ?></option>
+                                <?php } */?>
+                                <?php
+                                $query = "SELECT * FROM nationalityTypes ORDER BY id ASC";
+                                $stmt = Connection::conn()->prepare($query);
+                                $stmt->execute();
+                                while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                                    extract($row);
                                     ?>
                                     <option value="<?php echo $id; ?>"><?php echo $type; ?></option>
                                 <?php } ?>

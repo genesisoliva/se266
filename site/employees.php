@@ -38,10 +38,13 @@ if (isset($_GET['manage']) && $_GET['manage'] == 'view') {
             <thead>
                 <tr>
                     <th><?php echo language('id', $_SESSION['lang']); ?></th>
-                    <th><?php echo language('employees-firstName', $_SESSION['lang']); ?></th>
+                    <!--<th><?php echo language('employees-firstName', $_SESSION['lang']); ?></th>
                     <th><?php echo language('employees-middleName', $_SESSION['lang']); ?></th>
-                    <th><?php echo language('employees-lastName', $_SESSION['lang']); ?></th>
-                    <th><?php echo language('employees-civil_id', $_SESSION['lang']); ?></th>
+                    <th><?php echo language('employees-lastName', $_SESSION['lang']); ?></th>-->
+
+                    <th><?php echo language('employees-name', $_SESSION['lang']); ?></th>
+
+                    <th><?php echo language('employees-civil', $_SESSION['lang']); ?></th>
                     <th><?php echo language('employees-dob', $_SESSION['lang']); ?></th>
                     <th><?php echo language('employees-hireDate', $_SESSION['lang']); ?></th>
                     <th><?php echo language('employees-department', $_SESSION['lang']); ?></th>
@@ -59,9 +62,12 @@ if (isset($_GET['manage']) && $_GET['manage'] == 'view') {
                     ?>
                     <tr>
                         <td><a href="<?php echo $_SERVER['PHP_SELF']; ?>?manage=show&lang=<?php echo $selectedLang; ?>&id=<?php echo $id; ?>"><?php echo $id; ?></a></td>
-                        <td><?php echo $firstName; ?></td>
+                        <!--<td><?php echo $firstName; ?></td>
                         <td><?php echo $middleName; ?></td>
-                        <td><?php echo $lastName; ?></td>
+                        <td><?php echo $lastName; ?></td>-->
+
+                        <td><?php echo $firstName." ".$middleName." ".$lastName; ?></td>
+
                         <td><?php echo $civil_id; ?></td>
                         <td><?php echo $dob; ?></td>
                         <td><?php echo $hireDate; ?></td>
@@ -437,12 +443,25 @@ if (isset($_GET['manage']) && $_GET['manage'] == 'view') {
         ?>
             <div class="panel panel-default">
                 <div class="panel-heading">
+                    <i class="fa fa-user-md fa-2x" aria-hidden="true"></i>
                     <?php echo language('employee-edit', $_SESSION['lang']); ?>
                 </div>
                 <div class="panel-body">
                     <form action="employees.php?manage=update" method="POST" data-parsley-validate="" enctype="multipart/form-data">
-                        <input type="hidden" name="employee_id" value="<?php echo $_GET['id']; ?>"/>
-                        <input type="hidden" name="oldimage" value="<?php echo $image; ?>"/>
+                    <!-- box -->
+                        <div class="box">
+                            <input type="text" name="employee_id" class="form-control" value="<?php echo $_GET['id']; ?>"/>
+                            <input type="hidden" name="oldimage" value="<?php echo $image; ?>"/>
+
+                            <div class="form-group">
+                                <label for="creationTime"><?php echo language("employees-creationTime", $_SESSION['lang']); ?></label>
+                                <input type="date" placeholder="<?php echo language('employees-creationTime', $_SESSION['lang']); ?>"
+                                value="<?php echo $creationTime; ?>"
+                                class="form-control" name="creationTime"
+                                />
+                            </div>
+                        </div>
+
                         <div class="form-group">
                             <label for="firstName"><?php echo language('employees-firstName', $_SESSION['lang']); ?></label>
                             <input type="text" placeholder="<?php echo language('employees-firstName', $_SESSION['lang']); ?>"
@@ -484,6 +503,7 @@ if (isset($_GET['manage']) && $_GET['manage'] == 'view') {
                             <label for="image"><?php echo language("employees-image", $_SESSION['lang']); ?></lable>
                             <input type="file" name="image"/>
                         </div>
+
                         <div class="bootstrap-iso">
                             <div class="form-group">
                                 <label for="dob"><?php echo language("employees-dob", $_SESSION['lang']); ?></label>
@@ -504,6 +524,7 @@ if (isset($_GET['manage']) && $_GET['manage'] == 'view') {
                                 </div>
                             </div>
                         </div>
+
                         <div class="form-group">
                             <label for="department_id"><?php echo language("employees-department", $_SESSION['lang']); ?></label>
                             <select name="department_id" class="form-control" required="" data-parsley-required="true">
@@ -566,20 +587,22 @@ if (isset($_GET['manage']) && $_GET['manage'] == 'view') {
                                 <?php } ?>
                             </select>
                         </div>
+                        <!-- nationlity type -->
                         <div class="form-group">
                             <label for="nationalityType_id"><?php echo language("employees-nationalityType", $_SESSION['lang']); ?></label>
                             <select name="nationalityType_id" class="form-control" required="" data-parsley-required="true">
                                 <?php
-                                $subQuery = "SELECT * FROM nationalityTypes WHERE id = :id";
+                               /* $subQuery = "SELECT * FROM nationalityTypes WHERE id = :id";
                                 $subStmt = Connection::conn()->prepare($subQuery);
                                 $subStmt->bindParam(':id', $nationality_id, PDO::PARAM_INT);
                                 $subStmt->execute();
                                 $subRow = $subStmt->fetch(PDO::FETCH_ASSOC);
-                                extract($subRow);
+                                extract($subRow);*/
                                 ?>
-                                <option value="<?php echo $id; ?>"><?php echo $type; ?></option>
+                                <!--<option value="<?php //echo $id; ?>"><?php //echo $type; ?></option>-->
+
                                 <?php
-                                $subQuery = "SELECT * FROM nationalityTypes WHERE id != :id";
+                                /*$subQuery = "SELECT * FROM nationalityTypes WHERE id != :id";
                                 $subStmt = Connection::conn()->prepare($subQuery);
                                 $subStmt->bindParam(':id', $nationalityType_id, PDO::PARAM_INT);
                                 $subStmt->execute();
@@ -587,7 +610,18 @@ if (isset($_GET['manage']) && $_GET['manage'] == 'view') {
                                     extract($subRow);
                                     ?>
                                     <option value="<?php echo $id; ?>"><?php echo $type; ?></option>
+                                <?php } */?>
+
+                                <?php
+                                $query = "SELECT * FROM nationalityTypes ORDER BY id ASC";
+                                $stmt = Connection::conn()->prepare($query);
+                                $stmt->execute();
+                                while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                                    extract($row);
+                                    ?>
+                                    <option value="<?php echo $id; ?>"><?php echo $type; ?></option>
                                 <?php } ?>
+
                             </select>
                         </div>
                         <div class="form-group">
@@ -847,6 +881,7 @@ if (isset($_GET['manage']) && $_GET['manage'] == 'view') {
         }
         extract($stmt->fetch(PDO::FETCH_ASSOC));
         ?>
+        <!-- Employe Show -->
         <div class="panel panel-default employee-panel">
         <div class="panel-heading">
         <i class="fa fa-user-md fa-2x" aria-hidden="true"></i>
@@ -856,9 +891,11 @@ if (isset($_GET['manage']) && $_GET['manage'] == 'view') {
                 echo $firstName.' '.$middleName.' '.$lastName.' '.language('employee-profile', $_SESSION['lang']);
             } ?>
         </div>
+
         <div class="panel-body">
             <div class="row">
                 <div class="col-md-4">
+                    <!-- Image -->
                     <img style="width: 50%; height: 50%;" class="pull-left" src="public/employees_thumbnails/<?php echo $image; ?>">
                 </div>
                 <div class="col-md-8">
@@ -872,57 +909,57 @@ if (isset($_GET['manage']) && $_GET['manage'] == 'view') {
                     <h4><?php echo language('employees-hireDate', $_SESSION['lang']).': '.$hireDate; ?></h4>
                     <h4>
                         <?php
-                            echo language('employees-department', $_SESSION['lang']).': ';
+                            /*echo language('employees-department', $_SESSION['lang']).': ';
                             $subQuery = "SELECT name FROM departments WHERE id = :department_id";
                             $subStmt = Connection::conn()->prepare($subQuery);
                             $subStmt->bindParam(':department_id', $department_id, PDO::PARAM_INT);
                             $subStmt->execute();
                             extract($subStmt->fetch(PDO::FETCH_ASSOC));
-                            echo $name;
+                            echo $name;*/
                         ?>
                     </h4>
                     <h4>
                         <?php
-                            echo language('employees-gender', $_SESSION['lang']).': ';
+                            /*echo language('employees-gender', $_SESSION['lang']).': ';
                             $subQuery = "SELECT * FROM genders WHERE id = :gender_id";
                             $subStmt = Connection::conn()->prepare($subQuery);
                             $subStmt->bindParam(':gender_id', $gender_id, PDO::PARAM_INT);
                             $subStmt->execute();
                             extract($subStmt->fetch(PDO::FETCH_ASSOC));
-                            echo $gender;
+                            echo $gender;*/
                         ?>
                     </h4>
                     <h4>
                         <?php
-                            echo language('employees-nationality', $_SESSION['lang']).': ';
+                            /*echo language('employees-nationality', $_SESSION['lang']).': ';
                             $subQuery = "SELECT * FROM nationalities WHERE id = :nationality_id";
                             $subStmt = Connection::conn()->prepare($subQuery);
                             $subStmt->bindParam(':nationality_id', $nationality_id, PDO::PARAM_INT);
                             $subStmt->execute();
                             extract($subStmt->fetch(PDO::FETCH_ASSOC));
-                            echo $nationality;
+                            echo $nationality;*/
                         ?>
                     </h4>
                     <h4>
                         <?php
-                            echo language('employees-nationalityType', $_SESSION['lang']).': ';
+                            /*echo language('employees-nationalityType', $_SESSION['lang']).': ';
                             $subQuery = "SELECT * FROM nationalityTypes WHERE id = :nationalityType_id";
                             $subStmt = Connection::conn()->prepare($subQuery);
                             $subStmt->bindParam(':nationalityType_id', $nationalityType_id, PDO::PARAM_INT);
                             $subStmt->execute();
                             extract($subStmt->fetch(PDO::FETCH_ASSOC));
-                            echo $type;
+                            echo $type;*/
                         ?>
                     </h4>
                     <h4>
                         <?php
-                            echo language('employees-positionRole', $_SESSION['lang']).': ';
+                            /*echo language('employees-positionRole', $_SESSION['lang']).': ';
                             $subQuery = "SELECT role FROM positionRoles WHERE id = :positionRole_id";
                             $subStmt = Connection::conn()->prepare($subQuery);
                             $subStmt->bindParam(':positionRole_id', $positionRole_id, PDO::PARAM_INT);
                             $subStmt->execute();
                             extract($subStmt->fetch(PDO::FETCH_ASSOC));
-                            echo $role;
+                            echo $role;*/
                         ?>
                     </h4>
 
@@ -932,40 +969,105 @@ if (isset($_GET['manage']) && $_GET['manage'] == 'view') {
                             <td><?php echo $id; ?></td>
                         </tr>
                         <tr>
-                            <th><?php echo language('id', $_SESSION['lang']).': ';?></th>
-                            <td><?php echo $id; ?></td>
+                            <th><?php echo language('employees-firstName', $_SESSION['lang']).': ';?></th>
+                            <td><?php echo $firstName; ?></td>
                         </tr>
                         <tr>
-                            <th><?php echo language('id', $_SESSION['lang']).': ';?></th>
-                            <td><?php echo $id; ?></td>
+                            <th><?php echo language('employees-middleName', $_SESSION['lang']).': ';?></th>
+                            <td><?php echo $middleName; ?></td>
                         </tr>
                         <tr>
-                            <th><?php echo language('id', $_SESSION['lang']).': ';?></th>
-                            <td><?php echo $id; ?></td>
+                            <th><?php echo language('employees-lastName', $_SESSION['lang']).': ';?></th>
+                            <td><?php echo $lastName; ?></td>
+                        </tr>
+                        <tr>
+                            <th><?php echo language('employees-civil_id', $_SESSION['lang']).': ';?></th>
+                            <td><?php echo $civil_id; ?></td>
+                        </tr>
+                        <tr>
+                            <th><?php echo language('employees-passport_number', $_SESSION['lang']).': ';?></th>
+                            <td><?php echo $passport_number; ?></td>
+                        </tr>
+                        <tr>
+                            <th><?php echo language('employees-dob', $_SESSION['lang']).': ';?></th>
+                            <td><?php echo $dob; ?></td>
+                        </tr>
+                        <tr>
+                            <th><?php echo language('employees-hireDate', $_SESSION['lang']).': ';?></th>
+                            <td><?php echo $hireDate; ?></td>
+                        </tr>
+
+                        <tr>
+                            <th><?php echo language('employees-department', $_SESSION['lang']).': ';?></th>
+                            <td>
+                                <?php 
+                                    $subQuery = "SELECT name FROM departments WHERE id = :department_id";
+                                    $subStmt = Connection::conn()->prepare($subQuery);
+                                    $subStmt->bindParam(':department_id', $department_id, PDO::PARAM_INT);
+                                    $subStmt->execute();
+                                    extract($subStmt->fetch(PDO::FETCH_ASSOC));
+                                    echo $name;
+                                ?>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th><?php echo language('employees-gender', $_SESSION['lang']).': ';?></th>
+                            <td>
+                                <?php
+                                    $subQuery = "SELECT * FROM genders WHERE id = :gender_id";
+                                    $subStmt = Connection::conn()->prepare($subQuery);
+                                    $subStmt->bindParam(':gender_id', $gender_id, PDO::PARAM_INT);
+                                    $subStmt->execute();
+                                    extract($subStmt->fetch(PDO::FETCH_ASSOC));
+                                    echo $gender; 
+                                ?>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th><?php echo language('employees-nationality', $_SESSION['lang']).': ';?></th>
+                            <td>
+                                <?php 
+                                    $subQuery = "SELECT * FROM nationalities WHERE id = :nationality_id";
+                                    $subStmt = Connection::conn()->prepare($subQuery);
+                                    $subStmt->bindParam(':nationality_id', $nationality_id, PDO::PARAM_INT);
+                                    $subStmt->execute();
+                                    extract($subStmt->fetch(PDO::FETCH_ASSOC));
+                                    echo $nationality;
+                                ?></td>
+                        </tr>
+                        <!-- nationality type -->
+                        <tr>
+                            <th>
+                                <?php 
+                                    echo language('employees-nationalityType', $_SESSION['lang']).': ';
+                                ?>
+                            </th>
+                            <td>
+                                <?php 
+                                $subQuery = "SELECT * FROM nationalityTypes WHERE id = :nationalityType_id";
+                                $subStmt = Connection::conn()->prepare($subQuery);
+                                $subStmt->bindParam(':nationalityType_id', $nationalityType_id, PDO::PARAM_INT);
+                                $subStmt->execute();
+                                extract($subStmt->fetch(PDO::FETCH_ASSOC));
+                                echo $type;?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th><?php echo language('employees-positionRole', $_SESSION['lang']).': ';?></th>
+                            <td><?php $subQuery = "SELECT role FROM positionRoles WHERE id = :positionRole_id";
+                            $subStmt = Connection::conn()->prepare($subQuery);
+                            $subStmt->bindParam(':positionRole_id', $positionRole_id, PDO::PARAM_INT);
+                            $subStmt->execute();
+                            extract($subStmt->fetch(PDO::FETCH_ASSOC));
+                            echo $role;?></td>
                         </tr>
                     </table>
                 </div>
             </div>
         </div>
         <div class="panel-footer">
-        <table border=1>
-                        <tr>
-                            <th><?php echo language('created_at', $_SESSION['lang']).': ';?></th>
-                            <td><?php echo $creationTime; ?></td>
-                        </tr>
-                        <tr>
-                            <th><?php echo language('id', $_SESSION['lang']).': ';?></th>
-                            <td><?php echo $id; ?></td>
-                        </tr>
-                        <tr>
-                            <th><?php echo language('id', $_SESSION['lang']).': ';?></th>
-                            <td><?php echo $id; ?></td>
-                        </tr>
-                        <tr>
-                            <th><?php echo language('id', $_SESSION['lang']).': ';?></th>
-                            <td><?php echo $id; ?></td>
-                        </tr>
-                    </table>
             <p>
                 <?php echo language('created_at', $_SESSION['lang']).': '.$creationTime; ?>
             </p>
@@ -975,6 +1077,18 @@ if (isset($_GET['manage']) && $_GET['manage'] == 'view') {
                     echo (isset($modificationTime)) ? $modificationTime : language('employee-not-updated-yet', $_SESSION['lang']);
                 ?>
             </p>
+
+            <table border=1>
+                <tr>
+                    <th><?php echo language('created_at', $_SESSION['lang']).': ';?></th>
+                    <td><?php echo $creationTime; ?></td>
+                </tr>
+                <tr>
+                    <th><?php echo language('updated_at', $_SESSION['lang']).': ';?></th>
+                    <td><?php echo $id; ?></td>
+                </tr>
+        </table>
+
             <p>
                 <?php echo language('employees-manage', $_SESSION['lang']); ?>
             </p>
@@ -988,6 +1102,25 @@ if (isset($_GET['manage']) && $_GET['manage'] == 'view') {
                     <span class="glyphicon glyphicon-trash"></span> <?php echo language("delete", $_SESSION['lang']); ?>
                 </button>
             </form>
+        <br>
+        <table border=1>
+                <tr>
+                    <th><?php echo language('employees-manage', $_SESSION['lang']).': ';?></th>
+                    <td><?php echo $creationTime; ?></td>
+                </tr>
+                <tr>
+                    <th><a href="employees.php?lang=<?php echo $selectedLang; ?>&manage=edit&id=<?php echo $_GET['id']; ?>">
+                <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                <?php echo language('employees-edit', $_SESSION['lang']); ?>
+            </a></th>
+                    <td><form action="employees.php?lang=<?php echo $selectedLang; ?>&manage=delete" method="POST">
+                <input type="hidden" name="id" value="<?php echo $id; ?>">
+                <button type="submit" class="btn btn-danger btn-sm">
+                    <span class="glyphicon glyphicon-trash"></span> <?php echo language("delete", $_SESSION['lang']); ?>
+                </button>
+            </form></td>
+                </tr>
+        </table>
         </div>
         </div>
         <div class="panel panel-default">
