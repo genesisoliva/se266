@@ -18,7 +18,7 @@
 
     if (isset($_COOKIE['remember'])) { // Start Cookie is Set
         // Re-Authenticating The User
-        $user_id = Cookie::re_authenticate();
+        //$user_id = Cookie::re_authenticate();
         // Creating username and password sessions
         $query = "SELECT * FROM users WHERE id = :user_id";
         $stmt = Connection::conn()->prepare($query);
