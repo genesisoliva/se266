@@ -90,7 +90,7 @@ if (isset($_GET['manage']) && $_GET['manage'] == 'view') {
                                 $row = $subStmt->fetch(PDO::FETCH_ASSOC);
                                 // if Arabic is the language of the session
                                 if ($_SESSION['lang']) {
-                                    echo $row['arName'];
+                                    echo $row['esName'];
                                 }
                                 // if English is the language of the session
                                 else {

@@ -3,7 +3,7 @@
 }
 
 .table thead tr th {
-	background-color: #863359;
+	background-color: black !important;
 	color: #FFF;
 	text-align: center;
 }

@@ -28,7 +28,7 @@ if (isset($_GET['manage']) && $_GET['manage'] == 'view') {
 
 <div class="panel panel-default">
     <div class="panel-heading">
-    <i class="fa fa-id-card-o fa-2x" aria-hidden="true"></i>
+    <i class="fa fa-credit-card fa-2x" aria-hidden="true"></i>
         <?php echo language("disabilities-heading", $_SESSION['lang']); ?>
     </div>
     <div class="panel-body">
@@ -74,7 +74,7 @@ if (isset($_GET['manage']) && $_GET['manage'] == 'view') {
                                 $subSubStmt->execute();
                                 $subSubRow = $subSubStmt->fetch(PDO::FETCH_ASSOC);
                                 if ($_SESSION['lang']) {
-                                    $result .= ' ('.$subSubRow['arName'].' )';
+                                    $result .= ' ('.$subSubRow['esName'].' )';
                                 }
                                 else {
                                     $result .= ' ('.$subSubRow['enName'].' )';

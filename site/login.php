@@ -228,11 +228,7 @@
                 <?php } else { ?>
                     <input type="checkbox" value="1" name="remember-me"> <?php echo language("remember_me", $_SESSION['lang']); ?>
                 <?php } ?>
-                <?php if ($_SESSION['lang']) { ?>
-                    <span class="pull-left"> <a href="contact.php"> <?php echo language("forgot_password", $_SESSION['lang']); ?></a></span>
-                <?php } else { ?>
-                    <span class="pull-right"> <a href="contact.php"> <?php echo language("forgot_password", $_SESSION['lang']); ?></a></span>
-                <?php } ?>
+                    <span class="pull-right"> <a href="reset.php"> <?php echo language("forgot_password", $_SESSION['lang']); ?></a></span>
             </label>
             <!--Login Button-->
             <button class="btn btn-primary btn-lg btn-block" type="submit"><?php echo language("login", $_SESSION['lang']); ?></button>

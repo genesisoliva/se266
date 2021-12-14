@@ -44,7 +44,6 @@ if (isset($_GET['manage']) && $_GET['manage'] == 'view') {
 
                     <th><?php echo language('employees-name', $_SESSION['lang']); ?></th>
 
-                    <th><?php echo language('employees-civil', $_SESSION['lang']); ?></th>
                     <th><?php echo language('employees-dob', $_SESSION['lang']); ?></th>
                     <th><?php echo language('employees-hireDate', $_SESSION['lang']); ?></th>
                     <th><?php echo language('employees-department', $_SESSION['lang']); ?></th>
@@ -68,7 +67,6 @@ if (isset($_GET['manage']) && $_GET['manage'] == 'view') {
 
                         <td><?php echo $firstName." ".$middleName." ".$lastName; ?></td>
 
-                        <td><?php echo $civil_id; ?></td>
                         <td><?php echo $dob; ?></td>
                         <td><?php echo $hireDate; ?></td>
                         <td>
@@ -142,6 +140,22 @@ if (isset($_GET['manage']) && $_GET['manage'] == 'view') {
         </div>
         <div class="panel-body">
             <form action="employees.php?manage=store" method="POST" data-parsley-validate="" enctype="multipart/form-data">
+            <div class="form-group">
+            <?php 
+                           // $result;
+                            //$today = date("m-d-Y H:i:s");
+                           // echo $today; 
+                            ?>
+                            <label for="creationTime"><?php echo language('employees-creation', $_SESSION['lang']); ?></label>
+                            <input type="datetime-local" id="dt" value="<?php echo $today; ?>" class="form-control" name="creationTime" disabled
+                            />
+                            <script>
+                                var now = new Date();
+                                now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
+                                document.getElementById('dt').value = now.toISOString().slice(0,16);
+                            </script>
+
+                </div>
                 <div class="form-group">
                     <label for="firstName"><?php echo language('employees-firstName', $_SESSION['lang']); ?></label>
                     <input type="text" placeholder="<?php echo language('employees-firstName', $_SESSION['lang']); ?>"
@@ -153,7 +167,7 @@ if (isset($_GET['manage']) && $_GET['manage'] == 'view') {
                     <label for="middleName"><?php echo language("employees-middleName", $_SESSION['lang']); ?></label>
                     <input type="text" placeholder="<?php echo language('employees-middleName', $_SESSION['lang']); ?>"
                         value="<?php echo isset($_SESSION['middleName']) ? $_SESSION['middleName'] : ''; ?>"
-                        class="form-control" name="middleName" data-parsley-required="true" data-parsley-length="[1, 30]"
+                        class="form-control" name="middleName"
                     />
                 </div>
                 <div class="form-group">
@@ -161,14 +175,6 @@ if (isset($_GET['manage']) && $_GET['manage'] == 'view') {
                     <input type="text" placeholder="<?php echo language('employees-lastName', $_SESSION['lang']); ?>"
                         value="<?php echo isset($_SESSION['lastName']) ? $_SESSION['lastName'] : ''; ?>" required=""
                         class="form-control" name="lastName" data-parsley-required="true" data-parsley-length="[1, 30]"
-                    />
-                </div>
-                <div class="form-group">
-                    <label for="civil_id"><?php echo language("employees-civil_id", $_SESSION['lang']); ?></label>
-                    <input type="text" placeholder="<?php echo language('employees-civil_id', $_SESSION['lang']); ?>"
-                        value="<?php echo isset($_SESSION['civil_id']) ? $_SESSION['civil_id'] : ''; ?>" required=""
-                        class="form-control" name="civil_id" data-parsley-required="true" data-parsley-type="digits"
-                        data-parsley-minlength="12" data-pasley-maxlength="12"
                     />
                 </div>
                 <div class="form-group">
@@ -208,6 +214,7 @@ if (isset($_GET['manage']) && $_GET['manage'] == 'view') {
                 <div class="form-group">
                     <label for="department_id"><?php echo language("employees-department", $_SESSION['lang']); ?></label>
                     <select name="department_id" class="form-control" required="" data-parsley-required="true">
+                    <option></option>
                         <?php
                         $query = "SELECT * FROM departments ORDER BY id ASC";
                         $stmt = Connection::conn()->prepare($query);
@@ -222,6 +229,7 @@ if (isset($_GET['manage']) && $_GET['manage'] == 'view') {
                 <div class="form-group">
                     <label for="gender_id"><?php echo language("employees-gender", $_SESSION['lang']); ?></label>
                     <select name="gender_id" class="form-control" required="" data-parsley-required="true">
+                    <option></option>
                         <?php
                         $query = "SELECT * FROM genders ORDER BY id ASC";
                         $stmt = Connection::conn()->prepare($query);
@@ -236,6 +244,7 @@ if (isset($_GET['manage']) && $_GET['manage'] == 'view') {
                 <div class="form-group">
                     <label for="nationality_id"><?php echo language("employees-nationality", $_SESSION['lang']); ?></label>
                     <select name="nationality_id" class="form-control" required="" data-parsley-required="true">
+                    <option></option>
                         <?php
                         $query = "SELECT * FROM nationalities ORDER BY id ASC";
                         $stmt = Connection::conn()->prepare($query);
@@ -250,6 +259,7 @@ if (isset($_GET['manage']) && $_GET['manage'] == 'view') {
                 <div class="form-group">
                     <label for="nationalityType_id"><?php echo language("employees-nationalityType", $_SESSION['lang']); ?></label>
                     <select name="nationalityType_id" class="form-control" required="" data-parsley-required="true">
+                    <option></option>
                         <?php
                         $query = "SELECT * FROM nationalityTypes ORDER BY id ASC";
                         $stmt = Connection::conn()->prepare($query);
@@ -264,6 +274,7 @@ if (isset($_GET['manage']) && $_GET['manage'] == 'view') {
                 <div class="form-group">
                     <label for="positionRole_id"><?php echo language("employees-positionRole", $_SESSION['lang']); ?></label>
                     <select name="positionRole_id" class="form-control" required="" data-parsley-required="true">
+                    <option></option>
                         <?php
                         $query = "SELECT * FROM positionRoles ORDER BY id ASC";
                         $stmt = Connection::conn()->prepare($query);
@@ -289,54 +300,17 @@ if (isset($_GET['manage']) && $_GET['manage'] == 'view') {
 * STORE EMPLOYEE
 ***************************************************************/
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        if (isset($_POST['firstName']) && isset($_POST['middleName']) && isset($_POST['lastName'])
-            && isset($_POST['civil_id']) && isset($_POST['dob']) && isset($_POST['hireDate'])) {
-            // firstName Validation
+        if (isset($_POST['creationTime']) && isset($_POST['firstName']) && isset($_POST['middleName']) && isset($_POST['lastName']) && isset($_POST['dob']) && isset($_POST['hireDate'])) {
+            $creationTime = testInput($_POST['creationTime']);
+
             $firstName = filter_var(testInput($_POST['firstName']), FILTER_SANITIZE_STRING);
-            // if (strlen($firstName) > 30 || strlen($firstName) < 1) {
-            //     $_SESSION['error'] = language("employees-firstName-error", $_SESSION['lang']);
-            //     header('Location: employees.php?manage=add&lang='.$selectedLang);
-            //     die();
-            // }
-            // middleName Validation
+
             $middleName = filter_var(testInput($_POST['middleName']), FILTER_SANITIZE_STRING);
-            // if (strlen($middleName) > 30 || strlen($middleName) < 1) {
-            //     $_SESSION['error'] = language("employees-middleName-error", $_SESSION['lang']);
-            //     header('Location: employees.php?manage=add&lang='.$selectedLang);
-            //     die();
-            // }
-            // lastName Validation
+
             $lastName = filter_var(testInput($_POST['lastName']), FILTER_SANITIZE_STRING);
-            // if (strlen($lastName) > 30 || strlen($lastName) < 1) {
-            //     $_SESSION['error'] = language("employees-lastName-error", $_SESSION['lang']);
-            //     header('Location: employees.php?manage=add&lang='.$selectedLang);
-            //     die();
-            // }
-            // civil_id Validation
-            $civil_id = filter_var(testInput($_POST['civil_id']), FILTER_VALIDATE_INT);
-            // if (!is_numeric($civil_id)) {
-            //     $_SESSION['error'] = language("civil_id-must-be-a-number-error", $_SESSION['lang']);
-            //     header('Location: employees.php?manage=add&lang='.$selectedLang);
-            //     die();
-            // }
-            if (strlen($civil_id) != 12) {
-                $_SESSION['error'] = language("civil_id-must-be-12-digits-long-error", $_SESSION['lang']);
-                header('Location: employees.php?manage=add&lang='.$selectedLang);
-                die();
-            }
-            $civil_id = intval($civil_id);
-            // passport_number Validation
+  
             $passport_number = filter_var(testInput($_POST['passport_number']), FILTER_VALIDATE_INT);
-            // if (!is_numeric($passport_number)) {
-            //     $_SESSION['error'] = language("passport_number-must-be-a-number-error", $_SESSION['lang']);
-            //     header('Location: employees.php?manage=add&lang='.$selectedLang);
-            //     die();
-            // }
-            // if (strlen($passport_number) != 8 && strlen($passport_number) != 9) {
-            //     $_SESSION['error'] = language("passport_number-must-be-from-8-to-9-digits", $_SESSION['lang']);
-            //     header('Location: employees.php?manage=add&lang='.$selectedLang);
-            //     die();
-            // }
+
             $passport_number = intval($passport_number);
             // image Validation
             $imageName = $_FILES['image']['name'];
@@ -383,21 +357,21 @@ if (isset($_GET['manage']) && $_GET['manage'] == 'view') {
             $nationalityType_id = $_POST['nationalityType_id'];
             $positionRole_id = $_POST['positionRole_id'];
             try {
-                $query = "INSERT INTO employees (firstName, middleName, lastName, civil_id,
-                    passport_number, image, dob, hireDate, department_id, gender_id, nationality_id,
+                $query = "INSERT INTO employees (firstName, middleName, lastName,
+                    passport_number, image, dob, hireDate, creationTime, department_id, gender_id, nationality_id,
                     nationalityType_id, positionRole_id)
-                    VALUES (:firstName, :middleName, :lastName, :civil_id, :passport_number, :image,
-                    :dob, :hireDate, :department_id, :gender_id, :nationality_id, :nationalityType_id,
+                    VALUES (:firstName, :middleName, :lastName, :passport_number, :image,
+                    :dob, :hireDate, :creationTime, :department_id, :gender_id, :nationality_id, :nationalityType_id,
                     :positionRole_id)";
                 $stmt = Connection::conn()->prepare($query);
                 $stmt->bindParam(':firstName', $firstName, PDO::PARAM_STR);
                 $stmt->bindParam(':middleName', $middleName, PDO::PARAM_STR);
                 $stmt->bindParam(':lastName', $lastName, PDO::PARAM_STR);
-                $stmt->bindParam(':civil_id', $civil_id, PDO::PARAM_INT);
                 $stmt->bindParam(':passport_number', $passport_number, PDO::PARAM_INT);
                 $stmt->bindParam(':image', $image, PDO::PARAM_STR);
                 $stmt->bindParam(':dob', $dob);
                 $stmt->bindParam(':hireDate', $hireDate);
+                $stmt->bindParam(':creationTime', $creationTime);
                 $stmt->bindParam(':department_id', $department_id, PDO::PARAM_INT);
                 $stmt->bindParam(':gender_id', $gender_id, PDO::PARAM_INT);
                 $stmt->bindParam(':nationality_id', $nationality_id, PDO::PARAM_INT);
@@ -448,19 +422,21 @@ if (isset($_GET['manage']) && $_GET['manage'] == 'view') {
                 </div>
                 <div class="panel-body">
                     <form action="employees.php?manage=update" method="POST" data-parsley-validate="" enctype="multipart/form-data">
-                    <!-- box -->
-                        <div class="box">
-                            <input type="text" name="employee_id" class="form-control" value="<?php echo $_GET['id']; ?>"/>
-                            <input type="hidden" name="oldimage" value="<?php echo $image; ?>"/>
+                            <input type="hidden" name="employee_id" class="form-control" value="<?php echo $_GET['id']; ?>" hidden/>
+                            <input type="hidden" name="oldimage" class="form-control" value="<?php echo $image; ?>"/>
 
-                            <div class="form-group">
-                                <label for="creationTime"><?php echo language("employees-creationTime", $_SESSION['lang']); ?></label>
-                                <input type="date" placeholder="<?php echo language('employees-creationTime', $_SESSION['lang']); ?>"
-                                value="<?php echo $creationTime; ?>"
-                                class="form-control" name="creationTime"
-                                />
-                            </div>
-                        </div>
+                    <?php 
+                           // $result;
+                            //$today = date("m-d-Y H:i:s");
+                           // echo $today; 
+                            ?>
+                            <input type="hidden" id="dt" value="<?php echo $today; ?>" class="form-control" name="modificationTime"/>
+                            <script>
+                                var now = new Date();
+                                now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
+                                document.getElementById('dt').value = now.toISOString().slice(0,16);
+                            </script>
+
 
                         <div class="form-group">
                             <label for="firstName"><?php echo language('employees-firstName', $_SESSION['lang']); ?></label>
@@ -472,8 +448,8 @@ if (isset($_GET['manage']) && $_GET['manage'] == 'view') {
                         <div class="form-group">
                             <label for="middleName"><?php echo language("employees-middleName", $_SESSION['lang']); ?></label>
                             <input type="text" placeholder="<?php echo language('employees-middleName', $_SESSION['lang']); ?>"
-                                value="<?php echo $middleName; ?>" required=""
-                                class="form-control" name="middleName" data-parsley-required="true" data-parsley-length="[1, 30]"
+                                value="<?php echo $middleName; ?>"
+                                class="form-control" name="middleName"
                             />
                         </div>
                         <div class="form-group">
@@ -483,14 +459,7 @@ if (isset($_GET['manage']) && $_GET['manage'] == 'view') {
                                 class="form-control" name="lastName" data-parsley-required="true" data-parsley-length="[1, 30]"
                             />
                         </div>
-                        <div class="form-group">
-                            <label for="civil_id"><?php echo language("employees-civil_id", $_SESSION['lang']); ?></label>
-                            <input type="text" placeholder="<?php echo language('employees-civil_id', $_SESSION['lang']); ?>"
-                                value="<?php echo $civil_id ?>" required=""
-                                class="form-control" name="civil_id" data-parsley-required="true" data-parsley-type="digits"
-                                data-parsley-minlength="12" data-pasley-maxlength="12"
-                            />
-                        </div>
+
                         <div class="form-group">
                             <label for="passport_number"><?php echo language("employees-passport_number", $_SESSION['lang']); ?></label>
                             <input type="text" placeholder="<?php echo language('employees-passport_number', $_SESSION['lang']); ?>"
@@ -500,7 +469,7 @@ if (isset($_GET['manage']) && $_GET['manage'] == 'view') {
                             />
                         </div>
                         <div class="form-group">
-                            <label for="image"><?php echo language("employees-image", $_SESSION['lang']); ?></lable>
+                            <label for="image"><?php echo language("employees-image", $_SESSION['lang']); ?></label>
                             <input type="file" name="image"/>
                         </div>
 
@@ -508,7 +477,7 @@ if (isset($_GET['manage']) && $_GET['manage'] == 'view') {
                             <div class="form-group">
                                 <label for="dob"><?php echo language("employees-dob", $_SESSION['lang']); ?></label>
                                 <div class='input-group date' id='datetimepickerempdob'>
-                                    <input type='text' required="" data-parsley-required="true" name="dob" value="<?php echo $dob; ?>"/>
+                                    <input type='text'required="" data-parsley-required="true" name="dob" value="<?php echo $dob; ?>"/>
                                     <span class="input-group-addon pull-left">
                                         <span class="glyphicon glyphicon-calendar"></span>
                                     </span>
@@ -592,17 +561,17 @@ if (isset($_GET['manage']) && $_GET['manage'] == 'view') {
                             <label for="nationalityType_id"><?php echo language("employees-nationalityType", $_SESSION['lang']); ?></label>
                             <select name="nationalityType_id" class="form-control" required="" data-parsley-required="true">
                                 <?php
-                               /* $subQuery = "SELECT * FROM nationalityTypes WHERE id = :id";
+                               $subQuery = "SELECT * FROM nationalityTypes WHERE id = :id";
                                 $subStmt = Connection::conn()->prepare($subQuery);
-                                $subStmt->bindParam(':id', $nationality_id, PDO::PARAM_INT);
+                                $subStmt->bindParam(':id', $nationalityType_id, PDO::PARAM_INT);
                                 $subStmt->execute();
                                 $subRow = $subStmt->fetch(PDO::FETCH_ASSOC);
-                                extract($subRow);*/
+                                extract($subRow);
                                 ?>
-                                <!--<option value="<?php //echo $id; ?>"><?php //echo $type; ?></option>-->
+                                <option value="<?php echo $id; ?>"><?php echo $type; ?></option>
 
                                 <?php
-                                /*$subQuery = "SELECT * FROM nationalityTypes WHERE id != :id";
+                                $subQuery = "SELECT * FROM nationalityTypes WHERE id != :id";
                                 $subStmt = Connection::conn()->prepare($subQuery);
                                 $subStmt->bindParam(':id', $nationalityType_id, PDO::PARAM_INT);
                                 $subStmt->execute();
@@ -610,18 +579,7 @@ if (isset($_GET['manage']) && $_GET['manage'] == 'view') {
                                     extract($subRow);
                                     ?>
                                     <option value="<?php echo $id; ?>"><?php echo $type; ?></option>
-                                <?php } */?>
-
-                                <?php
-                                $query = "SELECT * FROM nationalityTypes ORDER BY id ASC";
-                                $stmt = Connection::conn()->prepare($query);
-                                $stmt->execute();
-                                while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                                    extract($row);
-                                    ?>
-                                    <option value="<?php echo $id; ?>"><?php echo $type; ?></option>
                                 <?php } ?>
-
                             </select>
                         </div>
                         <div class="form-group">
@@ -675,54 +633,17 @@ if (isset($_GET['manage']) && $_GET['manage'] == 'view') {
 ***************************************************************/
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        if (isset($_POST['firstName']) && isset($_POST['middleName']) && isset($_POST['lastName'])
-        && isset($_POST['civil_id']) && isset($_POST['dob']) && isset($_POST['hireDate'])) {
-            // firstName Validation
+        if (isset($_POST['modificationTime']) && isset($_POST['firstName']) && isset($_POST['middleName']) && isset($_POST['lastName']) && isset($_POST['dob']) && isset($_POST['hireDate'])) {
+            $updated_at = testInput($_POST['modificationTime']);
+
             $firstName = filter_var(testInput($_POST['firstName']), FILTER_SANITIZE_STRING);
-            // if (strlen($firstName) > 30 || strlen($firstName) < 1) {
-            //     $_SESSION['error'] = language("employees-firstName-error", $_SESSION['lang']);
-            //     header('Location: employees.php?manage=edit&id='.$_POST['employee_id'].'&lang='.$selectedLang);
-            //     die();
-            // }
-            // middleName Validation
+
             $middleName = filter_var(testInput($_POST['middleName']), FILTER_SANITIZE_STRING);
-            // if (strlen($middleName) > 30 || strlen($middleName) < 1) {
-            //     $_SESSION['error'] = language("employees-middleName-error", $_SESSION['lang']);
-            //     header('Location: employees.php?manage=edit&id='.$_POST['employee_id'].'&lang='.$selectedLang);
-            //     die();
-            // }
-            // lastName Validation
+
             $lastName = filter_var(testInput($_POST['lastName']), FILTER_SANITIZE_STRING);
-            // if (strlen($lastName) > 30 || strlen($lastName) < 1) {
-            //     $_SESSION['error'] = language("employees-lastName-error", $_SESSION['lang']);
-            //     header('Location: employees.php?manage=edit&id='.$_POST['employee_id'].'&lang='.$selectedLang);
-            //     die();
-            // }
-            // civil_id Validation
-            $civil_id = filter_var(testInput($_POST['civil_id']), FILTER_VALIDATE_INT);
-            // if (!is_numeric($civil_id)) {
-            //     $_SESSION['error'] = language("civil_id-must-be-a-number-error", $_SESSION['lang']);
-            //     header('Location: employees.php?manage=edit&id='.$_POST['employee_id'].'&lang='.$selectedLang);
-            //     die();
-            // }
-            // if (strlen($civil_id) != 12) {
-            //     $_SESSION['error'] = language("civil_id-must-be-12-digits-long-error", $_SESSION['lang']);
-            //     header('Location: employees.php?manage=edit&id='.$_POST['employee_id'].'&lang='.$selectedLang);
-            //     die();
-            // }
-            $civil_id = intval($civil_id);
-            // passport_number Validation
+
             $passport_number = filter_var(testInput($_POST['passport_number']), FILTER_VALIDATE_INT);
-            // if (!is_numeric($passport_number)) {
-            //     $_SESSION['error'] = language("passport_number-must-be-a-number-error", $_SESSION['lang']);
-            //     header('Location: employees.php?manage=edit&id='.$_POST['employee_id'].'&lang='.$selectedLang);
-            //     die();
-            // }
-            // if (strlen($passport_number) != 8 && strlen($passport_number) != 9) {
-            //     $_SESSION['error'] = language("passport_number-must-be-from-8-to-9-digits", $_SESSION['lang']);
-            //     header('Location: employees.php?manage=edit&id='.$_POST['employee_id'].'&lang='.$selectedLang);
-            //     die();
-            // }
+
             $passport_number = intval($passport_number);
             // image Validation
             $imageName = $_FILES['image']['name'];
@@ -784,8 +705,8 @@ if (isset($_GET['manage']) && $_GET['manage'] == 'view') {
             $id = $_POST['employee_id'];
             try {
                 $query = "UPDATE employees SET firstName = :firstName, middleName = :middleName,
-                    lastName = :lastName, civil_id = :civil_id, passport_number = :passport_number,
-                    image = :image, dob = :dob, hireDate = :hireDate, department_id = :department_id,
+                    lastName = :lastName, passport_number = :passport_number,
+                    image = :image, dob = :dob, hireDate = :hireDate, modificationTime = :modificationTime, department_id = :department_id,
                     gender_id = :gender_id, nationality_id = :nationality_id,
                     nationalityType_id = :nationalityType_id, positionRole_id = :positionRole_id
                     WHERE id = :id";
@@ -793,11 +714,11 @@ if (isset($_GET['manage']) && $_GET['manage'] == 'view') {
                 $stmt->bindParam(':firstName', $firstName, PDO::PARAM_STR);
                 $stmt->bindParam(':middleName', $middleName, PDO::PARAM_STR);
                 $stmt->bindParam(':lastName', $lastName, PDO::PARAM_STR);
-                $stmt->bindParam(':civil_id', $civil_id, PDO::PARAM_INT);
                 $stmt->bindParam(':passport_number', $passport_number, PDO::PARAM_INT);
                 $stmt->bindParam(':image', $image, PDO::PARAM_STR);
                 $stmt->bindParam(':dob', $dob);
                 $stmt->bindParam(':hireDate', $hireDate);
+                $stmt->bindParam(':modificationTime', $updated_at);
                 $stmt->bindParam(':department_id', $department_id, PDO::PARAM_INT);
                 $stmt->bindParam(':gender_id', $gender_id, PDO::PARAM_INT);
                 $stmt->bindParam(':nationality_id', $nationality_id, PDO::PARAM_INT);
@@ -864,7 +785,8 @@ if (isset($_GET['manage']) && $_GET['manage'] == 'view') {
 * EMPLOYEE SHOW
 ***************************************************************/
 
-    if (isset($_GET['id'])) {
+    if (isset($_GET['id'])) 
+    {
         if (!filter_var(testInput($_GET['id']), FILTER_VALIDATE_INT)) {
             $_SESSION['error'] = language('page-not-found', $_SESSION['lang']);
             header('Location: employees.php?manage=view&lang='.$selectedLang);
@@ -903,167 +825,64 @@ if (isset($_GET['manage']) && $_GET['manage'] == 'view') {
                     <h4><?php echo language('employees-firstName', $_SESSION['lang']).': '.$firstName; ?></h4>
                     <h4><?php echo language('employees-middleName', $_SESSION['lang']).': '.$middleName; ?></h4>
                     <h4><?php echo language('employees-lastName', $_SESSION['lang']).': '.$lastName; ?></h4>
-                    <h4><?php echo language('employees-civil_id', $_SESSION['lang']).': '.$civil_id; ?></h4>
                     <h4><?php echo language('employees-passport_number', $_SESSION['lang']).': '.$passport_number; ?></h4>
                     <h4><?php echo language('employees-dob', $_SESSION['lang']).': '.$dob; ?></h4>
                     <h4><?php echo language('employees-hireDate', $_SESSION['lang']).': '.$hireDate; ?></h4>
                     <h4>
                         <?php
-                            /*echo language('employees-department', $_SESSION['lang']).': ';
+                            echo language('employees-department', $_SESSION['lang']).': ';
                             $subQuery = "SELECT name FROM departments WHERE id = :department_id";
                             $subStmt = Connection::conn()->prepare($subQuery);
                             $subStmt->bindParam(':department_id', $department_id, PDO::PARAM_INT);
                             $subStmt->execute();
                             extract($subStmt->fetch(PDO::FETCH_ASSOC));
-                            echo $name;*/
+                            echo $name;
                         ?>
                     </h4>
                     <h4>
                         <?php
-                            /*echo language('employees-gender', $_SESSION['lang']).': ';
+                            echo language('employees-gender', $_SESSION['lang']).': ';
                             $subQuery = "SELECT * FROM genders WHERE id = :gender_id";
                             $subStmt = Connection::conn()->prepare($subQuery);
                             $subStmt->bindParam(':gender_id', $gender_id, PDO::PARAM_INT);
                             $subStmt->execute();
                             extract($subStmt->fetch(PDO::FETCH_ASSOC));
-                            echo $gender;*/
+                            echo $gender;
                         ?>
                     </h4>
                     <h4>
                         <?php
-                            /*echo language('employees-nationality', $_SESSION['lang']).': ';
+                            echo language('employees-nationality', $_SESSION['lang']).': ';
                             $subQuery = "SELECT * FROM nationalities WHERE id = :nationality_id";
                             $subStmt = Connection::conn()->prepare($subQuery);
                             $subStmt->bindParam(':nationality_id', $nationality_id, PDO::PARAM_INT);
                             $subStmt->execute();
                             extract($subStmt->fetch(PDO::FETCH_ASSOC));
-                            echo $nationality;*/
+                            echo $nationality;
                         ?>
                     </h4>
                     <h4>
                         <?php
-                            /*echo language('employees-nationalityType', $_SESSION['lang']).': ';
+                            echo language('employees-nationalityType', $_SESSION['lang']).': ';
                             $subQuery = "SELECT * FROM nationalityTypes WHERE id = :nationalityType_id";
                             $subStmt = Connection::conn()->prepare($subQuery);
                             $subStmt->bindParam(':nationalityType_id', $nationalityType_id, PDO::PARAM_INT);
                             $subStmt->execute();
                             extract($subStmt->fetch(PDO::FETCH_ASSOC));
-                            echo $type;*/
+                            echo $type;
                         ?>
                     </h4>
                     <h4>
                         <?php
-                            /*echo language('employees-positionRole', $_SESSION['lang']).': ';
+                            echo language('employees-positionRole', $_SESSION['lang']).': ';
                             $subQuery = "SELECT role FROM positionRoles WHERE id = :positionRole_id";
                             $subStmt = Connection::conn()->prepare($subQuery);
                             $subStmt->bindParam(':positionRole_id', $positionRole_id, PDO::PARAM_INT);
                             $subStmt->execute();
                             extract($subStmt->fetch(PDO::FETCH_ASSOC));
-                            echo $role;*/
+                            echo $role;
                         ?>
                     </h4>
-
-                    <table border=1>
-                        <tr>
-                            <th><?php echo language('id', $_SESSION['lang']).': ';?></th>
-                            <td><?php echo $id; ?></td>
-                        </tr>
-                        <tr>
-                            <th><?php echo language('employees-firstName', $_SESSION['lang']).': ';?></th>
-                            <td><?php echo $firstName; ?></td>
-                        </tr>
-                        <tr>
-                            <th><?php echo language('employees-middleName', $_SESSION['lang']).': ';?></th>
-                            <td><?php echo $middleName; ?></td>
-                        </tr>
-                        <tr>
-                            <th><?php echo language('employees-lastName', $_SESSION['lang']).': ';?></th>
-                            <td><?php echo $lastName; ?></td>
-                        </tr>
-                        <tr>
-                            <th><?php echo language('employees-civil_id', $_SESSION['lang']).': ';?></th>
-                            <td><?php echo $civil_id; ?></td>
-                        </tr>
-                        <tr>
-                            <th><?php echo language('employees-passport_number', $_SESSION['lang']).': ';?></th>
-                            <td><?php echo $passport_number; ?></td>
-                        </tr>
-                        <tr>
-                            <th><?php echo language('employees-dob', $_SESSION['lang']).': ';?></th>
-                            <td><?php echo $dob; ?></td>
-                        </tr>
-                        <tr>
-                            <th><?php echo language('employees-hireDate', $_SESSION['lang']).': ';?></th>
-                            <td><?php echo $hireDate; ?></td>
-                        </tr>
-
-                        <tr>
-                            <th><?php echo language('employees-department', $_SESSION['lang']).': ';?></th>
-                            <td>
-                                <?php 
-                                    $subQuery = "SELECT name FROM departments WHERE id = :department_id";
-                                    $subStmt = Connection::conn()->prepare($subQuery);
-                                    $subStmt->bindParam(':department_id', $department_id, PDO::PARAM_INT);
-                                    $subStmt->execute();
-                                    extract($subStmt->fetch(PDO::FETCH_ASSOC));
-                                    echo $name;
-                                ?>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <th><?php echo language('employees-gender', $_SESSION['lang']).': ';?></th>
-                            <td>
-                                <?php
-                                    $subQuery = "SELECT * FROM genders WHERE id = :gender_id";
-                                    $subStmt = Connection::conn()->prepare($subQuery);
-                                    $subStmt->bindParam(':gender_id', $gender_id, PDO::PARAM_INT);
-                                    $subStmt->execute();
-                                    extract($subStmt->fetch(PDO::FETCH_ASSOC));
-                                    echo $gender; 
-                                ?>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <th><?php echo language('employees-nationality', $_SESSION['lang']).': ';?></th>
-                            <td>
-                                <?php 
-                                    $subQuery = "SELECT * FROM nationalities WHERE id = :nationality_id";
-                                    $subStmt = Connection::conn()->prepare($subQuery);
-                                    $subStmt->bindParam(':nationality_id', $nationality_id, PDO::PARAM_INT);
-                                    $subStmt->execute();
-                                    extract($subStmt->fetch(PDO::FETCH_ASSOC));
-                                    echo $nationality;
-                                ?></td>
-                        </tr>
-                        <!-- nationality type -->
-                        <tr>
-                            <th>
-                                <?php 
-                                    echo language('employees-nationalityType', $_SESSION['lang']).': ';
-                                ?>
-                            </th>
-                            <td>
-                                <?php 
-                                $subQuery = "SELECT * FROM nationalityTypes WHERE id = :nationalityType_id";
-                                $subStmt = Connection::conn()->prepare($subQuery);
-                                $subStmt->bindParam(':nationalityType_id', $nationalityType_id, PDO::PARAM_INT);
-                                $subStmt->execute();
-                                extract($subStmt->fetch(PDO::FETCH_ASSOC));
-                                echo $type;?>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th><?php echo language('employees-positionRole', $_SESSION['lang']).': ';?></th>
-                            <td><?php $subQuery = "SELECT role FROM positionRoles WHERE id = :positionRole_id";
-                            $subStmt = Connection::conn()->prepare($subQuery);
-                            $subStmt->bindParam(':positionRole_id', $positionRole_id, PDO::PARAM_INT);
-                            $subStmt->execute();
-                            extract($subStmt->fetch(PDO::FETCH_ASSOC));
-                            echo $role;?></td>
-                        </tr>
-                    </table>
                 </div>
             </div>
         </div>
@@ -1078,36 +897,10 @@ if (isset($_GET['manage']) && $_GET['manage'] == 'view') {
                 ?>
             </p>
 
-            <table border=1>
-                <tr>
-                    <th><?php echo language('created_at', $_SESSION['lang']).': ';?></th>
-                    <td><?php echo $creationTime; ?></td>
-                </tr>
-                <tr>
-                    <th><?php echo language('updated_at', $_SESSION['lang']).': ';?></th>
-                    <td><?php echo $id; ?></td>
-                </tr>
-        </table>
-
             <p>
                 <?php echo language('employees-manage', $_SESSION['lang']); ?>
             </p>
-            <a href="employees.php?lang=<?php echo $selectedLang; ?>&manage=edit&id=<?php echo $_GET['id']; ?>">
-                <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-                <?php echo language('employees-edit', $_SESSION['lang']); ?>
-            </a>
-            <form action="employees.php?lang=<?php echo $selectedLang; ?>&manage=delete" method="POST">
-                <input type="hidden" name="id" value="<?php echo $id; ?>">
-                <button type="submit" class="btn btn-danger btn-sm">
-                    <span class="glyphicon glyphicon-trash"></span> <?php echo language("delete", $_SESSION['lang']); ?>
-                </button>
-            </form>
-        <br>
-        <table border=1>
-                <tr>
-                    <th><?php echo language('employees-manage', $_SESSION['lang']).': ';?></th>
-                    <td><?php echo $creationTime; ?></td>
-                </tr>
+        <table border=0>
                 <tr>
                     <th><a href="employees.php?lang=<?php echo $selectedLang; ?>&manage=edit&id=<?php echo $_GET['id']; ?>">
                 <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>

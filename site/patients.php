@@ -42,7 +42,6 @@ if (isset($_GET['manage']) && $_GET['manage'] == 'view') {
                     <th><?php echo language('patients-middleName', $_SESSION['lang']); ?></th>
                     <th><?php echo language('patients-lastName', $_SESSION['lang']); ?></th>-->
                     <th><?php echo language('patients-name', $_SESSION['lang']); ?></th>
-                    <th><?php echo language('patients-id-#', $_SESSION['lang']); ?></th>
                     <th><?php echo language('patients-dob', $_SESSION['lang']); ?></th>
                     <th><?php echo language('patients-creationTime', $_SESSION['lang']); ?></th>
                     <th><?php echo language('patients-gender', $_SESSION['lang']); ?></th>
@@ -64,7 +63,6 @@ if (isset($_GET['manage']) && $_GET['manage'] == 'view') {
                         <td><?php echo $middleName; ?></td>
                         <td><?php echo $lastName; ?></td>-->
                         <td><?php echo "{$firstName} {$middleName} {$lastName}";?></td>
-                        <td><?php echo $civil_id; ?></td>
                         <td><?php echo $dob; ?></td>
                         <td><?php echo $creationTime; ?></td>
                         <td>
@@ -137,6 +135,13 @@ if (isset($_GET['manage']) && $_GET['manage'] == 'view') {
         </div>
         <div class="panel-body">
             <form action="patients.php?manage=store" method="POST" data-parsley-validate="" enctype="multipart/form-data">
+
+                <input type="hidden" id="dt" value="" class="form-control" name="creationTime"/>
+                            <script>
+                                var now = new Date();
+                                now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
+                                document.getElementById('dt').value = now.toISOString().slice(0,16);
+                            </script>
                 <div class="form-group">
                     <label for="firstName"><?php echo language('patients-firstName', $_SESSION['lang']); ?></label>
                     <input type="text" placeholder="<?php echo language('patients-firstName', $_SESSION['lang']); ?>"
@@ -156,14 +161,6 @@ if (isset($_GET['manage']) && $_GET['manage'] == 'view') {
                     <input type="text" placeholder="<?php echo language('patients-lastName', $_SESSION['lang']); ?>"
                         value="<?php echo isset($_SESSION['lastName']) ? $_SESSION['lastName'] : ''; ?>" required=""
                         class="form-control" name="lastName" data-parsley-required="true" data-parsley-length="[1, 30]"
-                    />
-                </div>
-                <div class="form-group">
-                    <label for="civil_id"><?php echo language("patients-id-#", $_SESSION['lang']); ?></label>
-                    <input type="text" placeholder="<?php echo language('patients-id-#', $_SESSION['lang']); ?>"
-                        value="<?php echo isset($_SESSION['civil_id']) ? $_SESSION['civil_id'] : ''; ?>" required=""
-                        class="form-control" name="civil_id" data-parsley-required="true" data-parsley-type="digits"
-                        data-parsley-minlength="12" data-pasley-maxlength="12"
                     />
                 </div>
                 <div class="form-group">
@@ -261,54 +258,17 @@ if (isset($_GET['manage']) && $_GET['manage'] == 'view') {
 * STORE PATIENT
 ***************************************************************/
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        if (isset($_POST['firstName']) && isset($_POST['middleName']) && isset($_POST['lastName'])
-            && isset($_POST['civil_id']) && isset($_POST['dob'])) {
-            // firstName Validation
+        if (isset($_POST['creationTime']) && isset($_POST['firstName']) && isset($_POST['middleName']) && isset($_POST['lastName']) && isset($_POST['dob'])) {
+            $creationTime = $_POST['creationTime'];
+            
             $firstName = filter_var(testInput($_POST['firstName']), FILTER_SANITIZE_STRING);
-            // if (strlen($firstName) > 30 || strlen($firstName) < 1) {
-            //     $_SESSION['error'] = language("patients-firstName-error", $_SESSION['lang']);
-            //     header('Location: patients.php?manage=add&lang='.$selectedLang);
-            //     die();
-            // }
-            // middleName Validation
+
             $middleName = filter_var(testInput($_POST['middleName']), FILTER_SANITIZE_STRING);
-            // if (strlen($middleName) > 30 || strlen($middleName) < 1) {
-            //     $_SESSION['error'] = language("patients-middleName-error", $_SESSION['lang']);
-            //     header('Location: patients.php?manage=add&lang='.$selectedLang);
-            //     die();
-            // }
-            // lastName Validation
+
             $lastName = filter_var(testInput($_POST['lastName']), FILTER_SANITIZE_STRING);
-            // if (strlen($lastName) > 30 || strlen($lastName) < 1) {
-            //     $_SESSION['error'] = language("patients-lastName-error", $_SESSION['lang']);
-            //     header('Location: patients.php?manage=add&lang='.$selectedLang);
-            //     die();
-            // }
-            // civil_id Validation
-            $civil_id = filter_var(testInput($_POST['civil_id']), FILTER_VALIDATE_INT);
-            // if (!is_numeric($civil_id)) {
-            //     $_SESSION['error'] = language("civil_id-must-be-a-number-error", $_SESSION['lang']);
-            //     header('Location: patients.php?manage=add&lang='.$selectedLang);
-            //     die();
-            // }
-            // if (strlen($civil_id) != 12) {
-            //     $_SESSION['error'] = language("civil_id-must-be-12-digits-long-error", $_SESSION['lang']);
-            //     header('Location: patients.php?manage=add&lang='.$selectedLang);
-            //     die();
-            // }
-            $civil_id = intval($civil_id);
-            // passport_number Validation
+
             $passport_number = filter_var(testInput($_POST['passport_number']), FILTER_VALIDATE_INT);
-            // if (!is_numeric($passport_number)) {
-            //     $_SESSION['error'] = language("passport_number-must-be-a-number-error", $_SESSION['lang']);
-            //     header('Location: patients.php?manage=add&lang='.$selectedLang);
-            //     die();
-            // }
-            // if (strlen($passport_number) != 8 && strlen($passport_number) != 9) {
-            //     $_SESSION['error'] = language("passport_number-must-be-from-8-to-9-digits", $_SESSION['lang']);
-            //     header('Location: patients.php?manage=add&lang='.$selectedLang);
-            //     die();
-            // }
+
             $passport_number = intval($passport_number);
             // image Validation
             $imageName = $_FILES['image']['name'];
@@ -348,18 +308,18 @@ if (isset($_GET['manage']) && $_GET['manage'] == 'view') {
             $nationality_id = $_POST['nationality_id'];
             $nationalityType_id = $_POST['nationalityType_id'];
             try {
-                $query = "INSERT INTO patients (firstName, middleName, lastName, civil_id,
-                    passport_number, dob, image, notes, gender_id, nationality_id,
+                $query = "INSERT INTO patients (firstName, middleName, lastName,
+                    passport_number, dob, creationTime, image, notes, gender_id, nationality_id,
                     nationalityType_id)
-                    VALUES (:firstName, :middleName, :lastName, :civil_id, :passport_number, :dob, :image,
+                    VALUES (:firstName, :middleName, :lastName, :passport_number, :creationTime, :dob, :image,
                     :notes, :gender_id, :nationality_id, :nationalityType_id)";
                 $stmt = Connection::conn()->prepare($query);
                 $stmt->bindParam(':firstName', $firstName, PDO::PARAM_STR);
                 $stmt->bindParam(':middleName', $middleName, PDO::PARAM_STR);
                 $stmt->bindParam(':lastName', $lastName, PDO::PARAM_STR);
-                $stmt->bindParam(':civil_id', $civil_id, PDO::PARAM_INT);
                 $stmt->bindParam(':passport_number', $passport_number, PDO::PARAM_INT);
                 $stmt->bindParam(':dob', $dob);
+                $stmt->bindParam(':creationTime', $creationTime);
                 $stmt->bindParam(':image', $image, PDO::PARAM_STR);
                 $stmt->bindParam(':notes', $notes);
                 $stmt->bindParam(':gender_id', $gender_id, PDO::PARAM_INT);
@@ -411,6 +371,12 @@ if (isset($_GET['manage']) && $_GET['manage'] == 'view') {
                     <form action="patients.php?manage=update" method="POST" data-parsley-validate="" enctype="multipart/form-data">
                         <input type="hidden" name="patient_id" value="<?php echo $_GET['id']; ?>"/>
                         <input type="hidden" name="oldimage" value="<?php echo $image; ?>"/>
+                            <input type="hidden" id="dt" value="" class="form-control" name="modificationTime"/>
+                            <script>
+                                var now = new Date();
+                                now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
+                                document.getElementById('dt').value = now.toISOString().slice(0,16);
+                            </script>
                         <div class="form-group">
                             <label for="firstName"><?php echo language('patients-firstName', $_SESSION['lang']); ?></label>
                             <input type="text" placeholder="<?php echo language('patients-firstName', $_SESSION['lang']); ?>"
@@ -430,14 +396,6 @@ if (isset($_GET['manage']) && $_GET['manage'] == 'view') {
                             <input type="text" placeholder="<?php echo language('patients-lastName', $_SESSION['lang']); ?>"
                                 value="<?php echo $lastName; ?>" required=""
                                 class="form-control" name="lastName" data-parsley-required="true" data-parsley-length="[1, 30]"
-                            />
-                        </div>
-                        <div class="form-group">
-                            <label for="civil_id"><?php echo language("patients-civil_id", $_SESSION['lang']); ?></label>
-                            <input type="text" placeholder="<?php echo language('patients-civil_id', $_SESSION['lang']); ?>"
-                                value="<?php echo $civil_id ?>" required=""
-                                class="form-control" name="civil_id" data-parsley-required="true" data-parsley-type="digits"
-                                data-parsley-minlength="12" data-pasley-maxlength="12"
                             />
                         </div>
                         <div class="form-group">
@@ -473,7 +431,6 @@ if (isset($_GET['manage']) && $_GET['manage'] == 'view') {
                         <div class="form-group">
                             <label for="gender_id"><?php echo language("patients-gender", $_SESSION['lang']); ?></label>
                             <select name="gender_id" class="form-control" required="" data-parsley-required="true">
-                            <option value=""></option>
                                 <?php
                                 $subQuery = "SELECT * FROM genders WHERE id = :id";
                                 $subStmt = Connection::conn()->prepare($subQuery);
@@ -499,7 +456,6 @@ if (isset($_GET['manage']) && $_GET['manage'] == 'view') {
                         <div class="form-group">
                             <label for="nationality_id"><?php echo language("patients-nationality", $_SESSION['lang']); ?></label>
                             <select name="nationality_id" class="form-control" required="" data-parsley-required="true">
-                            <option value=""></option>
                                 <?php
                                 $query = "SELECT * FROM nationalities ORDER BY id ASC";
                                 $stmt = Connection::conn()->prepare($query);
@@ -514,7 +470,6 @@ if (isset($_GET['manage']) && $_GET['manage'] == 'view') {
                         <div class="form-group">
                             <label for="nationalityType_id"><?php echo language("patients-nationalityType", $_SESSION['lang']); ?></label>
                             <select name="nationalityType_id" class="form-control" required="" data-parsley-required="true">
-                            <option value=""></option>
                                 <?php
                                 /*$subQuery = "SELECT * FROM nationalityTypes WHERE id = :id";
                                 $subStmt = Connection::conn()->prepare($subQuery);
@@ -572,54 +527,17 @@ if (isset($_GET['manage']) && $_GET['manage'] == 'view') {
 ***************************************************************/
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        if (isset($_POST['firstName']) && isset($_POST['middleName']) && isset($_POST['lastName'])
-        && isset($_POST['civil_id']) && isset($_POST['dob'])) {
+        if (isset($_POST['modificationTime']) && isset($_POST['firstName']) && isset($_POST['middleName']) && isset($_POST['lastName']) && isset($_POST['dob'])) {
+        $modificationTime = testInput($_POST['modificationTime']);
         // firstName Validation
         $firstName = filter_var(testInput($_POST['firstName']), FILTER_SANITIZE_STRING);
-        // if (strlen($firstName) > 30 || strlen($firstName) < 1) {
-        //     $_SESSION['error'] = language("patients-firstName-error", $_SESSION['lang']);
-        //     header('Location: patients.php?manage=edit&id='.$_POST['patient_id'].'&lang='.$selectedLang);
-        //     die();
-        // }
-        // middleName Validation
+
         $middleName = filter_var(testInput($_POST['middleName']), FILTER_SANITIZE_STRING);
-        // if (strlen($middleName) > 30 || strlen($middleName) < 1) {
-        //     $_SESSION['error'] = language("patients-middleName-error", $_SESSION['lang']);
-        //     header('Location: patients.php?manage=edit&id='.$_POST['patient_id'].'&lang='.$selectedLang);
-        //     die();
-        // }
-        // lastName Validation
+
         $lastName = filter_var(testInput($_POST['lastName']), FILTER_SANITIZE_STRING);
-        // if (strlen($lastName) > 30 || strlen($lastName) < 1) {
-        //     $_SESSION['error'] = language("patients-lastName-error", $_SESSION['lang']);
-        //     header('Location: patients.php?manage=edit&id='.$_POST['patient_id'].'&lang='.$selectedLang);
-        //     die();
-        // }
-        // civil_id Validation
-        $civil_id = filter_var(testInput($_POST['civil_id']), FILTER_VALIDATE_INT);
-        // if (!is_numeric($civil_id)) {
-        //     $_SESSION['error'] = language("civil_id-must-be-a-number-error", $_SESSION['lang']);
-        //     header('Location: patients.php?manage=edit&id='.$_POST['patient_id'].'&lang='.$selectedLang);
-        //     die();
-        // }
-        // if (strlen($civil_id) != 12) {
-        //     $_SESSION['error'] = language("civil_id-must-be-12-digits-long-error", $_SESSION['lang']);
-        //     header('Location: patients.php?manage=edit&id='.$_POST['patient_id'].'&lang='.$selectedLang);
-        //     die();
-        // }
-        $civil_id = intval($civil_id);
-        // passport_number Validation
+
         $passport_number = filter_var(testInput($_POST['passport_number']), FILTER_VALIDATE_INT);
-        // if (!is_numeric($passport_number)) {
-        //     $_SESSION['error'] = language("passport_number-must-be-a-number-error", $_SESSION['lang']);
-        //     header('Location: patients.php?manage=edit&id='.$_POST['patient_id'].'&lang='.$selectedLang);
-        //     die();
-        // }
-        // if (strlen($passport_number) != 8 && strlen($passport_number) != 9) {
-        //     $_SESSION['error'] = language("passport_number-must-be-from-8-to-9-digits", $_SESSION['lang']);
-        //     header('Location: patients.php?manage=edit&id='.$_POST['patient_id'].'&lang='.$selectedLang);
-        //     die();
-        // }
+ 
         $passport_number = intval($passport_number);
         // image Validation
         $imageName = $_FILES['image']['name'];
@@ -674,16 +592,16 @@ if (isset($_GET['manage']) && $_GET['manage'] == 'view') {
         $id = $_POST['patient_id'];
         try {
             $query = "UPDATE patients SET firstName = :firstName, middleName = :middleName,
-                lastName = :lastName, civil_id = :civil_id,
-                passport_number = :passport_number, dob = :dob, image = :image, notes = :notes,
+                lastName = :lastName,
+                passport_number = :passport_number, dob = :dob, modificationTime = :modificationTime, image = :image, notes = :notes,
                 gender_id = :gender_id, nationality_id = :nationality_id,
                 nationalityType_id = :nationalityType_id WHERE id = :id";
             $stmt = Connection::conn()->prepare($query);
             $stmt->bindParam(':firstName', $firstName, PDO::PARAM_STR);
             $stmt->bindParam(':middleName', $middleName, PDO::PARAM_STR);
             $stmt->bindParam(':lastName', $lastName, PDO::PARAM_STR);
-            $stmt->bindParam(':civil_id', $civil_id, PDO::PARAM_INT);
             $stmt->bindParam(':passport_number', $passport_number, PDO::PARAM_INT);
+            $stmt->bindParam(':modificationTime', $modificationTime);
             $stmt->bindParam(':dob', $dob);
             $stmt->bindParam(':image', $image, PDO::PARAM_STR);
             $stmt->bindParam(':notes', $notes);
@@ -787,7 +705,6 @@ if (isset($_GET['manage']) && $_GET['manage'] == 'view') {
                     <h4><?php echo language('patients-firstName', $_SESSION['lang']).': '.$firstName; ?></h4>
                     <h4><?php echo language('patients-middleName', $_SESSION['lang']).': '.$middleName; ?></h4>
                     <h4><?php echo language('patients-lastName', $_SESSION['lang']).': '.$lastName; ?></h4>
-                    <h4><?php echo language('patients-civil_id', $_SESSION['lang']).': '.$civil_id; ?></h4>
                     <h4><?php echo language('patients-passport_number', $_SESSION['lang']).': '.$passport_number; ?></h4>
                     <h4><?php echo language('patients-dob', $_SESSION['lang']).': '.$dob; ?></h4>
                     <h4>

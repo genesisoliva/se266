@@ -74,7 +74,7 @@ if (isset($_GET['manage']) && $_GET['manage'] == 'view') {
                                 $subSubStmt->execute();
                                 $subSubRow = $subSubStmt->fetch(PDO::FETCH_ASSOC);
                                 if ($_SESSION['lang']) {
-                                    $result .= ' ('.$subSubRow['arName'].' )';
+                                    $result .= ' ('.$subSubRow['esName'].' )';
                                 }
                                 else {
                                     $result .= ' ('.$subSubRow['enName'].' )';

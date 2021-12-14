@@ -80,7 +80,7 @@ if (isset($_GET['manage']) && $_GET['manage'] == 'view') {
                                 $subStmt->execute();
                                 $subRow = $subStmt->fetch(PDO::FETCH_ASSOC);
                                 if ($_SESSION['lang']) {
-                                    echo $subRow['arName'];
+                                    echo $subRow['esName'];
                                 }
                                 else {
                                     echo $subRow['enName'];
