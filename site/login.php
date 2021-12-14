@@ -165,7 +165,7 @@
 
 <!DOCTYPE html>
 <?php if ($_SESSION['lang']) { ?>
-<html lang="ar" dir="rtl">
+<html lang="es" dir="ltr">
 <?php } else { ?>
 <html lang="en" dir="ltr">
 <?php } ?>
@@ -242,7 +242,7 @@
     <!--Langaguges-->
     <div class="text-right">
         <div class="credits">
-            <a href="<?php echo $_SERVER['PHP_SELF']; ?>?lang=ar">العربية</a>
+            <a href="<?php echo $_SERVER['PHP_SELF']; ?>?lang=es">Español</a>
             <a href="<?php echo $_SERVER['PHP_SELF']; ?>?lang=en">English</a>
         </div>
         <?php
