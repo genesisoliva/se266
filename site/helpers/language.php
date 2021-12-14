@@ -14,8 +14,12 @@
 			"unauthorized_login" => ["unauthorized login", "دخول غير مصرح به"],
 
 			//Reset Password
+			"admin_reset" => ["Reset", ""],
 			"required" => ["is a required field", "es imporante"],
 			"reset" => ["Reset", "Resetear"],
+			"reset-username" => ["User Name", ""],
+			"reset-password" => ["New Password", ""],
+			"reset-password1" => ["Confirm Password", ""],
 
 			// Navbar
 			//"brand" => ["Hospital", "المستشفى"],
@@ -94,12 +98,13 @@
 			"departments-delete-success" => ["DEPARTMENT HAS BEEN DELETED SUCCESSFULLY", "تم حذف القسم بنجاح"],
 
 			// Users
-			"users-heading" => ["Manage Users", "إدارة المستخدمين"],
-			"users-username" => ["Username", "إسم المستخدم"],
-			"users-manage" => ["Manage User", "إدارة المستخدم"],
-			"users-edit" => ["Edit User", "تعديل المستخدم"],
-			"users-add" => ["Add New User", "إضافة مستخدم جديد"],
-			"users-password" => ["New Password", "كلمة المرور الجديدة"],
+			"users-heading" => ["Manage Users", "Manejar Usuarios"],
+			"users-username" => ["Username", "Usuario"],
+			"users-firstName" => ["First Name", "Nombre"],
+			"users-manage" => ["Manage User", "Manejar Usuario"],
+			"users-edit" => ["Edit User", "Editar Usuario"],
+			"users-add" => ["Add New User", "Agregar Nuevo Usuario"],
+			"users-password" => ["New Password", "Nueva Contraseña"],
 			"username-check-error" => ["ERROR: USERNAME MUST BE FROM 4 TO 50 CHARACTERS LONG", "خطأ: اسم المستخدم يجب ان يكون من اربعة احرف إلى 50 حرف"],
 			"password-check-error" => ["ERROR: PASSWORD MUST BE FROM 6 TO 100 CHARACTERS LONG", "خطأ: كلمة المرور يجب ان تكون من ستة احرف إلى 100 حرف"],
 			"users-add-success" => ["USER HAS BEEN ADDED SUCCESSFULLY", "تم إضافة المستخدم بنجاح"],
@@ -372,10 +377,10 @@
 			"noReceipts" => ["No machine delivery to show", "لا يوجد إيصالات إستلام اجهزة لعرضها"],
 
 			// Form
-			"add" => ["Add", "إضافة"],
-			"edit" => ["Update", "تعديل"],
-			"delete" => ["Delete", "حذف"],
-			"update" => ["Update", ""],
+			"add" => ["Add", "Agregar"],
+			"edit" => ["Update", "Actualizar"],
+			"delete" => ["Delete", "Eliminar"],
+			"update" => ["Update", "Actualizar"],
 
 			// Errors
 			"method_not_allowed_error" => ["ERROR: METHOD NOT ALLOWED", "خطأ: الطلب غير مسموح به"],

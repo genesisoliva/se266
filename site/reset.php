@@ -5,44 +5,35 @@
 <?php
 //processing of the form & validation
 
-/**
-* @param $required_fields_array, containing all the required fields 
-* @return array, containing all errors
-*/
 function check_empty_fields($required_fields_array){
 	//array to strore any error msg from the form
 	$form_errors = array();
 	
 	//loop through required fields array
-	foreach($required_fields_array as $name_of_field){
-		if(!isset($_POST[$name_of_field]) || $_POST[$name_of_field] == NULL){
-			$form_errors[] = $name_of_field ." is a required field";
+	foreach($required_fields_array as $name_of_field)
+	{
+		if(!isset($_POST[$name_of_field]) || $_POST[$name_of_field] == NULL)
+		{
+			$form_errors[] = "- ". $name_of_field ." is a required field";
 		}
 	}
 	return $form_errors;
 }
 
-/**
-* @param $fields_to_check_length, containing name of fields. e.g. array('username' => 5)
-* @return array, containing all errors
-*/
-function check_min_lenght($fields_to_check_length){
+function check_min_lenght($fields_to_check_length)
+{
 	//array to strore error msg
 	$form_errors = array();
 	
 	//loop through required fields array
 	foreach($fields_to_check_length as $name_of_field => $min_length_required){
 		if(strlen(trim($_POST[$name_of_field])) < $min_length_required){
-			$form_errors[] = $name_of_field ." is too short, must be at least {$min_length_required} characters long";
+			$form_errors[] = "- ". $name_of_field ." is too short, must be at least {$min_length_required} characters long";
 		}
 	}
 	return $form_errors;
 }
 
-/**
-* @param $data, key/value pair | key=form control & value=input entered
-* @return array, containing email errors
-*/
 function check_mail($data){
 	//initialize array
 	$form_errors = array();
@@ -64,10 +55,6 @@ function check_mail($data){
 	return $form_errors;
 }
 
-/**
-* @param $form_errors_array, errors we want to loop through
-* @return string, list that contains all error msg
-*/
 function show_errors($form_errors_array){
 	$errors = "<ul>";
 	
@@ -79,12 +66,6 @@ function show_errors($form_errors_array){
 	return $errors;
 }
 
-
-/**
-* @param $message, Information message we wanna print on screen
-* param $passOrFail, success or failure message
-* @return string, contains message
-*/
 function flashMessage($message, $passOrFail = "Fail"){
 	if($passOrFail === "Pass"){
 		$data = "<div class='alert alert-success'> {$message} ";
@@ -190,12 +171,11 @@ if(isset($_POST['resetBtn'])){
 					echo $result="<script type=\"text/javascript\">
 							swal({
 							  title: \"Failed!\",
-							  text: \"Email address does not exist in the database, Please try again\",
+							  text: \"Username does not exist in the database\",
 							  type: 'error',
-							  confirmButtonText: \"Ok!\"
+							  confirmButtonText: \"!\"
 							});
 						  </script>";
-					//$result = flashMessage('Email address does not exist in the database, Please try again');
 				}
 			} catch(PDOException $ex){
 				$result = flashMessage("An error occured: " .$ex->getMessage());
@@ -214,19 +194,14 @@ if(isset($_POST['resetBtn'])){
 
 ?>
 <!DOCTYPE html>
-<?php if ($_SESSION['lang']) { ?>
-<html lang="es" dir="ltr">
-<?php } else { ?>
-<html lang="en" dir="ltr">
-<?php } ?>
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="<?php echo language("admin_login", $_SESSION['lang']); ?>">
+    <meta name="description" content="<?php echo language("admin_reset", $_SESSION['lang']); ?>">
     <meta name="author" content="Genesis J Oliva">
     <link rel="shortcut icon" href="<?php echo $ico; ?>settings.png">
 
-    <title><?php echo language("admin_login", $_SESSION['lang']); ?></title>
+    <title><?php echo language("admin_reset", $_SESSION['lang']); ?></title>
 
     <!-- Bootstrap CSS -->    
     <link href="<?php echo $css; ?>bootstrap.min.css" rel="stylesheet">
@@ -260,19 +235,29 @@ if(isset($_POST['resetBtn'])){
             <!--Username-->
             <div class="input-group">
               <span class="input-group-addon"><i class="icon_profile"></i></span>
-              <input type="text" class="form-control" name='username' placeholder="<?php echo language("username", $_SESSION['lang']); ?>">
+              <input type="text" class="form-control" name='username' placeholder="<?php echo language("reset-username", $_SESSION['lang']); ?>">
             </div>
 
             <!--Password-->
             <div class="input-group">
                 <span class="input-group-addon"><i class="icon_key_alt"></i></span>
-                <input id="passwordField1" type="password" class="form-control" name='new_password' placeholder="<?php echo language("password", $_SESSION['lang']); ?>">
-                <input id="passwordField2" type="password" class="form-control" name='confirm_password' placeholder="<?php echo language("password", $_SESSION['lang']); ?>">
+                <input id="passwordField2" type="password" class="form-control" name='confirm_password' placeholder="<?php echo language("reset-password", $_SESSION['lang']); ?>">
+            </div>
+
+			<div class="input-group">
+                <span class="input-group-addon"><i class="icon_key_alt"></i></span>
+                <input id="passwordField2" type="password" class="form-control" name='new_password' placeholder="<?php echo language("reset-password1", $_SESSION['lang']); ?>">
             </div>
 
             <!--Login Button-->
             <button class="btn btn-primary btn-lg btn-block" type="submit" name='resetBtn'><?php echo language("reset", $_SESSION['lang']); ?></button>
-        </div>
-    </form>
 
+			<div class="text-right">
+        		<div class="credits">
+            		<a href="login.php">Back</a>
+        		</div>
+    		</div>
+    </form>
+    </div>
+</body>
 

@@ -192,7 +192,7 @@
     <link href="<?php echo $css; ?>custom.css" rel="stylesheet" />
 </head>
 
-<body class="login-img3-body">
+<body class="login-img3-body1">
     <div class="container">
 
         <?php if (isset($_SESSION['error'])) { ?>
