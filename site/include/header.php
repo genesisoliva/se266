@@ -13,25 +13,19 @@
 
     <title><?php echo language("dashboard", $_SESSION['lang']); ?></title>
 
-    <!-- Bootstrap CSS -->    
     <link href="<?php echo $css; ?>bootstrap.min.css" rel="stylesheet">
-    <!-- font icon -->
     <link href="<?php echo $css; ?>font-awesome.min.css" rel="stylesheet" />
-    <!-- Custom styles -->
     <link href="<?php echo $css; ?>custom.css" rel="stylesheet" />
-    <!-- datatables -->
     <link href="<?php echo $css; ?>datatables.min.css" rel="stylesheet" />
-    <!-- Parsley Form Validation -->
     <link href="<?php echo $css; ?>parsley.css" rel="stylesheet" />
-    <!-- Bootstrap-datepicker -->
     <link href="<?php echo $css; ?>bootstrap-datepicker3.css" rel="stylesheet" />
-    <!-- Bootstrap-datepicker requires Bootstrap-iso -->
     <link href="<?php echo $css; ?>bootstrap-iso.css" rel="stylesheet" />
-    <!-- Bootstrap-datetimepicker -->
     <link href="<?php echo $css; ?>bootstrap-datetimepicker.min.css" rel="stylesheet" />
+
     <?php if (isset($dashboard)) { ?>
-        <!-- CUSTOM DASHBOARD STYLE-->
+        <!--CUSTOM DASHBOARD STYLE-->
         <link href="<?php echo $css; ?>dashboard.css" rel="stylesheet" />
     <?php } ?>
+
 </head>
 <body>

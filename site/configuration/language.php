@@ -22,7 +22,6 @@
 			"reset-password1" => ["Confirm Password", ""],
 
 			// Navbar
-			//"brand" => ["Hospital", "المستشفى"],
 			"dashboard" => ["Dashboard", ""],
 			"dropdown" => ["Manage", "Manejar"],
 			"logout" => ["Logout", "Salir"],
@@ -45,32 +44,29 @@
 			"financials" => ["Manage Financial Aids", "Manejar FA"],
 			"receipts" => ["Manage Receipts", "Manejar Recibos"],
 
-			// General
-			"id" => ["Id", "الرقم المعرف"],
-
 			// Genders
-			"genders-heading" => ["Manage Genders", "إدارة النوع"],
-			"genders-add" => ["Add New Gender", "إضافة نوع جديد"],
-			"genders-gender" => ["Gender", "النوع"],
-			"genders-manage" => ["Manage Gender", "إدارة النوع"],
-			"genders-check-error" => ["ERROR: GENDER MUST BE Male OR Female", "خطأ: النوع يجب ان يكون ذكر او انثى"],
-			"genders-add-success" => ["GENDER HAS BEEN ADDED SUCCESSFULLY", "تم إضافة النوع بنجاح"],
-			"genders-edit" => ["Edit Gender", "تعديل النوع"],
-			"genders-required" => ["ERROR: GENDER IS REQUIRED", "خطأ: يجب إدخال النوع"],
-			"genders-update-success" => ["GENDER HAS BEEN UPDATED SUCCESSFULLY", "تم تعديل النوع بنجاح"],
-			"genders-delete-success" => ['GENDER HAS BEEN DELETED SUCCESSFULLY', "تم حذف النوع بنجاح"],
+			"genders-heading" => ["Manage Genders", "Manejar Generos"],
+			"genders-add" => ["Add New Gender", "Agregar Nuevo Genero"],
+			"genders-gender" => ["Gender", "Genero"],
+			"genders-manage" => ["Manage Gender", "Manejar Genero"],
+			"genders-check-error" => ["ERROR: GENDER MUST BE Male OR Female", "ERROR: EL GÉNERO DEBE SER Masculino O Femenino"],
+			"genders-add-success" => ["GENDER HAS BEEN ADDED SUCCESSFULLY", "EL GÉNERO SE HA AÑADIDO CON ÉXITO"],
+			"genders-edit" => ["Edit Gender", "Editar Genero"],
+			"genders-required" => ["ERROR: GENDER IS REQUIRED", "ERROR: SE REQUIERE EL GÉNERO"],
+			"genders-update-success" => ["GENDER HAS BEEN UPDATED SUCCESSFULLY", "EL GÉNERO SE HA ACTUALIZADO CON ÉXITO"],
+			"genders-delete-success" => ['GENDER HAS BEEN DELETED SUCCESSFULLY', "EL GÉNERO SE HA BORRADO CON ÉXITO"],
 			
 			// Nationalities
-			"nationalities-heading" => ["Manage Nationalities", "إدارة الجنسيات"],
-			"nationalities-nat" => ["Nationality", "الجنسية"],
-			"nationalities-manage" => ["Manage Nationality", "إدارة الجنسية"],
-			"nationalities-edit" => ["Edit Nationality", "تعديل الجنسية"],
-			"nationalities-add" => ["Add New Nationality", "إضافة جنسية جديدة"],
-			"nationalities-add-success" => ["NATIONALITY HAS BEEN ADDED SUCCESSFULLY", "تم إضافة الجنسية بنجاح"],
-			"nationalities-update-success" => ["NATIONALITY HAS BEEN UPDATED SUCCESSFULLY", "تم تعديل الجنسية بنجاح"],
-			"nationalities-required" => ["ERROR: NATIONALITY IS REQUIRED", "خطأ: يجب إدخال الجنسية"],
-			"nationalities-delete-success" => ["NATIONALITY HAS BEEN DELETED SUCCESSFULLY", "تم حذف الجنسية بنجاح"],
-			"nat-check-error" => ["ERROR: NATIONALITY MUST BE FROM 1 TO 50 CHARACTERS LONG", "خطأ: الجنسية يجب ان تكون من 1 ل 50 حرف"],
+			"nationalities-heading" => ["Manage Nationalities", ""],
+			"nationalities-nat" => ["Nationality", ""],
+			"nationalities-manage" => ["Manage Nationality", " "],
+			"nationalities-edit" => ["Edit Nationality", " "],
+			"nationalities-add" => ["Add New Nationality", "  "],
+			"nationalities-add-success" => ["NATIONALITY HAS BEEN ADDED SUCCESSFULLY", ""],
+			"nationalities-update-success" => ["NATIONALITY HAS BEEN UPDATED SUCCESSFULLY", ""],
+			"nationalities-required" => ["ERROR: NATIONALITY IS REQUIRED", ""],
+			"nationalities-delete-success" => ["NATIONALITY HAS BEEN DELETED SUCCESSFULLY", ""],
+			"nat-check-error" => ["ERROR: NATIONALITY MUST BE FROM 1 TO 50 CHARACTERS LONG", ""],
 			
 			// Nationality Types
 			"nationalityTypes-heading" => ["Manage Nationality Types", "إدارة انواع الجنسيات"],

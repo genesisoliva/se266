@@ -1,6 +1,8 @@
 <?php $dashboard = true; ?>
 <?php require_once "layouts/header.php"; ?>
+<!--dashboard.php-->
 <div id="page-inner">
+    <!--ROW 1--> 
     <div class="row text-center pad-top">
         <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
             <div class="div-square">
@@ -51,7 +53,7 @@
             </div>        
         </div>
     </div>
-    <!-- /. ROW  --> 
+    <!--ROW 2--> 
     <div class="row text-center pad-top">
         <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
             <div class="div-square">
@@ -102,7 +104,7 @@
             </div>        
         </div>
     </div>
-    <!-- /. ROW  --> 
+    <!--ROW 3--> 
     <div class="row text-center pad-top">
         <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
             <div class="div-square">
@@ -153,6 +155,5 @@
             </div>        
         </div>
     </div>
-    <!-- /. ROW  --> 
 </div>
 <?php require_once "layouts/footer.php"; ?>

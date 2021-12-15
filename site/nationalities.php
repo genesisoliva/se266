@@ -91,6 +91,7 @@ if (isset($_GET['manage']) && $_GET['manage'] == 'view') {
     <!-- ADDING NATIONALITY -->
     <div class="panel panel-primary">
         <div class="panel-heading">
+        <i class="fa fa-flag fa-2x" aria-hidden="true"></i>
             <?php echo language('nationalities-add', $_SESSION['lang']); ?>
         </div>
         <div class="panel-body">
@@ -172,6 +173,7 @@ if (isset($_GET['manage']) && $_GET['manage'] == 'view') {
         ?>
             <div class="panel panel-primary">
                 <div class="panel-heading">
+                <i class="fa fa-flag fa-2x" aria-hidden="true"></i>
                     <?php echo language('nationalities-edit', $_SESSION['lang']); ?>
                 </div>
                 <div class="panel-body">

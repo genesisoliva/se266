@@ -26,12 +26,15 @@ if (isset($_GET['manage']) && $_GET['manage'] == 'view') {
 ***************************************************************/
 ?>
 <div class="panel panel-default">
+    <!--Title-->
     <div class="panel-heading">
     <i class="fa fa-mars fa-2x" aria-hidden="true"></i>
         <?php echo language("genders-heading", $_SESSION['lang']); ?>
     </div>
+
     <div class="panel-body">
         <table class="table table-striped table-responsive table-hover text-center">
+
             <thead>
                 <tr>
                     <th><?php echo language('id', $_SESSION['lang']); ?></th>
@@ -39,17 +42,20 @@ if (isset($_GET['manage']) && $_GET['manage'] == 'view') {
                     <th><?php echo language('genders-manage', $_SESSION['lang']); ?></th>
                 </tr>
             </thead>
+
             <tbody>
                 <?php
-                $query = "SELECT * FROM genders";
-                $stmt = Connection::conn()->prepare($query);
-                $stmt->execute();
-                while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                    extract($row);
-                    ?>
+                    $query = "SELECT * FROM genders";
+                    $stmt = Connection::conn()->prepare($query);
+                    $stmt->execute();
+                    while($row = $stmt->fetch(PDO::FETCH_ASSOC)) 
+                    {
+                        extract($row);
+                ?>
                     <tr>
                         <td><?php echo $id; ?></td>
                         <td><?php echo $gender; ?></td>
+
                         <td>
                             <table>
                                 <a href="genders.php?lang=<?php echo $selectedLang; ?>&manage=edit&id=<?php echo $id; ?>">
@@ -64,11 +70,15 @@ if (isset($_GET['manage']) && $_GET['manage'] == 'view') {
                             </form>
                             </table>
                         </td>
+
                     </tr>
+
                 <?php } ?>
             </tbody>
+
         </table>
     </div>
+
     <div class="panel-footer">
         <a href="genders.php?lang=<?php echo $selectedLang; ?>&manage=add" class="btn btn-primary btn-lg">
             <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
@@ -88,6 +98,7 @@ if (isset($_GET['manage']) && $_GET['manage'] == 'view') {
     <!-- ADDING GENDER -->
     <div class="panel panel-primary">
         <div class="panel-heading">
+        <i class="fa fa-mars fa-2x" aria-hidden="true"></i>
             <?php echo language('genders-add', $_SESSION['lang']); ?>
         </div>
         <div class="panel-body">
@@ -167,8 +178,10 @@ if (isset($_GET['manage']) && $_GET['manage'] == 'view') {
         ?>
             <div class="panel panel-primary">
                 <div class="panel-heading">
+                <i class="fa fa-mars fa-2x" aria-hidden="true"></i>
                     <?php echo language('genders-edit', $_SESSION['lang']); ?>
                 </div>
+
                 <div class="panel-body">
                     <form action="genders.php?manage=update" method="POST" data-parsley-validate="">
                         <!--input-->

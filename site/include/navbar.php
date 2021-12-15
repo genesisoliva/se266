@@ -1,4 +1,4 @@
-  <!-- Static navbar -->
+  <!--navbar.php-->
   <nav class="navbar navbar-default" style="margin-top: 20px;">
     <div class="container-fluid">
       <div class="navbar-header">
@@ -11,6 +11,7 @@
         <a class="navbar-brand" data-toggle="tooltip" title="<?php echo language('dashboard', $_SESSION['lang']); ?>" href="dashboard.php?lang=<?php echo $selectedLang; ?>"><i class="fa fa-heartbeat fa-2x" aria-hidden="true"></i></a>
       </div>
       <div id="navbar" class="navbar-collapse collapse">
+        <!--ul icons-->
         <ul class="nav navbar-nav icons">
           <li><a data-toggle="tooltip" title="<?php echo language('genders', $_SESSION['lang']); ?>" href="genders.php?lang=<?php echo $selectedLang; ?>&manage=view"><i class="fa fa-mars fa-2x" aria-hidden="true"></i></a></li>
           <li><a data-toggle="tooltip" title="<?php echo language('nationalities', $_SESSION['lang']); ?>" href="nationalities.php?lang=<?php echo $selectedLang; ?>&manage=view"><i class="fa fa-flag fa-2x" aria-hidden="true"></i></a></li>
@@ -31,6 +32,7 @@
           <li><a data-toggle="tooltip" title="<?php echo language('financials', $_SESSION['lang']); ?>" href="financials.php?lang=<?php echo $selectedLang; ?>&manage=view"><i class="fa fa-money fa-2x" aria-hidden="true"></i></a></li>  
           <li><a data-toggle="tooltip" title="<?php echo language('receipts', $_SESSION['lang']); ?>" href="receipts.php?lang=<?php echo $selectedLang; ?>&manage=view"><i class="fa fa-bell-o fa-2x" aria-hidden="true"></i></a></li>  
         </ul>
+        <!--right ul icons-->
         <ul class="nav navbar-nav navbar-right">
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php echo language("dropdown", $_SESSION['lang']); ?> <i class="fa fa-chevron-down fa-2x" aria-hidden="true"></i></a>
@@ -58,6 +60,6 @@
           </li>
           <li><a data-toggle="tooltip" title="<?php echo language('logout', $_SESSION['lang']); ?>" href="logout.php?lang=<?php echo $selectedLang; ?>"><i class="fa fa-sign-out fa-2x" aria-hidden="true"></i></a></li>
         </ul>
-      </div><!--/.nav-collapse -->
-    </div><!--/.container-fluid -->
+      </div>
+    </div>
   </nav>

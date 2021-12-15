@@ -8,5 +8,8 @@
   }
 ?>
 
-<div class="container">
+<body>
+
+  <div class="container">
+    
   <?php require_once 'include/navbar.php'; ?>

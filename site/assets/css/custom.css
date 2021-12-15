@@ -3,7 +3,7 @@
 }
 
 .table thead tr th {
-	background-color: black !important;
+	background-color: transparent;
 	color: #FFF;
 	text-align: center;
 }
@@ -34,4 +34,7 @@
 		.footer > a, .footer>a:hover {
 			
 			color:#fff;
+		}
+		table td {
+			white-space:nowrap
 		}

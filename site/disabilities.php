@@ -67,7 +67,7 @@ if (isset($_GET['manage']) && $_GET['manage'] == 'view') {
                                 $subSubStmt->bindParam(':id', $subRow['patient_id'], PDO::PARAM_INT);
                                 $subSubStmt->execute();
                                 $subSubRow = $subSubStmt->fetch(PDO::FETCH_ASSOC);
-                                $result .= '( '.$subSubRow['firstName'].' '.$subSubRow['middleName'].' '.$subSubRow['lastName'].' )';
+                                $result .= '('.$subSubRow['firstName'].' '.$subSubRow['middleName'].' '.$subSubRow['lastName'].')';
                                 $subSubQuery = "SELECT * FROM machines WHERE id = :id";
                                 $subSubStmt = Connection::conn()->prepare($subSubQuery);
                                 $subSubStmt->bindParam(':id', $subRow['machine_id'], PDO::PARAM_INT);
@@ -84,7 +84,7 @@ if (isset($_GET['manage']) && $_GET['manage'] == 'view') {
                                 $subSubStmt->bindParam(':id', $subRow['department_id'], PDO::PARAM_INT);
                                 $subSubStmt->execute();
                                 $subSubRow = $subSubStmt->fetch(PDO::FETCH_ASSOC);
-                                $result .= ' ('.$subSubRow['name'].' )';
+                                $result .= ' ('.$subSubRow['name'].')';
                                 echo $result;
                             ?> 
                         </td>

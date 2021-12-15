@@ -5,107 +5,8 @@
 <?php
 //processing of the form & validation
 
-function check_empty_fields($required_fields_array){
-	//array to strore any error msg from the form
-	$form_errors = array();
-	
-	//loop through required fields array
-	foreach($required_fields_array as $name_of_field)
-	{
-		if(!isset($_POST[$name_of_field]) || $_POST[$name_of_field] == NULL)
-		{
-			$form_errors[] = "- ". $name_of_field ." is a required field";
-		}
-	}
-	return $form_errors;
-}
-
-function check_min_lenght($fields_to_check_length)
+if(isset($_POST['resetBtn']))
 {
-	//array to strore error msg
-	$form_errors = array();
-	
-	//loop through required fields array
-	foreach($fields_to_check_length as $name_of_field => $min_length_required){
-		if(strlen(trim($_POST[$name_of_field])) < $min_length_required){
-			$form_errors[] = "- ". $name_of_field ." is too short, must be at least {$min_length_required} characters long";
-		}
-	}
-	return $form_errors;
-}
-
-function check_mail($data){
-	//initialize array
-	$form_errors = array();
-	$key = 'email';
-	
-	//check email exists in data array
-	if(array_key_exists($key, $data)){
-		//check field has a value
-		if($_POST[$key] != NULL) {
-			//remove all illegal characters
-			$key = filter_var($key,  FILTER_SANITIZE_EMAIL);
-			
-			//check if input is valid email address
-			if(filter_var($_POST[$key], FILTER_VALIDATE_EMAIL) === false){
-				$form_errors[] = $key ." is not a valid email address";
-			}
-		}
-	}
-	return $form_errors;
-}
-
-function show_errors($form_errors_array){
-	$errors = "<ul>";
-	
-	//loop through error array and display items in a list
-	foreach($form_errors_array as $the_error){
-		$errors .= "<li> {$the_error} </li>";
-	}
-	$errors .= "</ul>";
-	return $errors;
-}
-
-function flashMessage($message, $passOrFail = "Fail"){
-	if($passOrFail === "Pass"){
-		$data = "<div class='alert alert-success'> {$message} ";
-	}
-	else {
-		$data = "<div class='alert alert-danger'> {$message} ";
-	}
-	return $data;
-}	
-
-/**
-* Redirect to another page
-*/
-function redirectTo($page){
-	header("Location: {$page}.php");
-}
-
-/**
-* Check for duplicate username
-*/
-function checkDuplicateEntries($table, $column, $value, $db){
-	try{
-		$sqlQuery = 'SELECT * FROM ' .$table. ' WHERE ' .$column. '=:column';
-		$stm = $db->prepare($sqlQuery);
-		$stm->execute(array('column' => $value));
-		
-		if($row = $stm->fetch()){
-			return true;
-		}
-		return false;
-	} catch(PDOException $ex){
-		//handle exception
-	}
-}
-
-
-
-?>
-<?php
-if(isset($_POST['resetBtn'])){
 	$form_errors = array(); //initialize array
 	
 	//field validation
@@ -130,9 +31,11 @@ if(isset($_POST['resetBtn'])){
 		$pass2=$_POST['confirm_password'];
 		
 		//Check if new_password and confirm_password are the same
-		if($pass1 != $pass2){
+		if($pass1 != $pass2)
+		{
 			$result = flashMessage('New password and Confirm Password do not match');
 		}
+
 		else {
 			try {
 				//verify input email exists in the database
@@ -165,7 +68,6 @@ if(isset($_POST['resetBtn'])){
 								window.location.href = 'login.php';
 							}, 2000);
 						  </script>";
-					//$result = flashMessage('Password reset successfully', 'Pass');
 				}
 				else {
 					echo $result="<script type=\"text/javascript\">
@@ -187,7 +89,7 @@ if(isset($_POST['resetBtn'])){
 			$result = flashMessage('There was 1 error in the form');
 		}
 		else {
-			$result = flashMessage("<p>There were " .count($form_errors) ." errors in the form</p>");
+			$result = flashMessage("<p style='text-align: left !important;'>There were " .count($form_errors) ." errors in the form</p>");
 		}
 	}
 }		
@@ -252,7 +154,7 @@ if(isset($_POST['resetBtn'])){
             <!--Login Button-->
             <button class="btn btn-primary btn-lg btn-block" type="submit" name='resetBtn'><?php echo language("reset", $_SESSION['lang']); ?></button>
 
-			<div class="text-right">
+			<div class="text-left">
         		<div class="credits">
             		<a href="login.php">Back</a>
         		</div>

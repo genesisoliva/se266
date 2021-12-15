@@ -13,12 +13,13 @@
 	 *****************************************************************************************************************************/
 	ob_start();
 	session_start();
-	require_once 'helpers/directories.php';
-	require_once 'helpers/Connection.php';
-	require_once 'helpers/functions.php';
-	require_once 'helpers/Hash.php';
-	require_once 'helpers/language.php';
-	require_once 'helpers/Cookie.php';
-	require_once 'helpers/setLang.php';
-	require_once 'helpers/dbError.php';
-	require_once 'helpers/DateFormatter.php';
+	require_once 'configuration/directories.php';
+	require_once 'configuration/Connection.php';
+	require_once 'configuration/functions.php';
+	require_once 'configuration/Hash.php';
+	require_once 'configuration/language.php';
+	require_once 'configuration/Cookie.php';
+	require_once 'configuration/setLang.php';
+	require_once 'configuration/dbError.php';
+	require_once 'configuration/DateFormatter.php';
+	require_once 'configuration/reset.php';
