@@ -101,7 +101,7 @@ if(isset($_POST['resetBtn']))
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="<?php echo language("admin_reset", $_SESSION['lang']); ?>">
     <meta name="author" content="Genesis J Oliva">
-    <link rel="shortcut icon" href="<?php echo $ico; ?>settings.png">
+    <link rel="shortcut icon" href="<?php echo $ico; ?>reset.png">
 
     <title><?php echo language("admin_reset", $_SESSION['lang']); ?></title>
 

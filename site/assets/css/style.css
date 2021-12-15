@@ -450,8 +450,6 @@ table tr th { color: #688a7e;}
 
 }
 
-
-
 .login-social-link a.facebook {
 
     background: #5193ea;
@@ -464,8 +462,6 @@ table tr th { color: #688a7e;}
 
 }
 
-
-
 .login-social-link a.twitter {
 
     background: #44ccfe;
@@ -475,11 +471,12 @@ table tr th { color: #688a7e;}
 	float:left;
 
 }
-
-
 .checkbox, .checkbox:hover, .checkbox:focus  {
 
     border:none;
     margin-left: 10px;
 
+}
+.text-right span{
+    padding: 40px;
 }

@@ -233,22 +233,23 @@
             <!--Login Button-->
             <button class="btn btn-primary btn-lg btn-block" type="submit"><?php echo language("login", $_SESSION['lang']); ?></button>
         </div>
+
+        <div class="text-right">
+            <div class="credits" style="padding: 0 20px 15px 0;">
+                <a href="<?php echo $_SERVER['PHP_SELF']; ?>?lang=es">Español</a>
+                <a href="<?php echo $_SERVER['PHP_SELF']; ?>?lang=en">English</a>
+            </div>
+        </div>
+
     </form>
 
-    <!--Langaguges-->
-    <div class="text-right">
-        <div class="credits">
-            <a href="<?php echo $_SERVER['PHP_SELF']; ?>?lang=es">Español</a>
-            <a href="<?php echo $_SERVER['PHP_SELF']; ?>?lang=en">English</a>
-        </div>
-        <?php
+    </div>
+    <?php
             if (isset($_GET['lang'])) {
                 echo "\$_GET['lang']: {$_GET['lang']}<br>";
             }
-                echo "\$_SESSION['lang']: {$_SESSION['lang']}<br>";
+                echo "<text>\$_SESSION['lang']: {$_SESSION['lang']}</text><br>";
         ?>
-    </div>
-    </div>
 </body>
 </html>
 <?php ob_end_flush(); ?>
