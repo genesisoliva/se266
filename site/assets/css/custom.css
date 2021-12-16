@@ -3,7 +3,7 @@
 }
 
 .table thead tr th {
-	background-color: transparent;
+	background-color: #777;
 	color: #FFF;
 	text-align: center;
 }
@@ -23,7 +23,8 @@
     FOOTER STYLES     
     =============================================*/
 	.footer {
-		background-color:#214761;
+		/*background-color:#214761;*/
+		background-color:#777;
 		width:100%;
 		color:#fff;
 		padding:20px 50px 20px 50px;
@@ -36,5 +37,5 @@
 			color:#fff;
 		}
 		table td {
-			white-space:nowrap
+			/*white-space:nowrap;*/
 		}

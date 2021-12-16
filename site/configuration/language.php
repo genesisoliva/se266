@@ -57,11 +57,11 @@
 			"genders-delete-success" => ['GENDER HAS BEEN DELETED SUCCESSFULLY', "EL GÉNERO SE HA BORRADO CON ÉXITO"],
 			
 			// Nationalities
-			"nationalities-heading" => ["Manage Nationalities", ""],
-			"nationalities-nat" => ["Nationality", ""],
-			"nationalities-manage" => ["Manage Nationality", " "],
-			"nationalities-edit" => ["Edit Nationality", " "],
-			"nationalities-add" => ["Add New Nationality", "  "],
+			"nationalities-heading" => ["Manage Nationalities", "Manejar Nacionalidades"],
+			"nationalities-nat" => ["Nationality", "Nacionalidad"],
+			"nationalities-manage" => ["Manage Nationality", "Manejar Nacionalidad"],
+			"nationalities-edit" => ["Edit Nationality", "Editar Nacionalidad"],
+			"nationalities-add" => ["Add New Nationality", "Agregar Nueva Nacionalidad"],
 			"nationalities-add-success" => ["NATIONALITY HAS BEEN ADDED SUCCESSFULLY", ""],
 			"nationalities-update-success" => ["NATIONALITY HAS BEEN UPDATED SUCCESSFULLY", ""],
 			"nationalities-required" => ["ERROR: NATIONALITY IS REQUIRED", ""],
@@ -69,11 +69,11 @@
 			"nat-check-error" => ["ERROR: NATIONALITY MUST BE FROM 1 TO 50 CHARACTERS LONG", ""],
 			
 			// Nationality Types
-			"nationalityTypes-heading" => ["Manage Nationality Types", "إدارة انواع الجنسيات"],
-			"natType-type" => ["Nationality Type", "نوع الجنسية"],
-			"natType-manage" => ["Manage Nationality Type", "إدارة نوع الجنسية"],
-			"natType-edit" => ["Edit Nationality Types", "تعديل نوع الجنسية"],
-			"natType-add" => ["Add New Nationality Type", "إضافة نوع جنسية جديد"],
+			"nationalityTypes-heading" => ["Manage Nationality Types", ""],
+			"natType-type" => ["Nationality Type", ""],
+			"natType-manage" => ["Manage Nationality Type", ""],
+			"natType-edit" => ["Edit Nationality Types", ""],
+			"natType-add" => ["Add New Nationality Type", "   جديد"],
 			"natType-add-success" => ["NATIONALITY TYPE HAS BEEN ADDED SUCCESSFULLY", "تم إضافة نوع الجنسية بنجاح"],
 			"nationalityTypes-check-error" => ["ERROR: NATIONALITY TYPE MUST BE kuwaiti or Not kuwaiti", "خطأ: نوع الجنسية يجب ان يكون كويتى او غير كويتى"],
 			"nationalityTypes-required" => ["ERROR: NATIONALITY TYPE IS REQUIRED", "خطأ: يجب إدخال نوع الجنسية"],

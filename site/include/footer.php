@@ -1,10 +1,22 @@
 <!--footer-->
 <footer class="footer">
     <div class="container">
-    &copy;  2021 Genesis J Oliva
+<text>&copy;  2021 Genesis J Oliva</text>
       <span class="text-muted">
-        <a href="<?php echo $_SERVER['PHP_SELF']; ?>?lang=es">Español</a>
-        <a href="<?php echo $_SERVER['PHP_SELF']; ?>?lang=en">English</a>
+        <a style="
+    background-color: white;
+    color: black;
+    padding: 8px;
+    float: right;
+    margin: 0 4px;
+" href="<?php echo $_SERVER['PHP_SELF']; ?>?lang=es">Español</a>
+        <a style="
+    background-color: white;
+    color: black;
+    padding: 8px;
+    float: right;
+    margin: 0 4px;
+" href="<?php echo $_SERVER['PHP_SELF']; ?>?lang=en">English</a>
       </span>
     </div>
     <script src="<?php echo $js; ?>jquery-3.2.1.min.js"></script>
