@@ -1,6 +1,3 @@
-CREATE DATABASE hospital;
-USE hospital;
-
 CREATE TABLE IF NOT EXISTS genders (
 	`id` INT(11) AUTO_INCREMENT,
 	`gender` VARCHAR(6) NOT NULL UNIQUE,
