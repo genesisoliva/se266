@@ -971,8 +971,10 @@ if (isset($_GET['manage']) && $_GET['manage'] == 'view') {
         </table>
         </div>
         </div>
+        <!--Phone Numbers-->
         <div class="panel panel-default">
             <div class="panel-heading">
+            <i class="fa fa-address-book-o fa-2x" aria-hidden="true"></i>
                 <?php echo language('phoneNumbers', $_SESSION['lang']); ?>
             </div>
             <div class="panel-body">
