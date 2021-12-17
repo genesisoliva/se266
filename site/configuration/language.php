@@ -1,4 +1,8 @@
 <?php
+// Ethicity ?
+// Race - Nationality Type
+// Acenstry/ ethic origin - Nationality
+// Tribal nations ?
 
 	function language($word, $lang) {
 		$dictionary = [
@@ -23,8 +27,6 @@
 
 			// Navbar
 			"dashboard" => ["Dashboard", ""],
-			"dropdown" => ["Manage", "Manejar"],
-			"logout" => ["Logout", "Salir"],
 			"genders" => ["Manage Genders", "Manejar Generos"],
 			"nationalities" => ["Manage Nationalities", "Manejar Nacionalidades"],
 			"natTypes" => ["Manage Nationality Types", "Manejar Tipos de Nacionalidades"],
@@ -43,6 +45,8 @@
 			"disabilities" => ["Manage Disability Cards", "Manejar Cartas de Discapacidad"],
 			"financials" => ["Manage Financial Aids", "Manejar FA"],
 			"receipts" => ["Manage Receipts", "Manejar Recibos"],
+			"logout" => ["Logout", "Salir"],
+			"dropdown" => ["Manage", "Manejar"],
 
 			// Genders
 			"genders-heading" => ["Manage Genders", "Manejar Generos"],
@@ -195,9 +199,9 @@
 			// Employees
 			"employes-heading" => ["Manage Employees", "إدارة الموظفين"],
 			"employees-creation" => ["Account Created: ", ""],
-			"employees-modification" => ["Account modification: ", ""],
+			"employees-modification" => ["Account Modification: ", ""],
 			"employees-name" => ["Full Name", ""],
-			"employees-firstName" => ["First Name", "الاسم الاول"],
+			"employees-firstName" => ["First Name", "Primer Nombre"],
 			"employees-middleName" => ["Middle Name", "الاسم الاوسط"],
 			"employees-lastName" => ["Last Name", "الاسم الاخير"],
 			"employees-dob" => ["Date of Birth", "تاريخ الميلاد"],
@@ -214,7 +218,7 @@
 			"natioinality-type-fill-in-msg" => ["Add the type of the nationality in the nationality types table if not eixsts", "اضف نوع الجنسية فى جدول انواع الجنسيات لو لم يكن موجود"],
 			"position-role-fill-in-msg" => ["Add the position role in the position roles table if not exists", "اضف نوع الوظيفة فى جدول الوظائف لو لم تكن موجودة"],
 			"employees-passport_number" => ["Passport Number", "رقم جواز السفر"],
-			"employees-image" => ["Personal Image", "الصورة الشخصية"],
+			"employees-image" => ["Photo", "Foto"],
 			"employees-gender" => ["Gender", "الجنس"],
 			"employees-nationality" => ["Nationality", "الجنسية"],
 			"employees-nationalityType" => ["Nationality Type", "نوع الجنسية"],
@@ -229,7 +233,7 @@
 
 			// Employee Show
 			"employee-not-found" => ["ERROR: EMPLOYEE NOT FOUND", "خطأ: الموظف غير موجود"],
-			"employee-profile" => ["information", "معلومات"],
+			"employee-profile" => ["'s Profile", "Prefil de"],
 			"employee-not-updated-yet" => ["This employee is not updated yet", "هذا الموظف لم يتم تحديث بياناته من قبل"],
 
 			// Patients
@@ -238,7 +242,7 @@
 			"patients-firstName" => ["First Name", "الاسم الاول"],
 			"patients-middleName" => ["Middle Name", "الاسم الاوسط"],
 			"patients-lastName" => ["Last Name", "الاسم الاخير"],
-			"patients-passport_number" => ["Passport Number 12", "رقم جواز السفر"],
+			"patients-passport_number" => ["Passport Number", "رقم جواز السفر"],
 			"patients-passport_#" => ["Passport Number", "رقم جواز السفر"],
 			"patients-dob" => ["Date of Birth", "تاريخ الميلاد"],
 			"patients-creationTime" => ["Creation Time", "تاريخ التسجيل"],
@@ -265,7 +269,7 @@
 
 			// Patient Show
 			"patient-not-found" => ["ERROR: PATIENT NOT FOUND", "خطأ: المريض غير موجود"],
-			"patient-profile" => ["information", "معلومات"],
+			"patient-profile" => ["'s Profile", "معلومات"],
 			"patient-not-updated-yet" => ["This patient is not updated yet", "هذا المريض لم يتم تحديث بياناته من قبل"],
 
 			// Employees and Patients Errors
@@ -383,8 +387,8 @@
 			"id-required" => ["ERROR: YOU MUST PROVIDE AN ID", "خطأ: يجب تحديد الرقم المعرف فى الطلب"],
 			"id-not-found" => ["ERROR: ID NOT FOUND", "خطأ: الرقم المعرف غير موجود"],
 			"page-not-found" => ["ERROR: PAGE NOT FOUND", "خطأ: الصفحة غير موجودة"],
-			"created_at" => ["Created At", "تاريخ إنشاء السجل"],
-			"updated_at" => ["Last Update", "تاريخ اخر تحديث"],
+			"created_at" => ["Created At", "Fecha Creada"],
+			"updated_at" => ["Last Update", "Ultima Autualizada"],
 			"date-wrong-format-error" => ["ERROR: WRONG DATE FORMAT", "خطأ: صيغة التاريخ غير صحيحة"],
 
 			// General

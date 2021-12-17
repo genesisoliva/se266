@@ -136,19 +136,19 @@ if (isset($_GET['manage']) && $_GET['manage'] == 'view') {
     </div>
     <div class="panel panel-default">
         <div class="panel-heading">
+        <i class="fa fa-user-md fa-2x" aria-hidden="true"></i>
             <?php echo language('employees-add', $_SESSION['lang']); ?>
         </div>
         <div class="panel-body">
             <form action="employees.php?manage=store" method="POST" data-parsley-validate="" enctype="multipart/form-data">
             <div class="form-group">
-            <?php 
+                <?php 
                            // $result;
                             //$today = date("m-d-Y H:i:s");
                            // echo $today; 
-                            ?>
+                ?>
                             <label for="creationTime"><?php echo language('employees-creation', $_SESSION['lang']); ?></label>
-                            <input type="datetime-local" id="dt" value="<?php echo $today; ?>" class="form-control" name="creationTime" disabled
-                            />
+                            <input type="datetime-local" id="dt" value="<?php echo isset($_SESSION['creationTime']) ? $_SESSION['creationTime'] : ''; ?>" class="form-control" name="creationTime" disabled/>
                             <script>
                                 var now = new Date();
                                 now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
@@ -191,9 +191,24 @@ if (isset($_GET['manage']) && $_GET['manage'] == 'view') {
                         name="image"
                     />
                 </div>
-                <div class="bootstrap-iso">
+
+                <div class="form-group">
+                    <label for="dob"><?php echo language("employees-dob", $_SESSION['lang']); ?></label>
+                    <input type="date" placeholder="<?php echo language('employees-dob', $_SESSION['lang']); ?>"
+                        value="<?php echo isset($_SESSION['dob']) ? $_SESSION['dob'] : ''; ?>" required=""
+                        class="form-control" name="dob"/>
+                </div>
+
+                <div class="form-group">
+                    <label for="hireDate"><?php echo language("employees-hireDate", $_SESSION['lang']); ?></label>
+                    <input type="date" placeholder="<?php echo language('employees-hireDate', $_SESSION['lang']); ?>"
+                        value="<?php echo isset($_SESSION['hireDate']) ? $_SESSION['hireDate'] : ''; ?>" required=""
+                        class="form-control" name="hireDate"/>
+                </div>
+
+                <!--<div class="bootstrap-iso">
                     <div class="form-group">
-                        <label for="dob"><?php echo language("employees-dob", $_SESSION['lang']); ?></label>
+                        <label for="dob"><?php //echo language("employees-dob", $_SESSION['lang']); ?></label>
                         <div class='input-group date' id='datetimepickerempdob'>
                             <input type='text' required="" data-parsley-required="true" name="dob"/>
                             <span class="input-group-addon pull-left">
@@ -202,7 +217,7 @@ if (isset($_GET['manage']) && $_GET['manage'] == 'view') {
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="hireDate"><?php echo language("employees-hireDate", $_SESSION['lang']); ?></label>
+                        <label for="hireDate"><?php //echo language("employees-hireDate", $_SESSION['lang']); ?></label>
                         <div class="input-group date" id="datetimepickeremphierDate">
                             <input type="text" required="" data-parsley-required="true" name="hireDate"/>
                             <span class="input-group-addon pull-left">
@@ -210,7 +225,8 @@ if (isset($_GET['manage']) && $_GET['manage'] == 'view') {
                             </span>
                         </div>
                     </div>
-                </div>
+                </div>-->
+
                 <div class="form-group">
                     <label for="department_id"><?php echo language("employees-department", $_SESSION['lang']); ?></label>
                     <select name="department_id" class="form-control" required="" data-parsley-required="true">
@@ -300,7 +316,8 @@ if (isset($_GET['manage']) && $_GET['manage'] == 'view') {
 * STORE EMPLOYEE
 ***************************************************************/
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        if (isset($_POST['creationTime']) && isset($_POST['firstName']) && isset($_POST['middleName']) && isset($_POST['lastName']) && isset($_POST['dob']) && isset($_POST['hireDate'])) {
+        if (isset($_POST['creationTime']) && isset($_POST['firstName']) && isset($_POST['middleName']) && isset($_POST['lastName']) && isset($_POST['dob']) && isset($_POST['hireDate'])) 
+        {
             $creationTime = testInput($_POST['creationTime']);
 
             $firstName = filter_var(testInput($_POST['firstName']), FILTER_SANITIZE_STRING);
@@ -312,6 +329,7 @@ if (isset($_GET['manage']) && $_GET['manage'] == 'view') {
             $passport_number = filter_var(testInput($_POST['passport_number']), FILTER_VALIDATE_INT);
 
             $passport_number = intval($passport_number);
+
             // image Validation
             $imageName = $_FILES['image']['name'];
             $imageSize = $_FILES['image']['size'];
@@ -392,6 +410,7 @@ if (isset($_GET['manage']) && $_GET['manage'] == 'view') {
             die();
         }
     }
+
     else {
         $_SESSION['error'] = language('method_not_allowed_error', $_SESSION['lang']);
         header('Location: employees.php?manage=add&lang='.$selectedLang);
@@ -422,20 +441,40 @@ if (isset($_GET['manage']) && $_GET['manage'] == 'view') {
                 </div>
                 <div class="panel-body">
                     <form action="employees.php?manage=update" method="POST" data-parsley-validate="" enctype="multipart/form-data">
-                            <input type="hidden" name="employee_id" class="form-control" value="<?php echo $_GET['id']; ?>" hidden/>
-                            <input type="hidden" name="oldimage" class="form-control" value="<?php echo $image; ?>"/>
-
-                    <?php 
-                           // $result;
-                            //$today = date("m-d-Y H:i:s");
-                           // echo $today; 
-                            ?>
-                            <input type="hidden" id="dt" value="<?php echo $today; ?>" class="form-control" name="modificationTime"/>
+                        <div class="form-group">
+                            <label for="employee_id">employee_id</label>
+                            <input type="text" name="employee_id" class="form-control" placeholder="employee_id" value="<?php echo $_GET['id']; ?>"/>
+                            <label for="oldimage">oldimage</label>
+                            <input type="text" name="oldimage" class="form-control" placeholder="oldimage" value="<?php echo $image; ?>"/>
+                        </div>
+                        <div class="form-group">
+                                <?php 
+                                    $result;
+                                    $string = date("Y-m-d H:i:s");//$today = date("m-d-Y H:i:s");
+                                    echo "<br>\$string: {$string}";
+                                    $dt = date('Y-m-d\TH:i', strtotime($string));
+                                    echo "<br>\$dt: {$dt}<br>";?> <!--<input type="datetime-local" id="" value="<?php //echo $dt; ?>" class="form-control" name="" disabled/>-->
+                                    <?php
+                                    if($creationTime) {
+                                        echo "<br>\$creationTime: {$creationTime}<br>";
+                                        $date = date('Y-m-d\TH:i', strtotime($creationTime));
+                                        echo "\$creationTime: {$date}<br>";
+                                    ?>
+                                <label for="creationTime"><?php echo language('employees-creation', $_SESSION['lang']); ?></label>
+                                <input type="datetime-local" value="<?php echo $date; ?>" class="form-control" name="creationTime" disabled/>
+                                <?php //$date = $creationTime; 
+                            echo "\$creationTime: {$creationTime}<br>";}?>
+                        </div>
+                            <!--modificationTime-->
+                        <div class="form-group">
+                            <label for="modificationTime"><?php echo language('employees-modification', $_SESSION['lang']); ?></label>
+                            <input type="datetime-local" id="dt" value="<?php echo $modificationTime; ?>" class="form-control" name="modificationTime" readonly="readonly"/>
                             <script>
                                 var now = new Date();
                                 now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
                                 document.getElementById('dt').value = now.toISOString().slice(0,16);
                             </script>
+                        </div>
 
 
                         <div class="form-group">
@@ -445,6 +484,7 @@ if (isset($_GET['manage']) && $_GET['manage'] == 'view') {
                                 class="form-control" name="firstName" data-parsley-required="true" data-parsley-length="[1, 30]"
                             />
                         </div>
+
                         <div class="form-group">
                             <label for="middleName"><?php echo language("employees-middleName", $_SESSION['lang']); ?></label>
                             <input type="text" placeholder="<?php echo language('employees-middleName', $_SESSION['lang']); ?>"
@@ -468,14 +508,32 @@ if (isset($_GET['manage']) && $_GET['manage'] == 'view') {
                                 data-parsley-minlength="8" data-pasley-maxlength="9"
                             />
                         </div>
+
+                        <!--Personal Photo-->
                         <div class="form-group">
                             <label for="image"><?php echo language("employees-image", $_SESSION['lang']); ?></label>
                             <input type="file" name="image"/>
                         </div>
 
-                        <div class="bootstrap-iso">
+                        <div class="form-group">
+                            <label for="dob"><?php echo language("employees-dob", $_SESSION['lang']); ?></label>
+                            <input type="date" placeholder="<?php echo language('employees-dob', $_SESSION['lang']); ?>"
+                                value="<?php echo $dob; ?>" required="" data-parsley-required="true"
+                                class="form-control" name="dob"
+                            />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="hireDate"><?php echo language("employees-hireDate", $_SESSION['lang']); ?></label>
+                            <input type="date" placeholder="<?php echo language('employees-hireDate', $_SESSION['lang']); ?>"
+                                value="<?php echo $hireDate; ?>" required="" data-parsley-required="true"
+                                class="form-control" name="hireDate"
+                            />
+                        </div>
+
+                        <!--<div class="bootstrap-iso">
                             <div class="form-group">
-                                <label for="dob"><?php echo language("employees-dob", $_SESSION['lang']); ?></label>
+                               <label for="dob"><?php //echo language("employees-dob", $_SESSION['lang']); ?></label>
                                 <div class='input-group date' id='datetimepickerempdob'>
                                     <input type='text'required="" data-parsley-required="true" name="dob" value="<?php echo $dob; ?>"/>
                                     <span class="input-group-addon pull-left">
@@ -492,7 +550,7 @@ if (isset($_GET['manage']) && $_GET['manage'] == 'view') {
                                     </span>
                                 </div>
                             </div>
-                        </div>
+                        </div>-->
 
                         <div class="form-group">
                             <label for="department_id"><?php echo language("employees-department", $_SESSION['lang']); ?></label>
@@ -586,27 +644,17 @@ if (isset($_GET['manage']) && $_GET['manage'] == 'view') {
                             <label for="positionRole_id"><?php echo language("employees-positionRole", $_SESSION['lang']); ?></label>
                             <select name="positionRole_id" class="form-control" required="" data-parsley-required="true">
                                 <?php
-                                $subQuery = "SELECT * FROM positionRoles WHERE id = :id";
-                                $subStmt = Connection::conn()->prepare($subQuery);
-                                $subStmt->bindParam(':id', $positionRole_id, PDO::PARAM_INT);
-                                $subStmt->execute();
-                                $subRow = $subStmt->fetch(PDO::FETCH_ASSOC);
-                                extract($subRow);
-                                ?>
-                                <option value="<?php echo $id; ?>"><?php echo $role; ?></option>
-                                <?php
-                                $suqQuery = "SELECT * FROM positionRoles WHERE id != :id";
-                                $subStmt = Connection::conn()->prepare($subQuery);
-                                $subStmt->bindParam(':id', $positionRole_id, PDO::PARAM_INT);
-                                $subStmt->execute();
-                                while ($subRow = $subStmt->fetch(PDO::FETCH_ASSOC)) {
-                                    extract($subRow);
+                                $query = "SELECT * FROM positionRoles ORDER BY id ASC";
+                                $stmt = Connection::conn()->prepare($query);
+                                $stmt->execute();
+                                while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                                    extract($row);
                                     ?>
                                     <option value="<?php echo $id; ?>"><?php echo $role; ?></option>
                                 <?php } ?>
                             </select>
                         </div>
-                </div>
+                </div> <!--end panel-bpdy-->
                 <div class="panel-footer">
                         <input type="hidden" name="id" value="<?php echo $id; ?>"/>
                         <input type="submit" value="<?php echo language('update', $_SESSION['lang']); ?>"
@@ -633,7 +681,11 @@ if (isset($_GET['manage']) && $_GET['manage'] == 'view') {
 ***************************************************************/
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        if (isset($_POST['modificationTime']) && isset($_POST['firstName']) && isset($_POST['middleName']) && isset($_POST['lastName']) && isset($_POST['dob']) && isset($_POST['hireDate'])) {
+        if (isset($_POST['modificationTime']) && isset($_POST['firstName']) && isset($_POST['middleName']) && isset($_POST['lastName']) && isset($_POST['dob']) && isset($_POST['hireDate'])) 
+        {
+            //$date = $creationTime;
+            //$creationTime = testInput($_POST['creationTime']);
+
             $updated_at = testInput($_POST['modificationTime']);
 
             $firstName = filter_var(testInput($_POST['firstName']), FILTER_SANITIZE_STRING);
@@ -718,6 +770,7 @@ if (isset($_GET['manage']) && $_GET['manage'] == 'view') {
                 $stmt->bindParam(':image', $image, PDO::PARAM_STR);
                 $stmt->bindParam(':dob', $dob);
                 $stmt->bindParam(':hireDate', $hireDate);
+                //$stmt->bindParam(':creationTime', $creationTime);
                 $stmt->bindParam(':modificationTime', $updated_at);
                 $stmt->bindParam(':department_id', $department_id, PDO::PARAM_INT);
                 $stmt->bindParam(':gender_id', $gender_id, PDO::PARAM_INT);
@@ -803,14 +856,16 @@ if (isset($_GET['manage']) && $_GET['manage'] == 'view') {
         }
         extract($stmt->fetch(PDO::FETCH_ASSOC));
         ?>
+
         <!-- Employe Show -->
         <div class="panel panel-default employee-panel">
+            
         <div class="panel-heading">
-        <i class="fa fa-user-md fa-2x" aria-hidden="true"></i>
+            <i class="fa fa-user-md fa-2x" aria-hidden="true"></i>
             <?php if ($_SESSION['lang']) {
                 echo language('employee-profile', $_SESSION['lang']).' '.$firstName.' '.$middleName.' '.$lastName;
             } else {
-                echo $firstName.' '.$middleName.' '.$lastName.' '.language('employee-profile', $_SESSION['lang']);
+                echo $firstName.' '.$middleName.' '.$lastName.'s'.language('employee-profile', $_SESSION['lang']);
             } ?>
         </div>
 
@@ -821,7 +876,7 @@ if (isset($_GET['manage']) && $_GET['manage'] == 'view') {
                     <img style="width: 50%; height: 50%;" class="pull-left" src="public/employees_thumbnails/<?php echo $image; ?>">
                 </div>
                 <div class="col-md-8">
-                    <h4><?php echo language('id', $_SESSION['lang']).': '.$id; ?></h4>
+                    <h4><span><?php echo language('id', $_SESSION['lang']).': </span><span>'.$id; ?></span></h4>
                     <h4><?php echo language('employees-firstName', $_SESSION['lang']).': '.$firstName; ?></h4>
                     <h4><?php echo language('employees-middleName', $_SESSION['lang']).': '.$middleName; ?></h4>
                     <h4><?php echo language('employees-lastName', $_SESSION['lang']).': '.$lastName; ?></h4>

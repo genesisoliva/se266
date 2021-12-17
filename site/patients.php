@@ -135,13 +135,21 @@ if (isset($_GET['manage']) && $_GET['manage'] == 'view') {
         </div>
         <div class="panel-body">
             <form action="patients.php?manage=store" method="POST" data-parsley-validate="" enctype="multipart/form-data">
-
-                <input type="hidden" id="dt" value="" class="form-control" name="creationTime"/>
+                <div class="form-group">
+                    <?php 
+                        // $result;
+                        //$today = date("m-d-Y H:i:s");
+                        // echo $today; 
+                    ?>
+                        <label for="creationTime"><?php echo language('employees-creation', $_SESSION['lang']); ?></label>
+                        <input type="datetime-local" id="dt" value="<?php echo isset($_SESSION['creationTime']) ? $_SESSION['creationTime'] : ''; ?>" class="form-control" name="creationTime" disabled/>
                             <script>
                                 var now = new Date();
                                 now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
                                 document.getElementById('dt').value = now.toISOString().slice(0,16);
                             </script>
+
+                </div>
                 <div class="form-group">
                     <label for="firstName"><?php echo language('patients-firstName', $_SESSION['lang']); ?></label>
                     <input type="text" placeholder="<?php echo language('patients-firstName', $_SESSION['lang']); ?>"
@@ -171,16 +179,11 @@ if (isset($_GET['manage']) && $_GET['manage'] == 'view') {
                         data-parsley-minlength="8" data-pasley-maxlength="9"
                     />
                 </div>
-                <div class="bootstrap-iso form-group">
-                    <!--<div class="form-group">-->
-                        <label for="dob"><?php echo language("patients-dob", $_SESSION['lang']); ?></label>
-                        <div class='input-group date' id='datetimepickerpatdob'>
-                            <input type='text' required="" data-parsley-required="true" name="dob" class="form-control"/>
-                            <span class="input-group-addon pull-left1">
-                                <span class="glyphicon glyphicon-calendar"></span>
-                            </span>
-                        </div>
-                    <!--</div>-->
+                <div class="form-group">
+                    <label for="dob"><?php echo language("patients-dob", $_SESSION['lang']); ?></label>
+                    <input type="date" placeholder="<?php echo language('patients-dob', $_SESSION['lang']); ?>"
+                        value="<?php echo isset($_SESSION['dob']) ? $_SESSION['dob'] : ''; ?>" required=""
+                        class="form-control" name="dob"/>
                 </div>
                 <div class="form-group">
                     <label for="image"><?php echo language("patients-image", $_SESSION['lang']); ?></label>
@@ -365,18 +368,46 @@ if (isset($_GET['manage']) && $_GET['manage'] == 'view') {
         ?>
             <div class="panel panel-default">
                 <div class="panel-heading">
+                <i class="fa fa-users fa-2x" aria-hidden="true"></i>
                     <?php echo language('patient-edit', $_SESSION['lang']); ?>
                 </div>
                 <div class="panel-body">
                     <form action="patients.php?manage=update" method="POST" data-parsley-validate="" enctype="multipart/form-data">
-                        <input type="hidden" name="patient_id" value="<?php echo $_GET['id']; ?>"/>
-                        <input type="hidden" name="oldimage" value="<?php echo $image; ?>"/>
-                            <input type="hidden" id="dt" value="" class="form-control" name="modificationTime"/>
+                        <div class="form-group">
+                            <label for="patient_id">employee_id</label>
+                            <input type="text" name="patient_id" class="form-control" placeholder="patient_id" value="<?php echo $_GET['id']; ?>"/>
+                            <label for="oldimage">oldimage</label>
+                            <input type="text" name="oldimage" class="form-control" placeholder="oldimage" value="<?php echo $image; ?>"/>
+                        </div>
+
+                        <div class="form-group">
+                            <?php 
+                                    $result;
+                                    $string = date("Y-m-d H:i:s");//$today = date("m-d-Y H:i:s");
+                                    echo "<br>\$string: {$string}";
+                                    $dt = date('Y-m-d\TH:i', strtotime($string));
+                                    echo "<br>\$dt: {$dt}<br>";?> <!--<input type="datetime-local" id="" value="<?php //echo $dt; ?>" class="form-control" name="" disabled/>-->
+
+                                    <?php
+                                if($creationTime) {
+                                        echo "<br>\$creationTime: {$creationTime}<br>";
+                                        $date = date('Y-m-d\TH:i', strtotime($creationTime));
+                                        echo "\$creationTime: {$date}<br>";
+                            ?>
+                                <label for="creationTime"><?php echo language('employees-creation', $_SESSION['lang']); ?></label>
+                                <input type="datetime-local" value="<?php echo $date; ?>" class="form-control" name="creationTime" disabled/>
+                                <?php $date = $creationTime; 
+                            echo "\$creationTime: {$creationTime}<br>";}?>
+                        </div>
+                        <div class="form-group">
+                            <label for="modificationTime"><?php echo language('employees-modification', $_SESSION['lang']); ?></label>
+                            <input type="datetime-local" id="dt" value="<?php echo $modificationTime; ?>" class="form-control" name="modificationTime" readonly="readonly"/>
                             <script>
                                 var now = new Date();
                                 now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
                                 document.getElementById('dt').value = now.toISOString().slice(0,16);
                             </script>
+                        </div>
                         <div class="form-group">
                             <label for="firstName"><?php echo language('patients-firstName', $_SESSION['lang']); ?></label>
                             <input type="text" placeholder="<?php echo language('patients-firstName', $_SESSION['lang']); ?>"
@@ -387,8 +418,7 @@ if (isset($_GET['manage']) && $_GET['manage'] == 'view') {
                         <div class="form-group">
                             <label for="middleName"><?php echo language("patients-middleName", $_SESSION['lang']); ?></label>
                             <input type="text" placeholder="<?php echo language('patients-middleName', $_SESSION['lang']); ?>"
-                                value="<?php echo $middleName; ?>" required=""
-                                class="form-control" name="middleName" data-parsley-required="true" data-parsley-length="[1, 30]"
+                                value="<?php echo $middleName; ?>" class="form-control" name="middleName"
                             />
                         </div>
                         <div class="form-group">
@@ -406,27 +436,33 @@ if (isset($_GET['manage']) && $_GET['manage'] == 'view') {
                                 data-parsley-minlength="8" data-pasley-maxlength="9"
                             />
                         </div>
-                        <div class="bootstrap-iso">
+                        <div class="form-group">
+                            <label for="dob"><?php echo language("patients-dob", $_SESSION['lang']); ?></label>
+                            <input type="date" placeholder="<?php echo language('patients-dob', $_SESSION['lang']); ?>"
+                            value="<?php echo $dob; ?>" required=""
+                            class="form-control" name="dob"/>
+                        </div>
+                        <!--<div class="bootstrap-iso">
                             <div class="form-group">
-                                <label for="dob"><?php echo language("patients-dob", $_SESSION['lang']); ?></label>
+                                <label for="dob"><?php //echo language("patients-dob", $_SESSION['lang']); ?></label>
                                 <div class='input-group date' id='datetimepickerpatdob'>
-                                    <input type='text' required="" data-parsley-required="true" name="dob" value="<?php echo $dob; ?>"/>
+                                    <input type='text' required="" data-parsley-required="true" name="dob" value="<?php //echo $dob; ?>"/>
                                     <span class="input-group-addon pull-left">
                                         <span class="glyphicon glyphicon-calendar"></span>
                                     </span>
                                 </div>
                             </div>
-                        </div>
+                        </div>-->
                         <div class="form-group">
                             <label for="image"><?php echo language("patients-image", $_SESSION['lang']); ?></lable>
                             <input type="file" name="image"/>
                         </div>
                         <div class="form-group">
                             <label for="notes"><?php echo language("patients-notes", $_SESSION['lang']); ?></label>
-                            <input type="text" placeholder="<?php echo language('patients-notes', $_SESSION['lang']); ?>"
-                                value="<?php echo $notes; ?>"
-                                class="form-control" name="notes"
-                            />
+                            <input type="text" placeholder="<?php echo language('patients-notes', $_SESSION['lang']); ?>"value="<?php echo $notes; ?>" class="form-control" name="notes"/>
+                            <textarea placeholder="<?php echo language('patients-notes', $_SESSION['lang']); ?>" 
+                            value="<?php echo $notes; ?>"class="form-control" name="notes" >
+                            </textarea> 
                         </div>
                         <div class="form-group">
                             <label for="gender_id"><?php echo language("patients-gender", $_SESSION['lang']); ?></label>
@@ -527,7 +563,8 @@ if (isset($_GET['manage']) && $_GET['manage'] == 'view') {
 ***************************************************************/
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        if (isset($_POST['modificationTime']) && isset($_POST['firstName']) && isset($_POST['middleName']) && isset($_POST['lastName']) && isset($_POST['dob'])) {
+        if (isset($_POST['modificationTime']) && isset($_POST['firstName']) && isset($_POST['middleName']) && isset($_POST['lastName']) && isset($_POST['dob'])) 
+        {
         $modificationTime = testInput($_POST['modificationTime']);
         // firstName Validation
         $firstName = filter_var(testInput($_POST['firstName']), FILTER_SANITIZE_STRING);
@@ -692,7 +729,7 @@ if (isset($_GET['manage']) && $_GET['manage'] == 'view') {
             <?php if ($_SESSION['lang']) {
                 echo language('patient-profile', $_SESSION['lang']).' '.$firstName.' '.$middleName.' '.$lastName;
             } else {
-                echo $firstName.' '.$middleName.' '.$lastName.' '.language('patient-profile', $_SESSION['lang']);
+                echo $firstName.' '.$middleName.' '.$lastName.''.language('patient-profile', $_SESSION['lang']);
             } ?>
         </div>
         <div class="panel-body">
@@ -701,7 +738,7 @@ if (isset($_GET['manage']) && $_GET['manage'] == 'view') {
                     <img style="width: 50%; height: 50%;" class="pull-left" src="public/patients_thumbnails/<?php echo $image; ?>">
                 </div>
                 <div class="col-md-8">
-                    <h4><?php echo language('id', $_SESSION['lang']).': '.$id; ?></h4>
+                    <h4><span><?php echo language('id', $_SESSION['lang']).': </span><span>'.$id; ?></span></h4>
                     <h4><?php echo language('patients-firstName', $_SESSION['lang']).': '.$firstName; ?></h4>
                     <h4><?php echo language('patients-middleName', $_SESSION['lang']).': '.$middleName; ?></h4>
                     <h4><?php echo language('patients-lastName', $_SESSION['lang']).': '.$lastName; ?></h4>
@@ -769,8 +806,10 @@ if (isset($_GET['manage']) && $_GET['manage'] == 'view') {
             </form>
         </div>
         </div>
+        <!--Phone Numbers-->
         <div class="panel panel-default">
             <div class="panel-heading">
+            <i class="fa fa-address-book-o fa-2x" aria-hidden="true"></i>
                 <?php echo language('phoneNumbers', $_SESSION['lang']); ?>
             </div>
             <div class="panel-body">
@@ -827,6 +866,7 @@ if (isset($_GET['manage']) && $_GET['manage'] == 'view') {
         </div>
         <div class="panel panel-default">
             <div class="panel-heading">
+            <i class="fa fa-id-card-o fa-2x" aria-hidden="true"></i>
                 <?php echo language('articles-heading', $_SESSION['lang']); ?>
             </div>
             <div class="panel-body">
