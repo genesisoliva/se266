@@ -43,7 +43,7 @@
 			"patients" => ["Manage Patients", "Manejar Pacientes"],
 			"articles" => ["Manage Patient Cases", "Manejar Casos de Pacientes"],
 			"disabilities" => ["Manage Disability Cards", "Manejar Cartas de Discapacidad"],
-			"financials" => ["Manage Financial Aids", "Manejar FA"],
+			"financials" => ["Manage Financial Aids", "Manejar Ayuda Financieras"],
 			"receipts" => ["Manage Receipts", "Manejar Recibos"],
 			"logout" => ["Logout", "Salir"],
 			"dropdown" => ["Manage", "Manejar"],
