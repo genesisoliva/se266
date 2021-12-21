@@ -87,7 +87,7 @@ CREATE TABLE IF NOT EXISTS employees (
 	`creationTime` DATETIME DEFAULT CURRENT_TIMESTAMP,
         `creationTime` DATETIME,
 	`modificationTime` DATETIME ON UPDATE CURRENT_TIMESTAMP,
-        `modificationTime`,
+        `modificationTime` DATETIME,
 	`department_id` INT(11) NOT NULL,
 	`gender_id` INT(11) NOT NULL,
 	`nationality_id` INT(11) NOT NULL,
